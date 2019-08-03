@@ -352,7 +352,8 @@ namespace Negocios
                     unitelefone = Convert.ToString(row["unitelefone"]),
                     uniuf = Convert.ToString(row["uniuf"]),
                     uniunidade = Convert.ToString(row["uniunidade"]).Trim(),
-                    unisede = Convert.ToBoolean(row["unisede"])
+                    unisede = Convert.ToBoolean(row["unisede"]),
+                    unicomputador = Convert.ToInt32(row["unicomputador"])
                 };
 
                 if (Convert.ToBoolean(row["uniassistencia"]))

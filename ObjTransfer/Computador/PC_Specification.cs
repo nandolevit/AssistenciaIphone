@@ -15,5 +15,8 @@ namespace ObjTransfer.Computador
         public string Modelo { get; set; }
         public string SerialPlaca { get; set; }
         public string TipoMaquina { get; set; }
+        public string MemoryMax { get; set; }
+        public string SlotQuant { get; set; }
+        public string Data { get; set; }
     }
 }

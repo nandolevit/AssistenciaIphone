@@ -59,12 +59,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Computador\PC_Monitor.cs" />
     <Compile Include="Computador\PC_Processor_Windows.cs" />
     <Compile Include="Computador\PC_Ram.cs" />
     <Compile Include="Computador\PC_RamColecao.cs" />
     <Compile Include="Computador\PC_Specification.cs" />
     <Compile Include="Computador\PC_Storage.cs" />
     <Compile Include="Computador\PC_StorageColecao.cs" />
+    <Compile Include="Computador\PC_Video.cs" />
+    <Compile Include="Computador\PC_VideoColecao.cs" />
     <Compile Include="EmailColecao.cs" />
     <Compile Include="EmailInfo.cs" />
     <Compile Include="Entrada\EntradaDiversosColecao.cs" />
