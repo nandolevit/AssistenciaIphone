@@ -24,7 +24,6 @@ namespace WinForms
         ComputerInfo infoComp;
         UnidadeInfo infoUnid;
         UnidadeColecao colecaoUnid;
-        ServicoNegocio negocioServ;
         PessoaNegocio negocioPessoa;
         SerializarNegocios serializarNegocios = new SerializarNegocios(Form1.Caminho);
         bool Ativo;

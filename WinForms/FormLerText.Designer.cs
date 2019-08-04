@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLerText));
+            this.groupBoxPrincipal = new System.Windows.Forms.GroupBox();
+            this.groupBoxMemory = new System.Windows.Forms.GroupBox();
+            this.dataGridViewMemory = new System.Windows.Forms.DataGridView();
+            this.colMemModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMemCapacidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMemFormato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMemTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMemFabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMemSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMemVolt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxMonitor = new System.Windows.Forms.GroupBox();
             this.dataGridViewMonitor = new System.Windows.Forms.DataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTamanho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colResolucao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colData = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxStorage = new System.Windows.Forms.GroupBox();
             this.dataGridViewStorage = new System.Windows.Forms.DataGridView();
             this.colNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,9 +50,6 @@
             this.colVolume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxVideo = new System.Windows.Forms.GroupBox();
             this.dataGridViewVideo = new System.Windows.Forms.DataGridView();
-            this.colModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMemory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxProcSocket = new System.Windows.Forms.TextBox();
@@ -84,8 +85,18 @@
             this.textBoxPcVersao = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxPcNome = new System.Windows.Forms.TextBox();
-            this.groupBoxMemory = new System.Windows.Forms.GroupBox();
-            this.dataGridViewMemory = new System.Windows.Forms.DataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTamanho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colResolucao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMemory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonTxt = new System.Windows.Forms.Button();
+            this.buttonSalvar = new System.Windows.Forms.Button();
+            this.buttonFechar = new System.Windows.Forms.Button();
+            this.pictureBoxPrincipal = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -93,14 +104,9 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.colMemModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMemCapacidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMemFormato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMemTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMemFabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMemSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMemVolt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxPrincipal.SuspendLayout();
+            this.groupBoxMemory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMemory)).BeginInit();
             this.groupBoxMonitor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonitor)).BeginInit();
             this.groupBoxStorage.SuspendLayout();
@@ -110,8 +116,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBoxMemory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMemory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -121,31 +126,115 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // groupBoxPrincipal
             // 
-            this.button1.Location = new System.Drawing.Point(1188, 564);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.groupBoxPrincipal.Controls.Add(this.pictureBoxPrincipal);
+            this.groupBoxPrincipal.Controls.Add(this.groupBoxMemory);
+            this.groupBoxPrincipal.Controls.Add(this.groupBoxMonitor);
+            this.groupBoxPrincipal.Controls.Add(this.groupBoxStorage);
+            this.groupBoxPrincipal.Controls.Add(this.groupBoxVideo);
+            this.groupBoxPrincipal.Controls.Add(this.groupBox5);
+            this.groupBoxPrincipal.Controls.Add(this.groupBox4);
+            this.groupBoxPrincipal.Controls.Add(this.groupBox2);
+            this.groupBoxPrincipal.Enabled = false;
+            this.groupBoxPrincipal.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxPrincipal.Name = "groupBoxPrincipal";
+            this.groupBoxPrincipal.Size = new System.Drawing.Size(1251, 546);
+            this.groupBoxPrincipal.TabIndex = 0;
+            this.groupBoxPrincipal.TabStop = false;
+            this.groupBoxPrincipal.Text = "Especificações  do Computador:";
             // 
-            // groupBox1
+            // groupBoxMemory
             // 
-            this.groupBox1.Controls.Add(this.groupBoxMemory);
-            this.groupBox1.Controls.Add(this.groupBoxMonitor);
-            this.groupBox1.Controls.Add(this.groupBoxStorage);
-            this.groupBox1.Controls.Add(this.groupBoxVideo);
-            this.groupBox1.Controls.Add(this.groupBox5);
-            this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1251, 546);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Especificações  do Computador:";
+            this.groupBoxMemory.Controls.Add(this.dataGridViewMemory);
+            this.groupBoxMemory.Controls.Add(this.pictureBox2);
+            this.groupBoxMemory.Location = new System.Drawing.Point(6, 431);
+            this.groupBoxMemory.Name = "groupBoxMemory";
+            this.groupBoxMemory.Size = new System.Drawing.Size(985, 104);
+            this.groupBoxMemory.TabIndex = 6;
+            this.groupBoxMemory.TabStop = false;
+            this.groupBoxMemory.Text = "Informações da Memória:";
+            // 
+            // dataGridViewMemory
+            // 
+            this.dataGridViewMemory.AllowUserToAddRows = false;
+            this.dataGridViewMemory.AllowUserToDeleteRows = false;
+            this.dataGridViewMemory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMemory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMemModelo,
+            this.colMemCapacidade,
+            this.colMemFormato,
+            this.colMemTipo,
+            this.colMemFabricante,
+            this.colMemSerial,
+            this.colMemVolt});
+            this.dataGridViewMemory.Location = new System.Drawing.Point(109, 21);
+            this.dataGridViewMemory.MultiSelect = false;
+            this.dataGridViewMemory.Name = "dataGridViewMemory";
+            this.dataGridViewMemory.ReadOnly = true;
+            this.dataGridViewMemory.RowHeadersVisible = false;
+            this.dataGridViewMemory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewMemory.ShowCellErrors = false;
+            this.dataGridViewMemory.ShowCellToolTips = false;
+            this.dataGridViewMemory.ShowEditingIcon = false;
+            this.dataGridViewMemory.ShowRowErrors = false;
+            this.dataGridViewMemory.Size = new System.Drawing.Size(870, 75);
+            this.dataGridViewMemory.TabIndex = 0;
+            // 
+            // colMemModelo
+            // 
+            this.colMemModelo.DataPropertyName = "Modelo";
+            this.colMemModelo.HeaderText = "Modelo:";
+            this.colMemModelo.Name = "colMemModelo";
+            this.colMemModelo.ReadOnly = true;
+            this.colMemModelo.Width = 150;
+            // 
+            // colMemCapacidade
+            // 
+            this.colMemCapacidade.DataPropertyName = "Capacidade";
+            this.colMemCapacidade.HeaderText = "Capacidade:";
+            this.colMemCapacidade.Name = "colMemCapacidade";
+            this.colMemCapacidade.ReadOnly = true;
+            this.colMemCapacidade.Width = 75;
+            // 
+            // colMemFormato
+            // 
+            this.colMemFormato.DataPropertyName = "Formato";
+            this.colMemFormato.HeaderText = "Formato:";
+            this.colMemFormato.Name = "colMemFormato";
+            this.colMemFormato.ReadOnly = true;
+            this.colMemFormato.Width = 75;
+            // 
+            // colMemTipo
+            // 
+            this.colMemTipo.DataPropertyName = "Tipo";
+            this.colMemTipo.HeaderText = "Tipo:";
+            this.colMemTipo.Name = "colMemTipo";
+            this.colMemTipo.ReadOnly = true;
+            this.colMemTipo.Width = 75;
+            // 
+            // colMemFabricante
+            // 
+            this.colMemFabricante.DataPropertyName = "Fabricante";
+            this.colMemFabricante.HeaderText = "Fabricante";
+            this.colMemFabricante.Name = "colMemFabricante";
+            this.colMemFabricante.ReadOnly = true;
+            this.colMemFabricante.Width = 300;
+            // 
+            // colMemSerial
+            // 
+            this.colMemSerial.DataPropertyName = "Serial";
+            this.colMemSerial.HeaderText = "Serial:";
+            this.colMemSerial.Name = "colMemSerial";
+            this.colMemSerial.ReadOnly = true;
+            // 
+            // colMemVolt
+            // 
+            this.colMemVolt.DataPropertyName = "Voltagem";
+            this.colMemVolt.HeaderText = "Voltagem:";
+            this.colMemVolt.Name = "colMemVolt";
+            this.colMemVolt.ReadOnly = true;
+            this.colMemVolt.Width = 75;
             // 
             // groupBoxMonitor
             // 
@@ -181,45 +270,6 @@
             this.dataGridViewMonitor.ShowRowErrors = false;
             this.dataGridViewMonitor.Size = new System.Drawing.Size(615, 75);
             this.dataGridViewMonitor.TabIndex = 0;
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "ID";
-            this.colId.HeaderText = "ID:";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Width = 75;
-            // 
-            // colModel
-            // 
-            this.colModel.DataPropertyName = "Modelo";
-            this.colModel.HeaderText = "Modelo:";
-            this.colModel.Name = "colModel";
-            this.colModel.ReadOnly = true;
-            this.colModel.Width = 175;
-            // 
-            // colTamanho
-            // 
-            this.colTamanho.DataPropertyName = "Polegada";
-            this.colTamanho.HeaderText = "Tamanho:";
-            this.colTamanho.Name = "colTamanho";
-            this.colTamanho.ReadOnly = true;
-            // 
-            // colResolucao
-            // 
-            this.colResolucao.DataPropertyName = "Resolucao";
-            this.colResolucao.HeaderText = "Resolução:";
-            this.colResolucao.Name = "colResolucao";
-            this.colResolucao.ReadOnly = true;
-            this.colResolucao.Width = 125;
-            // 
-            // colData
-            // 
-            this.colData.DataPropertyName = "Fabricacao";
-            this.colData.HeaderText = "Data:";
-            this.colData.Name = "colData";
-            this.colData.ReadOnly = true;
-            this.colData.Width = 125;
             // 
             // groupBoxStorage
             // 
@@ -314,7 +364,7 @@
             this.colModelo,
             this.colMemory,
             this.colMod});
-            this.dataGridViewVideo.Location = new System.Drawing.Point(87, 19);
+            this.dataGridViewVideo.Location = new System.Drawing.Point(109, 19);
             this.dataGridViewVideo.MultiSelect = false;
             this.dataGridViewVideo.Name = "dataGridViewVideo";
             this.dataGridViewVideo.ReadOnly = true;
@@ -324,32 +374,8 @@
             this.dataGridViewVideo.ShowCellToolTips = false;
             this.dataGridViewVideo.ShowEditingIcon = false;
             this.dataGridViewVideo.ShowRowErrors = false;
-            this.dataGridViewVideo.Size = new System.Drawing.Size(420, 75);
+            this.dataGridViewVideo.Size = new System.Drawing.Size(404, 75);
             this.dataGridViewVideo.TabIndex = 0;
-            // 
-            // colModelo
-            // 
-            this.colModelo.DataPropertyName = "Nome";
-            this.colModelo.HeaderText = "Modelo:";
-            this.colModelo.Name = "colModelo";
-            this.colModelo.ReadOnly = true;
-            this.colModelo.Width = 300;
-            // 
-            // colMemory
-            // 
-            this.colMemory.DataPropertyName = "Memoria";
-            this.colMemory.HeaderText = "Memória:";
-            this.colMemory.Name = "colMemory";
-            this.colMemory.ReadOnly = true;
-            this.colMemory.Width = 50;
-            // 
-            // colMod
-            // 
-            this.colMod.DataPropertyName = "MemoriaTipo";
-            this.colMod.HeaderText = "Módulo:";
-            this.colMod.Name = "colMod";
-            this.colMod.ReadOnly = true;
-            this.colMod.Width = 50;
             // 
             // groupBox5
             // 
@@ -428,7 +454,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(368, 58);
+            this.label23.Location = new System.Drawing.Point(368, 64);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(48, 13);
             this.label23.TabIndex = 8;
@@ -436,7 +462,7 @@
             // 
             // textBoxPlacaFormato
             // 
-            this.textBoxPlacaFormato.Location = new System.Drawing.Point(368, 74);
+            this.textBoxPlacaFormato.Location = new System.Drawing.Point(368, 80);
             this.textBoxPlacaFormato.Name = "textBoxPlacaFormato";
             this.textBoxPlacaFormato.ReadOnly = true;
             this.textBoxPlacaFormato.Size = new System.Drawing.Size(65, 20);
@@ -445,7 +471,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(439, 58);
+            this.label22.Location = new System.Drawing.Point(439, 64);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(45, 13);
             this.label22.TabIndex = 10;
@@ -453,7 +479,7 @@
             // 
             // textBoxPlacaMod
             // 
-            this.textBoxPlacaMod.Location = new System.Drawing.Point(439, 74);
+            this.textBoxPlacaMod.Location = new System.Drawing.Point(439, 80);
             this.textBoxPlacaMod.Name = "textBoxPlacaMod";
             this.textBoxPlacaMod.ReadOnly = true;
             this.textBoxPlacaMod.Size = new System.Drawing.Size(48, 20);
@@ -462,7 +488,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(527, 58);
+            this.label21.Location = new System.Drawing.Point(527, 64);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(57, 13);
             this.label21.TabIndex = 14;
@@ -470,7 +496,7 @@
             // 
             // textBoxPlacaData
             // 
-            this.textBoxPlacaData.Location = new System.Drawing.Point(527, 74);
+            this.textBoxPlacaData.Location = new System.Drawing.Point(527, 80);
             this.textBoxPlacaData.Name = "textBoxPlacaData";
             this.textBoxPlacaData.ReadOnly = true;
             this.textBoxPlacaData.Size = new System.Drawing.Size(79, 20);
@@ -479,7 +505,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(493, 58);
+            this.label20.Location = new System.Drawing.Point(493, 64);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(28, 13);
             this.label20.TabIndex = 12;
@@ -487,7 +513,7 @@
             // 
             // textBoxPlacaSlot
             // 
-            this.textBoxPlacaSlot.Location = new System.Drawing.Point(493, 74);
+            this.textBoxPlacaSlot.Location = new System.Drawing.Point(493, 80);
             this.textBoxPlacaSlot.Name = "textBoxPlacaSlot";
             this.textBoxPlacaSlot.ReadOnly = true;
             this.textBoxPlacaSlot.Size = new System.Drawing.Size(28, 20);
@@ -497,7 +523,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(273, 58);
+            this.label19.Location = new System.Drawing.Point(273, 64);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(89, 13);
             this.label19.TabIndex = 6;
@@ -505,7 +531,7 @@
             // 
             // textBoxPlacaMax
             // 
-            this.textBoxPlacaMax.Location = new System.Drawing.Point(276, 74);
+            this.textBoxPlacaMax.Location = new System.Drawing.Point(276, 80);
             this.textBoxPlacaMax.Name = "textBoxPlacaMax";
             this.textBoxPlacaMax.ReadOnly = true;
             this.textBoxPlacaMax.Size = new System.Drawing.Size(86, 20);
@@ -514,7 +540,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(397, 19);
+            this.label6.Location = new System.Drawing.Point(397, 23);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 4;
@@ -522,7 +548,7 @@
             // 
             // textBoxPlacaSerial
             // 
-            this.textBoxPlacaSerial.Location = new System.Drawing.Point(397, 35);
+            this.textBoxPlacaSerial.Location = new System.Drawing.Point(397, 39);
             this.textBoxPlacaSerial.Name = "textBoxPlacaSerial";
             this.textBoxPlacaSerial.ReadOnly = true;
             this.textBoxPlacaSerial.Size = new System.Drawing.Size(209, 20);
@@ -531,7 +557,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(87, 58);
+            this.label7.Location = new System.Drawing.Point(87, 64);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 2;
@@ -539,7 +565,7 @@
             // 
             // textBoxPlacaModelo
             // 
-            this.textBoxPlacaModelo.Location = new System.Drawing.Point(87, 74);
+            this.textBoxPlacaModelo.Location = new System.Drawing.Point(87, 80);
             this.textBoxPlacaModelo.Name = "textBoxPlacaModelo";
             this.textBoxPlacaModelo.ReadOnly = true;
             this.textBoxPlacaModelo.Size = new System.Drawing.Size(183, 20);
@@ -548,7 +574,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(87, 19);
+            this.label8.Location = new System.Drawing.Point(87, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 13);
             this.label8.TabIndex = 0;
@@ -556,7 +582,7 @@
             // 
             // textBoxPlacaFab
             // 
-            this.textBoxPlacaFab.Location = new System.Drawing.Point(87, 35);
+            this.textBoxPlacaFab.Location = new System.Drawing.Point(87, 39);
             this.textBoxPlacaFab.Name = "textBoxPlacaFab";
             this.textBoxPlacaFab.ReadOnly = true;
             this.textBoxPlacaFab.Size = new System.Drawing.Size(304, 20);
@@ -686,42 +712,120 @@
             this.textBoxPcNome.Size = new System.Drawing.Size(303, 20);
             this.textBoxPcNome.TabIndex = 1;
             // 
-            // groupBoxMemory
+            // colId
             // 
-            this.groupBoxMemory.Controls.Add(this.dataGridViewMemory);
-            this.groupBoxMemory.Controls.Add(this.pictureBox2);
-            this.groupBoxMemory.Location = new System.Drawing.Point(6, 431);
-            this.groupBoxMemory.Name = "groupBoxMemory";
-            this.groupBoxMemory.Size = new System.Drawing.Size(985, 104);
-            this.groupBoxMemory.TabIndex = 6;
-            this.groupBoxMemory.TabStop = false;
-            this.groupBoxMemory.Text = "Informações da Memória:";
+            this.colId.DataPropertyName = "ID";
+            this.colId.HeaderText = "ID:";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Width = 75;
             // 
-            // dataGridViewMemory
+            // colModel
             // 
-            this.dataGridViewMemory.AllowUserToAddRows = false;
-            this.dataGridViewMemory.AllowUserToDeleteRows = false;
-            this.dataGridViewMemory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMemory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colMemModelo,
-            this.colMemCapacidade,
-            this.colMemFormato,
-            this.colMemTipo,
-            this.colMemFabricante,
-            this.colMemSerial,
-            this.colMemVolt});
-            this.dataGridViewMemory.Location = new System.Drawing.Point(109, 21);
-            this.dataGridViewMemory.MultiSelect = false;
-            this.dataGridViewMemory.Name = "dataGridViewMemory";
-            this.dataGridViewMemory.ReadOnly = true;
-            this.dataGridViewMemory.RowHeadersVisible = false;
-            this.dataGridViewMemory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMemory.ShowCellErrors = false;
-            this.dataGridViewMemory.ShowCellToolTips = false;
-            this.dataGridViewMemory.ShowEditingIcon = false;
-            this.dataGridViewMemory.ShowRowErrors = false;
-            this.dataGridViewMemory.Size = new System.Drawing.Size(870, 75);
-            this.dataGridViewMemory.TabIndex = 0;
+            this.colModel.DataPropertyName = "Modelo";
+            this.colModel.HeaderText = "Modelo:";
+            this.colModel.Name = "colModel";
+            this.colModel.ReadOnly = true;
+            this.colModel.Width = 175;
+            // 
+            // colTamanho
+            // 
+            this.colTamanho.DataPropertyName = "Polegada";
+            this.colTamanho.HeaderText = "Tamanho:";
+            this.colTamanho.Name = "colTamanho";
+            this.colTamanho.ReadOnly = true;
+            // 
+            // colResolucao
+            // 
+            this.colResolucao.DataPropertyName = "Resolucao";
+            this.colResolucao.HeaderText = "Resolução máxima:";
+            this.colResolucao.Name = "colResolucao";
+            this.colResolucao.ReadOnly = true;
+            this.colResolucao.Width = 125;
+            // 
+            // colData
+            // 
+            this.colData.DataPropertyName = "Fabricacao";
+            this.colData.HeaderText = "Fabricado:";
+            this.colData.Name = "colData";
+            this.colData.ReadOnly = true;
+            this.colData.Width = 125;
+            // 
+            // colModelo
+            // 
+            this.colModelo.DataPropertyName = "Nome";
+            this.colModelo.HeaderText = "Modelo:";
+            this.colModelo.Name = "colModelo";
+            this.colModelo.ReadOnly = true;
+            this.colModelo.Width = 290;
+            // 
+            // colMemory
+            // 
+            this.colMemory.DataPropertyName = "Memoria";
+            this.colMemory.HeaderText = "Memória:";
+            this.colMemory.Name = "colMemory";
+            this.colMemory.ReadOnly = true;
+            this.colMemory.Width = 50;
+            // 
+            // colMod
+            // 
+            this.colMod.DataPropertyName = "MemoriaTipo";
+            this.colMod.HeaderText = "Módulo:";
+            this.colMod.Name = "colMod";
+            this.colMod.ReadOnly = true;
+            this.colMod.Width = 50;
+            // 
+            // buttonTxt
+            // 
+            this.buttonTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTxt.Image = global::WinForms.Properties.Resources.icons8_TXT_32;
+            this.buttonTxt.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.buttonTxt.Location = new System.Drawing.Point(1000, 564);
+            this.buttonTxt.Name = "buttonTxt";
+            this.buttonTxt.Size = new System.Drawing.Size(82, 40);
+            this.buttonTxt.TabIndex = 22;
+            this.buttonTxt.Text = "&Abrir";
+            this.buttonTxt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonTxt.UseVisualStyleBackColor = true;
+            this.buttonTxt.Click += new System.EventHandler(this.ButtonLer_Click);
+            // 
+            // buttonSalvar
+            // 
+            this.buttonSalvar.Enabled = false;
+            this.buttonSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSalvar.Image = global::WinForms.Properties.Resources.conf_green;
+            this.buttonSalvar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.buttonSalvar.Location = new System.Drawing.Point(1086, 564);
+            this.buttonSalvar.Name = "buttonSalvar";
+            this.buttonSalvar.Size = new System.Drawing.Size(85, 40);
+            this.buttonSalvar.TabIndex = 20;
+            this.buttonSalvar.Text = "&Salvar";
+            this.buttonSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSalvar.UseVisualStyleBackColor = true;
+            // 
+            // buttonFechar
+            // 
+            this.buttonFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFechar.Image = global::WinForms.Properties.Resources.exit_red;
+            this.buttonFechar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.buttonFechar.Location = new System.Drawing.Point(1178, 564);
+            this.buttonFechar.Name = "buttonFechar";
+            this.buttonFechar.Size = new System.Drawing.Size(85, 40);
+            this.buttonFechar.TabIndex = 21;
+            this.buttonFechar.Text = "&Fechar";
+            this.buttonFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonFechar.UseVisualStyleBackColor = true;
+            this.buttonFechar.Click += new System.EventHandler(this.ButtonFechar_Click);
+            // 
+            // pictureBoxPrincipal
+            // 
+            this.pictureBoxPrincipal.BackgroundImage = global::WinForms.Properties.Resources.notebook;
+            this.pictureBoxPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxPrincipal.Location = new System.Drawing.Point(1000, 321);
+            this.pictureBoxPrincipal.Name = "pictureBoxPrincipal";
+            this.pictureBoxPrincipal.Size = new System.Drawing.Size(243, 214);
+            this.pictureBoxPrincipal.TabIndex = 8;
+            this.pictureBoxPrincipal.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -736,7 +840,7 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.BackgroundImage = global::WinForms.Properties.Resources.computer;
+            this.pictureBox7.BackgroundImage = global::WinForms.Properties.Resources.monitor;
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox7.Location = new System.Drawing.Point(6, 19);
             this.pictureBox7.Name = "pictureBox7";
@@ -757,17 +861,17 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackgroundImage = global::WinForms.Properties.Resources.Placa_de_video_AMD_e_NVIDIA;
+            this.pictureBox4.BackgroundImage = global::WinForms.Properties.Resources.nvidia_amd;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox4.Location = new System.Drawing.Point(6, 19);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox4.Size = new System.Drawing.Size(97, 75);
             this.pictureBox4.TabIndex = 7;
             this.pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackgroundImage = global::WinForms.Properties.Resources.intel_amd;
+            this.pictureBox3.BackgroundImage = global::WinForms.Properties.Resources.amd_vs_intel1;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.Location = new System.Drawing.Point(6, 19);
             this.pictureBox3.Name = "pictureBox3";
@@ -777,11 +881,11 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BackgroundImage = global::WinForms.Properties.Resources.mainboard;
+            this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox5.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox5.Location = new System.Drawing.Point(6, 37);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox5.Size = new System.Drawing.Size(75, 52);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 7;
             this.pictureBox5.TabStop = false;
@@ -796,71 +900,22 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // colMemModelo
-            // 
-            this.colMemModelo.DataPropertyName = "Modelo";
-            this.colMemModelo.HeaderText = "Modelo:";
-            this.colMemModelo.Name = "colMemModelo";
-            this.colMemModelo.ReadOnly = true;
-            this.colMemModelo.Width = 150;
-            // 
-            // colMemCapacidade
-            // 
-            this.colMemCapacidade.DataPropertyName = "Capacidade";
-            this.colMemCapacidade.HeaderText = "Capacidade:";
-            this.colMemCapacidade.Name = "colMemCapacidade";
-            this.colMemCapacidade.ReadOnly = true;
-            this.colMemCapacidade.Width = 75;
-            // 
-            // colMemFormato
-            // 
-            this.colMemFormato.DataPropertyName = "Formato";
-            this.colMemFormato.HeaderText = "Formato:";
-            this.colMemFormato.Name = "colMemFormato";
-            this.colMemFormato.ReadOnly = true;
-            this.colMemFormato.Width = 75;
-            // 
-            // colMemTipo
-            // 
-            this.colMemTipo.DataPropertyName = "Tipo";
-            this.colMemTipo.HeaderText = "Tipo:";
-            this.colMemTipo.Name = "colMemTipo";
-            this.colMemTipo.ReadOnly = true;
-            this.colMemTipo.Width = 75;
-            // 
-            // colMemFabricante
-            // 
-            this.colMemFabricante.DataPropertyName = "Fabricante";
-            this.colMemFabricante.HeaderText = "Fabricante";
-            this.colMemFabricante.Name = "colMemFabricante";
-            this.colMemFabricante.ReadOnly = true;
-            this.colMemFabricante.Width = 300;
-            // 
-            // colMemSerial
-            // 
-            this.colMemSerial.DataPropertyName = "Serial";
-            this.colMemSerial.HeaderText = "Serial:";
-            this.colMemSerial.Name = "colMemSerial";
-            this.colMemSerial.ReadOnly = true;
-            // 
-            // colMemVolt
-            // 
-            this.colMemVolt.DataPropertyName = "Voltagem";
-            this.colMemVolt.HeaderText = "Voltagem:";
-            this.colMemVolt.Name = "colMemVolt";
-            this.colMemVolt.ReadOnly = true;
-            this.colMemVolt.Width = 75;
-            // 
             // FormLerText
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 604);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1274, 614);
+            this.Controls.Add(this.buttonTxt);
+            this.Controls.Add(this.buttonSalvar);
+            this.Controls.Add(this.buttonFechar);
+            this.Controls.Add(this.groupBoxPrincipal);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormLerText";
-            this.Text = "FormLerText";
-            this.groupBox1.ResumeLayout(false);
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.groupBoxPrincipal.ResumeLayout(false);
+            this.groupBoxMemory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMemory)).EndInit();
             this.groupBoxMonitor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonitor)).EndInit();
             this.groupBoxStorage.ResumeLayout(false);
@@ -873,8 +928,7 @@
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBoxMemory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMemory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPrincipal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -887,9 +941,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxPrincipal;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxPcVersao;
@@ -942,14 +994,6 @@
         private System.Windows.Forms.GroupBox groupBoxMonitor;
         private System.Windows.Forms.DataGridView dataGridViewMonitor;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colModelo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMemory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colModel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTamanho;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colResolucao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colData;
         private System.Windows.Forms.GroupBox groupBoxMemory;
         private System.Windows.Forms.DataGridView dataGridViewMemory;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -960,5 +1004,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colMemFabricante;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMemSerial;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMemVolt;
+        private System.Windows.Forms.PictureBox pictureBoxPrincipal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colModel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTamanho;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colResolucao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colModelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMemory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMod;
+        private System.Windows.Forms.Button buttonSalvar;
+        private System.Windows.Forms.Button buttonFechar;
+        private System.Windows.Forms.Button buttonTxt;
     }
 }

@@ -61,7 +61,7 @@ namespace WinForms
                             {
                                 memory[6] = ler;
 
-                                
+
                                 string[] novo = TratarArray(memory);
                                 listMemory.Add(novo);
                             }
@@ -104,7 +104,7 @@ namespace WinForms
 
             return l.ToArray();
         }
-        private void Button1_Click(object sender, EventArgs e)
+        private void ButtonLer_Click(object sender, EventArgs e)
         {
             PC_MonitorColecao mon;
             PC_Processor_Windows proc;
@@ -115,14 +115,23 @@ namespace WinForms
 
             if (ValidacaoTxt())
             {
-                mon = ConsultarMonitor();
-                video = ConsultaVideo();
-                spec = ConsultarMainBoard();
-                ram = ConsultarMemory();
-                sto = ConsultarStorage();
-                proc = ConsultaProcessor();
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Arquivos TXT (*.txt)|*.txt";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    path = dialog.FileName;
 
-                PreencherForm(mon, proc, ram, sto, spec, video);
+                    mon = ConsultarMonitor();
+                    video = ConsultaVideo();
+                    spec = ConsultarMainBoard();
+                    ram = ConsultarMemory();
+                    sto = ConsultarStorage();
+                    proc = ConsultaProcessor();
+
+                    PreencherForm(mon, proc, ram, sto, spec, video);
+                    buttonSalvar.Enabled = true;
+                    groupBoxPrincipal.Enabled = true;
+                }
             }
             else
                 FormMessage.ShowMessegeWarning("Parace que este arquivo Txt não válido, pois não esta no formato padrão!");
@@ -134,6 +143,12 @@ namespace WinForms
             textBoxProcSocket.Text = proc.Socket;
 
             textBoxPcCategoria.Text = spec.TipoMaquina;
+
+            if (spec.TipoMaquina == "Notebook")
+                this.pictureBoxPrincipal.BackgroundImage = Properties.Resources.notebook;
+            else
+                this.pictureBoxPrincipal.BackgroundImage = Properties.Resources.computer;
+
             textBoxPcFab.Text = spec.Fabricante;
             textBoxPcModelo.Text = spec.Produto;
             textBoxPcNome.Text = Path.GetFileNameWithoutExtension(path);
@@ -239,6 +254,7 @@ namespace WinForms
                 {
                     if (ler.Contains("Display Adapters"))
                     {
+                        Monitor:
                         while ((ler = sr.ReadLine()) != null)
                         {
                             if (ler.Contains("Name"))
@@ -257,7 +273,14 @@ namespace WinForms
                             {
                                 string[] novo = TratarArray(video);
                                 listVideo.Add(novo);
+                                break;
                             }
+                        }
+
+                        while ((ler = sr.ReadLine()) != null)
+                        {
+                            if (ler.Contains("Display adapter"))
+                                goto Monitor;
 
                             if (ler.Contains("Monitor"))
                                 goto Graph;
@@ -348,6 +371,68 @@ namespace WinForms
             }
 
         }
+
+        private void ConsultarSpecMem(string[] mainBoard)
+        {
+            string ler = string.Empty;
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((ler = sr.ReadLine()) != null)
+                {
+                    if (ler.Contains("DMI Physical Memory Array"))
+                    {
+                        while ((ler = sr.ReadLine()) != null)
+                        {
+                            if (ler.Contains("max capacity"))
+                                mainBoard[8] = ler;
+
+                            if (ler.Contains("of devices"))
+                                mainBoard[7] = ler;
+
+                            if (ler.Contains("format"))
+                                mainBoard[10] = ler;
+
+                            if (ler.Contains("type"))
+                            {
+                                mainBoard[11] = ler;
+                                return;
+                            }
+
+                            //if (ler.Contains("Storage"))
+                            //    return;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void ConsultarSpecModel(string[] mainBoard)
+        {
+            string ler = string.Empty;
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((ler = sr.ReadLine()) != null)
+                {
+                    if (ler.Contains("DMI Physical Memory Array"))
+                    {
+                        while ((ler = sr.ReadLine()) != null)
+                        {
+                            if (ler.Contains("max capacity"))
+                                mainBoard[8] = ler;
+
+                            if (ler.Contains("of devices"))
+                                mainBoard[7] = ler;
+
+                            if (ler.Contains("Storage"))
+                                return;
+                        }
+                    }
+                }
+            }
+
+        }
+
         private PC_Specification ConsultarMainBoard()
         {
 
@@ -361,27 +446,6 @@ namespace WinForms
                     {
                         while ((ler = sr.ReadLine()) != null)
                         {
-                            if (ler.Contains("max capacity"))
-                                mainBoard[8] = ler;
-
-                            if (ler.Contains("of devices"))
-                                mainBoard[7] = ler;
-
-                            if (ler.Contains("DMI Memory Device"))
-                            {
-                                while ((ler = sr.ReadLine()) != null)
-                                {
-                                    if (ler.Contains("format"))
-                                        mainBoard[10] = ler;
-
-                                    if (ler.Contains("type"))
-                                    {
-                                        mainBoard[11] = ler;
-                                        break;
-                                    }
-                                }
-                            }
-
                             if (ler.Contains("date"))
                                 mainBoard[9] = ler;
 
@@ -416,31 +480,33 @@ namespace WinForms
                             if (ler.Contains("chassis type"))
                             {
                                 mainBoard[6] = ler;
-
-                                mainBoard = TratarArray(mainBoard);
-
-                                string[] data = mainBoard[9].Split('/');
-                                mainBoard[9] = data[1] + "/" + data[0] + "/" + data[2];
-
-                                PC_Specification Specification = new PC_Specification
-                                {
-                                    Fabricante = mainBoard[0],
-                                    Fornecedor = mainBoard[3],
-                                    Modelo = mainBoard[4],
-                                    Produto = mainBoard[1],
-                                    SerialMaquina = mainBoard[2],
-                                    SerialPlaca = mainBoard[5],
-                                    TipoMaquina = mainBoard[6],
-                                    MemoryMax = mainBoard[8],
-                                    SlotQuant = mainBoard[7],
-                                    Data = mainBoard[9],
-                                    MemoryFormat = mainBoard[10],
-                                    MemoryModulo = mainBoard[11]
-                                };
-
-                                return Specification;
+                                break;
                             }
                         }
+
+                        ConsultarSpecMem(mainBoard);
+                        mainBoard = TratarArray(mainBoard);
+
+                        string[] data = mainBoard[9].Split('/');
+                        mainBoard[9] = data[1] + "/" + data[0] + "/" + data[2];
+
+                        PC_Specification Specification = new PC_Specification
+                        {
+                            Fabricante = mainBoard[0],
+                            Fornecedor = mainBoard[3],
+                            Modelo = mainBoard[4],
+                            Produto = mainBoard[1],
+                            SerialMaquina = mainBoard[2],
+                            SerialPlaca = mainBoard[5],
+                            TipoMaquina = mainBoard[6].Replace("Portable", "Notebook").Replace("LapTop", "Notebook"),
+                            MemoryMax = mainBoard[8],
+                            SlotQuant = mainBoard[7],
+                            Data = mainBoard[9],
+                            MemoryFormat = mainBoard[10],
+                            MemoryModulo = mainBoard[11]
+                        };
+
+                        return Specification;
                     }
                 }
 
@@ -553,6 +619,11 @@ namespace WinForms
 
                 return "";
             }
+        }
+
+        private void ButtonFechar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

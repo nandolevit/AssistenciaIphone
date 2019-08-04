@@ -106,7 +106,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackgroundImage = global::WinForms.Properties.Resources.add_insert_green;
+            //this.buttonAdd.BackgroundImage = global::WinForms.Properties.Resources.add_insert_green;
             this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonAdd.Location = new System.Drawing.Point(221, 23);
             this.buttonAdd.Name = "buttonAdd";

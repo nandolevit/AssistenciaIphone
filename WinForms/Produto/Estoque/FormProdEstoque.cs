@@ -18,7 +18,6 @@ namespace WinForms
         ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao);
         ProdutoEstoqueInfo produtoEstoqueInfo = new ProdutoEstoqueInfo();
         PessoaInfo infoPessoa;
-        PessoaColecao colecaoPessoa;
         PessoaNegocio negocioPessoa;
         ProdutoInfo produtoInfo = new ProdutoInfo();
         GridLancarEstoqueColecao gridLancarEstoqueColecao = new GridLancarEstoqueColecao();
@@ -243,6 +242,7 @@ namespace WinForms
                 {
                     if (int.TryParse(textBoxFornecedorCod.Text, out int cod))
                     {
+                        negocioPessoa = new PessoaNegocio(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
                         infoPessoa = negocioPessoa.ConsultarPessoaId(cod);
 
                         if (infoPessoa != null)

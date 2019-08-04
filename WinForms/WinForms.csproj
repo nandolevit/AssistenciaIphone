@@ -195,6 +195,11 @@
     <Compile Include="Pessoa\FormUserEsqueciSenha.Designer.cs">
       <DependentUpon>FormUserEsqueciSenha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Servico\FormServicoListar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,11 +397,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Email\FormEmail.resx">
       <DependentUpon>FormEmail.cs</DependentUpon>
@@ -562,7 +562,6 @@
     <None Include="Resources\conf_green.png" />
     <None Include="Resources\exit_red.png" />
     <None Include="Resources\bars_money.png" />
-    <None Include="Resources\abrir.png" />
     <None Include="Resources\add_insert_green.png" />
     <None Include="Resources\desconto.png" />
     <None Include="Resources\PhotoPrint_63141.png" />
@@ -696,11 +695,16 @@
     <None Include="Resources\mainboard.png" />
     <None Include="Resources\Placa-de-video-AMD-e-NVIDIA.jpg" />
     <None Include="Resources\win10.png" />
-    <None Include="Resources\amd-vs-intel.jpg" />
     <None Include="Resources\intel-amd.jpg" />
     <None Include="Resources\SSDvsHDD.jpg" />
     <None Include="Resources\computer.png" />
     <None Include="Resources\memory.jpg" />
+    <None Include="Resources\nvidia_amd.jpg" />
+    <None Include="Resources\amd-vs-intel1.jpg" />
+    <None Include="Resources\amd_vs_intel.jpg" />
+    <None Include="Resources\monitor.jpg" />
+    <None Include="Resources\notebook.jpg" />
+    <None Include="Resources\icons8_TXT_32.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

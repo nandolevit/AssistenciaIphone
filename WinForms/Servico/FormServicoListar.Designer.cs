@@ -96,7 +96,7 @@
             // buttonAdicionar
             // 
             this.buttonAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdicionar.Image = global::WinForms.Properties.Resources.add_insert_green;
+            //this.buttonAdicionar.Image = global::WinForms.Properties.Resources.add_insert_green;
             this.buttonAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.buttonAdicionar.Location = new System.Drawing.Point(806, 19);
             this.buttonAdicionar.Name = "buttonAdicionar";

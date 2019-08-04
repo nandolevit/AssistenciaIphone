@@ -708,7 +708,9 @@ namespace WinForms
                             }
                             else if (formServicoTipo.ShowDialog(this) == DialogResult.OK)
                             {
-
+                                FormLerText formLerText = new FormLerText();
+                                formLerText.ShowDialog();
+                                formLerText.Dispose();
                             }
                             formServicoTipo.Dispose();
 
