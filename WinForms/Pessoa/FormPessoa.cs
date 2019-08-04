@@ -20,26 +20,32 @@ namespace WinForms
         string cpf;
 
         EnumPessoaTipo enumPessoa = new EnumPessoaTipo();
+        EnumAssistencia Assistencia = new EnumAssistencia();
         PessoaInfo infoPessoa;
         public PessoaInfo SelecionadoPessoa { get; set; }
-
         PessoaNegocio negocioPessoa;
-        ClienteNegocios negocioCliente = new ClienteNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
-        FuncNegocios funcNegocios = new FuncNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
-        EmpresaNegocios empresaNegocios = new EmpresaNegocios(Form1.Empresa.empconexao);
 
+        public FormPessoa(EnumPessoaTipo pessoa, EnumAssistencia assistencia)
+        {
+            Inicializar();
+            enumPessoa = pessoa;
+            labelTitle.Text = pessoa.ToString();
+            Assistencia = assistencia;
+        }
 
         public FormPessoa(EnumPessoaTipo pessoa)
         {
             Inicializar();
             enumPessoa = pessoa;
             labelTitle.Text = pessoa.ToString();
+            Assistencia = Form1.Unidade.uniassistencia;
         }
 
         public FormPessoa(PessoaInfo pessoa)
         {
             Inicializar();
             infoPessoa = pessoa;
+            Assistencia = Form1.Unidade.uniassistencia;
             PreencherFormPessoa();
         }
 
@@ -49,6 +55,7 @@ namespace WinForms
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
             this.AcceptButton = buttonSalvar;
+            negocioPessoa = new ClienteNegocios(Form1.Empresa.empconexao, Assistencia);
         }
 
         private void PreencherFormClienteTeste()
@@ -127,6 +134,13 @@ namespace WinForms
                         return true;
 
                 case EnumPessoaTipo.Funcionario:
+
+                    if (textBoxEmail.Text == "sem@email.com")
+                    {
+                        FormMessage.ShowMessegeWarning("Insira um email válido!");
+                        textBoxEmail.Select();
+                        return false;
+                    }
 
                     if (String.IsNullOrEmpty(Nome) || String.IsNullOrEmpty(Cpf))
                     {
@@ -214,7 +228,6 @@ namespace WinForms
         {
             if (CamposObrigatorios())
             {
-                negocioPessoa = new PessoaNegocio(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
                 PreencherPessoaInfo();
 
                 if (infoPessoa.pssid == 0)
@@ -295,7 +308,7 @@ namespace WinForms
         {
             if (infoPessoa == null)
             {
-                infoPessoa = negocioCliente.ConsultarPessoaCpf(cpf);
+                infoPessoa = negocioPessoa.ConsultarPessoaCpf(cpf);
 
                 if (infoPessoa != null)
                 {
@@ -322,7 +335,7 @@ namespace WinForms
         {
             CepInfo cepInfo = new CepInfo();
 
-            cepInfo = negocioCliente.ConsultarCep(maskedTextBoxCep.Text);
+            cepInfo = negocioPessoa.ConsultarCep(maskedTextBoxCep.Text);
 
             if (cepInfo != null)
             {
@@ -373,6 +386,5 @@ namespace WinForms
 
             maskedTextBoxCpf.Select();
         }
-
     }
 }

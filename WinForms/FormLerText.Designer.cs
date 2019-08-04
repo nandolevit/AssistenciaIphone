@@ -146,7 +146,7 @@
             // 
             // pictureBoxPrincipal
             // 
-            this.pictureBoxPrincipal.BackgroundImage = global::WinForms.Properties.Resources.notebook;
+            this.pictureBoxPrincipal.BackgroundImage = global::WinForms.Properties.Resources.computer;
             this.pictureBoxPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxPrincipal.Location = new System.Drawing.Point(1000, 321);
             this.pictureBoxPrincipal.Name = "pictureBoxPrincipal";
@@ -914,7 +914,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.TopMost = true;
+            this.Load += new System.EventHandler(this.FormLerText_Load);
             this.groupBoxPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPrincipal)).EndInit();
             this.groupBoxMemory.ResumeLayout(false);

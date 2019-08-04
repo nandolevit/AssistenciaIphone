@@ -43,6 +43,9 @@ namespace WinForms
 
         public static bool encerrarThread;
 
+        bool encerrarLogin; //caso true, abre o formulario de login
+        bool abrirformPessoa; //abre o formulario de cadastro de funcinário, para quem não tem login
+
         PessoaNegocio negocioPessoa;
         UserNegocio userNegocio;
         EmpresaNegocios negocioEmp;
@@ -282,24 +285,24 @@ namespace WinForms
 
                         if (Unidade.uniassistencia == EnumAssistencia.Loja)
                         {
-                            estoqueToolStripMenuItem.Visible = false;
+                            MenuItemEstoque.Visible = false;
                             buttonOs.Enabled = false;
                         }
                         else
                         {
-                            estoqueToolStripMenuItem.Visible = true;
+                            MenuItemEstoque.Visible = true;
                             buttonOs.Enabled = true;
                         }
 
                         if (User.usecargo == 1)
                         {
-                            funcionarioToolStripMenuItem.Visible = true;
-                            funcionarioToolStripMenuItem1.Visible = true;
+                            MenuItemCadFuncionario.Visible = true;
+                            MenuItemConsultarFunc.Visible = true;
                         }
                         else
                         {
-                            funcionarioToolStripMenuItem.Visible = false;
-                            funcionarioToolStripMenuItem1.Visible = false;
+                            MenuItemCadFuncionario.Visible = false;
+                            MenuItemConsultarFunc.Visible = false;
                         }
 
                         panelOnline.Visible = true;
@@ -383,6 +386,7 @@ namespace WinForms
 
                             ConfiguracaoRede();
                             negocioEmp.UpdateComputadorLog(Computer);
+                            abrirformPessoa = negocioEmp.ConsultarComputadorOnlineCriarLogin(Computer.compid);
                         }
 
                         emp2 = DateTime.Now;
@@ -495,7 +499,6 @@ namespace WinForms
         }
         private void LogarNovamente()
         {
-            User = null;
             FecharForm();
             AoCarregar();
         }
@@ -510,6 +513,8 @@ namespace WinForms
 
             foreach (Form frm1 in formList)
                 frm1.Close();
+
+            User = null;
 
             //menuStripPrincipal.Enabled = false;
             //panelPrincipal.Enabled = false;
@@ -676,6 +681,31 @@ namespace WinForms
                     formConexao.Dispose();
                 }
             }
+
+            if (abrirformPessoa)
+            {
+                abrirformPessoa = false;
+
+                if (Application.OpenForms["FormLogin"] != null)
+                    Application.OpenForms["FormLogin"].Dispose();
+
+                FecharForm();
+                FormPessoa formPessoa = new FormPessoa(EnumPessoaTipo.Funcionario, EnumAssistencia.Assistencia);
+                if(formPessoa.ShowDialog(this) == DialogResult.Yes)
+                {
+                    AoCarregar();
+                }
+                else
+                {
+                    Application.Exit();
+                }
+                formPessoa.Dispose();
+
+                //if (Application.OpenForms["FormPessoa"] == null)
+                //{
+                    
+                //}
+            }
         }
 
         private void buttonCliente_Click(object sender, EventArgs e)
@@ -706,7 +736,7 @@ namespace WinForms
                                     FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
                                 }
                             }
-                            else if (formServicoTipo.ShowDialog(this) == DialogResult.OK)
+                            else if (formServicoTipo.DialogResult == DialogResult.OK)
                             {
                                 FormLerText formLerText = new FormLerText();
                                 formLerText.ShowDialog();

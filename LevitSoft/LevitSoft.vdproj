@@ -75,6 +75,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3F824C97DF324CED8956938323655D56"
+        "OwnerKey" = "8:_0B18630C18B347D79928E1474E254179"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4257A56FCF33BD246D9E51FA5881E50A"
         "OwnerKey" = "8:_ABEA2CD9182A61BAAB47DC3A84925BA9"
         "MsmSig" = "8:_UNDEFINED"
@@ -328,12 +334,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0B4F0C18A6474425D5BA2179420D4B30"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_427B8C22CB92CBCB409C561758C8E537"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -394,6 +394,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0B4F0C18A6474425D5BA2179420D4B30"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_97D458BED2EF39D4E2316A38C0BB0200"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -401,6 +407,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_2FAB207F400D2317405B01D0F7961D12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3F824C97DF324CED8956938323655D56"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -765,6 +777,37 @@
                     }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_088196490EAF442FAE1FCB809D553C63"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3F824C97DF324CED8956938323655D56"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:MySql.Data, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_3F824C97DF324CED8956938323655D56"
+                    {
+                    "Name" = "8:MySql.Data.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:MySql.Data.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_088196490EAF442FAE1FCB809D553C63"
@@ -1323,6 +1366,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_3593E22E4D86457680410D3D1257EC49"
+                    {
+                    "Name" = "8:_Txt"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_F3D8A01D11A048CCA1E4F36326D13E49"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_1D0C94697FA3467583CB81CE676C14FF"
@@ -1899,7 +1953,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0B18630C18B347D79928E1474E254179"
             {
-            "SourcePath" = "8:..\\WinForms\\obj\\Release\\WinForms.exe"
+            "SourcePath" = "8:..\\WinForms\\obj\\Debug\\WinForms.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_088196490EAF442FAE1FCB809D553C63"

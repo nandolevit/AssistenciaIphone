@@ -24,6 +24,22 @@ namespace Negocios
         AccessDbMySql accessDbMySql = new AccessDbMySql();
         EmpresaAccessDB empresaAccessDB = new EmpresaAccessDB();
 
+        public bool ConsultarComputadorOnlineCriarLogin(int id)
+        {
+            if (accessDbMySql.Conectar(EmpConexao))
+            {
+                accessDbMySql.AddParametrosMySql("@id", id);
+
+                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarComputadorOnlineCriarLogin");
+                if (dataTable != null)
+                    return Convert.ToBoolean(dataTable.Rows[0]["logcomplogar"]);
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
         public EmpresaEmailInfo ConsultarEmpresaEmail(int id)
         {
             if (accessDbMySql.ConectarSys())

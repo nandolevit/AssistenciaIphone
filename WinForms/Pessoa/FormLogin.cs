@@ -173,11 +173,20 @@ namespace WinForms
 
         private void ButtonEsqueci_Click(object sender, EventArgs e)
         {
-            FormUserEsqueciSenha formUserEsqueciSenha = new FormUserEsqueciSenha();
-            if (formUserEsqueciSenha.ShowDialog(this) == DialogResult.Yes)
-                FormMessage.ShowMessegeInfo("Seu Login e senha foi enviado para o seu email com sucesso!");
-            else if (formUserEsqueciSenha.DialogResult == DialogResult.Abort)
-                FormMessage.ShowMessegeInfo("Falha, não foi possível recuperar a sua senha!");
+            if (true)
+            {
+                FormLerText formLerText = new FormLerText();
+                formLerText.ShowDialog(this);
+                formLerText.Dispose();
+            }
+            else
+            {
+                FormUserEsqueciSenha formUserEsqueciSenha = new FormUserEsqueciSenha();
+                if (formUserEsqueciSenha.ShowDialog(this) == DialogResult.Yes)
+                    FormMessage.ShowMessegeInfo("Seu Login e senha foi enviado para o seu email com sucesso!");
+                else if (formUserEsqueciSenha.DialogResult == DialogResult.Abort)
+                    FormMessage.ShowMessegeInfo("Falha, não foi possível recuperar a sua senha!");
+            }
         }
     }
 }

@@ -17,10 +17,44 @@ namespace WinForms
 {
     public partial class FormLerText : Form
     {
-        string path = @"C:\Txt\DELL 5470.txt";
+        string path = Directory.GetCurrentDirectory() + @"\_Txt\";
         public FormLerText()
         {
             InitializeComponent();
+        }
+
+        private void ButtonLer_Click(object sender, EventArgs e)
+        {
+            PC_MonitorColecao mon;
+            PC_Processor_Windows proc;
+            PC_RamColecao ram;
+            PC_StorageColecao sto;
+            PC_Specification spec;
+            PC_VideoColecao video;
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Selecione o arquivo txt com as especificações!";
+            dialog.Filter = "Arquivos TXT (*.txt)|*.txt";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                path = dialog.FileName;
+            }
+
+            if (ValidacaoTxt())
+            {
+                mon = ConsultarMonitor();
+                video = ConsultaVideo();
+                spec = ConsultarMainBoard();
+                ram = ConsultarMemory();
+                sto = ConsultarStorage();
+                proc = ConsultaProcessor();
+
+                PreencherForm(mon, proc, ram, sto, spec, video);
+                buttonSalvar.Enabled = true;
+                groupBoxPrincipal.Enabled = true;
+            }
+            else
+                FormMessage.ShowMessegeWarning("Parace que este arquivo Txt não válido, pois não esta no formato padrão!");
         }
 
         private PC_RamColecao ConsultarMemory()
@@ -76,6 +110,9 @@ namespace WinForms
                 PC_RamColecao colecaoRam = new PC_RamColecao();
                 foreach (string[] ram in listMemory)
                 {
+                    if (ram[2].IndexOf("(") > 0)
+                        ram[2] = ram[2].Substring(0, ram[2].IndexOf("("));
+
                     PC_Ram RAM = new PC_Ram
                     {
                         Capacidade = ram[4],
@@ -104,39 +141,6 @@ namespace WinForms
 
             return l.ToArray();
         }
-        private void ButtonLer_Click(object sender, EventArgs e)
-        {
-            PC_MonitorColecao mon;
-            PC_Processor_Windows proc;
-            PC_RamColecao ram;
-            PC_StorageColecao sto;
-            PC_Specification spec;
-            PC_VideoColecao video;
-
-            if (ValidacaoTxt())
-            {
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Title = "Selecione o arquivo txt com as especificações!";
-                dialog.Filter = "Arquivos TXT (*.txt)|*.txt";
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    path = dialog.FileName;
-
-                    mon = ConsultarMonitor();
-                    video = ConsultaVideo();
-                    spec = ConsultarMainBoard();
-                    ram = ConsultarMemory();
-                    sto = ConsultarStorage();
-                    proc = ConsultaProcessor();
-
-                    PreencherForm(mon, proc, ram, sto, spec, video);
-                    buttonSalvar.Enabled = true;
-                    groupBoxPrincipal.Enabled = true;
-                }
-            }
-            else
-                FormMessage.ShowMessegeWarning("Parace que este arquivo Txt não válido, pois não esta no formato padrão!");
-        }
 
         private void PreencherForm(PC_MonitorColecao mon, PC_Processor_Windows proc, PC_RamColecao ram, PC_StorageColecao sto, PC_Specification spec, PC_VideoColecao video)
         {
@@ -161,7 +165,7 @@ namespace WinForms
             textBoxPlacaSerial.Text = spec.SerialPlaca;
             textBoxPlacaData.Text = spec.Data;
             textBoxPlacaMax.Text = spec.MemoryMax;
-            textBoxPlacaSlot.Text = spec.SlotQuant == "N/D" ? "N/D" : string.Format("{0:00}", Convert.ToInt32(spec.SlotQuant));
+            textBoxPlacaSlot.Text = spec.SlotQuant == "N/A" ? "N/A" : string.Format("{0:00}", Convert.ToInt32(spec.SlotQuant));
             textBoxPlacaFormato.Text = spec.MemoryFormat;
             textBoxPlacaMod.Text = spec.MemoryModulo;
 
@@ -255,7 +259,7 @@ namespace WinForms
                 {
                     if (ler.Contains("Display Adapters"))
                     {
-                        Monitor:
+                    Monitor:
                         while ((ler = sr.ReadLine()) != null)
                         {
                             if (ler.Contains("Name"))
@@ -399,8 +403,6 @@ namespace WinForms
                                 return;
                             }
 
-                            //if (ler.Contains("Storage"))
-                            //    return;
                         }
                     }
                 }
@@ -408,31 +410,6 @@ namespace WinForms
 
         }
 
-        private void ConsultarSpecModel(string[] mainBoard)
-        {
-            string ler = string.Empty;
-            using (StreamReader sr = new StreamReader(path))
-            {
-                while ((ler = sr.ReadLine()) != null)
-                {
-                    if (ler.Contains("DMI Physical Memory Array"))
-                    {
-                        while ((ler = sr.ReadLine()) != null)
-                        {
-                            if (ler.Contains("max capacity"))
-                                mainBoard[8] = ler;
-
-                            if (ler.Contains("of devices"))
-                                mainBoard[7] = ler;
-
-                            if (ler.Contains("Storage"))
-                                return;
-                        }
-                    }
-                }
-            }
-
-        }
 
         private PC_Specification ConsultarMainBoard()
         {
@@ -599,7 +576,7 @@ namespace WinForms
                 if (item != null)
                     l.Add(item.Replace("\t", "!"));
                 else
-                    l.Add("N/D");
+                    l.Add("N/A");
 
             return FormatTxt(l.ToArray());
         }
@@ -625,6 +602,11 @@ namespace WinForms
         private void ButtonFechar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void FormLerText_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
