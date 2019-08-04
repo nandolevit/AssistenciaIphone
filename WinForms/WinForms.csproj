@@ -693,6 +693,14 @@
     <None Include="Resources\icons8_Gmail_32.png" />
     <None Include="Resources\icons8_Attach_32.png" />
     <None Include="Resources\icons8_Shop_32.png" />
+    <None Include="Resources\mainboard.png" />
+    <None Include="Resources\Placa-de-video-AMD-e-NVIDIA.jpg" />
+    <None Include="Resources\win10.png" />
+    <None Include="Resources\amd-vs-intel.jpg" />
+    <None Include="Resources\intel-amd.jpg" />
+    <None Include="Resources\SSDvsHDD.jpg" />
+    <None Include="Resources\computer.png" />
+    <None Include="Resources\memory.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

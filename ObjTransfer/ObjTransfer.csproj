@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Computador\PC_Monitor.cs" />
+    <Compile Include="Computador\PC_MonitorColecao.cs" />
     <Compile Include="Computador\PC_Processor_Windows.cs" />
     <Compile Include="Computador\PC_Ram.cs" />
     <Compile Include="Computador\PC_RamColecao.cs" />

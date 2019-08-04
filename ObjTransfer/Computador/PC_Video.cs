@@ -11,5 +11,6 @@ namespace ObjTransfer.Computador
         public string Nome { get; set; }
         public string Fabricante { get; set; }
         public string Memoria { get; set; }
+        public string MemoriaTipo { get; set; }
     }
 }

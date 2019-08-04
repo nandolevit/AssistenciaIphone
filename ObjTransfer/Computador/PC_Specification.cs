@@ -18,5 +18,7 @@ namespace ObjTransfer.Computador
         public string MemoryMax { get; set; }
         public string SlotQuant { get; set; }
         public string Data { get; set; }
+        public string MemoryModulo { get; set; }
+        public string MemoryFormat { get; set; }
     }
 }
