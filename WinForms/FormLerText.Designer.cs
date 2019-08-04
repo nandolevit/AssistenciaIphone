@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLerText));
             this.groupBoxPrincipal = new System.Windows.Forms.GroupBox();
+            this.pictureBoxPrincipal = new System.Windows.Forms.PictureBox();
             this.groupBoxMemory = new System.Windows.Forms.GroupBox();
             this.dataGridViewMemory = new System.Windows.Forms.DataGridView();
             this.colMemModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,8 +40,15 @@
             this.colMemFabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMemSerial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMemVolt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBoxMonitor = new System.Windows.Forms.GroupBox();
             this.dataGridViewMonitor = new System.Windows.Forms.DataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTamanho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colResolucao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.groupBoxStorage = new System.Windows.Forms.GroupBox();
             this.dataGridViewStorage = new System.Windows.Forms.DataGridView();
             this.colNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,9 +56,15 @@
             this.colCapacidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colVolume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.groupBoxVideo = new System.Windows.Forms.GroupBox();
             this.dataGridViewVideo = new System.Windows.Forms.DataGridView();
+            this.colModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMemory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxProcSocket = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -66,6 +80,7 @@
             this.textBoxPlacaSlot = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.textBoxPlacaMax = new System.Windows.Forms.TextBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxPlacaSerial = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -81,48 +96,33 @@
             this.textBoxPcFab = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textBoxPcCategoria = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxPcVersao = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxPcNome = new System.Windows.Forms.TextBox();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTamanho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colResolucao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colData = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMemory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonTxt = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.buttonFechar = new System.Windows.Forms.Button();
-            this.pictureBoxPrincipal = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPrincipal)).BeginInit();
             this.groupBoxMemory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMemory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBoxMonitor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonitor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.groupBoxStorage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStorage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.groupBoxVideo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVideo)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPrincipal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,6 +143,16 @@
             this.groupBoxPrincipal.TabIndex = 0;
             this.groupBoxPrincipal.TabStop = false;
             this.groupBoxPrincipal.Text = "Especificações  do Computador:";
+            // 
+            // pictureBoxPrincipal
+            // 
+            this.pictureBoxPrincipal.BackgroundImage = global::WinForms.Properties.Resources.notebook;
+            this.pictureBoxPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxPrincipal.Location = new System.Drawing.Point(1000, 321);
+            this.pictureBoxPrincipal.Name = "pictureBoxPrincipal";
+            this.pictureBoxPrincipal.Size = new System.Drawing.Size(243, 214);
+            this.pictureBoxPrincipal.TabIndex = 8;
+            this.pictureBoxPrincipal.TabStop = false;
             // 
             // groupBoxMemory
             // 
@@ -236,6 +246,17 @@
             this.colMemVolt.ReadOnly = true;
             this.colMemVolt.Width = 75;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::WinForms.Properties.Resources.memory;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(97, 77);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
             // groupBoxMonitor
             // 
             this.groupBoxMonitor.Controls.Add(this.dataGridViewMonitor);
@@ -270,6 +291,55 @@
             this.dataGridViewMonitor.ShowRowErrors = false;
             this.dataGridViewMonitor.Size = new System.Drawing.Size(615, 75);
             this.dataGridViewMonitor.TabIndex = 0;
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "ID";
+            this.colId.HeaderText = "ID:";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Width = 75;
+            // 
+            // colModel
+            // 
+            this.colModel.DataPropertyName = "Modelo";
+            this.colModel.HeaderText = "Modelo:";
+            this.colModel.Name = "colModel";
+            this.colModel.ReadOnly = true;
+            this.colModel.Width = 175;
+            // 
+            // colTamanho
+            // 
+            this.colTamanho.DataPropertyName = "Polegada";
+            this.colTamanho.HeaderText = "Tamanho:";
+            this.colTamanho.Name = "colTamanho";
+            this.colTamanho.ReadOnly = true;
+            // 
+            // colResolucao
+            // 
+            this.colResolucao.DataPropertyName = "Resolucao";
+            this.colResolucao.HeaderText = "Resolução máxima:";
+            this.colResolucao.Name = "colResolucao";
+            this.colResolucao.ReadOnly = true;
+            this.colResolucao.Width = 125;
+            // 
+            // colData
+            // 
+            this.colData.DataPropertyName = "Fabricacao";
+            this.colData.HeaderText = "Fabricado:";
+            this.colData.Name = "colData";
+            this.colData.ReadOnly = true;
+            this.colData.Width = 125;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackgroundImage = global::WinForms.Properties.Resources.monitor;
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox7.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox7.TabIndex = 7;
+            this.pictureBox7.TabStop = false;
             // 
             // groupBoxStorage
             // 
@@ -344,6 +414,17 @@
             this.colVolume.ReadOnly = true;
             this.colVolume.Width = 250;
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = global::WinForms.Properties.Resources.SSDvsHDD;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox6.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(97, 77);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 5;
+            this.pictureBox6.TabStop = false;
+            // 
             // groupBoxVideo
             // 
             this.groupBoxVideo.Controls.Add(this.dataGridViewVideo);
@@ -377,6 +458,40 @@
             this.dataGridViewVideo.Size = new System.Drawing.Size(404, 75);
             this.dataGridViewVideo.TabIndex = 0;
             // 
+            // colModelo
+            // 
+            this.colModelo.DataPropertyName = "Nome";
+            this.colModelo.HeaderText = "Modelo:";
+            this.colModelo.Name = "colModelo";
+            this.colModelo.ReadOnly = true;
+            this.colModelo.Width = 290;
+            // 
+            // colMemory
+            // 
+            this.colMemory.DataPropertyName = "Memoria";
+            this.colMemory.HeaderText = "Memória:";
+            this.colMemory.Name = "colMemory";
+            this.colMemory.ReadOnly = true;
+            this.colMemory.Width = 50;
+            // 
+            // colMod
+            // 
+            this.colMod.DataPropertyName = "MemoriaTipo";
+            this.colMod.HeaderText = "Módulo:";
+            this.colMod.Name = "colMod";
+            this.colMod.ReadOnly = true;
+            this.colMod.Width = 50;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::WinForms.Properties.Resources.nvidia_amd;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox4.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(97, 75);
+            this.pictureBox4.TabIndex = 7;
+            this.pictureBox4.TabStop = false;
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.pictureBox3);
@@ -390,6 +505,16 @@
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Informações do Processador";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::WinForms.Properties.Resources.amd_vs_intel1;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(75, 42);
+            this.pictureBox3.TabIndex = 6;
+            this.pictureBox3.TabStop = false;
             // 
             // label10
             // 
@@ -537,6 +662,17 @@
             this.textBoxPlacaMax.Size = new System.Drawing.Size(86, 20);
             this.textBoxPlacaMax.TabIndex = 7;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox5.Location = new System.Drawing.Point(6, 37);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(75, 52);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 7;
+            this.pictureBox5.TabStop = false;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -678,6 +814,16 @@
             this.textBoxPcCategoria.Size = new System.Drawing.Size(213, 20);
             this.textBoxPcCategoria.TabIndex = 3;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::WinForms.Properties.Resources.win10;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -711,69 +857,6 @@
             this.textBoxPcNome.ReadOnly = true;
             this.textBoxPcNome.Size = new System.Drawing.Size(303, 20);
             this.textBoxPcNome.TabIndex = 1;
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "ID";
-            this.colId.HeaderText = "ID:";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Width = 75;
-            // 
-            // colModel
-            // 
-            this.colModel.DataPropertyName = "Modelo";
-            this.colModel.HeaderText = "Modelo:";
-            this.colModel.Name = "colModel";
-            this.colModel.ReadOnly = true;
-            this.colModel.Width = 175;
-            // 
-            // colTamanho
-            // 
-            this.colTamanho.DataPropertyName = "Polegada";
-            this.colTamanho.HeaderText = "Tamanho:";
-            this.colTamanho.Name = "colTamanho";
-            this.colTamanho.ReadOnly = true;
-            // 
-            // colResolucao
-            // 
-            this.colResolucao.DataPropertyName = "Resolucao";
-            this.colResolucao.HeaderText = "Resolução máxima:";
-            this.colResolucao.Name = "colResolucao";
-            this.colResolucao.ReadOnly = true;
-            this.colResolucao.Width = 125;
-            // 
-            // colData
-            // 
-            this.colData.DataPropertyName = "Fabricacao";
-            this.colData.HeaderText = "Fabricado:";
-            this.colData.Name = "colData";
-            this.colData.ReadOnly = true;
-            this.colData.Width = 125;
-            // 
-            // colModelo
-            // 
-            this.colModelo.DataPropertyName = "Nome";
-            this.colModelo.HeaderText = "Modelo:";
-            this.colModelo.Name = "colModelo";
-            this.colModelo.ReadOnly = true;
-            this.colModelo.Width = 290;
-            // 
-            // colMemory
-            // 
-            this.colMemory.DataPropertyName = "Memoria";
-            this.colMemory.HeaderText = "Memória:";
-            this.colMemory.Name = "colMemory";
-            this.colMemory.ReadOnly = true;
-            this.colMemory.Width = 50;
-            // 
-            // colMod
-            // 
-            this.colMod.DataPropertyName = "MemoriaTipo";
-            this.colMod.HeaderText = "Módulo:";
-            this.colMod.Name = "colMod";
-            this.colMod.ReadOnly = true;
-            this.colMod.Width = 50;
             // 
             // buttonTxt
             // 
@@ -817,89 +900,6 @@
             this.buttonFechar.UseVisualStyleBackColor = true;
             this.buttonFechar.Click += new System.EventHandler(this.ButtonFechar_Click);
             // 
-            // pictureBoxPrincipal
-            // 
-            this.pictureBoxPrincipal.BackgroundImage = global::WinForms.Properties.Resources.notebook;
-            this.pictureBoxPrincipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxPrincipal.Location = new System.Drawing.Point(1000, 321);
-            this.pictureBoxPrincipal.Name = "pictureBoxPrincipal";
-            this.pictureBoxPrincipal.Size = new System.Drawing.Size(243, 214);
-            this.pictureBoxPrincipal.TabIndex = 8;
-            this.pictureBoxPrincipal.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::WinForms.Properties.Resources.memory;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(97, 77);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackgroundImage = global::WinForms.Properties.Resources.monitor;
-            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox7.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(75, 75);
-            this.pictureBox7.TabIndex = 7;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackgroundImage = global::WinForms.Properties.Resources.SSDvsHDD;
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox6.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(97, 77);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 5;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = global::WinForms.Properties.Resources.nvidia_amd;
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox4.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(97, 75);
-            this.pictureBox4.TabIndex = 7;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = global::WinForms.Properties.Resources.amd_vs_intel1;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(75, 42);
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox5.Location = new System.Drawing.Point(6, 37);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(75, 52);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 7;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::WinForms.Properties.Resources.win10;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 75);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // FormLerText
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -913,28 +913,30 @@
             this.Name = "FormLerText";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.TopMost = true;
             this.groupBoxPrincipal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPrincipal)).EndInit();
             this.groupBoxMemory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMemory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBoxMonitor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonitor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.groupBoxStorage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStorage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.groupBoxVideo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVideo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPrincipal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

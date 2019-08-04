@@ -116,6 +116,7 @@ namespace WinForms
             if (ValidacaoTxt())
             {
                 OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Title = "Selecione o arquivo txt com as especificações!";
                 dialog.Filter = "Arquivos TXT (*.txt)|*.txt";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
