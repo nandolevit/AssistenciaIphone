@@ -352,7 +352,6 @@ namespace WinForms
             DateTime tempo1;
             DateTime emp1 = DateTime.Now;
             DateTime emp2;
-            bool test = true;
 
             while (true)
             {
@@ -361,19 +360,7 @@ namespace WinForms
 
                 if (min.TotalSeconds > 1)
                 {
-                    ConectedSystem = userNegocio.TestarConexaoSemPersistencia();
-
-                    if (!ConectedSystem)
-                    {
-                        test = false;
-                    }
-                    else
-                    {
-                        if (test == false)
-                            FormMessage.ShowMessegeWarning("Conexão com a internet restabelecida...");
-
-                        test = true;
-                    }
+                    ////ConectedSystem = userNegocio.TestarConexaoSemPersistencia();
 
                     if (ConectedSystem)
                     {
@@ -667,19 +654,38 @@ namespace WinForms
             AbrirVendaPeriodo();
         }
 
+        private void AbrirFormConexao()
+        {
+            if (Application.OpenForms["FormConexao"] == null)
+            {
+                FormConexao formConexao = new FormConexao();
+                formConexao.ShowDialog();
+                formConexao.Dispose();
+            }
+        }
+
         private void timerPrincipal_Tick(object sender, EventArgs e)
         {
             toolStripStatusLabelTime.Text = DateTime.Now.ToLongDateString() + " - " + DateTime.Now.ToLongTimeString();
             toolStripStatusLabelTime.Text.ToUpper();
 
-            if (!ConectedSystem && User != null)
+            try
             {
-                if (Application.OpenForms["FormConexao"] == null)
+                if (Dns.GetHostAddresses("empresadb.mysql.uhserver.com") != null)
                 {
-                    FormConexao formConexao = new FormConexao();
-                    formConexao.ShowDialog();
-                    formConexao.Dispose();
+                    IPAddress[] ip = Dns.GetHostAddresses("empresadb.mysql.uhserver.com");
+                    ConectedSystem = true;
                 }
+                else
+                {
+                    ConectedSystem = false;
+                    AbrirFormConexao();
+                }
+            }
+            catch (Exception)
+            {
+                ConectedSystem = false;
+                AbrirFormConexao();
             }
 
             if (abrirformPessoa)
