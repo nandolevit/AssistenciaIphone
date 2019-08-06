@@ -79,9 +79,9 @@ namespace Negocios
             return 0;
         }
 
-        public ChatOnlineColecao ConsultarChatOnline(string ident)
+        public ChatOnlineColecao ConsultarChat(string ident)
         {
-            if (true)
+            if (online.Conectar(EmpConexao))
             {
                 online.AddParametrosMySql("@ident", ident);
                 DataTable dataTable = online.dataTableMySql("spConsultarChat");
@@ -91,7 +91,9 @@ namespace Negocios
                 else
                     return null;
             }
+            return null;
         }
+
 
         private ChatOnlineColecao PreencherChatOnline(DataTable dataTable)
         {

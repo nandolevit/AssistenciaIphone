@@ -308,7 +308,6 @@ namespace Negocios
         public EmpresaColecao PreencherEmpresaColecao(DataTable dataTable)
         {
             EmpresaColecao empresaColecao = new EmpresaColecao();
-
             foreach (DataRow row in dataTable.Rows)
             {
                 EmpresaInfo empresaInfo = new EmpresaInfo
@@ -333,7 +332,8 @@ namespace Negocios
                     empativada = Convert.ToInt32(row["empativada"]),
                     empdataativo = Convert.ToDateTime(row["empdataativo"]),
                     empobs = Convert.ToString(row["empobs"]),
-                    empid = Convert.ToInt32(row["empid"])
+                    empid = Convert.ToInt32(row["empid"]),
+                    empnegocio = (EnumEmpresaNegocio)Convert.ToInt32(row["empnegocio"])
                 };
 
                 empresaColecao.Add(empresaInfo);
@@ -369,13 +369,9 @@ namespace Negocios
                     uniuf = Convert.ToString(row["uniuf"]),
                     uniunidade = Convert.ToString(row["uniunidade"]).Trim(),
                     unisede = Convert.ToBoolean(row["unisede"]),
-                    unicomputador = Convert.ToInt32(row["unicomputador"])
+                    unicomputador = Convert.ToInt32(row["unicomputador"]),
+                    uniassistencia = (EnumAssistencia)Convert.ToInt32(row["uniassistencia"])
                 };
-
-                if (Convert.ToBoolean(row["uniassistencia"]))
-                    unidadeInfo.uniassistencia = EnumAssistencia.Assistencia;
-                else
-                    unidadeInfo.uniassistencia = EnumAssistencia.Loja;
 
                 unidadeColecao.Add(unidadeInfo);
             }

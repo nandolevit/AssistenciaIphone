@@ -64,6 +64,8 @@
             this.colMod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.labelCache = new System.Windows.Forms.Label();
+            this.textBoxCache = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxProcSocket = new System.Windows.Forms.TextBox();
@@ -71,7 +73,7 @@
             this.textBoxProcModelo = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBoxPlacaFormato = new System.Windows.Forms.TextBox();
+            this.textBoxPlacaTotalMem = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.textBoxPlacaMod = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -494,6 +496,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.labelCache);
+            this.groupBox5.Controls.Add(this.textBoxCache);
             this.groupBox5.Controls.Add(this.pictureBox3);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.textBoxProcSocket);
@@ -505,6 +509,23 @@
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Informações do Processador";
+            // 
+            // labelCache
+            // 
+            this.labelCache.AutoSize = true;
+            this.labelCache.Location = new System.Drawing.Point(493, 25);
+            this.labelCache.Name = "labelCache";
+            this.labelCache.Size = new System.Drawing.Size(56, 13);
+            this.labelCache.TabIndex = 7;
+            this.labelCache.Text = "Cache L3:";
+            // 
+            // textBoxCache
+            // 
+            this.textBoxCache.Location = new System.Drawing.Point(493, 41);
+            this.textBoxCache.Name = "textBoxCache";
+            this.textBoxCache.ReadOnly = true;
+            this.textBoxCache.Size = new System.Drawing.Size(115, 20);
+            this.textBoxCache.TabIndex = 8;
             // 
             // pictureBox3
             // 
@@ -519,7 +540,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(397, 25);
+            this.label10.Location = new System.Drawing.Point(362, 25);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(44, 13);
             this.label10.TabIndex = 2;
@@ -527,10 +548,10 @@
             // 
             // textBoxProcSocket
             // 
-            this.textBoxProcSocket.Location = new System.Drawing.Point(397, 41);
+            this.textBoxProcSocket.Location = new System.Drawing.Point(362, 41);
             this.textBoxProcSocket.Name = "textBoxProcSocket";
             this.textBoxProcSocket.ReadOnly = true;
-            this.textBoxProcSocket.Size = new System.Drawing.Size(209, 20);
+            this.textBoxProcSocket.Size = new System.Drawing.Size(125, 20);
             this.textBoxProcSocket.TabIndex = 3;
             // 
             // label12
@@ -547,13 +568,13 @@
             this.textBoxProcModelo.Location = new System.Drawing.Point(87, 41);
             this.textBoxProcModelo.Name = "textBoxProcModelo";
             this.textBoxProcModelo.ReadOnly = true;
-            this.textBoxProcModelo.Size = new System.Drawing.Size(304, 20);
+            this.textBoxProcModelo.Size = new System.Drawing.Size(269, 20);
             this.textBoxProcModelo.TabIndex = 1;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label23);
-            this.groupBox4.Controls.Add(this.textBoxPlacaFormato);
+            this.groupBox4.Controls.Add(this.textBoxPlacaTotalMem);
             this.groupBox4.Controls.Add(this.label22);
             this.groupBox4.Controls.Add(this.textBoxPlacaMod);
             this.groupBox4.Controls.Add(this.label21);
@@ -579,19 +600,19 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(368, 64);
+            this.label23.Location = new System.Drawing.Point(351, 64);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(48, 13);
+            this.label23.Size = new System.Drawing.Size(77, 13);
             this.label23.TabIndex = 8;
-            this.label23.Text = "Formato:";
+            this.label23.Text = "Total Memória:";
             // 
-            // textBoxPlacaFormato
+            // textBoxPlacaTotalMem
             // 
-            this.textBoxPlacaFormato.Location = new System.Drawing.Point(368, 80);
-            this.textBoxPlacaFormato.Name = "textBoxPlacaFormato";
-            this.textBoxPlacaFormato.ReadOnly = true;
-            this.textBoxPlacaFormato.Size = new System.Drawing.Size(65, 20);
-            this.textBoxPlacaFormato.TabIndex = 9;
+            this.textBoxPlacaTotalMem.Location = new System.Drawing.Point(354, 80);
+            this.textBoxPlacaTotalMem.Name = "textBoxPlacaTotalMem";
+            this.textBoxPlacaTotalMem.ReadOnly = true;
+            this.textBoxPlacaTotalMem.Size = new System.Drawing.Size(79, 20);
+            this.textBoxPlacaTotalMem.TabIndex = 9;
             // 
             // label22
             // 
@@ -650,16 +671,16 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(273, 64);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(89, 13);
+            this.label19.Size = new System.Drawing.Size(75, 13);
             this.label19.TabIndex = 6;
-            this.label19.Text = "Memória Máxima:";
+            this.label19.Text = "Mem. Máxima:";
             // 
             // textBoxPlacaMax
             // 
             this.textBoxPlacaMax.Location = new System.Drawing.Point(276, 80);
             this.textBoxPlacaMax.Name = "textBoxPlacaMax";
             this.textBoxPlacaMax.ReadOnly = true;
-            this.textBoxPlacaMax.Size = new System.Drawing.Size(86, 20);
+            this.textBoxPlacaMax.Size = new System.Drawing.Size(72, 20);
             this.textBoxPlacaMax.TabIndex = 7;
             // 
             // pictureBox5
@@ -983,7 +1004,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBoxPlacaMod;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBoxPlacaFormato;
+        private System.Windows.Forms.TextBox textBoxPlacaTotalMem;
         private System.Windows.Forms.DataGridView dataGridViewVideo;
         private System.Windows.Forms.GroupBox groupBoxStorage;
         private System.Windows.Forms.DataGridView dataGridViewStorage;
@@ -1018,5 +1039,7 @@
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.Button buttonFechar;
         private System.Windows.Forms.Button buttonTxt;
+        private System.Windows.Forms.Label labelCache;
+        private System.Windows.Forms.TextBox textBoxCache;
     }
 }

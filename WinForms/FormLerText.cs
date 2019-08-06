@@ -136,7 +136,8 @@ namespace WinForms
             foreach (string item in mem)
             {
                 int i = item.LastIndexOf('!');
-                l.Add(item.Substring(i + 1).Trim());
+                string add = item.Substring(i + 1).Trim().Replace("Hewlett-Packard", "HP - Hewlett-Packard");
+                l.Add(add);
             }
 
             return l.ToArray();
@@ -146,6 +147,7 @@ namespace WinForms
         {
             textBoxProcModelo.Text = proc.Processor;
             textBoxProcSocket.Text = proc.Socket;
+            textBoxCache.Text = proc.Cache;
 
             textBoxPcCategoria.Text = spec.TipoMaquina;
 
@@ -166,7 +168,7 @@ namespace WinForms
             textBoxPlacaData.Text = spec.Data;
             textBoxPlacaMax.Text = spec.MemoryMax;
             textBoxPlacaSlot.Text = spec.SlotQuant == "N/A" ? "N/A" : string.Format("{0:00}", Convert.ToInt32(spec.SlotQuant));
-            textBoxPlacaFormato.Text = spec.MemoryFormat;
+            textBoxPlacaTotalMem.Text = spec.MemoryFormat;
             textBoxPlacaMod.Text = spec.MemoryModulo;
 
             //for (int i = 0; i < dataGridViewVideo.Columns.Count; i++)
@@ -316,10 +318,52 @@ namespace WinForms
         private PC_Processor_Windows ConsultaProcessor()
         {
             string[] processor;
-            processor = new string[2];
+            processor = new string[3];
             string ler = string.Empty;
+
             using (StreamReader sr = new StreamReader(path))
             {
+                while ((ler = sr.ReadLine()) != null)
+                {
+                    if (ler.Contains("L4 cache"))
+                    {
+                        processor[2] = ler;
+                        labelCache.Text = "Cache L4:";
+                        goto str;
+                    }
+                }
+            }
+
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((ler = sr.ReadLine()) != null)
+                {
+                    if (ler.Contains("L3 cache"))
+                    {
+                        processor[2] = ler;
+                        labelCache.Text = "Cache L3:";
+                        goto str;
+                    }
+                }
+            }
+
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((ler = sr.ReadLine()) != null)
+                {
+                    if (ler.Contains("L2 cache"))
+                    {
+                        processor[2] = ler;
+                        labelCache.Text = "Cache L2:";
+                        goto str;
+                    }
+                }
+            }
+
+        str:
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string[] result = new string[3];
                 while ((ler = sr.ReadLine()) != null)
                 {
                     if (ler.Contains("Codename"))
@@ -329,22 +373,23 @@ namespace WinForms
                             if (ler.Contains("Specification"))
                                 processor[0] = ler;
 
-                            if (ler.Contains("(Package"))
+                            if (ler.Contains("Package"))
                             {
                                 processor[1] = ler;
-
-                                processor = TratarArray(processor);
-                                goto Win;
+                                break;
                             }
                         }
+
+                        result = TratarArray(processor);
+                        break;
                     }
                 }
 
-            Win:
                 PC_Processor_Windows ProcessorWin = new PC_Processor_Windows
                 {
-                    Processor = processor[0],
-                    Socket = processor[1],
+                    Processor = result[0],
+                    Socket = result[1].Replace("Socket ", ""),
+                    Cache = result[2].Length > 0 ? result[2].Substring(0, result[2].IndexOf(',')) : "",
                     Windows = ConsultarWinVersion()
                 };
 
@@ -357,20 +402,7 @@ namespace WinForms
             string ler = string.Empty;
             using (StreamReader sr = new StreamReader(path))
             {
-                while ((ler = sr.ReadLine()) != null)
-                {
-                    if (ler.Contains("DMI BIOS"))
-                    {
-                        while ((ler = sr.ReadLine()) != null)
-                        {
-                            if (ler.Contains("date"))
-                            {
-                                string[] pro = ler.Replace("\t", "!").Split(';');
-                                return FormatTxt(pro)[0];
-                            }
-                        }
-                    }
-                }
+
 
                 return "";
             }
@@ -392,17 +424,32 @@ namespace WinForms
                                 mainBoard[8] = ler;
 
                             if (ler.Contains("of devices"))
-                                mainBoard[7] = ler;
-
-                            if (ler.Contains("format"))
-                                mainBoard[10] = ler;
-
-                            if (ler.Contains("type"))
                             {
+                                mainBoard[7] = ler;
+                                goto Ini1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            Ini1:
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((ler = sr.ReadLine()) != null)
+                {
+                    if (ler.Contains("Chipset"))
+                    {
+                        while ((ler = sr.ReadLine()) != null)
+                        {
+                            if (ler.Contains("Memory Type"))
                                 mainBoard[11] = ler;
+
+                            if (ler.Contains("Memory Size"))
+                            {
+                                mainBoard[10] = ler;
                                 return;
                             }
-
                         }
                     }
                 }
@@ -416,17 +463,15 @@ namespace WinForms
 
             string[] mainBoard = new string[12];
             string ler = string.Empty;
+
             using (StreamReader sr = new StreamReader(path))
             {
                 while ((ler = sr.ReadLine()) != null)
                 {
-                    if (ler.Contains("SMBIOS Version"))
+                    if (ler.Contains("DMI System Information"))
                     {
                         while ((ler = sr.ReadLine()) != null)
                         {
-                            if (ler.Contains("date"))
-                                mainBoard[9] = ler;
-
                             if (ler.Contains("manufacturer"))
                                 mainBoard[0] = ler;
 
@@ -436,14 +481,20 @@ namespace WinForms
                             if (ler.Contains("serial"))
                             {
                                 mainBoard[2] = ler;
-                                break;
+                                goto Ini1;
                             }
-
                         }
+                    }
+                }
+            }
 
-                        if (string.IsNullOrEmpty(mainBoard[9]))
-                            mainBoard[9] = ConsultarData();
-
+        Ini1:
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((ler = sr.ReadLine()) != null)
+                {
+                    if (ler.Contains("DMI Baseboard"))
+                    {
                         while ((ler = sr.ReadLine()) != null)
                         {
                             if (ler.Contains("vendor"))
@@ -453,43 +504,79 @@ namespace WinForms
                                 mainBoard[4] = ler;
 
                             if (ler.Contains("serial"))
+                            {
                                 mainBoard[5] = ler;
+                                goto Ini2;
+                            }
+                        }
+                    }
+                }
+            }
 
+        Ini2:
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((ler = sr.ReadLine()) != null)
+                {
+                    if (ler.Contains("DMI System Enclosure"))
+                    {
+                        while ((ler = sr.ReadLine()) != null)
+                        {
                             if (ler.Contains("chassis type"))
                             {
                                 mainBoard[6] = ler;
-                                break;
+                                goto Ini3;
                             }
                         }
+                    }
+                }
+            }
 
-                        ConsultarSpecMem(mainBoard);
-                        mainBoard = TratarArray(mainBoard);
-
-                        string[] data = mainBoard[9].Split('/');
-                        mainBoard[9] = data[1] + "/" + data[0] + "/" + data[2];
-
-                        PC_Specification Specification = new PC_Specification
+        Ini3:
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((ler = sr.ReadLine()) != null)
+                {
+                    if (ler.Contains("DMI BIOS"))
+                    {
+                        while ((ler = sr.ReadLine()) != null)
                         {
-                            Fabricante = mainBoard[0],
-                            Fornecedor = mainBoard[3],
-                            Modelo = mainBoard[4],
-                            Produto = mainBoard[1],
-                            SerialMaquina = mainBoard[2],
-                            SerialPlaca = mainBoard[5],
-                            TipoMaquina = mainBoard[6].Replace("Portable", "Notebook").Replace("LapTop", "Notebook"),
-                            MemoryMax = mainBoard[8],
-                            SlotQuant = mainBoard[7],
-                            Data = mainBoard[9],
-                            MemoryFormat = mainBoard[10],
-                            MemoryModulo = mainBoard[11]
-                        };
-
-                        return Specification;
+                            if (ler.Contains("date"))
+                            {
+                                string[] pro = ler.Replace("\t", "!").Split(';');
+                                mainBoard[9] = FormatTxt(pro)[0];
+                                goto Ini4;
+                            }
+                        }
                     }
                 }
 
-                return null;
             }
+
+        Ini4:
+                ConsultarSpecMem(mainBoard);
+                mainBoard = TratarArray(mainBoard);
+
+                string[] data = mainBoard[9].Split('/');
+                mainBoard[9] = data[1] + "/" + data[0] + "/" + data[2];
+
+                PC_Specification Specification = new PC_Specification
+                {
+                    Fabricante = mainBoard[0],
+                    Fornecedor = mainBoard[3],
+                    Modelo = mainBoard[4],
+                    Produto = mainBoard[1],
+                    SerialMaquina = mainBoard[2],
+                    SerialPlaca = mainBoard[5],
+                    TipoMaquina = mainBoard[6].Replace("Portable", "Notebook").Replace("LapTop", "Notebook"),
+                    MemoryMax = mainBoard[8],
+                    SlotQuant = mainBoard[7],
+                    Data = mainBoard[9],
+                    MemoryFormat = mainBoard[10],
+                    MemoryModulo = mainBoard[11]
+                };
+
+                return Specification;
         }
 
         private bool ValidacaoTxt()

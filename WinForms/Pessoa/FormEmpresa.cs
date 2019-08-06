@@ -192,13 +192,16 @@ namespace WinForms
                         int cod = empresaNegocios.InsertUnidade(infoUnid);
                         if (cod > 0)
                         {
-                            Form1.Unidade = infoUnid;
-                            infoUnid.uniativa = 1;
-                            infoUnid.uniunidade = "LOJA IPHONE";
-                            infoUnid.unisede = false;
-                            infoUnid.uniassistencia = EnumAssistencia.Loja;
-                            empresaNegocios.InsertUnidade(infoUnid);
-                            infoUnid.uniassistencia = EnumAssistencia.Assistencia;
+                            if (infoEmpresa.empnegocio == EnumEmpresaNegocio.Loja_Iphone)
+                            {
+                                Form1.Unidade = infoUnid;
+                                infoUnid.uniativa = 1;
+                                infoUnid.uniunidade = "LOJA IPHONE";
+                                infoUnid.unisede = false;
+                                infoUnid.uniassistencia = EnumAssistencia.Loja;
+                                empresaNegocios.InsertUnidade(infoUnid);
+                                infoUnid.uniassistencia = EnumAssistencia.Assistencia;
+                            }
 
                             negocioPessoa = new PessoaNegocio(infoEmpresa.empconexao, Form1.Unidade.uniassistencia);
                             PessoaInfo pessoa = new PessoaInfo

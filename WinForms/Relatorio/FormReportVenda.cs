@@ -24,8 +24,8 @@ namespace WinForms
         {
             this.reportViewerVenda.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
             this.reportViewerVenda.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.Percent;
-            this.reportViewerVenda.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("Venda", Venda[0]));
-            this.reportViewerVenda.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("Rodape", Venda[1]));
+            this.reportViewerVenda.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("@Venda", Venda[0]));
+            this.reportViewerVenda.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("@Rodape", Venda[1]));
             this.reportViewerVenda.RefreshReport();
         }
     }

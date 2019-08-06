@@ -30,5 +30,6 @@ namespace ObjTransfer
         public int empativada { get; set; }
         public DateTime empdataativo { get; set; }
         public string empobs { get; set; }
+        public EnumEmpresaNegocio empnegocio { get; set; }
     }
 }

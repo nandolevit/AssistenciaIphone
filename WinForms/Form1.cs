@@ -115,29 +115,46 @@ namespace WinForms
 
             if (Desserializar())
             {
-                Thread t = new Thread(ConsultarNovoIphone);
-                ExecutarThread(t);
-
-                threadLogin = new Thread(UpdateUserLogin);
-                threadLogin.Start();
-
-                UserNegocio testar = new UserNegocio(Empresa.empconexao);
-                if (testar.TestarConexao())
+                try
                 {
+                    if (Dns.GetHostAddresses("empresadb.mysql.uhserver.com") != null)
+                    {
+                        IPAddress[] ip = Dns.GetHostAddresses("empresadb.mysql.uhserver.com");
+                        ConectedSystem = true;
+                    }
+                    else
+                    {
+                        ConectedSystem = false;
+                    }
+                }
+                catch (Exception)
+                {
+                    ConectedSystem = false;
+                }
+
+                if (ConectedSystem)
+                {
+
+                    Thread t = new Thread(ConsultarNovoIphone);
+                    ExecutarThread(t);
+
+                    threadLogin = new Thread(UpdateUserLogin);
+                    threadLogin.Start();
+
                     EmpresaNegocios empresaNegocios = new EmpresaNegocios(Empresa.empconexao);
 
-                    if (Unidade != null)
-                    {
-                        ComputerColecao colecao = empresaNegocios.ConsultarComputadorIdUnid(Unidade.uniid);
+                    //if (Unidade != null)
+                    //{
+                    //    ComputerColecao colecao = empresaNegocios.ConsultarComputadorIdUnid(Unidade.uniid);
 
-                        if (colecao != null)
-                            foreach (ComputerInfo comp in colecao)
-                                if (comp.compserver)
-                                {
-                                    Server = comp;
-                                    break;
-                                }
-                    }
+                    //    if (colecao != null)
+                    //        foreach (ComputerInfo comp in colecao)
+                    //            if (comp.compserver)
+                    //            {
+                    //                Server = comp;
+                    //                break;
+                    //            }
+                    //}
 
                     if (Empresa != null)
                     {
@@ -287,11 +304,13 @@ namespace WinForms
                         {
                             MenuItemEstoque.Visible = false;
                             buttonOs.Enabled = false;
+                            iphoneToolStripMenuItem.Visible = true;
                         }
                         else
                         {
                             MenuItemEstoque.Visible = true;
                             buttonOs.Enabled = true;
+                            iphoneToolStripMenuItem.Visible = false;
                         }
 
                         if (User.usecargo == 1)
@@ -398,31 +417,6 @@ namespace WinForms
             }
         }
 
-        private UnidadeInfo PreencherUnid()
-        {
-            unidadeInfo = new UnidadeInfo
-            {
-                unibairro = Empresa.empbairro,
-                unicep = Empresa.empcep,
-                unicidade = Empresa.empcidade,
-                unicnpj = Empresa.empcnpj,
-                unicomplemento = Empresa.empcomplemento,
-                uniemail = Empresa.empemail,
-                unifantasia = Empresa.empfantasia,
-                uniidEmpresa = Empresa.empcod,
-                unilogradouro = Empresa.emplogradouro,
-                unirazaoSocial = Empresa.emprazaosocial,
-                unireferencia = Empresa.empreferencia,
-                unisite = Empresa.empsite,
-                unitelefone = Empresa.emptelefone,
-                uniuf = Empresa.empuf,
-                uniunidade = " " + Empresa.empbairro + "(SEDE)",
-                unifundada = Empresa.empfundada
-            };
-
-            return unidadeInfo;
-        }
-
         private void MenuItemOrdemServ_Click(object sender, EventArgs e)
         {
             BuscarServico();
@@ -502,9 +496,6 @@ namespace WinForms
                 frm1.Close();
 
             User = null;
-
-            //menuStripPrincipal.Enabled = false;
-            //panelPrincipal.Enabled = false;
         }
 
         private void FormAbertos(Form form, bool panel = false)
@@ -733,23 +724,33 @@ namespace WinForms
 
                         if (id > 0)
                         {
-                            FormServicoTipo formServicoTipo = new FormServicoTipo();
-                            if (formServicoTipo.ShowDialog(this) == DialogResult.Yes)
+                            switch (Empresa.empnegocio)
                             {
-                                FormServico formServico = new FormServico(p);
-                                if (formServico.ShowDialog(this) == DialogResult.Yes)
-                                {
-                                    FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
-                                }
-                            }
-                            else if (formServicoTipo.DialogResult == DialogResult.OK)
-                            {
-                                FormLerText formLerText = new FormLerText();
-                                formLerText.ShowDialog();
-                                formLerText.Dispose();
-                            }
-                            formServicoTipo.Dispose();
+                                case EnumEmpresaNegocio.Loja_Iphone:
 
+                                    FormServicoTipo formServicoTipo = new FormServicoTipo();
+                                    if (formServicoTipo.ShowDialog(this) == DialogResult.Yes)
+                                    {
+                                        FormServico formServico = new FormServico(p);
+                                        if (formServico.ShowDialog(this) == DialogResult.Yes)
+                                        {
+                                            FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
+                                        }
+                                    }
+                                    else if (formServicoTipo.DialogResult == DialogResult.OK)
+                                    {
+                                        FormLerText formLerText = new FormLerText();
+                                        formLerText.ShowDialog();
+                                        formLerText.Dispose();
+                                    }
+                                    formServicoTipo.Dispose();
+
+                                    break;
+                                case EnumEmpresaNegocio.Refrigeracao:
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     }
                 }
@@ -909,5 +910,9 @@ namespace WinForms
             formEmail.ShowDialog(this);
         }
 
+        private void CadastroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

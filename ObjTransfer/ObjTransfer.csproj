@@ -85,6 +85,7 @@
     <Compile Include="CodDescricaoInfo.cs" />
     <Compile Include="ComputerColecao.cs" />
     <Compile Include="ComputerInfo.cs" />
+    <Compile Include="EnumEmpresaNegocio.cs" />
     <Compile Include="Pessoa\Empresa\EmpresaEmailInfo.cs" />
     <Compile Include="Pessoa\Enum\EnumAssistencia.cs" />
     <Compile Include="Pessoa\Enum\EnumPessoaTipo.cs" />
