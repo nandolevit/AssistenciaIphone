@@ -890,6 +890,9 @@ namespace WinForms
         {
             if (threadLogin != null)
                 threadLogin.Abort();
+
+            if (Application.OpenForms["FormOnline"] != null)
+                Application.OpenForms["FormOnline"].Close();
         }
 
         private void FornecedorToolStripMenuItem_Click(object sender, EventArgs e)

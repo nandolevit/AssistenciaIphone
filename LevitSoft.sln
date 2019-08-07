@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjTransfer", "ObjTransfer\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForms", "WinForms\WinForms.csproj", "{BF6857BE-54D9-4436-8EC3-0F8FCC3529EC}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LevitSoft", "LevitSoft\LevitSoft.vdproj", "{04D954B0-EA43-49F0-96E6-E60F32AE4FEC}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupAssist", "SetupAssist\SetupAssist.vdproj", "{FB02CA39-603C-4B1E-BA5E-5B0B4709BD3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +53,10 @@ Global
 		{BF6857BE-54D9-4436-8EC3-0F8FCC3529EC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF6857BE-54D9-4436-8EC3-0F8FCC3529EC}.Release|x64.ActiveCfg = Release|x64
 		{BF6857BE-54D9-4436-8EC3-0F8FCC3529EC}.Release|x64.Build.0 = Release|x64
-		{04D954B0-EA43-49F0-96E6-E60F32AE4FEC}.Debug|Any CPU.ActiveCfg = Debug
-		{04D954B0-EA43-49F0-96E6-E60F32AE4FEC}.Debug|x64.ActiveCfg = Debug
-		{04D954B0-EA43-49F0-96E6-E60F32AE4FEC}.Release|Any CPU.ActiveCfg = Release
-		{04D954B0-EA43-49F0-96E6-E60F32AE4FEC}.Release|x64.ActiveCfg = Release
+		{FB02CA39-603C-4B1E-BA5E-5B0B4709BD3C}.Debug|Any CPU.ActiveCfg = Debug
+		{FB02CA39-603C-4B1E-BA5E-5B0B4709BD3C}.Debug|x64.ActiveCfg = Debug
+		{FB02CA39-603C-4B1E-BA5E-5B0B4709BD3C}.Release|Any CPU.ActiveCfg = Release
+		{FB02CA39-603C-4B1E-BA5E-5B0B4709BD3C}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
