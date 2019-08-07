@@ -90,14 +90,16 @@ namespace WinForms
             {
                 if (colecaoChatNova != null)
                 {
-                    foreach (ChatOnlineInfo chat in colecaoChatNova)
-                        colecaoChat.Add(chat);
+                    OnlineNegocio negocioOnline = new OnlineNegocio(Form1.Empresa.empconexao);
+                    //foreach (ChatOnlineInfo chat in colecaoChatNova)
+                    //    colecaoChat.Add(chat);
 
-                    dataGridViewChat.DataSource = colecaoChat;
-                    dataGridViewChat.Refresh();
+                    //colecaoChat.OrderBy(c => c.chatdata).ToList();
+
+                    //dataGridViewChat.DataSource = null;
+                    dataGridViewChat.DataSource = negocioOnline.ConsultarChat(ChatIdent(idchat, idLogado));
                     dataGridViewChat.ClearSelection();
 
-                    OnlineNegocio negocioOnline = new OnlineNegocio(Form1.Empresa.empconexao);
                     negocioOnline.UpdateChatMessageLida(ChatIdent(idchat, idLogado), idLogado);
                 }
             }
@@ -323,7 +325,7 @@ namespace WinForms
                         cell.Style.ForeColor = Color.Red;
                     }
                 }
-                else if (Convert.ToInt32(dataGridViewChat[2, num].Value) == Form1.Login.loginiduser)
+                else //if (Convert.ToInt32(dataGridViewChat[2, num].Value) == Form1.Login.loginiduser)
                 {
                     DataGridViewRow row = dataGridViewChat.Rows[num];
                     foreach (DataGridViewCell cell in row.Cells)

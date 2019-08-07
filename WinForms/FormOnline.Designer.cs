@@ -31,16 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timerOnline = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewOnline = new System.Windows.Forms.DataGridView();
             this.colNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewChat = new System.Windows.Forms.DataGridView();
-            this.colMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEnvio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEnviado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewChatNovaMessage = new System.Windows.Forms.DataGridView();
             this.colMensagem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.notifyIconChat = new System.Windows.Forms.NotifyIcon(this.components);
@@ -51,6 +48,9 @@
             this.textBoxMessage = new System.Windows.Forms.TextBox();
             this.buttonNovaMensagem = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.colMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEnvio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEnviado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOnline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChatNovaMessage)).BeginInit();
@@ -134,30 +134,6 @@
             this.dataGridViewChat.TabIndex = 4;
             this.dataGridViewChat.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridViewChat_RowPostPaint);
             this.dataGridViewChat.Click += new System.EventHandler(this.dataGridViewChat_Click);
-            // 
-            // colMessage
-            // 
-            this.colMessage.DataPropertyName = "chatmessage";
-            this.colMessage.HeaderText = "Mensagem:";
-            this.colMessage.Name = "colMessage";
-            this.colMessage.Width = 520;
-            // 
-            // colEnvio
-            // 
-            this.colEnvio.DataPropertyName = "chatdata";
-            dataGridViewCellStyle3.Format = "G";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colEnvio.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colEnvio.HeaderText = "Envio:";
-            this.colEnvio.Name = "colEnvio";
-            this.colEnvio.Width = 115;
-            // 
-            // colEnviado
-            // 
-            this.colEnviado.DataPropertyName = "chatidenvio";
-            this.colEnviado.HeaderText = "Enviado:";
-            this.colEnviado.Name = "colEnviado";
-            this.colEnviado.Visible = false;
             // 
             // dataGridViewChatNovaMessage
             // 
@@ -289,6 +265,30 @@
             this.buttonNovaMensagem.UseVisualStyleBackColor = true;
             this.buttonNovaMensagem.Click += new System.EventHandler(this.buttonNovaMensagem_Click);
             // 
+            // colMessage
+            // 
+            this.colMessage.DataPropertyName = "chatmessage";
+            this.colMessage.HeaderText = "Mensagem:";
+            this.colMessage.Name = "colMessage";
+            this.colMessage.Width = 500;
+            // 
+            // colEnvio
+            // 
+            this.colEnvio.DataPropertyName = "chatdata";
+            dataGridViewCellStyle3.Format = "G";
+            dataGridViewCellStyle3.NullValue = null;
+            this.colEnvio.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colEnvio.HeaderText = "Envio:";
+            this.colEnvio.Name = "colEnvio";
+            this.colEnvio.Width = 115;
+            // 
+            // colEnviado
+            // 
+            this.colEnviado.DataPropertyName = "chatidenvio";
+            this.colEnviado.HeaderText = "Enviado:";
+            this.colEnviado.Name = "colEnviado";
+            this.colEnviado.Visible = false;
+            // 
             // FormOnline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,9 +336,9 @@
         private System.Windows.Forms.Button buttonEnviar;
         private System.Windows.Forms.TextBox textBoxMessage;
         private System.Windows.Forms.DataGridView dataGridViewChat;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMessage;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEnvio;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEnviado;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
