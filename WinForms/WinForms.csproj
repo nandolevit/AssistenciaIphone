@@ -132,6 +132,12 @@
     <Compile Include="Caixa\FormAbrirCaixa.Designer.cs">
       <DependentUpon>FormAbrirCaixa.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormIphoneCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormIphoneCadastrar.Designer.cs">
+      <DependentUpon>FormIphoneCadastrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLerText.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -402,6 +408,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Caixa\FormAbrirCaixa.resx">
       <DependentUpon>FormAbrirCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormIphoneCadastrar.resx">
+      <DependentUpon>FormIphoneCadastrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLerText.resx">
       <DependentUpon>FormLerText.cs</DependentUpon>

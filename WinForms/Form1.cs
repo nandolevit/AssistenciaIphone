@@ -845,7 +845,7 @@ namespace WinForms
         private void buttonSair_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja sair do sistema?", "CONFIRMAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                Application.Exit();
+                this.Close();
         }
 
         private void buttonCaixa_Click(object sender, EventArgs e)
@@ -915,6 +915,12 @@ namespace WinForms
         private void CadastroToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void IphoneToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormIphoneCadastrar formIphoneCadastrar = new FormIphoneCadastrar();
+            FormAbertos(formIphoneCadastrar);
         }
     }
 }
