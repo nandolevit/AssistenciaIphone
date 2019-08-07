@@ -117,16 +117,21 @@ namespace WinForms
 
         private void AbrirCliente()
         {
-            Selecionado();
-
-            if (this.Modal)
-                DialogResult = DialogResult.Yes;
-            else
+            if (colecaoPessoa[0].pssnome != "NENHUM REGISTRO FOI ENCONTRADO!")
             {
-                FormPessoa formCadastroPessoa = new FormPessoa(inforPessoa);
-                formCadastroPessoa.ShowDialog(this);
-                formCadastroPessoa.Dispose();
+                Selecionado();
+
+                if (this.Modal)
+                    DialogResult = DialogResult.Yes;
+                else
+                {
+                    FormPessoa formCadastroPessoa = new FormPessoa(inforPessoa);
+                    formCadastroPessoa.ShowDialog(this);
+                    formCadastroPessoa.Dispose();
+                }
             }
+            else
+                FormMessage.ShowMessegeWarning("NENHUM REGISTRO FOI ENCONTRADO!");
         }
 
         private void Selecionado()

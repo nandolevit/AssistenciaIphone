@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBoxPrincipal = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxPrazo = new System.Windows.Forms.ComboBox();
+            this.buttonSalvar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButtonLoja = new System.Windows.Forms.RadioButton();
             this.radioButtonApple = new System.Windows.Forms.RadioButton();
+            this.buttonFechar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxVenda = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -43,27 +47,27 @@
             this.dateTimePickerGarantia = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePickerCompra = new System.Windows.Forms.DateTimePicker();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonFornecedor = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonModelo = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxTipo = new System.Windows.Forms.GroupBox();
             this.radioButtonSemi = new System.Windows.Forms.RadioButton();
             this.radioButtonNovo = new System.Windows.Forms.RadioButton();
-            this.buttonSalvar = new System.Windows.Forms.Button();
-            this.buttonFechar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxFoto = new System.Windows.Forms.PictureBox();
             this.groupBoxPrincipal.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxTipo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxPrincipal
             // 
+            this.groupBoxPrincipal.Controls.Add(this.label6);
+            this.groupBoxPrincipal.Controls.Add(this.comboBoxPrazo);
             this.groupBoxPrincipal.Controls.Add(this.buttonSalvar);
             this.groupBoxPrincipal.Controls.Add(this.groupBox2);
             this.groupBoxPrincipal.Controls.Add(this.buttonFechar);
@@ -75,6 +79,43 @@
             this.groupBoxPrincipal.TabIndex = 0;
             this.groupBoxPrincipal.TabStop = false;
             this.groupBoxPrincipal.Text = "Cadastro:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(291, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Prazo:";
+            // 
+            // comboBoxPrazo
+            // 
+            this.comboBoxPrazo.Enabled = false;
+            this.comboBoxPrazo.FormattingEnabled = true;
+            this.comboBoxPrazo.Items.AddRange(new object[] {
+            "30",
+            "60",
+            "90",
+            "120"});
+            this.comboBoxPrazo.Location = new System.Drawing.Point(291, 35);
+            this.comboBoxPrazo.Name = "comboBoxPrazo";
+            this.comboBoxPrazo.Size = new System.Drawing.Size(53, 21);
+            this.comboBoxPrazo.TabIndex = 22;
+            this.comboBoxPrazo.Text = "90";
+            // 
+            // buttonSalvar
+            // 
+            this.buttonSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSalvar.Image = global::WinForms.Properties.Resources.conf_green;
+            this.buttonSalvar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.buttonSalvar.Location = new System.Drawing.Point(425, 296);
+            this.buttonSalvar.Name = "buttonSalvar";
+            this.buttonSalvar.Size = new System.Drawing.Size(85, 40);
+            this.buttonSalvar.TabIndex = 20;
+            this.buttonSalvar.Text = "&Salvar";
+            this.buttonSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSalvar.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -108,6 +149,21 @@
             this.radioButtonApple.TabStop = true;
             this.radioButtonApple.Text = "Apple";
             this.radioButtonApple.UseVisualStyleBackColor = true;
+            this.radioButtonApple.CheckedChanged += new System.EventHandler(this.RadioButtonApple_CheckedChanged);
+            // 
+            // buttonFechar
+            // 
+            this.buttonFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFechar.Image = global::WinForms.Properties.Resources.exit_red;
+            this.buttonFechar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.buttonFechar.Location = new System.Drawing.Point(517, 296);
+            this.buttonFechar.Name = "buttonFechar";
+            this.buttonFechar.Size = new System.Drawing.Size(85, 40);
+            this.buttonFechar.TabIndex = 21;
+            this.buttonFechar.Text = "&Fechar";
+            this.buttonFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonFechar.UseVisualStyleBackColor = true;
+            this.buttonFechar.Click += new System.EventHandler(this.ButtonFechar_Click);
             // 
             // groupBox1
             // 
@@ -121,10 +177,10 @@
             this.groupBox1.Controls.Add(this.dateTimePickerGarantia);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dateTimePickerCompra);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.buttonFornecedor);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.buttonModelo);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(6, 75);
@@ -184,9 +240,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(252, 94);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 10;
-            this.label5.Text = "label5";
+            this.label5.Text = "Observações:";
             // 
             // label4
             // 
@@ -220,13 +276,18 @@
             this.dateTimePickerCompra.Size = new System.Drawing.Size(240, 20);
             this.dateTimePickerCompra.TabIndex = 6;
             // 
-            // button2
+            // buttonFornecedor
             // 
-            this.button2.Location = new System.Drawing.Point(564, 69);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(24, 23);
-            this.button2.TabIndex = 5;
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonFornecedor.BackgroundImage = global::WinForms.Properties.Resources.icons8_Add_New_32;
+            this.buttonFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonFornecedor.FlatAppearance.BorderSize = 0;
+            this.buttonFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFornecedor.Location = new System.Drawing.Point(564, 69);
+            this.buttonFornecedor.Name = "buttonFornecedor";
+            this.buttonFornecedor.Size = new System.Drawing.Size(24, 23);
+            this.buttonFornecedor.TabIndex = 5;
+            this.buttonFornecedor.UseVisualStyleBackColor = true;
+            this.buttonFornecedor.Click += new System.EventHandler(this.ButtonFornecedor_Click);
             // 
             // textBox2
             // 
@@ -244,13 +305,18 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Fornecedor:";
             // 
-            // button1
+            // buttonModelo
             // 
-            this.button1.Location = new System.Drawing.Point(566, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 23);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonModelo.BackgroundImage = global::WinForms.Properties.Resources.icons8_Add_New_32;
+            this.buttonModelo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonModelo.FlatAppearance.BorderSize = 0;
+            this.buttonModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModelo.Location = new System.Drawing.Point(566, 29);
+            this.buttonModelo.Name = "buttonModelo";
+            this.buttonModelo.Size = new System.Drawing.Size(24, 23);
+            this.buttonModelo.TabIndex = 2;
+            this.buttonModelo.UseVisualStyleBackColor = true;
+            this.buttonModelo.Click += new System.EventHandler(this.ButtonModelo_Click);
             // 
             // textBox1
             // 
@@ -301,59 +367,34 @@
             this.radioButtonNovo.Text = "Novo";
             this.radioButtonNovo.UseVisualStyleBackColor = true;
             // 
-            // buttonSalvar
+            // pictureBoxFoto
             // 
-            this.buttonSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSalvar.Image = global::WinForms.Properties.Resources.conf_green;
-            this.buttonSalvar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonSalvar.Location = new System.Drawing.Point(425, 296);
-            this.buttonSalvar.Name = "buttonSalvar";
-            this.buttonSalvar.Size = new System.Drawing.Size(85, 40);
-            this.buttonSalvar.TabIndex = 20;
-            this.buttonSalvar.Text = "&Salvar";
-            this.buttonSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSalvar.UseVisualStyleBackColor = true;
-            // 
-            // buttonFechar
-            // 
-            this.buttonFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFechar.Image = global::WinForms.Properties.Resources.exit_red;
-            this.buttonFechar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonFechar.Location = new System.Drawing.Point(517, 296);
-            this.buttonFechar.Name = "buttonFechar";
-            this.buttonFechar.Size = new System.Drawing.Size(85, 40);
-            this.buttonFechar.TabIndex = 21;
-            this.buttonFechar.Text = "&Fechar";
-            this.buttonFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonFechar.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WinForms.Properties.Resources.SP727_iphone6s_plus_gold_select_2015;
-            this.pictureBox1.Location = new System.Drawing.Point(626, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(233, 344);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxFoto.Image = global::WinForms.Properties.Resources.SP727_iphone6s_plus_gold_select_2015;
+            this.pictureBoxFoto.Location = new System.Drawing.Point(626, 12);
+            this.pictureBoxFoto.Name = "pictureBoxFoto";
+            this.pictureBoxFoto.Size = new System.Drawing.Size(233, 344);
+            this.pictureBoxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxFoto.TabIndex = 1;
+            this.pictureBoxFoto.TabStop = false;
             // 
             // FormIphoneCadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 364);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxFoto);
             this.Controls.Add(this.groupBoxPrincipal);
             this.Name = "FormIphoneCadastrar";
             this.Text = "FormIphoneCadastrar";
             this.groupBoxPrincipal.ResumeLayout(false);
+            this.groupBoxPrincipal.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxTipo.ResumeLayout(false);
             this.groupBoxTipo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFoto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -377,15 +418,17 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerGarantia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePickerCompra;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonFornecedor;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonModelo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton radioButtonLoja;
         private System.Windows.Forms.RadioButton radioButtonApple;
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.Button buttonFechar;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxFoto;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBoxPrazo;
     }
 }
