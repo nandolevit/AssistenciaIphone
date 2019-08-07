@@ -37,21 +37,22 @@
             this.radioButtonApple = new System.Windows.Forms.RadioButton();
             this.buttonFechar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.textBoxVenda = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxCompra = new System.Windows.Forms.TextBox();
             this.labelCompra = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxObs = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePickerGarantia = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePickerCompra = new System.Windows.Forms.DateTimePicker();
             this.buttonFornecedor = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxFornecedor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonModelo = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxModelo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxTipo = new System.Windows.Forms.GroupBox();
             this.radioButtonSemi = new System.Windows.Forms.RadioButton();
@@ -167,21 +168,22 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonAdd);
             this.groupBox1.Controls.Add(this.textBoxVenda);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.textBoxCompra);
             this.groupBox1.Controls.Add(this.labelCompra);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBoxObs);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.dateTimePickerGarantia);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dateTimePickerCompra);
             this.groupBox1.Controls.Add(this.buttonFornecedor);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBoxFornecedor);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.buttonModelo);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textBoxModelo);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(6, 75);
             this.groupBox1.Name = "groupBox1";
@@ -189,6 +191,19 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalhes do aparelho:";
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.BackgroundImage = global::WinForms.Properties.Resources.icons8_Add_New_32;
+            this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAdd.FlatAppearance.BorderSize = 0;
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAdd.Location = new System.Drawing.Point(564, 71);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(20, 20);
+            this.buttonAdd.TabIndex = 16;
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // textBoxVenda
             // 
@@ -226,14 +241,14 @@
             this.labelCompra.TabIndex = 12;
             this.labelCompra.Text = "Valor Compra:";
             // 
-            // textBox3
+            // textBoxObs
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(252, 110);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(336, 98);
-            this.textBox3.TabIndex = 11;
+            this.textBoxObs.Enabled = false;
+            this.textBoxObs.Location = new System.Drawing.Point(252, 110);
+            this.textBoxObs.Multiline = true;
+            this.textBoxObs.Name = "textBoxObs";
+            this.textBoxObs.Size = new System.Drawing.Size(336, 98);
+            this.textBoxObs.TabIndex = 11;
             // 
             // label5
             // 
@@ -278,23 +293,23 @@
             // 
             // buttonFornecedor
             // 
-            this.buttonFornecedor.BackgroundImage = global::WinForms.Properties.Resources.icons8_Add_New_32;
+            this.buttonFornecedor.BackgroundImage = global::WinForms.Properties.Resources.icons8_Filter_32;
             this.buttonFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonFornecedor.FlatAppearance.BorderSize = 0;
             this.buttonFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFornecedor.Location = new System.Drawing.Point(564, 69);
+            this.buttonFornecedor.Location = new System.Drawing.Point(538, 71);
             this.buttonFornecedor.Name = "buttonFornecedor";
-            this.buttonFornecedor.Size = new System.Drawing.Size(24, 23);
+            this.buttonFornecedor.Size = new System.Drawing.Size(20, 20);
             this.buttonFornecedor.TabIndex = 5;
             this.buttonFornecedor.UseVisualStyleBackColor = true;
             this.buttonFornecedor.Click += new System.EventHandler(this.ButtonFornecedor_Click);
             // 
-            // textBox2
+            // textBoxFornecedor
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(554, 20);
-            this.textBox2.TabIndex = 4;
+            this.textBoxFornecedor.Location = new System.Drawing.Point(6, 71);
+            this.textBoxFornecedor.Name = "textBoxFornecedor";
+            this.textBoxFornecedor.Size = new System.Drawing.Size(526, 20);
+            this.textBoxFornecedor.TabIndex = 4;
             // 
             // label2
             // 
@@ -311,19 +326,19 @@
             this.buttonModelo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonModelo.FlatAppearance.BorderSize = 0;
             this.buttonModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModelo.Location = new System.Drawing.Point(566, 29);
+            this.buttonModelo.Location = new System.Drawing.Point(566, 32);
             this.buttonModelo.Name = "buttonModelo";
-            this.buttonModelo.Size = new System.Drawing.Size(24, 23);
+            this.buttonModelo.Size = new System.Drawing.Size(20, 20);
             this.buttonModelo.TabIndex = 2;
             this.buttonModelo.UseVisualStyleBackColor = true;
             this.buttonModelo.Click += new System.EventHandler(this.ButtonModelo_Click);
             // 
-            // textBox1
+            // textBoxModelo
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(554, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxModelo.Location = new System.Drawing.Point(6, 32);
+            this.textBoxModelo.Name = "textBoxModelo";
+            this.textBoxModelo.Size = new System.Drawing.Size(554, 20);
+            this.textBoxModelo.TabIndex = 1;
             // 
             // label1
             // 
@@ -405,21 +420,21 @@
         private System.Windows.Forms.GroupBox groupBoxTipo;
         private System.Windows.Forms.RadioButton radioButtonSemi;
         private System.Windows.Forms.RadioButton radioButtonNovo;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxModelo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxVenda;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxCompra;
         private System.Windows.Forms.Label labelCompra;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxObs;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePickerGarantia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePickerCompra;
         private System.Windows.Forms.Button buttonFornecedor;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxFornecedor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonModelo;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -430,5 +445,6 @@
         private System.Windows.Forms.PictureBox pictureBoxFoto;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxPrazo;
+        private System.Windows.Forms.Button buttonAdd;
     }
 }
