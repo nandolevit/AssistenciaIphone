@@ -482,6 +482,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -1340,9 +1348,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:SetupAssist"
+        "ProductName" = "8:Assistência Iphone"
         "ProductCode" = "8:{69424564-ABE6-410B-BB55-BDF7A430E6E2}"
-        "PackageCode" = "8:{BF86961A-57B6-47B2-AA6D-38550F8B9224}"
+        "PackageCode" = "8:{B766F2E7-22E4-408A-9F5F-D686094BDAE2}"
         "UpgradeCode" = "8:{5C2083AC-947C-42BE-BA10-24C59DDCAE71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1353,7 +1361,7 @@
         "Manufacturer" = "8:LevitSoft"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Assistência Ipone"
+        "Title" = "8:Assistência Iphone"
         "Subject" = "8:"
         "ARPCONTACT" = "8:LevitSoft"
         "Keywords" = "8:"
@@ -1877,7 +1885,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3E405E8CF8E24965BB9310F93E19EE31"
             {
-            "SourcePath" = "8:..\\WinForms\\obj\\Release\\LevitSoft.exe"
+            "SourcePath" = "8:..\\WinForms\\obj\\Debug\\LevitSoft.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_880EB6680DED4241BEC0B3EBB89B19C7"

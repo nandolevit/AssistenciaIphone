@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace WinForms
 {
@@ -31,6 +32,10 @@ namespace WinForms
             }
             else
             {
+                //Process process = new Process();
+                //process.StartInfo.FileName = "LevitSoft";
+                //process.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                //process.Start();
                 MessageBox.Show("O sistema já está aberto!");
             }
         }
