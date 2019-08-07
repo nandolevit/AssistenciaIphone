@@ -54,7 +54,6 @@ namespace WinForms
         SerializarNegocios serializarNegocios = new SerializarNegocios(Caminho);
         OnlineNegocio negocioOnline;
         AccessLogin accessLogin;
-        UnidadeInfo unidadeInfo;
 
         public Form1()
         {

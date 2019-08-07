@@ -19,7 +19,8 @@ namespace Negocios
 
         OnlineDB online = new OnlineDB();
 
-        public ChatOnlineColecao ConsultarChatMensagemNova(int chatOn)
+        #region Chat
+        public ChatOnlineColecao ConsultarChatGridNovaMensagem(int chatOn)
         {
             if (online.Conectar(EmpConexao))
             {
@@ -132,11 +133,12 @@ namespace Negocios
                 return 0;
         }
 
-        public UserLoginColecao ConsultarUserOnline()
+        public UserLoginColecao ConsultarUserOnline(int id)
         {
             //esse método é exclusivo para o chat online, possui um método de conexão exclusiva
             if (online.Conectar(EmpConexao))
             {
+                online.AddParametrosMySql("@id", id);
                 DataTable dataTable = new DataTable();
                 dataTable = online.dataTableMySql("spConsultarUserOnline");
                 if (dataTable != null)
@@ -148,6 +150,9 @@ namespace Negocios
                 return null;
         }
 
+        #endregion Chat
+
+        #region User
         public int InsertUserLogin(UserInfo userInfo)
         {
             if (online.Conectar(EmpConexao))
@@ -205,6 +210,8 @@ namespace Negocios
             else
                 return null;
         }
+
+        #endregion User
 
     }
 }

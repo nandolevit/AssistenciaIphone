@@ -66,9 +66,9 @@ namespace AccessDB
                     cmd.ExecuteNonQuery();
                     return true;
                 }
-                catch (MySqlException ex)
+                catch 
                 {
-                    throw new Exception("Error: " + ex.Message);
+                    return false;
                 }
                 finally
                 {
@@ -94,7 +94,7 @@ namespace AccessDB
                 {
                     return Convert.ToInt32(cmd.ExecuteScalar());
                 }
-                catch (MySqlException)
+                catch
                 {
                     return 0;
                     //throw new Exception("Error: " + ex.Message);
@@ -123,20 +123,20 @@ namespace AccessDB
 
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
-                    if (conn.State != ConnectionState.Open)
-                        conn.Open();
+                    //if (conn.State != ConnectionState.Open)
+                    //    conn.Open();
 
                     da.Fill(dt);
-                    conn.Close();
+                    //conn.Close();
 
                     if (dt.Rows.Count > 0)
                         return dt;
                     else
                         return null;
                 }
-                catch (MySqlException ex)
+                catch
                 {
-                    throw new Exception("Error: " + ex.Message);
+                    return null;
                 }
                 finally
                 {
