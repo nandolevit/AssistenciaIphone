@@ -28,12 +28,13 @@ namespace WinForms
         PessoaInfo infoCliente;
         IphoneCelularInfo infoCelular;
         public IphoneCelularInfo SelecionadoIphone { get; set; }
+        public IphoneModeloCorInfo SelecionadaFoto { get; set; }
         int cod = 0;
        
-        public FormIphoneModelo()
-        {
-            Inicializar();
-        }
+        //public FormIphoneModelo()
+        //{
+        //    Inicializar();
+        //}
 
         public FormIphoneModelo(PessoaInfo cliente)
         {
@@ -204,6 +205,7 @@ namespace WinForms
                 {
                     if (comboBoxCor.Text == cor.iphcordescricao)
                     {
+                        SelecionadaFoto = cor;
                         ConvertImagem(cor.modcorfoto);
                         break;
                     }
@@ -294,6 +296,7 @@ namespace WinForms
                 celanocompra = maskedTextBoxAno.Text,
                 celcapacidade = textBoxCap.Text,
                 celcor = textBoxCor.Text,
+                celidcor = SelecionadaFoto.modcoridcor,
                 celid = 0,
                 celidcliente = infoCliente.pssid,
                 celidmodiphone = infoIphone.iphmodid,

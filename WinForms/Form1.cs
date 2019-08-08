@@ -497,7 +497,7 @@ namespace WinForms
             User = null;
         }
 
-        private void FormAbertos(Form form, bool panel = false)
+        private void AbrirForm(Form form, bool panel = false)
         {
             if (AbertoForm(form))
             {
@@ -528,25 +528,25 @@ namespace WinForms
         private void MenuItemSobre_Click(object sender, EventArgs e)
         {
             FormEmpresa formEmpresa = new FormEmpresa(Empresa);
-            FormAbertos(formEmpresa);
+            AbrirForm(formEmpresa);
         }
 
         private void MenuItemEntradaSaida_Click(object sender, EventArgs e)
         {
             FormEntradaSaida formEntradaSaida = new FormEntradaSaida();
-            FormAbertos(formEntradaSaida);
+            AbrirForm(formEntradaSaida);
         }
 
         private void MenuItemProduto_Click(object sender, EventArgs e)
         {
             FormProdutos formProdutos = new FormProdutos();
-            FormAbertos(formProdutos);
+            AbrirForm(formProdutos);
         }
 
         private void MenuItemLancarEstoque_Click(object sender, EventArgs e)
         {
             FormEstoqueContagem formEstoqueContagem = new FormEstoqueContagem();
-            FormAbertos(formEstoqueContagem, true);
+            AbrirForm(formEstoqueContagem, true);
         }
 
 
@@ -563,13 +563,13 @@ namespace WinForms
         private void AbrirVenda()
         {
             FormVenda formVenda = new FormVenda();
-            FormAbertos(formVenda, true);
+            AbrirForm(formVenda, true);
         }
 
         private void MenuItemUnidade_Click(object sender, EventArgs e)
         {
             FormUnidade formUnidade = new FormUnidade();
-            FormAbertos(formUnidade);
+            AbrirForm(formUnidade);
         }
 
         private void MenuItemLancarEstoque_Click_1(object sender, EventArgs e)
@@ -578,14 +578,14 @@ namespace WinForms
             if (caixa.VerificarCaixa())
             {
                 FormProdEstoque formProdEstoque = new FormProdEstoque();
-                FormAbertos(formProdEstoque);
+                AbrirForm(formProdEstoque);
             }
         }
 
         private void MenuItemimprimir2Via_Click(object sender, EventArgs e)
         {
             FormCupom formCupom = new FormCupom();
-            FormAbertos(formCupom);
+            AbrirForm(formCupom);
         }
 
         private void MenuItemCaixa_Click(object sender, EventArgs e)
@@ -595,7 +595,7 @@ namespace WinForms
             if (caixa.CaixaAberto() != null)
             {
                 FormCaixa formCaixa = new FormCaixa(EnumCaixa.Caixa);
-                FormAbertos(formCaixa);
+                AbrirForm(formCaixa);
             }
             else
                 caixa.VerificarCaixa();
@@ -607,7 +607,7 @@ namespace WinForms
             if (caixa.VerificarCaixa())
             {
                 FormLancamentos formLancamentos = new FormLancamentos(true);
-                FormAbertos(formLancamentos);
+                AbrirForm(formLancamentos);
             }
 
         }
@@ -618,7 +618,7 @@ namespace WinForms
             if (caixa.VerificarCaixa())
             {
                 FormSangria formSangria = new FormSangria();
-                FormAbertos(formSangria);
+                AbrirForm(formSangria);
             }
 
         }
@@ -629,14 +629,14 @@ namespace WinForms
             if (caixa.VerificarCaixa())
             {
                 FormCaixa formCaixa = new FormCaixa(EnumCaixa.Turno);
-                FormAbertos(formCaixa);
+                AbrirForm(formCaixa);
             }
         }
 
         private void AbrirVendaPeriodo()
         {
             FormVendaRelatorio formVendaRelatorio = new FormVendaRelatorio();
-            FormAbertos(formVendaRelatorio, true);
+            AbrirForm(formVendaRelatorio, true);
         }
 
         private void MenuItemVendaPeriodo_Click(object sender, EventArgs e)
@@ -757,7 +757,7 @@ namespace WinForms
                 formPessoa.Dispose();
             }
             else
-                FormAbertos(formPessoa);
+                AbrirForm(formPessoa);
 
             
         }
@@ -765,7 +765,7 @@ namespace WinForms
         private void button2_Click(object sender, EventArgs e)
         {
             FormProdutos formProdutos = new FormProdutos();
-            FormAbertos(formProdutos);
+            AbrirForm(formProdutos);
         }
 
         private void buttonOs_Click(object sender, EventArgs e)
@@ -778,7 +778,7 @@ namespace WinForms
             if (Unidade.uniassistencia == EnumAssistencia.Assistencia)
             {
                 FormServicoListar formServicoListar = new FormServicoListar();
-                FormAbertos(formServicoListar, true);
+                AbrirForm(formServicoListar, true);
             }
         }
 
@@ -790,7 +790,7 @@ namespace WinForms
         private void BuscarPessoa(EnumPessoaTipo enumPessoa)
         {
             FormPessoaConsultar formClienteConsultar = new FormPessoaConsultar(enumPessoa);
-            FormAbertos(formClienteConsultar);
+            AbrirForm(formClienteConsultar);
         }
 
         private void buttonProdutoBuscar_Click(object sender, EventArgs e)
@@ -801,7 +801,7 @@ namespace WinForms
         private void BuscarProduto()
         {
             FormProdutosConsultar formProdutosConsultar = new FormProdutosConsultar();
-            FormAbertos(formProdutosConsultar);
+            AbrirForm(formProdutosConsultar);
         }
 
         private void buttonVendas_Click(object sender, EventArgs e)
@@ -827,7 +827,7 @@ namespace WinForms
         private void buttonEntrada_Click(object sender, EventArgs e)
         {
             FormEntradaSaida formEntradaSaida = new FormEntradaSaida();
-            FormAbertos(formEntradaSaida, true);
+            AbrirForm(formEntradaSaida, true);
         }
 
         private void buttonSenha_Click(object sender, EventArgs e)
@@ -859,7 +859,7 @@ namespace WinForms
             if (caixa.VerificarCaixa())
             {
                 FormCaixa formCaixa = new FormCaixa(enumCaixa);
-                FormAbertos(formCaixa);
+                AbrirForm(formCaixa);
             }
         }
 
@@ -871,19 +871,19 @@ namespace WinForms
         private void relatorioDeVendasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormRelatorioVendaVendedor formRelatorioVendaVendedor = new FormRelatorioVendaVendedor();
-            FormAbertos(formRelatorioVendaVendedor, true);
+            AbrirForm(formRelatorioVendaVendedor, true);
         }
 
         private void contarProdutoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormEstoqueContagem formEstoqueContagem = new FormEstoqueContagem(true);
-            FormAbertos(formEstoqueContagem, true);
+            AbrirForm(formEstoqueContagem, true);
         }
 
         private void listaDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormProdutoEstoqueDetalhes formProdutoEstoqueDetalhes = new FormProdutoEstoqueDetalhes();
-            FormAbertos(formProdutoEstoqueDetalhes, true);
+            AbrirForm(formProdutoEstoqueDetalhes, true);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -912,15 +912,10 @@ namespace WinForms
             formEmail.ShowDialog(this);
         }
 
-        private void CadastroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void IphoneToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FormIphoneCadastrar formIphoneCadastrar = new FormIphoneCadastrar();
-            FormAbertos(formIphoneCadastrar);
+            AbrirForm(formIphoneCadastrar);
         }
     }
 }

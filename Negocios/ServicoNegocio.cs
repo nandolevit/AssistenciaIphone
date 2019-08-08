@@ -271,7 +271,11 @@ namespace Negocios
                     celiphonedescricao = Convert.ToString(row["celiphonedescricao"]),
                     celmodelo = Convert.ToString(row["celmodelo"]),
                     celobs = Convert.ToString(row["celobs"]),
-                    celserie = Convert.ToString(row["celserie"])
+                    celserie = Convert.ToString(row["celserie"]),
+                    celidcor = Convert.ToInt32(row["celidcor"]),
+                    celicloudlogin = Convert.ToString(row["celicloudlogin"]),
+                    celicloudsenha = Convert.ToString(row["celicloudsenha"]),
+                    celsenha = Convert.ToString(row["celsenha"])
                 };
 
                 colecao.Add(phone);
@@ -297,6 +301,7 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@senha", phone.celsenha);
                 accessDbMySql.AddParametrosMySql("@icloudlogin", phone.celicloudlogin);
                 accessDbMySql.AddParametrosMySql("@icloudsenha", phone.celicloudsenha);
+                accessDbMySql.AddParametrosMySql("@idcor", phone.celidcor);
 
                 return accessDbMySql.ExecutarScalarMySql("spInsertIphoneCelular");
             }

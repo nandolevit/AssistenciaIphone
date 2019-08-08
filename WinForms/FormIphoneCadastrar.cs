@@ -17,6 +17,7 @@ namespace WinForms
     public partial class FormIphoneCadastrar : Form
     {
         IphoneCelularInfo infoModelo;
+        PessoaInfo infoFornecedor;
 
         public FormIphoneCadastrar()
         {
@@ -45,26 +46,20 @@ namespace WinForms
             else
             {
                 comboBoxPrazo.Enabled = true;
+                dateTimePickerGarantia.Value = DateTime.Now.AddDays(Convert.ToInt32(comboBoxPrazo.Text));
             }
         }
 
         private void ButtonModelo_Click(object sender, EventArgs e)
         {
-            FormIphoneModelo formIphoneModelo = new FormIphoneModelo();
+            FormIphoneModelo formIphoneModelo = new FormIphoneModelo(infoFornecedor);
             if(formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
             {
                 infoModelo = formIphoneModelo.SelecionadoIphone;
+                ConvertImagem(formIphoneModelo.SelecionadaFoto.modcorfoto);
                 textBoxModelo.Text = infoModelo.ToString();
                 textBoxObs.Text = infoModelo.celobs;
 
-                foreach (IphoneModeloCorInfo cor in Form1.IphoneCorColecao)
-                {
-                    if (infoModelo.celcor == cor.iphcordescricao)
-                    {
-                        ConvertImagem(cor.modcorfoto);
-                        break;
-                    }
-                }
             }
             formIphoneModelo.Dispose();
         }
@@ -88,7 +83,11 @@ namespace WinForms
         private void ButtonFornecedor_Click(object sender, EventArgs e)
         {
             FormPessoaConsultar formPessoaConsultar = new FormPessoaConsultar(EnumPessoaTipo.Fornecedor);
-            formPessoaConsultar.ShowDialog(this);
+            if(formPessoaConsultar.ShowDialog(this) == DialogResult.Yes)
+            {
+                infoFornecedor = formPessoaConsultar.SelecionadoCliente;
+                Selecionado();
+            }
             formPessoaConsultar.Dispose();
         }
 
@@ -97,8 +96,60 @@ namespace WinForms
             FormPessoa formPessoa = new FormPessoa(EnumPessoaTipo.Fornecedor);
             if (formPessoa.ShowDialog(this) == DialogResult.Yes)
             {
-
+                infoFornecedor = formPessoa.SelecionadoPessoa;
+                Selecionado();
             }
+        }
+
+        private void Selecionado()
+        {
+            textBoxFornecedor.Text = infoFornecedor.pssnome;
+            groupBoxCompra.Enabled = true;
+        }
+
+        private void RadioButtonNovo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonNovo.Checked)
+            {
+                radioButtonApple.Checked = true;
+            }
+            else
+            {
+                radioButtonLoja.Checked = true;
+            }
+        }
+
+        private void ComboBoxPrazo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DateTimePickerGarantia_ValueChanged(object sender, EventArgs e)
+        {
+            TimeSpan span = dateTimePickerGarantia.Value.Subtract(DateTime.Now.Date);
+
+            if (span.Days < 0)
+            {
+                dateTimePickerGarantia.Value = DateTime.Now.Date;
+                return;
+            }
+
+            if (!comboBoxPrazo.Items.Contains(Convert.ToString(span.Days)))
+                comboBoxPrazo.Items.Add(Convert.ToString(span.Days));
+
+            comboBoxPrazo.SelectedItem = Convert.ToString(span.Days);
+        }
+
+        private void FormIphoneCadastrar_Load(object sender, EventArgs e)
+        {
+            comboBoxPrazo.SelectedItem = "90";
+            textBoxCompra.Text = "0";
+            textBoxVenda.Text = "0";
+        }
+
+        private void ComboBoxPrazo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dateTimePickerGarantia.Value = DateTime.Now.AddDays(Convert.ToInt32(comboBoxPrazo.Text));
         }
     }
 }

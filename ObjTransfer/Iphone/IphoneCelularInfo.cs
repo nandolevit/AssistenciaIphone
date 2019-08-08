@@ -22,6 +22,7 @@ namespace ObjTransfer
         public string celsenha { get; set; }
         public string celicloudlogin { get; set; }
         public string celicloudsenha { get; set; }
+        public int celidcor { get; set; }
 
         public override string ToString()
         {
