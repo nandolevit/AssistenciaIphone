@@ -30,20 +30,20 @@ namespace WinForms
 
         bool saved; //confirma se a OS foi salva, para quando fechar a janela atualizar a lista
 
-        public FormServico(PessoaInfo cliente)
+        //public FormServico(PessoaInfo cliente)
+        //{
+        //    Inicializar();
+        //    infoPessoa = cliente;
+        //    PreencherForm();
+        //}
+
+        public FormServico(PessoaInfo cliente, IphoneCelularInfo celular)
         {
             Inicializar();
             infoPessoa = cliente;
+            infoCelular = celular;
             PreencherForm();
         }
-
-        //public FormServico(ClienteInfo cliente, IphoneCelularInfo celular)
-        //{
-        //    Inicializar();
-        //    infoCliente = cliente;
-        //    infoCelular = celular;
-        //    PreencherForm();
-        //}
 
         public FormServico()
         {
@@ -63,7 +63,6 @@ namespace WinForms
         {
             textBoxNome.Text = infoPessoa.pssid + " - " + infoPessoa.pssnome;
 
-            pictureBoxLoad.Visible = false;
             thread = new Thread(PreencherFormThread);
             form1.ExecutarThread(thread);
 
@@ -85,7 +84,6 @@ namespace WinForms
         {
             colecaoPessoa = negocioFunc.ConsultarFuncTecnico();
             Form1.encerrarThread = true;
-            pictureBoxLoad.Visible = false;
         }
 
         private void buttonFechar_Click(object sender, EventArgs e)
@@ -184,9 +182,9 @@ namespace WinForms
         private void Selecionado()
         {
             //if (dataGridViewServico.SelectedRows.Count > 0)
-                //infoServ = (ServicoInfo)dataGridViewServico.SelectedRows[0].DataBoundItem;
+            //infoServ = (ServicoInfo)dataGridViewServico.SelectedRows[0].DataBoundItem;
         }
-        
+
         private void buttonFechar_Click_1(object sender, EventArgs e)
         {
             this.Close();
@@ -201,9 +199,9 @@ namespace WinForms
         {
             buttonCliente.Select();
             colecaoServIphone = new ServicoIphoneColecao();
-                colecaoServ = new ServicoColecao();
+            colecaoServ = new ServicoColecao();
 
-            if (infoPessoa != null)
+            if (infoCelular != null)
                 AbrirDefeito();
         }
 
@@ -258,7 +256,7 @@ namespace WinForms
             {
                 textBoxCodTec.Text = formConsultar_Cod_Descricao.Selecionado.Cod;
                 textBoxResponsavel.Text = formConsultar_Cod_Descricao.Selecionado.Descricao;
-                
+
             }
         }
 

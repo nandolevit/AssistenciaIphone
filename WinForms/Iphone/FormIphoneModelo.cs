@@ -16,31 +16,26 @@ namespace WinForms
 {
     public partial class FormIphoneModelo : Form
     {
-        Thread thread;
-        Form1 form1 = new Form1();
         IphoneModeloColecao colecaoIphone;
         IphoneModeloColecao colecaoIpad;
         IphoneModeloInfo infoIphone;
-        ServicoNegocio negocioServ = new ServicoNegocio(Form1.Empresa.empconexao);
         IphoneModeloCorColecao colecaoCor;
         IphoneModeloCorColecao colecaoCorSelecionada;
-        CodDescricaoColecao colecaoCores;
-        PessoaInfo infoCliente;
         IphoneCelularInfo infoCelular;
         public IphoneCelularInfo SelecionadoIphone { get; set; }
         public IphoneModeloCorInfo SelecionadaFoto { get; set; }
         int cod = 0;
-       
-        //public FormIphoneModelo()
-        //{
-        //    Inicializar();
-        //}
 
-        public FormIphoneModelo(PessoaInfo cliente)
+        public FormIphoneModelo()
         {
             Inicializar();
-            infoCliente = cliente;
         }
+
+        //public FormIphoneModelo(PessoaInfo cliente)
+        //{
+        //    Inicializar();
+        //    infoCliente = cliente;
+        //}
 
         private void Inicializar()
         {
@@ -57,8 +52,6 @@ namespace WinForms
 
         private void FormIphoneModelo_Load(object sender, EventArgs e)
         {
-            colecaoCores = negocioServ.ConsultarIphoneCorColecao();
-
             colecaoIpad = new IphoneModeloColecao();
             colecaoIphone = new IphoneModeloColecao();
 
@@ -70,13 +63,6 @@ namespace WinForms
                     colecaoIphone.Add(Form1.IphoneColecao[i]);
             }
 
-            //foreach (IphoneModeloInfo phone in Form1.IphoneColecao)
-            //{
-            //    if (phone.iphmodipad)
-            //        colecaoIpad.Add(phone);
-            //    else
-            //        colecaoIphone.Add(phone);
-            //}
 
             colecaoCor = Form1.IphoneCorColecao;
             comboBoxModelo.DataSource = colecaoIphone;
@@ -108,7 +94,7 @@ namespace WinForms
                 textBoxNumMod.Clear();
                 textBoxCor.Clear();
 
-                if (radioButtonIphone.Checked)
+                if (comboBoxTipo.Text == "Iphone")
                 {
                     foreach (IphoneModeloInfo phone in colecaoIphone)
                     {
@@ -199,7 +185,7 @@ namespace WinForms
         {
             textBoxCor.Text = comboBoxCor.Text;
 
-            if (radioButtonIphone.Checked)
+            if (comboBoxTipo.Text == "Iphone")
             {
                 foreach (IphoneModeloCorInfo cor in colecaoCorSelecionada)
                 {
@@ -299,7 +285,7 @@ namespace WinForms
                 celcor = textBoxCor.Text,
                 celidcor = SelecionadaFoto.modcoridcor,
                 celid = 0,
-                celidcliente = infoCliente.pssid,
+                celidcliente = 0,
                 celidmodiphone = infoIphone.iphmodid,
                 celimei = maskedTextBoxImei.Text,
                 celmodelo = textBoxNumMod.Text,
@@ -312,27 +298,39 @@ namespace WinForms
             };
         }
 
-        private void RadioButtonIphone_CheckedChanged(object sender, EventArgs e)
+        private void TipoSelecionando()
         {
-            if (radioButtonIphone.Checked)
-            {
-                comboBoxModelo.ValueMember = "iphmodid";
-                comboBoxModelo.DisplayMember = "iphmoddescricao";
-                comboBoxModelo.DataSource = colecaoIphone;
 
-                if (tabControl1.TabPages.Count == 1)
-                    tabControl1.TabPages.Add(tabPage2);
-
-                textBoxDetalhes.ScrollBars = ScrollBars.None;
-            }
-            else
+            switch (comboBoxTipo.Text)
             {
-                comboBoxModelo.ValueMember = "iphmodid";
-                comboBoxModelo.DisplayMember = "iphmoddescricao";
-                comboBoxModelo.DataSource = colecaoIpad;
-                tabControl1.TabPages.RemoveAt(1);
-                textBoxDetalhes.ScrollBars = ScrollBars.Vertical;
+                case "Iphone":
+
+                    comboBoxModelo.ValueMember = "iphmodid";
+                    comboBoxModelo.DisplayMember = "iphmoddescricao";
+                    comboBoxModelo.DataSource = colecaoIphone;
+
+                    if (tabControl1.TabPages.Count == 1)
+                        tabControl1.TabPages.Add(tabPage2);
+
+                    textBoxDetalhes.ScrollBars = ScrollBars.None;
+
+                    break;
+                case "Ipad":
+
+
+                    comboBoxModelo.ValueMember = "iphmodid";
+                    comboBoxModelo.DisplayMember = "iphmoddescricao";
+                    comboBoxModelo.DataSource = colecaoIpad;
+                    tabControl1.TabPages.RemoveAt(1);
+                    textBoxDetalhes.ScrollBars = ScrollBars.Vertical;
+
+                    break;
+                case "Apple Watch":
+                    break;
+                default:
+                    break;
             }
+
         }
 
         private void ButtonFoto_Click(object sender, EventArgs e)
@@ -353,9 +351,9 @@ namespace WinForms
                     if (num == textBoxNum.Text)
                     {
                         if (phone.iphmodipad)
-                            radioButtonIpad.Checked = true;
+                            comboBoxTipo.SelectedItem = "Ipad";
                         else
-                            radioButtonIphone.Checked = true;
+                            comboBoxTipo.SelectedItem = "Iphone";
 
                         comboBoxModelo.SelectedIndex = -1;
                         infoIphone = phone;
@@ -383,7 +381,7 @@ namespace WinForms
             }
             else
             {
-                if (radioButtonIphone.Checked)
+                if (comboBoxTipo.Text == "Iphone")
                     if (tabControl1.TabPages.Count == 1)
                         tabControl1.TabPages.Add(tabPage2);
 
@@ -396,6 +394,11 @@ namespace WinForms
         {
             if (textBoxNum.Text.Length == 5)
                 Pesquisar();
+        }
+
+        private void ComboBoxTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TipoSelecionando();
         }
     }
 }

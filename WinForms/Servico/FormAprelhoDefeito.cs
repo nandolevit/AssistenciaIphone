@@ -133,18 +133,9 @@ namespace WinForms
                 SelecionadoCelular = infoCelular;
             }
             else
-            {
                 if (modelo)
-                {
-                    FormIphoneModelo formIphoneModelo = new FormIphoneModelo(infoCliente);
-                    if (formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
-                    {
-                        infoCelular = formIphoneModelo.SelecionadoIphone;
-                        textBoxCodProd.Text = string.Format("{0:00000}", infoCelular.celid);
-                        textBoxProdDescricao.Text = infoCelular.ToString();
-                    }
-                }
-            }
+                    AbrirIphoneModelo();
+
             formConsultar_Cod_Descricao.Dispose();
         }
 
@@ -189,7 +180,7 @@ namespace WinForms
 
         private void AbrirIphoneModelo()
         {
-            FormIphoneModelo formIphoneModelo = new FormIphoneModelo(infoCliente);
+            FormIphoneModelo formIphoneModelo = new FormIphoneModelo();
             if (formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
             {
                 infoCelular = formIphoneModelo.SelecionadoIphone;

@@ -95,13 +95,14 @@
             this.label13 = new System.Windows.Forms.Label();
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.buttonFechar = new System.Windows.Forms.Button();
-            this.groupBoxAparelho = new System.Windows.Forms.GroupBox();
-            this.radioButtonIpad = new System.Windows.Forms.RadioButton();
-            this.radioButtonIphone = new System.Windows.Forms.RadioButton();
             this.buttonFoto = new System.Windows.Forms.Button();
             this.textBoxNum = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBoxLoad = new System.Windows.Forms.PictureBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxTipo = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.panelPrincipal.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -118,7 +119,6 @@
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagem)).BeginInit();
-            this.groupBoxAparelho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).BeginInit();
             this.SuspendLayout();
             // 
@@ -313,6 +313,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.maskedTextBox1);
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.maskedTextBoxSenha);
             this.tabPage1.Controls.Add(this.maskedTextBoxImei);
             this.tabPage1.Controls.Add(this.maskedTextBoxAno);
@@ -335,7 +337,7 @@
             // 
             // maskedTextBoxSenha
             // 
-            this.maskedTextBoxSenha.Location = new System.Drawing.Point(6, 174);
+            this.maskedTextBoxSenha.Location = new System.Drawing.Point(6, 172);
             this.maskedTextBoxSenha.Mask = "000000";
             this.maskedTextBoxSenha.Name = "maskedTextBoxSenha";
             this.maskedTextBoxSenha.Size = new System.Drawing.Size(73, 20);
@@ -344,16 +346,16 @@
             // 
             // maskedTextBoxImei
             // 
-            this.maskedTextBoxImei.Location = new System.Drawing.Point(6, 216);
+            this.maskedTextBoxImei.Location = new System.Drawing.Point(6, 133);
             this.maskedTextBoxImei.Mask = "000000000000000";
             this.maskedTextBoxImei.Name = "maskedTextBoxImei";
-            this.maskedTextBoxImei.Size = new System.Drawing.Size(148, 20);
+            this.maskedTextBoxImei.Size = new System.Drawing.Size(120, 20);
             this.maskedTextBoxImei.TabIndex = 6;
             this.maskedTextBoxImei.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // maskedTextBoxAno
             // 
-            this.maskedTextBoxAno.Location = new System.Drawing.Point(6, 135);
+            this.maskedTextBoxAno.Location = new System.Drawing.Point(85, 172);
             this.maskedTextBoxAno.Mask = "0000";
             this.maskedTextBoxAno.Name = "maskedTextBoxAno";
             this.maskedTextBoxAno.Size = new System.Drawing.Size(41, 20);
@@ -366,9 +368,9 @@
             this.groupBoxIcloud.Controls.Add(this.textBoxIcloudSenha);
             this.groupBoxIcloud.Controls.Add(this.labelLogin);
             this.groupBoxIcloud.Controls.Add(this.textBoxEmail);
-            this.groupBoxIcloud.Location = new System.Drawing.Point(85, 129);
+            this.groupBoxIcloud.Location = new System.Drawing.Point(132, 122);
             this.groupBoxIcloud.Name = "groupBoxIcloud";
-            this.groupBoxIcloud.Size = new System.Drawing.Size(493, 65);
+            this.groupBoxIcloud.Size = new System.Drawing.Size(446, 75);
             this.groupBoxIcloud.TabIndex = 9;
             this.groupBoxIcloud.TabStop = false;
             this.groupBoxIcloud.Text = "Icloud:";
@@ -376,7 +378,7 @@
             // labelIcloudSenha
             // 
             this.labelIcloudSenha.AutoSize = true;
-            this.labelIcloudSenha.Location = new System.Drawing.Point(373, 16);
+            this.labelIcloudSenha.Location = new System.Drawing.Point(12, 48);
             this.labelIcloudSenha.Name = "labelIcloudSenha";
             this.labelIcloudSenha.Size = new System.Drawing.Size(41, 13);
             this.labelIcloudSenha.TabIndex = 2;
@@ -384,7 +386,7 @@
             // 
             // textBoxIcloudSenha
             // 
-            this.textBoxIcloudSenha.Location = new System.Drawing.Point(376, 32);
+            this.textBoxIcloudSenha.Location = new System.Drawing.Point(59, 45);
             this.textBoxIcloudSenha.Name = "textBoxIcloudSenha";
             this.textBoxIcloudSenha.Size = new System.Drawing.Size(111, 20);
             this.textBoxIcloudSenha.TabIndex = 3;
@@ -392,7 +394,7 @@
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Location = new System.Drawing.Point(6, 16);
+            this.labelLogin.Location = new System.Drawing.Point(12, 23);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(36, 13);
             this.labelLogin.TabIndex = 0;
@@ -400,15 +402,15 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(9, 32);
+            this.textBoxEmail.Location = new System.Drawing.Point(59, 20);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(361, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(380, 20);
             this.textBoxEmail.TabIndex = 1;
             // 
             // labelSenha
             // 
             this.labelSenha.AutoSize = true;
-            this.labelSenha.Location = new System.Drawing.Point(6, 158);
+            this.labelSenha.Location = new System.Drawing.Point(6, 156);
             this.labelSenha.Name = "labelSenha";
             this.labelSenha.Size = new System.Drawing.Size(41, 13);
             this.labelSenha.TabIndex = 3;
@@ -425,11 +427,11 @@
             // 
             // textBoxObs
             // 
-            this.textBoxObs.Location = new System.Drawing.Point(160, 216);
+            this.textBoxObs.Location = new System.Drawing.Point(132, 216);
             this.textBoxObs.Multiline = true;
             this.textBoxObs.Name = "textBoxObs";
             this.textBoxObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxObs.Size = new System.Drawing.Size(418, 64);
+            this.textBoxObs.Size = new System.Drawing.Size(446, 64);
             this.textBoxObs.TabIndex = 11;
             // 
             // groupBoxCaracteristica
@@ -540,7 +542,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 119);
+            this.label7.Location = new System.Drawing.Point(85, 156);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 13);
             this.label7.TabIndex = 1;
@@ -549,7 +551,7 @@
             // labelImei
             // 
             this.labelImei.AutoSize = true;
-            this.labelImei.Location = new System.Drawing.Point(6, 200);
+            this.labelImei.Location = new System.Drawing.Point(6, 117);
             this.labelImei.Name = "labelImei";
             this.labelImei.Size = new System.Drawing.Size(32, 13);
             this.labelImei.TabIndex = 5;
@@ -558,7 +560,7 @@
             // labelSerie
             // 
             this.labelSerie.AutoSize = true;
-            this.labelSerie.Location = new System.Drawing.Point(6, 244);
+            this.labelSerie.Location = new System.Drawing.Point(6, 195);
             this.labelSerie.Name = "labelSerie";
             this.labelSerie.Size = new System.Drawing.Size(34, 13);
             this.labelSerie.TabIndex = 7;
@@ -566,9 +568,9 @@
             // 
             // textBoxSerie
             // 
-            this.textBoxSerie.Location = new System.Drawing.Point(6, 260);
+            this.textBoxSerie.Location = new System.Drawing.Point(6, 211);
             this.textBoxSerie.Name = "textBoxSerie";
-            this.textBoxSerie.Size = new System.Drawing.Size(148, 20);
+            this.textBoxSerie.Size = new System.Drawing.Size(86, 20);
             this.textBoxSerie.TabIndex = 8;
             // 
             // tabPage2
@@ -846,44 +848,6 @@
             this.buttonFechar.UseVisualStyleBackColor = true;
             this.buttonFechar.Click += new System.EventHandler(this.ButtonFechar_Click);
             // 
-            // groupBoxAparelho
-            // 
-            this.groupBoxAparelho.Controls.Add(this.radioButtonIpad);
-            this.groupBoxAparelho.Controls.Add(this.radioButtonIphone);
-            this.groupBoxAparelho.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxAparelho.ForeColor = System.Drawing.Color.White;
-            this.groupBoxAparelho.Location = new System.Drawing.Point(12, 12);
-            this.groupBoxAparelho.Name = "groupBoxAparelho";
-            this.groupBoxAparelho.Size = new System.Drawing.Size(140, 42);
-            this.groupBoxAparelho.TabIndex = 0;
-            this.groupBoxAparelho.TabStop = false;
-            this.groupBoxAparelho.Text = "Selecione:";
-            // 
-            // radioButtonIpad
-            // 
-            this.radioButtonIpad.AutoSize = true;
-            this.radioButtonIpad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonIpad.Location = new System.Drawing.Point(76, 16);
-            this.radioButtonIpad.Name = "radioButtonIpad";
-            this.radioButtonIpad.Size = new System.Drawing.Size(50, 17);
-            this.radioButtonIpad.TabIndex = 1;
-            this.radioButtonIpad.Text = "Ipad";
-            this.radioButtonIpad.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonIphone
-            // 
-            this.radioButtonIphone.AutoSize = true;
-            this.radioButtonIphone.Checked = true;
-            this.radioButtonIphone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonIphone.Location = new System.Drawing.Point(6, 16);
-            this.radioButtonIphone.Name = "radioButtonIphone";
-            this.radioButtonIphone.Size = new System.Drawing.Size(64, 17);
-            this.radioButtonIphone.TabIndex = 0;
-            this.radioButtonIphone.TabStop = true;
-            this.radioButtonIphone.Text = "Iphone";
-            this.radioButtonIphone.UseVisualStyleBackColor = true;
-            this.radioButtonIphone.CheckedChanged += new System.EventHandler(this.RadioButtonIphone_CheckedChanged);
-            // 
             // buttonFoto
             // 
             this.buttonFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -930,17 +894,62 @@
             this.pictureBoxLoad.TabStop = false;
             this.pictureBoxLoad.Visible = false;
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(98, 211);
+            this.maskedTextBox1.Mask = "00";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(28, 20);
+            this.maskedTextBox1.TabIndex = 13;
+            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(95, 195);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Bat.:";
+            // 
+            // comboBoxTipo
+            // 
+            this.comboBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxTipo.FormattingEnabled = true;
+            this.comboBoxTipo.Items.AddRange(new object[] {
+            "Iphone",
+            "Ipad",
+            "Apple Watch"});
+            this.comboBoxTipo.Location = new System.Drawing.Point(12, 32);
+            this.comboBoxTipo.Name = "comboBoxTipo";
+            this.comboBoxTipo.Size = new System.Drawing.Size(140, 21);
+            this.comboBoxTipo.TabIndex = 12;
+            this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(15, 17);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(132, 13);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "Selecione o Aparelho:";
+            // 
             // FormIphoneModelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1086, 546);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.comboBoxTipo);
             this.Controls.Add(this.pictureBoxLoad);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBoxNum);
             this.Controls.Add(this.buttonFoto);
-            this.Controls.Add(this.groupBoxAparelho);
             this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(this.buttonFechar);
             this.Controls.Add(this.label13);
@@ -978,8 +987,6 @@
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagem)).EndInit();
-            this.groupBoxAparelho.ResumeLayout(false);
-            this.groupBoxAparelho.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1046,9 +1053,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.Button buttonFechar;
-        private System.Windows.Forms.GroupBox groupBoxAparelho;
-        private System.Windows.Forms.RadioButton radioButtonIpad;
-        private System.Windows.Forms.RadioButton radioButtonIphone;
         private System.Windows.Forms.Button buttonFoto;
         private System.Windows.Forms.TextBox textBoxNum;
         private System.Windows.Forms.Label label14;
@@ -1062,5 +1066,9 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBoxImei;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxAno;
         private System.Windows.Forms.PictureBox pictureBoxLoad;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxTipo;
+        private System.Windows.Forms.Label label15;
     }
 }

@@ -283,7 +283,7 @@ namespace WinForms
 
             accessLogin = new AccessLogin(Form1.Empresa.empconexao);
             negocioEmp = new EmpresaNegocios(Form1.Empresa.empconexao);
-            
+
 
         Iniciar:
             if (accessLogin.UserExist())
@@ -687,7 +687,7 @@ namespace WinForms
 
                 FecharForm();
                 FormPessoa formPessoa = new FormPessoa(EnumPessoaTipo.Funcionario, EnumAssistencia.Assistencia);
-                if(formPessoa.ShowDialog(this) == DialogResult.Yes)
+                if (formPessoa.ShowDialog(this) == DialogResult.Yes)
                 {
                     AoCarregar();
                 }
@@ -699,7 +699,7 @@ namespace WinForms
 
                 //if (Application.OpenForms["FormPessoa"] == null)
                 //{
-                    
+
                 //}
             }
         }
@@ -730,10 +730,23 @@ namespace WinForms
                                     FormServicoTipo formServicoTipo = new FormServicoTipo();
                                     if (formServicoTipo.ShowDialog(this) == DialogResult.Yes)
                                     {
-                                        FormServico formServico = new FormServico(p);
-                                        if (formServico.ShowDialog(this) == DialogResult.Yes)
+                                        FormIphoneModelo formIphoneModelo = new FormIphoneModelo();
+                                        if (formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
                                         {
-                                            FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
+                                            IphoneCelularInfo celular = formIphoneModelo.SelecionadoIphone;
+
+                                            celular.celidcliente = p.pssid;
+                                            ServicoNegocio negocioServ = new ServicoNegocio(Empresa.empconexao);
+                                            celular.celid = negocioServ.InsertIphoneCelular(celular);
+
+                                            if (celular.celid > 0)
+                                            {
+                                                FormServico formServico = new FormServico(p, celular);
+                                                if (formServico.ShowDialog(this) == DialogResult.Yes)
+                                                {
+                                                    FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
+                                                }
+                                            }
                                         }
                                     }
                                     else if (formServicoTipo.DialogResult == DialogResult.OK)
@@ -759,7 +772,7 @@ namespace WinForms
             else
                 AbrirForm(formPessoa);
 
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)

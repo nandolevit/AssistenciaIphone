@@ -10,7 +10,8 @@ namespace WinForms
 {
     static class Program
     {
-        static Mutex _mutex = new Mutex(true, name: "bf6857be-54d9-4436-8ec3-0f8fcc3529ec");
+        public static string IDSystem { get { return "bf6857be-54d9-4436-8ec3-0f8fcc3529ec"; } }
+        static Mutex _mutex = new Mutex(true, name: IDSystem);
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

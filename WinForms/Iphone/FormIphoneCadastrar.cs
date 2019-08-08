@@ -54,7 +54,7 @@ namespace WinForms
 
         private void ButtonModelo_Click(object sender, EventArgs e)
         {
-            FormIphoneModelo formIphoneModelo = new FormIphoneModelo(infoFornecedor);
+            FormIphoneModelo formIphoneModelo = new FormIphoneModelo();
             if(formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
             {
                 infoCelular = formIphoneModelo.SelecionadoIphone;
