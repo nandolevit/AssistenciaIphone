@@ -152,7 +152,7 @@
             this.comboBoxModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxModelo.FormattingEnabled = true;
-            this.comboBoxModelo.Location = new System.Drawing.Point(158, 33);
+            this.comboBoxModelo.Location = new System.Drawing.Point(246, 33);
             this.comboBoxModelo.Name = "comboBoxModelo";
             this.comboBoxModelo.Size = new System.Drawing.Size(330, 21);
             this.comboBoxModelo.TabIndex = 2;
@@ -814,7 +814,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(158, 17);
+            this.label13.Location = new System.Drawing.Point(246, 17);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(123, 13);
             this.label13.TabIndex = 1;
@@ -866,7 +866,7 @@
             // textBoxNum
             // 
             this.textBoxNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNum.Location = new System.Drawing.Point(494, 33);
+            this.textBoxNum.Location = new System.Drawing.Point(158, 33);
             this.textBoxNum.Name = "textBoxNum";
             this.textBoxNum.Size = new System.Drawing.Size(82, 20);
             this.textBoxNum.TabIndex = 4;
@@ -877,7 +877,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(491, 17);
+            this.label14.Location = new System.Drawing.Point(155, 17);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(85, 13);
             this.label14.TabIndex = 3;

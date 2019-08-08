@@ -65,6 +65,7 @@ namespace WinForms
 
 
             colecaoCor = Form1.IphoneCorColecao;
+            comboBoxTipo.SelectedItem = "Iphone";
             comboBoxModelo.DataSource = colecaoIphone;
             comboBoxModelo.SelectedIndex = -1;
             cod = 1;
@@ -300,13 +301,10 @@ namespace WinForms
 
         private void TipoSelecionando()
         {
-
             switch (comboBoxTipo.Text)
             {
                 case "Iphone":
 
-                    comboBoxModelo.ValueMember = "iphmodid";
-                    comboBoxModelo.DisplayMember = "iphmoddescricao";
                     comboBoxModelo.DataSource = colecaoIphone;
 
                     if (tabControl1.TabPages.Count == 1)
@@ -317,15 +315,16 @@ namespace WinForms
                     break;
                 case "Ipad":
 
-
-                    comboBoxModelo.ValueMember = "iphmodid";
-                    comboBoxModelo.DisplayMember = "iphmoddescricao";
                     comboBoxModelo.DataSource = colecaoIpad;
-                    tabControl1.TabPages.RemoveAt(1);
+
+                    if (tabControl1.TabPages.Count > 1)
+                        tabControl1.TabPages.RemoveAt(1);
+
                     textBoxDetalhes.ScrollBars = ScrollBars.Vertical;
 
                     break;
                 case "Apple Watch":
+                    comboBoxModelo.DataSource = null;
                     break;
                 default:
                     break;
