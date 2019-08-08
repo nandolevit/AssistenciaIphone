@@ -410,7 +410,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBoxFoto);
             this.Name = "FormIphoneCadastrar";
-            this.Text = "FormIphoneCadastrar";
             this.Load += new System.EventHandler(this.FormIphoneCadastrar_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

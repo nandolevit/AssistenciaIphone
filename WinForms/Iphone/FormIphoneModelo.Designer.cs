@@ -45,6 +45,8 @@
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.maskedTextBoxBateria = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.maskedTextBoxSenha = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxImei = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxAno = new System.Windows.Forms.MaskedTextBox();
@@ -99,8 +101,6 @@
             this.textBoxNum = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBoxLoad = new System.Windows.Forms.PictureBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.comboBoxTipo = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.panelPrincipal.SuspendLayout();
@@ -152,10 +152,10 @@
             this.comboBoxModelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxModelo.FormattingEnabled = true;
-            this.comboBoxModelo.Location = new System.Drawing.Point(246, 33);
+            this.comboBoxModelo.Location = new System.Drawing.Point(243, 34);
             this.comboBoxModelo.Name = "comboBoxModelo";
             this.comboBoxModelo.Size = new System.Drawing.Size(330, 21);
-            this.comboBoxModelo.TabIndex = 2;
+            this.comboBoxModelo.TabIndex = 5;
             this.comboBoxModelo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxModelo_SelectedIndexChanged);
             // 
             // comboBoxNumMod
@@ -299,7 +299,7 @@
             this.panelPrincipal.Location = new System.Drawing.Point(12, 60);
             this.panelPrincipal.Name = "panelPrincipal";
             this.panelPrincipal.Size = new System.Drawing.Size(1062, 428);
-            this.panelPrincipal.TabIndex = 5;
+            this.panelPrincipal.TabIndex = 6;
             // 
             // tabControl1
             // 
@@ -313,7 +313,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.maskedTextBox1);
+            this.tabPage1.Controls.Add(this.maskedTextBoxBateria);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.maskedTextBoxSenha);
             this.tabPage1.Controls.Add(this.maskedTextBoxImei);
@@ -335,6 +335,24 @@
             this.tabPage1.Text = "Dados do aparelho:";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // maskedTextBoxBateria
+            // 
+            this.maskedTextBoxBateria.Location = new System.Drawing.Point(98, 211);
+            this.maskedTextBoxBateria.Mask = "00";
+            this.maskedTextBoxBateria.Name = "maskedTextBoxBateria";
+            this.maskedTextBoxBateria.Size = new System.Drawing.Size(28, 20);
+            this.maskedTextBoxBateria.TabIndex = 10;
+            this.maskedTextBoxBateria.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(95, 195);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Bat.:";
+            // 
             // maskedTextBoxSenha
             // 
             this.maskedTextBoxSenha.Location = new System.Drawing.Point(6, 172);
@@ -350,7 +368,7 @@
             this.maskedTextBoxImei.Mask = "000000000000000";
             this.maskedTextBoxImei.Name = "maskedTextBoxImei";
             this.maskedTextBoxImei.Size = new System.Drawing.Size(120, 20);
-            this.maskedTextBoxImei.TabIndex = 6;
+            this.maskedTextBoxImei.TabIndex = 2;
             this.maskedTextBoxImei.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // maskedTextBoxAno
@@ -359,7 +377,7 @@
             this.maskedTextBoxAno.Mask = "0000";
             this.maskedTextBoxAno.Name = "maskedTextBoxAno";
             this.maskedTextBoxAno.Size = new System.Drawing.Size(41, 20);
-            this.maskedTextBoxAno.TabIndex = 2;
+            this.maskedTextBoxAno.TabIndex = 6;
             this.maskedTextBoxAno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBoxIcloud
@@ -371,7 +389,7 @@
             this.groupBoxIcloud.Location = new System.Drawing.Point(132, 122);
             this.groupBoxIcloud.Name = "groupBoxIcloud";
             this.groupBoxIcloud.Size = new System.Drawing.Size(446, 75);
-            this.groupBoxIcloud.TabIndex = 9;
+            this.groupBoxIcloud.TabIndex = 11;
             this.groupBoxIcloud.TabStop = false;
             this.groupBoxIcloud.Text = "Icloud:";
             // 
@@ -422,7 +440,7 @@
             this.label12.Location = new System.Drawing.Point(157, 200);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(73, 13);
-            this.label12.TabIndex = 10;
+            this.label12.TabIndex = 12;
             this.label12.Text = "Observações:";
             // 
             // textBoxObs
@@ -432,7 +450,7 @@
             this.textBoxObs.Name = "textBoxObs";
             this.textBoxObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxObs.Size = new System.Drawing.Size(446, 64);
-            this.textBoxObs.TabIndex = 11;
+            this.textBoxObs.TabIndex = 13;
             // 
             // groupBoxCaracteristica
             // 
@@ -545,7 +563,7 @@
             this.label7.Location = new System.Drawing.Point(85, 156);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 13);
-            this.label7.TabIndex = 1;
+            this.label7.TabIndex = 5;
             this.label7.Text = "Ano:";
             // 
             // labelImei
@@ -554,7 +572,7 @@
             this.labelImei.Location = new System.Drawing.Point(6, 117);
             this.labelImei.Name = "labelImei";
             this.labelImei.Size = new System.Drawing.Size(32, 13);
-            this.labelImei.TabIndex = 5;
+            this.labelImei.TabIndex = 1;
             this.labelImei.Text = "IMEI:";
             // 
             // labelSerie
@@ -814,10 +832,10 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(246, 17);
+            this.label13.Location = new System.Drawing.Point(243, 18);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(123, 13);
-            this.label13.TabIndex = 1;
+            this.label13.TabIndex = 4;
             this.label13.Text = "Selecione o Modelo:";
             // 
             // buttonSalvar
@@ -828,7 +846,7 @@
             this.buttonSalvar.Location = new System.Drawing.Point(897, 494);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(85, 40);
-            this.buttonSalvar.TabIndex = 9;
+            this.buttonSalvar.TabIndex = 7;
             this.buttonSalvar.Text = "&Salvar";
             this.buttonSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonSalvar.UseVisualStyleBackColor = true;
@@ -842,7 +860,7 @@
             this.buttonFechar.Location = new System.Drawing.Point(989, 494);
             this.buttonFechar.Name = "buttonFechar";
             this.buttonFechar.Size = new System.Drawing.Size(85, 40);
-            this.buttonFechar.TabIndex = 10;
+            this.buttonFechar.TabIndex = 8;
             this.buttonFechar.Text = "&Fechar";
             this.buttonFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonFechar.UseVisualStyleBackColor = true;
@@ -856,7 +874,7 @@
             this.buttonFoto.Location = new System.Drawing.Point(806, 494);
             this.buttonFoto.Name = "buttonFoto";
             this.buttonFoto.Size = new System.Drawing.Size(85, 40);
-            this.buttonFoto.TabIndex = 8;
+            this.buttonFoto.TabIndex = 9;
             this.buttonFoto.Text = "FOTO";
             this.buttonFoto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonFoto.UseVisualStyleBackColor = true;
@@ -866,10 +884,10 @@
             // textBoxNum
             // 
             this.textBoxNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNum.Location = new System.Drawing.Point(158, 33);
+            this.textBoxNum.Location = new System.Drawing.Point(12, 34);
             this.textBoxNum.Name = "textBoxNum";
             this.textBoxNum.Size = new System.Drawing.Size(82, 20);
-            this.textBoxNum.TabIndex = 4;
+            this.textBoxNum.TabIndex = 1;
             this.textBoxNum.TextChanged += new System.EventHandler(this.TextBoxNum_TextChanged);
             // 
             // label14
@@ -877,10 +895,10 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(155, 17);
+            this.label14.Location = new System.Drawing.Point(9, 18);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(85, 13);
-            this.label14.TabIndex = 3;
+            this.label14.TabIndex = 0;
             this.label14.Text = "Num. Modelo:";
             // 
             // pictureBoxLoad
@@ -894,24 +912,6 @@
             this.pictureBoxLoad.TabStop = false;
             this.pictureBoxLoad.Visible = false;
             // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(98, 211);
-            this.maskedTextBox1.Mask = "00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(28, 20);
-            this.maskedTextBox1.TabIndex = 13;
-            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(95, 195);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Bat.:";
-            // 
             // comboBoxTipo
             // 
             this.comboBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -921,10 +921,10 @@
             "Iphone",
             "Ipad",
             "Apple Watch"});
-            this.comboBoxTipo.Location = new System.Drawing.Point(12, 32);
+            this.comboBoxTipo.Location = new System.Drawing.Point(97, 34);
             this.comboBoxTipo.Name = "comboBoxTipo";
             this.comboBoxTipo.Size = new System.Drawing.Size(140, 21);
-            this.comboBoxTipo.TabIndex = 12;
+            this.comboBoxTipo.TabIndex = 3;
             this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
             // 
             // label15
@@ -932,10 +932,10 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(15, 17);
+            this.label15.Location = new System.Drawing.Point(100, 19);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(132, 13);
-            this.label15.TabIndex = 13;
+            this.label15.TabIndex = 2;
             this.label15.Text = "Selecione o Aparelho:";
             // 
             // FormIphoneModelo
@@ -1066,7 +1066,7 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBoxImei;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxAno;
         private System.Windows.Forms.PictureBox pictureBoxLoad;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxBateria;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxTipo;
         private System.Windows.Forms.Label label15;

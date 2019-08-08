@@ -275,7 +275,8 @@ namespace Negocios
                     celidcor = Convert.ToInt32(row["celidcor"]),
                     celicloudlogin = Convert.ToString(row["celicloudlogin"]),
                     celicloudsenha = Convert.ToString(row["celicloudsenha"]),
-                    celsenha = Convert.ToString(row["celsenha"])
+                    celsenha = Convert.ToString(row["celsenha"]),
+                    celbateria = Convert.ToString(row["celbateria"])
                 };
 
                 colecao.Add(phone);

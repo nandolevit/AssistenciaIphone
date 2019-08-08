@@ -85,6 +85,22 @@ namespace Negocios
                 return 0;
         }
 
+        public ComputerInfo ConsultarComputadorId(int id)
+        {
+            if (accessDbMySql.Conectar(EmpConexao))
+            {
+                accessDbMySql.AddParametrosMySql("@id", id);
+
+                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarComputadorId");
+                if (dataTable != null)
+                    return PreencherComp(dataTable)[0];
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+
         public ComputerColecao ConsultarComputadorIdUnid(int unid)
         {
             if (accessDbMySql.Conectar(EmpConexao))

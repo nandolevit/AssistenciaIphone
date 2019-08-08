@@ -23,18 +23,20 @@ namespace ObjTransfer
         public string celicloudlogin { get; set; }
         public string celicloudsenha { get; set; }
         public int celidcor { get; set; }
+        public string celbateria { get; set; }
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
             if (!string.IsNullOrEmpty(celiphonedescricao)) sb.Append(celiphonedescricao);
+            if (!string.IsNullOrEmpty(celcor)) sb.Append(", Cor: " + celcor);
+            if (!string.IsNullOrEmpty(celcapacidade)) sb.Append(", Capacidade: " + celcapacidade);
+            if (!string.IsNullOrEmpty(celbateria)) sb.Append(", Bateria: " + celbateria + "%");
             if (!string.IsNullOrEmpty(celmodelo)) sb.Append(", Modelo: " + celmodelo);
             if (!string.IsNullOrEmpty(celimei)) sb.Append(", IMEI: " + celimei);
             if (!string.IsNullOrEmpty(celserie)) sb.Append(", SÉRIE: " + celserie);
             if (!string.IsNullOrEmpty(celanocompra)) sb.Append(", Ano: " + celanocompra);
-            if (!string.IsNullOrEmpty(celcapacidade)) sb.Append(", Capacidade: " + celcapacidade);
-            if (!string.IsNullOrEmpty(celcor)) sb.Append(", Cor: " + celcor);
 
             return sb.ToString();
         }

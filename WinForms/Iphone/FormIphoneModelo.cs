@@ -295,7 +295,8 @@ namespace WinForms
                 celiphonedescricao = textBoxModelo.Text,
                 celicloudlogin = textBoxEmail.Text,
                 celicloudsenha = textBoxIcloudSenha.Text,
-                celsenha = maskedTextBoxSenha.Text
+                celsenha = maskedTextBoxSenha.Text,
+                celbateria = maskedTextBoxBateria.Text
             };
         }
 
@@ -324,7 +325,7 @@ namespace WinForms
 
                     break;
                 case "Apple Watch":
-                    comboBoxModelo.DataSource = null;
+                    //comboBoxModelo.DataSource = null;
                     break;
                 default:
                     break;

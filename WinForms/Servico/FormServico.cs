@@ -30,20 +30,20 @@ namespace WinForms
 
         bool saved; //confirma se a OS foi salva, para quando fechar a janela atualizar a lista
 
-        //public FormServico(PessoaInfo cliente)
-        //{
-        //    Inicializar();
-        //    infoPessoa = cliente;
-        //    PreencherForm();
-        //}
-
-        public FormServico(PessoaInfo cliente, IphoneCelularInfo celular)
+        public FormServico(PessoaInfo cliente)
         {
             Inicializar();
             infoPessoa = cliente;
-            infoCelular = celular;
             PreencherForm();
         }
+
+        //public FormServico(PessoaInfo cliente, IphoneCelularInfo celular)
+        //{
+        //    Inicializar();
+        //    infoPessoa = cliente;
+        //    infoCelular = celular;
+        //    PreencherForm();
+        //}
 
         public FormServico()
         {
@@ -213,7 +213,7 @@ namespace WinForms
             }
             else
             {
-                //responsavel = funcNegocios.ConsultarFuncPorId(ConvertNum(textBoxCodTec));
+                responsavel = negocioFunc.ConsultarPessoaId(Convert.ToInt32(textBoxCodTec));
 
                 if (responsavel != null)
                 {

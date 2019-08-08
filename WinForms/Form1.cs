@@ -54,6 +54,7 @@ namespace WinForms
         SerializarNegocios serializarNegocios = new SerializarNegocios(Caminho);
         OnlineNegocio negocioOnline;
         AccessLogin accessLogin;
+        EmailNegocio negocioEmail;
 
         public Form1()
         {
@@ -134,13 +135,30 @@ namespace WinForms
                 if (ConectedSystem)
                 {
 
+                    EmpresaNegocios empresaNegocios = new EmpresaNegocios(Empresa.empconexao);
+                    ComputerInfo comp = empresaNegocios.ConsultarComputadorId(Computer.compid);
+                    EmpresaEmail = empresaNegocios.ConsultarEmpresaEmail(Empresa.empid);
+
+                    if (!comp.compativo)
+                    {
+                        FormMessage.ShowMessegeWarning("A licença para este computador está expirada. O sistema será encerrado!");
+                        negocioEmail = new EmailNegocio(EmpresaEmail, Empresa.empfantasia);
+                        string mensagem = string.Empty;
+                        ConfiguracaoRede();
+                        mensagem += "Empresa: " + Empresa.empfantasia + Environment.NewLine;
+                        mensagem += Computer.ToString();
+
+                        negocioEmail.EnviarEmailBasico("nandolevit2012@gmail.com", "Computador - Licença Expirada!", mensagem);
+                        Application.Exit();
+                        return;
+                    }
+
                     Thread t = new Thread(ConsultarNovoIphone);
                     ExecutarThread(t);
 
                     threadLogin = new Thread(UpdateUserLogin);
                     threadLogin.Start();
 
-                    EmpresaNegocios empresaNegocios = new EmpresaNegocios(Empresa.empconexao);
 
                     //if (Unidade != null)
                     //{
@@ -168,7 +186,6 @@ namespace WinForms
                                     FormMessage.ShowMessegeWarning(Empresa.empobs.Replace("**", timeSpan.Days.ToString()));
 
                                 colecaoUnidade = empresaNegocios.ConsultarUnidade();
-                                EmpresaEmail = negocioEmp.ConsultarEmpresaEmail(Empresa.empid);
                                 InicializarSistema();
                                 this.Text += " :: " + Empresa.empfantasia;
                             }
@@ -741,7 +758,7 @@ namespace WinForms
 
                                             if (celular.celid > 0)
                                             {
-                                                FormServico formServico = new FormServico(p, celular);
+                                                FormServico formServico = new FormServico(p);
                                                 if (formServico.ShowDialog(this) == DialogResult.Yes)
                                                 {
                                                     FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
@@ -929,6 +946,16 @@ namespace WinForms
         {
             FormIphoneCadastrar formIphoneCadastrar = new FormIphoneCadastrar();
             AbrirForm(formIphoneCadastrar);
+        }
+
+        private void FornecedorToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            CadPessoa(EnumPessoaTipo.Fornecedor);
+        }
+
+        private void FornecedorToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            BuscarPessoa(EnumPessoaTipo.Fornecedor);
         }
     }
 }
