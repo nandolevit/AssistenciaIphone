@@ -48,15 +48,15 @@
             this.dateTimePickerGarantia = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePickerCompra = new System.Windows.Forms.DateTimePicker();
+            this.buttonModelo = new System.Windows.Forms.Button();
             this.textBoxModelo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonFornecedor = new System.Windows.Forms.Button();
             this.textBoxFornecedor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.buttonFechar = new System.Windows.Forms.Button();
-            this.buttonModelo = new System.Windows.Forms.Button();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonFornecedor = new System.Windows.Forms.Button();
             this.pictureBoxFoto = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxCompra.SuspendLayout();
@@ -111,9 +111,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(291, 21);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 2;
-            this.label6.Text = "Prazo:";
+            this.label6.Text = "Dias:";
             // 
             // comboBoxPrazo
             // 
@@ -238,10 +238,11 @@
             // 
             // textBoxObs
             // 
-            this.textBoxObs.Enabled = false;
             this.textBoxObs.Location = new System.Drawing.Point(251, 129);
             this.textBoxObs.Multiline = true;
             this.textBoxObs.Name = "textBoxObs";
+            this.textBoxObs.ReadOnly = true;
+            this.textBoxObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxObs.Size = new System.Drawing.Size(327, 98);
             this.textBoxObs.TabIndex = 16;
             // 
@@ -287,6 +288,19 @@
             this.dateTimePickerCompra.Size = new System.Drawing.Size(240, 20);
             this.dateTimePickerCompra.TabIndex = 8;
             // 
+            // buttonModelo
+            // 
+            this.buttonModelo.BackgroundImage = global::WinForms.Properties.Resources.icons8_Filter_32;
+            this.buttonModelo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonModelo.FlatAppearance.BorderSize = 0;
+            this.buttonModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModelo.Location = new System.Drawing.Point(558, 89);
+            this.buttonModelo.Name = "buttonModelo";
+            this.buttonModelo.Size = new System.Drawing.Size(20, 20);
+            this.buttonModelo.TabIndex = 6;
+            this.buttonModelo.UseVisualStyleBackColor = true;
+            this.buttonModelo.Click += new System.EventHandler(this.ButtonModelo_Click);
+            // 
             // textBoxModelo
             // 
             this.textBoxModelo.Location = new System.Drawing.Point(6, 90);
@@ -303,6 +317,32 @@
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Modelo:";
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.BackgroundImage = global::WinForms.Properties.Resources.icons8_Add_New_32;
+            this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAdd.FlatAppearance.BorderSize = 0;
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAdd.Location = new System.Drawing.Point(564, 32);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(20, 20);
+            this.buttonAdd.TabIndex = 3;
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
+            // 
+            // buttonFornecedor
+            // 
+            this.buttonFornecedor.BackgroundImage = global::WinForms.Properties.Resources.icons8_Filter_32;
+            this.buttonFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonFornecedor.FlatAppearance.BorderSize = 0;
+            this.buttonFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFornecedor.Location = new System.Drawing.Point(538, 32);
+            this.buttonFornecedor.Name = "buttonFornecedor";
+            this.buttonFornecedor.Size = new System.Drawing.Size(20, 20);
+            this.buttonFornecedor.TabIndex = 2;
+            this.buttonFornecedor.UseVisualStyleBackColor = true;
+            this.buttonFornecedor.Click += new System.EventHandler(this.ButtonFornecedor_Click);
             // 
             // textBoxFornecedor
             // 
@@ -333,6 +373,7 @@
             this.buttonSalvar.Text = "&Salvar";
             this.buttonSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonSalvar.UseVisualStyleBackColor = true;
+            this.buttonSalvar.Click += new System.EventHandler(this.ButtonSalvar_Click);
             // 
             // buttonFechar
             // 
@@ -347,45 +388,6 @@
             this.buttonFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonFechar.UseVisualStyleBackColor = true;
             this.buttonFechar.Click += new System.EventHandler(this.ButtonFechar_Click);
-            // 
-            // buttonModelo
-            // 
-            this.buttonModelo.BackgroundImage = global::WinForms.Properties.Resources.icons8_Filter_32;
-            this.buttonModelo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonModelo.FlatAppearance.BorderSize = 0;
-            this.buttonModelo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModelo.Location = new System.Drawing.Point(558, 89);
-            this.buttonModelo.Name = "buttonModelo";
-            this.buttonModelo.Size = new System.Drawing.Size(20, 20);
-            this.buttonModelo.TabIndex = 6;
-            this.buttonModelo.UseVisualStyleBackColor = true;
-            this.buttonModelo.Click += new System.EventHandler(this.ButtonModelo_Click);
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.BackgroundImage = global::WinForms.Properties.Resources.icons8_Add_New_32;
-            this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonAdd.FlatAppearance.BorderSize = 0;
-            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAdd.Location = new System.Drawing.Point(564, 32);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(20, 20);
-            this.buttonAdd.TabIndex = 3;
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
-            // 
-            // buttonFornecedor
-            // 
-            this.buttonFornecedor.BackgroundImage = global::WinForms.Properties.Resources.icons8_Filter_32;
-            this.buttonFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonFornecedor.FlatAppearance.BorderSize = 0;
-            this.buttonFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFornecedor.Location = new System.Drawing.Point(538, 32);
-            this.buttonFornecedor.Name = "buttonFornecedor";
-            this.buttonFornecedor.Size = new System.Drawing.Size(20, 20);
-            this.buttonFornecedor.TabIndex = 2;
-            this.buttonFornecedor.UseVisualStyleBackColor = true;
-            this.buttonFornecedor.Click += new System.EventHandler(this.ButtonFornecedor_Click);
             // 
             // pictureBoxFoto
             // 

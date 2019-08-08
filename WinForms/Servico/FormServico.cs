@@ -156,7 +156,6 @@ namespace WinForms
             infoServIphone.seraparelhodescricao = infoServIphone.ToString();
             infoServIphone.seridcliente = infoPessoa.pssid;
 
-
             negocioServ.InsertServicoIphone(infoServIphone);
             colecaoServIphone.Add(infoServIphone);
             Form1.encerrarThread = true;

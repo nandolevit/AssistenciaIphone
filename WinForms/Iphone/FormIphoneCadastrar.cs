@@ -16,8 +16,10 @@ namespace WinForms
 {
     public partial class FormIphoneCadastrar : Form
     {
-        IphoneCelularInfo infoModelo;
+        IphoneCelularInfo infoCelular;
         PessoaInfo infoFornecedor;
+        ServicoNegocio negocioServ;
+
 
         public FormIphoneCadastrar()
         {
@@ -55,10 +57,10 @@ namespace WinForms
             FormIphoneModelo formIphoneModelo = new FormIphoneModelo(infoFornecedor);
             if(formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
             {
-                infoModelo = formIphoneModelo.SelecionadoIphone;
+                infoCelular = formIphoneModelo.SelecionadoIphone;
                 ConvertImagem(formIphoneModelo.SelecionadaFoto.modcorfoto);
-                textBoxModelo.Text = infoModelo.ToString();
-                textBoxObs.Text = infoModelo.celobs;
+                textBoxModelo.Text = infoCelular.ToString();
+                textBoxObs.Text = infoCelular.celobs;
 
             }
             formIphoneModelo.Dispose();
@@ -150,6 +152,11 @@ namespace WinForms
         private void ComboBoxPrazo_SelectedIndexChanged(object sender, EventArgs e)
         {
             dateTimePickerGarantia.Value = DateTime.Now.AddDays(Convert.ToInt32(comboBoxPrazo.Text));
+        }
+
+        private void ButtonSalvar_Click(object sender, EventArgs e)
+        {
+            infoCelular.celid = negocioServ.InsertIphoneCelular(infoCelular);
         }
     }
 }

@@ -234,12 +234,13 @@ namespace WinForms
             {
                 if (CampoObrigatorio())
                 {
-                    pictureBoxLoad.Visible = true;
-                    buttonSalvar.Enabled = false;
                     PreencherCelular();
-                    thread = new Thread(Salvar);
-                    form1.ExecutarThread(thread);
-                    pictureBoxLoad.Visible = false;
+
+                    SelecionadoIphone = infoCelular;
+                    this.DialogResult = DialogResult.Yes;
+
+                    //thread = new Thread(Salvar);
+                    //form1.ExecutarThread(thread);
                 }
             }
         }
@@ -281,13 +282,13 @@ namespace WinForms
             return true;
         }
 
-        private void Salvar()
-        {
-            infoCelular.celid = negocioServ.InsertIphoneCelular(infoCelular);
-            SelecionadoIphone = infoCelular;
-            Form1.encerrarThread = true;
-            this.DialogResult = DialogResult.Yes;
-        }
+        //private void Salvar()
+        //{
+        //    infoCelular.celid = negocioServ.InsertIphoneCelular(infoCelular);
+        //    SelecionadoIphone = infoCelular;
+        //    Form1.encerrarThread = true;
+        //    this.DialogResult = DialogResult.Yes;
+        //}
 
         private void PreencherCelular()
         {
@@ -305,7 +306,7 @@ namespace WinForms
                 celobs = textBoxObs.Text,
                 celserie = textBoxSerie.Text,
                 celiphonedescricao = textBoxModelo.Text,
-                celicloudlogin = textBoxIcloudLogin.Text,
+                celicloudlogin = textBoxEmail.Text,
                 celicloudsenha = textBoxIcloudSenha.Text,
                 celsenha = maskedTextBoxSenha.Text
             };

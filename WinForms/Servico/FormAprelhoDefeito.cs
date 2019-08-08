@@ -173,6 +173,7 @@ namespace WinForms
                 iphdefdesligar = textBoxDesligar.Text,
                 iphdefsilencioso = textBoxSilencioso.Text,
                 iphdefvolume = textBoxVolume.Text,
+                
             };
         }
 

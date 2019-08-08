@@ -52,7 +52,7 @@
             this.labelIcloudSenha = new System.Windows.Forms.Label();
             this.textBoxIcloudSenha = new System.Windows.Forms.TextBox();
             this.labelLogin = new System.Windows.Forms.Label();
-            this.textBoxIcloudLogin = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.labelSenha = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxObs = new System.Windows.Forms.TextBox();
@@ -365,7 +365,7 @@
             this.groupBoxIcloud.Controls.Add(this.labelIcloudSenha);
             this.groupBoxIcloud.Controls.Add(this.textBoxIcloudSenha);
             this.groupBoxIcloud.Controls.Add(this.labelLogin);
-            this.groupBoxIcloud.Controls.Add(this.textBoxIcloudLogin);
+            this.groupBoxIcloud.Controls.Add(this.textBoxEmail);
             this.groupBoxIcloud.Location = new System.Drawing.Point(85, 129);
             this.groupBoxIcloud.Name = "groupBoxIcloud";
             this.groupBoxIcloud.Size = new System.Drawing.Size(493, 65);
@@ -398,12 +398,12 @@
             this.labelLogin.TabIndex = 0;
             this.labelLogin.Text = "Login:";
             // 
-            // textBoxIcloudLogin
+            // textBoxEmail
             // 
-            this.textBoxIcloudLogin.Location = new System.Drawing.Point(9, 32);
-            this.textBoxIcloudLogin.Name = "textBoxIcloudLogin";
-            this.textBoxIcloudLogin.Size = new System.Drawing.Size(361, 20);
-            this.textBoxIcloudLogin.TabIndex = 1;
+            this.textBoxEmail.Location = new System.Drawing.Point(9, 32);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(361, 20);
+            this.textBoxEmail.TabIndex = 1;
             // 
             // labelSenha
             // 
@@ -1056,7 +1056,7 @@
         private System.Windows.Forms.Label labelIcloudSenha;
         private System.Windows.Forms.TextBox textBoxIcloudSenha;
         private System.Windows.Forms.Label labelLogin;
-        private System.Windows.Forms.TextBox textBoxIcloudLogin;
+        private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Label labelSenha;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxSenha;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxImei;
