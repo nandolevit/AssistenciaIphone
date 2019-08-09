@@ -337,7 +337,7 @@
             // 
             // maskedTextBoxBateria
             // 
-            this.maskedTextBoxBateria.Location = new System.Drawing.Point(98, 211);
+            this.maskedTextBoxBateria.Location = new System.Drawing.Point(98, 216);
             this.maskedTextBoxBateria.Mask = "00";
             this.maskedTextBoxBateria.Name = "maskedTextBoxBateria";
             this.maskedTextBoxBateria.Size = new System.Drawing.Size(28, 20);
@@ -347,7 +347,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(95, 195);
+            this.label2.Location = new System.Drawing.Point(95, 200);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 9;
@@ -437,7 +437,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(157, 200);
+            this.label12.Location = new System.Drawing.Point(130, 200);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(73, 13);
             this.label12.TabIndex = 12;
@@ -578,7 +578,7 @@
             // labelSerie
             // 
             this.labelSerie.AutoSize = true;
-            this.labelSerie.Location = new System.Drawing.Point(6, 195);
+            this.labelSerie.Location = new System.Drawing.Point(6, 200);
             this.labelSerie.Name = "labelSerie";
             this.labelSerie.Size = new System.Drawing.Size(34, 13);
             this.labelSerie.TabIndex = 7;
@@ -586,7 +586,7 @@
             // 
             // textBoxSerie
             // 
-            this.textBoxSerie.Location = new System.Drawing.Point(6, 211);
+            this.textBoxSerie.Location = new System.Drawing.Point(6, 216);
             this.textBoxSerie.Name = "textBoxSerie";
             this.textBoxSerie.Size = new System.Drawing.Size(86, 20);
             this.textBoxSerie.TabIndex = 8;

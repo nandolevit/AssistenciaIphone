@@ -159,6 +159,7 @@ namespace WinForms
         {
             PreencherInfo();
             infoCelular.celid = negocioServ.InsertIphoneCelular(infoCelular);
+            negocioServ.InsertIphoneCompra(iphoneCompraInfo);
         }
 
         private void PreencherInfo()

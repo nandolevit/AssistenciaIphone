@@ -21,6 +21,7 @@ namespace Negocios
 
         AccessDbMySql accessDbMySql = new AccessDbMySql();
 
+        #region Servico
         public GridServicoInfo ConsultarGridServicoOs(int id)
         {
             if (accessDbMySql.Conectar(EmpConexao))
@@ -100,6 +101,30 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@cliente", servico.seridcliente);
 
                 return accessDbMySql.ExecutarScalarMySql("spInsertServico");
+            }
+            else
+                return 0;
+        }
+
+        #endregion Servico
+
+        #region Iphone
+
+        public int InsertIphoneCompra(IphoneCompraInfo compraInfo)
+        {
+            if (accessDbMySql.Conectar(EmpConexao))
+            {
+                accessDbMySql.AddParametrosMySql("@compra", compraInfo.iphcompradatacompra);
+                accessDbMySql.AddParametrosMySql("@garantia", compraInfo.iphcompradatagarantia);
+                accessDbMySql.AddParametrosMySql("@apple", compraInfo.iphcompragarantiaapple);
+                accessDbMySql.AddParametrosMySql("@dias", compraInfo.iphcompragarantiadias);
+                accessDbMySql.AddParametrosMySql("@aparelho", compraInfo.iphcompraidaparelho);
+                accessDbMySql.AddParametrosMySql("@fornecedor", compraInfo.iphcompraidfornecedor);
+                accessDbMySql.AddParametrosMySql("@novo", compraInfo.iphcompranovo);
+                accessDbMySql.AddParametrosMySql("@valorcompra", compraInfo.iphcompravalorcompra);
+                accessDbMySql.AddParametrosMySql("@valorvenda", compraInfo.iphcompravalorvenda);
+
+                return accessDbMySql.ExecutarScalarMySql("");
             }
             else
                 return 0;
@@ -303,6 +328,7 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@icloudlogin", phone.celicloudlogin);
                 accessDbMySql.AddParametrosMySql("@icloudsenha", phone.celicloudsenha);
                 accessDbMySql.AddParametrosMySql("@idcor", phone.celidcor);
+                accessDbMySql.AddParametrosMySql("@bateria", phone.celbateria);
 
                 return accessDbMySql.ExecutarScalarMySql("spInsertIphoneCelular");
             }
@@ -535,5 +561,7 @@ namespace Negocios
 
             return colecao;
         }
+
+        #endregion Iphone
     }
 }
