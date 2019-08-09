@@ -19,6 +19,8 @@ namespace ObjTransfer
         public DateTime iphcompradatagarantia { get; set; }
         public decimal iphcompravalorcompra { get; set; }
         public decimal iphcompravalorvenda { get; set; }
+        public int iphcompraidfunc { get; set; }
+        public DateTime iphcompradatacontrole { get; set; }
 
     }
 }

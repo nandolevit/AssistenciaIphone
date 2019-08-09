@@ -123,8 +123,9 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@novo", compraInfo.iphcompranovo);
                 accessDbMySql.AddParametrosMySql("@valorcompra", compraInfo.iphcompravalorcompra);
                 accessDbMySql.AddParametrosMySql("@valorvenda", compraInfo.iphcompravalorvenda);
+                accessDbMySql.AddParametrosMySql("@func", compraInfo.iphcompraidfunc);
 
-                return accessDbMySql.ExecutarScalarMySql("");
+                return accessDbMySql.ExecutarScalarMySql("spInsertIphoneCompra");
             }
             else
                 return 0;

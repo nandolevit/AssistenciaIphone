@@ -130,9 +130,12 @@ namespace WinForms
                 if (c.GetType() == typeof(TextBox))
                 {
                     TextBox box = (TextBox)c;
-                    box.TextChanged += new EventHandler(FormatTextBox_AoAlterar);
 
-                    box.CharacterCasing = CharacterCasing.Upper; //converte para maiúsculo
+                    if (box.Name != "textBoxSenha")
+                    {
+                        box.TextChanged += new EventHandler(FormatTextBox_AoAlterar);
+                        box.CharacterCasing = CharacterCasing.Upper; //converte para maiúsculo
+                    }
 
                     if (box.Name == "textBoxEmail")
                     {

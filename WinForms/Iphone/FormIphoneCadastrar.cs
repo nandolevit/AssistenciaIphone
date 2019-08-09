@@ -157,9 +157,12 @@ namespace WinForms
 
         private void ButtonSalvar_Click(object sender, EventArgs e)
         {
-            PreencherInfo();
+            negocioServ = new ServicoNegocio(Form1.Empresa.empconexao);
+            infoCelular.celidcliente = infoFornecedor.pssid;
             infoCelular.celid = negocioServ.InsertIphoneCelular(infoCelular);
+            PreencherInfo();
             negocioServ.InsertIphoneCompra(iphoneCompraInfo);
+            FormMessage.ShowMessegeInfo("Registro salva com sucesso!");
         }
 
         private void PreencherInfo()
@@ -175,7 +178,8 @@ namespace WinForms
                 iphcompraidfornecedor = infoFornecedor.pssid,
                 iphcompranovo = radioButtonNovo.Checked,
                 iphcompravalorcompra = Convert.ToDecimal(textBoxCompra.Text),
-                iphcompravalorvenda = Convert.ToDecimal(textBoxVenda.Text)
+                iphcompravalorvenda = Convert.ToDecimal(textBoxVenda.Text),
+                iphcompraidfunc = Form1.User.useidfuncionario
             };
         }
     }

@@ -45,7 +45,6 @@ namespace WinForms
             this.FormBorderStyle = FormBorderStyle.None;
             this.AcceptButton = buttonSalvar;
             this.textBoxNum.MaxLength = 5;
-
             comboBoxModelo.ValueMember = "iphmodid";
             comboBoxModelo.DisplayMember = "iphmoddescricao";
         }
@@ -55,7 +54,7 @@ namespace WinForms
             colecaoIpad = new IphoneModeloColecao();
             colecaoIphone = new IphoneModeloColecao();
 
-            for (int i = Form1.IphoneColecao.Count - 1; i >= 0 ; i--)
+            for (int i = Form1.IphoneColecao.Count - 1; i >= 0; i--)
             {
                 if (Form1.IphoneColecao[i].iphmodipad)
                     colecaoIpad.Add(Form1.IphoneColecao[i]);
@@ -125,7 +124,7 @@ namespace WinForms
                 }
 
                 PreencherForm();
-                
+
             }
         }
         private void PreencherForm()
@@ -217,18 +216,15 @@ namespace WinForms
 
         private void ButtonSalvar_Click(object sender, EventArgs e)
         {
-            if (FormMessage.ShowMessegeQuestion("Deseja salvar?") == DialogResult.Yes)
+            if (CampoObrigatorio())
             {
-                if (CampoObrigatorio())
-                {
-                    PreencherCelular();
+                PreencherCelular();
 
-                    SelecionadoIphone = infoCelular;
-                    this.DialogResult = DialogResult.Yes;
+                SelecionadoIphone = infoCelular;
+                this.DialogResult = DialogResult.Yes;
 
-                    //thread = new Thread(Salvar);
-                    //form1.ExecutarThread(thread);
-                }
+                //thread = new Thread(Salvar);
+                //form1.ExecutarThread(thread);
             }
         }
 
@@ -294,7 +290,7 @@ namespace WinForms
                 celserie = textBoxSerie.Text,
                 celiphonedescricao = textBoxModelo.Text,
                 celicloudlogin = textBoxEmail.Text,
-                celicloudsenha = textBoxIcloudSenha.Text,
+                celicloudsenha = textBoxSenha.Text,
                 celsenha = maskedTextBoxSenha.Text,
                 celbateria = maskedTextBoxBateria.Text
             };
