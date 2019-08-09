@@ -14,9 +14,11 @@ namespace Negocios
     {
         //private static string EmpConexao { get; set; }
 
-        public ProdutoNegocios(string conexao) : base(conexao)
+        EnumAssistencia Assistencia;
+        public ProdutoNegocios(string conexao, EnumAssistencia assistencia) : base(conexao)
         {
-            //EmpConexao = conexao;
+            EmpConexao = conexao;
+            Assistencia = assistencia;
         }
 
         AccessDbMySql accessDbMySql = new AccessDbMySql();

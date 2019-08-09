@@ -26,5 +26,6 @@ namespace ObjTransfer
         public string procodkit { get; set; }
         public string prodetalhes { get; set; }
         public bool protaxa { get; set; }
+        public EnumAssistencia proassist { get; set; }
     }
 }
