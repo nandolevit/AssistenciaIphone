@@ -30,11 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewFormaPag = new System.Windows.Forms.DataGridView();
-            this.colIdForma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colForma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaquineta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colParcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxValor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelValorCompra = new System.Windows.Forms.Label();
@@ -62,6 +57,11 @@
             this.groupBoxPag = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBoxLoad = new System.Windows.Forms.PictureBox();
+            this.colIdForma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colForma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaquineta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colParcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFormaPag)).BeginInit();
             this.groupBoxPag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).BeginInit();
@@ -79,44 +79,8 @@
             this.dataGridViewFormaPag.Location = new System.Drawing.Point(12, 108);
             this.dataGridViewFormaPag.Name = "dataGridViewFormaPag";
             this.dataGridViewFormaPag.RowHeadersWidth = 15;
-            this.dataGridViewFormaPag.Size = new System.Drawing.Size(657, 89);
+            this.dataGridViewFormaPag.Size = new System.Drawing.Size(708, 89);
             this.dataGridViewFormaPag.TabIndex = 2;
-            // 
-            // colIdForma
-            // 
-            this.colIdForma.DataPropertyName = "pagid";
-            this.colIdForma.HeaderText = "Id";
-            this.colIdForma.Name = "colIdForma";
-            this.colIdForma.Visible = false;
-            // 
-            // colForma
-            // 
-            this.colForma.DataPropertyName = "pagdescricao";
-            this.colForma.HeaderText = "Forma de pagamento:";
-            this.colForma.Name = "colForma";
-            this.colForma.Width = 225;
-            // 
-            // colValor
-            // 
-            this.colValor.DataPropertyName = "pagvalor";
-            dataGridViewCellStyle1.Format = "C2";
-            this.colValor.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colValor.HeaderText = "Valor:";
-            this.colValor.Name = "colValor";
-            this.colValor.Width = 150;
-            // 
-            // colMaquineta
-            // 
-            this.colMaquineta.DataPropertyName = "pagbanddescricao";
-            this.colMaquineta.HeaderText = "Bandeira:";
-            this.colMaquineta.Name = "colMaquineta";
-            // 
-            // colParcelas
-            // 
-            this.colParcelas.DataPropertyName = "parcela";
-            this.colParcelas.HeaderText = "Parcelas:";
-            this.colParcelas.Name = "colParcelas";
-            this.colParcelas.Width = 150;
             // 
             // textBoxValor
             // 
@@ -129,7 +93,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(353, 232);
+            this.label1.Location = new System.Drawing.Point(404, 232);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 7;
@@ -139,7 +103,7 @@
             // 
             this.labelValorCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelValorCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelValorCompra.Location = new System.Drawing.Point(353, 245);
+            this.labelValorCompra.Location = new System.Drawing.Point(404, 245);
             this.labelValorCompra.Name = "labelValorCompra";
             this.labelValorCompra.Size = new System.Drawing.Size(155, 39);
             this.labelValorCompra.TabIndex = 8;
@@ -197,7 +161,7 @@
             // 
             this.labelValorTroco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelValorTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelValorTroco.Location = new System.Drawing.Point(514, 245);
+            this.labelValorTroco.Location = new System.Drawing.Point(565, 245);
             this.labelValorTroco.Name = "labelValorTroco";
             this.labelValorTroco.Size = new System.Drawing.Size(155, 39);
             this.labelValorTroco.TabIndex = 10;
@@ -206,7 +170,7 @@
             // labelTroco
             // 
             this.labelTroco.AutoSize = true;
-            this.labelTroco.Location = new System.Drawing.Point(514, 232);
+            this.labelTroco.Location = new System.Drawing.Point(565, 232);
             this.labelTroco.Name = "labelTroco";
             this.labelTroco.Size = new System.Drawing.Size(38, 13);
             this.labelTroco.TabIndex = 9;
@@ -231,7 +195,7 @@
             this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonAdd.FlatAppearance.BorderSize = 0;
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAdd.Location = new System.Drawing.Point(603, 33);
+            this.buttonAdd.Location = new System.Drawing.Point(659, 33);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(20, 20);
             this.buttonAdd.TabIndex = 12;
@@ -245,7 +209,7 @@
             this.comboBoxBandeira.FormattingEnabled = true;
             this.comboBoxBandeira.Location = new System.Drawing.Point(349, 33);
             this.comboBoxBandeira.Name = "comboBoxBandeira";
-            this.comboBoxBandeira.Size = new System.Drawing.Size(97, 21);
+            this.comboBoxBandeira.Size = new System.Drawing.Size(153, 21);
             this.comboBoxBandeira.TabIndex = 7;
             // 
             // label4
@@ -260,7 +224,7 @@
             // labelTipo
             // 
             this.labelTipo.AutoSize = true;
-            this.labelTipo.Location = new System.Drawing.Point(452, 20);
+            this.labelTipo.Location = new System.Drawing.Point(508, 20);
             this.labelTipo.Name = "labelTipo";
             this.labelTipo.Size = new System.Drawing.Size(31, 13);
             this.labelTipo.TabIndex = 8;
@@ -271,7 +235,7 @@
             this.comboBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTipo.Enabled = false;
             this.comboBoxTipo.FormattingEnabled = true;
-            this.comboBoxTipo.Location = new System.Drawing.Point(452, 33);
+            this.comboBoxTipo.Location = new System.Drawing.Point(508, 33);
             this.comboBoxTipo.Name = "comboBoxTipo";
             this.comboBoxTipo.Size = new System.Drawing.Size(97, 21);
             this.comboBoxTipo.TabIndex = 9;
@@ -279,7 +243,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(555, 20);
+            this.label5.Location = new System.Drawing.Point(611, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 10;
@@ -304,7 +268,7 @@
             "10x",
             "11x",
             "12x"});
-            this.comboBoxParcela.Location = new System.Drawing.Point(555, 33);
+            this.comboBoxParcela.Location = new System.Drawing.Point(611, 33);
             this.comboBoxParcela.Name = "comboBoxParcela";
             this.comboBoxParcela.Size = new System.Drawing.Size(42, 21);
             this.comboBoxParcela.TabIndex = 11;
@@ -363,7 +327,7 @@
             this.buttonConcluir.ForeColor = System.Drawing.Color.Black;
             this.buttonConcluir.Image = global::WinForms.Properties.Resources.icons8_Paper_Money_32;
             this.buttonConcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonConcluir.Location = new System.Drawing.Point(584, 287);
+            this.buttonConcluir.Location = new System.Drawing.Point(635, 287);
             this.buttonConcluir.Name = "buttonConcluir";
             this.buttonConcluir.Size = new System.Drawing.Size(85, 60);
             this.buttonConcluir.TabIndex = 12;
@@ -379,7 +343,7 @@
             this.buttonFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFechar.Image = global::WinForms.Properties.Resources.exit_red;
             this.buttonFechar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonFechar.Location = new System.Drawing.Point(493, 287);
+            this.buttonFechar.Location = new System.Drawing.Point(544, 287);
             this.buttonFechar.Name = "buttonFechar";
             this.buttonFechar.Size = new System.Drawing.Size(85, 60);
             this.buttonFechar.TabIndex = 11;
@@ -406,7 +370,7 @@
             this.groupBoxPag.Controls.Add(this.comboBoxTipo);
             this.groupBoxPag.Location = new System.Drawing.Point(12, 39);
             this.groupBoxPag.Name = "groupBoxPag";
-            this.groupBoxPag.Size = new System.Drawing.Size(657, 63);
+            this.groupBoxPag.Size = new System.Drawing.Size(708, 63);
             this.groupBoxPag.TabIndex = 1;
             this.groupBoxPag.TabStop = false;
             this.groupBoxPag.Text = "Pagamento:";
@@ -414,7 +378,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(596, 16);
+            this.label2.Location = new System.Drawing.Point(652, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 13;
@@ -430,11 +394,48 @@
             this.pictureBoxLoad.TabIndex = 14;
             this.pictureBoxLoad.TabStop = false;
             // 
+            // colIdForma
+            // 
+            this.colIdForma.DataPropertyName = "pagid";
+            this.colIdForma.HeaderText = "Id";
+            this.colIdForma.Name = "colIdForma";
+            this.colIdForma.Visible = false;
+            // 
+            // colForma
+            // 
+            this.colForma.DataPropertyName = "pagdescricao";
+            this.colForma.HeaderText = "Forma de pagamento:";
+            this.colForma.Name = "colForma";
+            this.colForma.Width = 225;
+            // 
+            // colValor
+            // 
+            this.colValor.DataPropertyName = "pagvalor";
+            dataGridViewCellStyle1.Format = "C2";
+            this.colValor.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colValor.HeaderText = "Valor:";
+            this.colValor.Name = "colValor";
+            this.colValor.Width = 150;
+            // 
+            // colMaquineta
+            // 
+            this.colMaquineta.DataPropertyName = "pagbanddescricao";
+            this.colMaquineta.HeaderText = "Bandeira:";
+            this.colMaquineta.Name = "colMaquineta";
+            this.colMaquineta.Width = 150;
+            // 
+            // colParcelas
+            // 
+            this.colParcelas.DataPropertyName = "parcela";
+            this.colParcelas.HeaderText = "Parcelas:";
+            this.colParcelas.Name = "colParcelas";
+            this.colParcelas.Width = 150;
+            // 
             // FormPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 357);
+            this.ClientSize = new System.Drawing.Size(732, 357);
             this.Controls.Add(this.pictureBoxLoad);
             this.Controls.Add(this.groupBoxPag);
             this.Controls.Add(this.buttonFechar);
@@ -485,11 +486,6 @@
         private System.Windows.Forms.ComboBox comboBoxTipo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxParcela;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIdForma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colForma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colValor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMaquineta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colParcelas;
         private System.Windows.Forms.Label labelTotalPag;
         private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.Label labelRemover;
@@ -499,5 +495,10 @@
         private System.Windows.Forms.GroupBox groupBoxPag;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBoxLoad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdForma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colForma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colValor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaquineta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colParcelas;
     }
 }

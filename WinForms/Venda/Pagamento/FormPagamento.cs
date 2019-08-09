@@ -61,7 +61,7 @@ namespace WinForms
             textBoxForma.Text = string.Format("{0:000}", formaPagamentoColecao[0].formpagid);
             labelValorForma.Text = formaPagamentoColecao[0].formpagdescricao;
 
-            maquineta = vendaNegocios.ConsultarMaquineta();
+            maquineta = vendaNegocios.ConsultarBandeira();
             comboBoxBandeira.DisplayMember = "descricao";
             comboBoxBandeira.ValueMember = "cod";
             comboBoxBandeira.DataSource = maquineta;

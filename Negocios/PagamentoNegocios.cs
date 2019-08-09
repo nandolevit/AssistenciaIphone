@@ -67,14 +67,14 @@ namespace Negocios
                 return null;
         }
 
-        public CodDescricaoColecao ConsultarMaquineta()
+        public CodDescricaoColecao ConsultarBandeira()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.ConectarSys())
             {
-                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarMaquineta");
+                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarBandeira");
 
                 if (dataTable != null)
-                    return PreencherCodDescricaoMaquineta(dataTable);
+                    return PreencherCodDescricaoBandeira(dataTable);
                 else
                     return null;
             }
@@ -100,7 +100,7 @@ namespace Negocios
             return codDescricaoColecao;
         }
 
-        private CodDescricaoColecao PreencherCodDescricaoMaquineta(DataTable dataTable)
+        private CodDescricaoColecao PreencherCodDescricaoBandeira(DataTable dataTable)
         {
             CodDescricaoColecao codDescricaoColecao = new CodDescricaoColecao();
 
@@ -108,8 +108,8 @@ namespace Negocios
             {
                 CodDescricaoInfo codDescricaoInfo = new CodDescricaoInfo
                 {
-                    cod = Convert.ToInt32(row["maquinetaid"]),
-                    descricao = Convert.ToString(row["maquinetadescricao"])
+                    cod = Convert.ToInt32(row["bandid"]),
+                    descricao = Convert.ToString(row["banddescricao"])
                 };
 
                 codDescricaoColecao.Add(codDescricaoInfo);
