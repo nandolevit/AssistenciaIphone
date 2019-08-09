@@ -23,7 +23,7 @@ namespace WinForms
 
         VendaInfo vendaInfo;
         CodDescricaoColecao pagtipo;
-        CodDescricaoColecao maquineta;
+        CodDescricaoColecao bandeira;
         VendaDetalhesColecao vendacolecao;
         FormaPagamentoColecao formaPagamentoColecao;
         GridFormaPagamentoColecao gridFormaPagamentoColecao;
@@ -61,10 +61,11 @@ namespace WinForms
             textBoxForma.Text = string.Format("{0:000}", formaPagamentoColecao[0].formpagid);
             labelValorForma.Text = formaPagamentoColecao[0].formpagdescricao;
 
-            maquineta = vendaNegocios.ConsultarBandeira();
+            bandeira = vendaNegocios.ConsultarBandeira();
             comboBoxBandeira.DisplayMember = "descricao";
             comboBoxBandeira.ValueMember = "cod";
-            comboBoxBandeira.DataSource = maquineta;
+            comboBoxBandeira.DataSource = bandeira;
+            comboBoxBandeira.SelectedItem = "CAIXA LOJA";
 
             pagtipo = vendaNegocios.ConsultarPagamentoTipo();
             comboBoxTipo.DisplayMember = "descricao";
@@ -83,7 +84,7 @@ namespace WinForms
             textBoxValor.Text = vendaInfo.venvalor.ToString("C").Replace("R$", "");
             troco = -vendaInfo.venvalor;
             labelValorTroco.Text = troco.ToString("C");
-            AoDeixar();
+            AoDeixar(textBoxForma.Text);
 
             
         }
@@ -125,7 +126,7 @@ namespace WinForms
                 textBoxForma.Text = formConsultar_Cod_Descricao.Selecionado.Cod;
                 labelValorForma.Text = formConsultar_Cod_Descricao.Selecionado.Descricao;
                 textBoxValor.Select();
-                AoDeixar();
+                AoDeixar(textBoxForma.Text);
             }
             formConsultar_Cod_Descricao.Dispose();
         }
@@ -246,9 +247,9 @@ namespace WinForms
             }
         }
 
-        private void AoDeixar()
+        private void AoDeixar(string id)
         {
-            if (int.TryParse(textBoxForma.Text, out int cod))
+            if (int.TryParse(id, out int cod))
             {
                 FormaPagamentoInfo pag = vendaNegocios.ConsultarFormaPagamentoId(cod);
                 textBoxForma.Text = string.Format("{0:000}", cod);
@@ -262,7 +263,7 @@ namespace WinForms
                         comboBoxTipo.Enabled = false;
                         comboBoxTipo.SelectedValue = 1;
                         comboBoxParcela.Enabled = false;
-                        comboBoxParcela.Text = "1x";
+                        comboBoxParcela.SelectedItem = "1x";
                         break;
                     case 2:
                         comboBoxBandeira.Enabled = true;
@@ -270,7 +271,7 @@ namespace WinForms
                         comboBoxTipo.Enabled = false;
                         comboBoxTipo.SelectedValue = 1;
                         comboBoxParcela.Enabled = false;
-                        comboBoxParcela.Text = "1x";
+                        comboBoxParcela.SelectedItem = "1x";
                         break;
                     case 3:
                         comboBoxBandeira.Enabled = true;
@@ -278,7 +279,7 @@ namespace WinForms
                         comboBoxTipo.Enabled = true;
                         comboBoxTipo.SelectedValue = 2;
                         comboBoxParcela.Enabled = true;
-                        comboBoxParcela.Text = "2x";
+                        comboBoxParcela.SelectedItem = "2x";
                         break;
                     case 4:
                         comboBoxBandeira.Enabled = false;
@@ -286,7 +287,8 @@ namespace WinForms
                         comboBoxTipo.Enabled = true;
                         comboBoxTipo.SelectedValue = 1;
                         comboBoxParcela.Enabled = true;
-                        comboBoxParcela.Text = "2x";
+                        comboBoxParcela.SelectedItem = "1x";
+                        comboBoxParcela.Enabled = false;
                         break;
                     case 5:
                         comboBoxBandeira.Enabled = false;
@@ -294,7 +296,7 @@ namespace WinForms
                         comboBoxTipo.Enabled = false;
                         comboBoxTipo.SelectedValue = 1;
                         comboBoxParcela.Enabled = false;
-                        comboBoxParcela.Text = "1x";
+                        comboBoxParcela.SelectedItem = "1x";
                         break;
                     case 6:
                         comboBoxBandeira.Enabled = false;
@@ -302,7 +304,7 @@ namespace WinForms
                         comboBoxTipo.Enabled = false;
                         comboBoxTipo.SelectedValue = 1;
                         comboBoxParcela.Enabled = false;
-                        comboBoxParcela.Text = "1x";
+                        comboBoxParcela.SelectedItem = "1x";
                         break;
                     default:
                         break;
@@ -314,7 +316,7 @@ namespace WinForms
 
         private void textBoxForma_Leave(object sender, EventArgs e)
         {
-            AoDeixar();
+            AoDeixar(textBoxForma.Text);
         }
 
         private void buttonRemover_Click(object sender, EventArgs e)
@@ -331,7 +333,7 @@ namespace WinForms
                 textBoxForma.Text = "1";
                 groupBoxPag.Enabled = true;
 
-                AoDeixar();
+                AoDeixar(textBoxForma.Text);
                 PreencherGrid();
             }
             else
@@ -508,6 +510,38 @@ namespace WinForms
         private void FormPagamento_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+
+        private void ComboBoxTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTipo.Text == "A VISTA")
+            {
+                comboBoxParcela.SelectedItem = "1x";
+                comboBoxParcela.Enabled = false;
+            }
+            else
+            {
+
+                comboBoxParcela.SelectedItem = "2x";
+                comboBoxParcela.Enabled = true;
+            }
+        }
+
+        private void ComboBoxParcela_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxParcela.Text == "1x")
+            {
+                comboBoxTipo.SelectedValue = 1;
+                comboBoxParcela.Enabled = false;
+            }
+        }
+
+        private void ComboBoxBandeira_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxBandeira.Text == "CAIXA LOJA")
+            {
+                AoDeixar("1");
+            }
         }
     }
 }

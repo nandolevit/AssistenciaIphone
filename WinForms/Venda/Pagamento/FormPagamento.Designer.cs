@@ -30,6 +30,11 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewFormaPag = new System.Windows.Forms.DataGridView();
+            this.colIdForma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colForma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaquineta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colParcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxValor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelValorCompra = new System.Windows.Forms.Label();
@@ -57,11 +62,6 @@
             this.groupBoxPag = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBoxLoad = new System.Windows.Forms.PictureBox();
-            this.colIdForma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colForma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaquineta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colParcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFormaPag)).BeginInit();
             this.groupBoxPag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).BeginInit();
@@ -81,6 +81,43 @@
             this.dataGridViewFormaPag.RowHeadersWidth = 15;
             this.dataGridViewFormaPag.Size = new System.Drawing.Size(708, 89);
             this.dataGridViewFormaPag.TabIndex = 2;
+            // 
+            // colIdForma
+            // 
+            this.colIdForma.DataPropertyName = "pagid";
+            this.colIdForma.HeaderText = "Id";
+            this.colIdForma.Name = "colIdForma";
+            this.colIdForma.Visible = false;
+            // 
+            // colForma
+            // 
+            this.colForma.DataPropertyName = "pagdescricao";
+            this.colForma.HeaderText = "Forma de pagamento:";
+            this.colForma.Name = "colForma";
+            this.colForma.Width = 225;
+            // 
+            // colValor
+            // 
+            this.colValor.DataPropertyName = "pagvalor";
+            dataGridViewCellStyle1.Format = "C2";
+            this.colValor.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colValor.HeaderText = "Valor:";
+            this.colValor.Name = "colValor";
+            this.colValor.Width = 150;
+            // 
+            // colMaquineta
+            // 
+            this.colMaquineta.DataPropertyName = "pagbanddescricao";
+            this.colMaquineta.HeaderText = "Bandeira:";
+            this.colMaquineta.Name = "colMaquineta";
+            this.colMaquineta.Width = 150;
+            // 
+            // colParcelas
+            // 
+            this.colParcelas.DataPropertyName = "parcela";
+            this.colParcelas.HeaderText = "Parcelas:";
+            this.colParcelas.Name = "colParcelas";
+            this.colParcelas.Width = 150;
             // 
             // textBoxValor
             // 
@@ -206,11 +243,13 @@
             // 
             this.comboBoxBandeira.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBandeira.Enabled = false;
+            this.comboBoxBandeira.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxBandeira.FormattingEnabled = true;
             this.comboBoxBandeira.Location = new System.Drawing.Point(349, 33);
             this.comboBoxBandeira.Name = "comboBoxBandeira";
             this.comboBoxBandeira.Size = new System.Drawing.Size(153, 21);
             this.comboBoxBandeira.TabIndex = 7;
+            this.comboBoxBandeira.SelectedIndexChanged += new System.EventHandler(this.ComboBoxBandeira_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -239,6 +278,7 @@
             this.comboBoxTipo.Name = "comboBoxTipo";
             this.comboBoxTipo.Size = new System.Drawing.Size(97, 21);
             this.comboBoxTipo.TabIndex = 9;
+            this.comboBoxTipo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTipo_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -273,6 +313,7 @@
             this.comboBoxParcela.Size = new System.Drawing.Size(42, 21);
             this.comboBoxParcela.TabIndex = 11;
             this.comboBoxParcela.ValueMember = "1";
+            this.comboBoxParcela.SelectedIndexChanged += new System.EventHandler(this.ComboBoxParcela_SelectedIndexChanged);
             // 
             // labelTotalPag
             // 
@@ -393,43 +434,7 @@
             this.pictureBoxLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLoad.TabIndex = 14;
             this.pictureBoxLoad.TabStop = false;
-            // 
-            // colIdForma
-            // 
-            this.colIdForma.DataPropertyName = "pagid";
-            this.colIdForma.HeaderText = "Id";
-            this.colIdForma.Name = "colIdForma";
-            this.colIdForma.Visible = false;
-            // 
-            // colForma
-            // 
-            this.colForma.DataPropertyName = "pagdescricao";
-            this.colForma.HeaderText = "Forma de pagamento:";
-            this.colForma.Name = "colForma";
-            this.colForma.Width = 225;
-            // 
-            // colValor
-            // 
-            this.colValor.DataPropertyName = "pagvalor";
-            dataGridViewCellStyle1.Format = "C2";
-            this.colValor.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colValor.HeaderText = "Valor:";
-            this.colValor.Name = "colValor";
-            this.colValor.Width = 150;
-            // 
-            // colMaquineta
-            // 
-            this.colMaquineta.DataPropertyName = "pagbanddescricao";
-            this.colMaquineta.HeaderText = "Bandeira:";
-            this.colMaquineta.Name = "colMaquineta";
-            this.colMaquineta.Width = 150;
-            // 
-            // colParcelas
-            // 
-            this.colParcelas.DataPropertyName = "parcela";
-            this.colParcelas.HeaderText = "Parcelas:";
-            this.colParcelas.Name = "colParcelas";
-            this.colParcelas.Width = 150;
+            this.pictureBoxLoad.Visible = false;
             // 
             // FormPagamento
             // 

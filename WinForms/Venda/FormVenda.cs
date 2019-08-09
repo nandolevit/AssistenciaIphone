@@ -777,13 +777,14 @@ namespace WinForms
 
         private void buttonFechar_Click(object sender, EventArgs e)
         {
-            if (VendaEncerrada)
-                this.Close();
-            else
-            {
-                if (FormMessage.ShowMessegeQuestion("Deseja cancelar está venda?") == DialogResult.Yes)
-                    this.Close();
-            }
+            //if (VendaEncerrada)
+            //    this.Close();
+            //else
+            //{
+            //    if (FormMessage.ShowMessegeQuestion("Deseja cancelar está venda?") == DialogResult.Yes)
+            //        this.Close();
+            //}
+            this.Close();
         }
 
         private void dataGridViewItens_SelectionChanged(object sender, EventArgs e)
