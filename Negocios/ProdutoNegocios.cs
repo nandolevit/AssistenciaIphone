@@ -10,12 +10,13 @@ using System.Data;
 
 namespace Negocios
 {
-    public class ProdutoNegocios : EstoqueNegocios
+    public class ProdutoNegocios
     {
-        //private static string EmpConexao { get; set; }
+        private static string EmpConexao { get; set; }
 
         EnumAssistencia Assistencia;
-        public ProdutoNegocios(string conexao, EnumAssistencia assistencia) : base(conexao)
+
+        public ProdutoNegocios(string conexao, EnumAssistencia assistencia)
         {
             EmpConexao = conexao;
             Assistencia = assistencia;
@@ -101,7 +102,7 @@ namespace Negocios
             else
                 return null;
         }
-        
+
         public ProdutoColecao ConsultarProdutosTodos()
         {
             if (accessDbMySql.Conectar(EmpConexao))
@@ -279,7 +280,8 @@ namespace Negocios
         {
             if (accessDbMySql.Conectar(EmpConexao))
             {
-                accessDbMySql.AddParametrosMySql("@descricao", string.Concat( "%", descricao, "%"));
+                accessDbMySql.AddParametrosMySql("@descricao", descricao);
+                accessDbMySql.AddParametrosMySql("@assist", Assistencia);
 
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarProdutosDescricao");
 
@@ -308,19 +310,19 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@subcategoria", prod.proidsubcategoria);
                 accessDbMySql.AddParametrosMySql("@id", prod.proId);
                 accessDbMySql.AddParametrosMySql("@idstatus", prod.proidstatus);
-                accessDbMySql.AddParametrosMySql("@kit", prod.procodkit);
 
                 return accessDbMySql.ExecutarComandoMySql("spUpdateProduto");
             }
             else
                 return false;
         }
-        
+
         public ProdutoInfo ConsultarProdutosId(int id)
         {
             if (accessDbMySql.Conectar(EmpConexao))
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
+
 
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarProdutoId");
 
@@ -332,12 +334,13 @@ namespace Negocios
             else
                 return null;
         }
-        
+
         public ProdutoInfo ConsultarProdutoCodBarras(string barras)
         {
             if (accessDbMySql.Conectar(EmpConexao))
             {
                 accessDbMySql.AddParametrosMySql("@barras", barras);
+                accessDbMySql.AddParametrosMySql("@assist", Assistencia);
 
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarProdutoCodBarras");
 
@@ -366,8 +369,7 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@subcategoria", prod.proidsubcategoria);
                 accessDbMySql.AddParametrosMySql("@iduser", prod.proidUser);
                 accessDbMySql.AddParametrosMySql("@idstatus", prod.proidstatus);
-                accessDbMySql.AddParametrosMySql("@kit", prod.procodkit);
-                accessDbMySql.AddParametrosMySql("@taxa", prod.protaxa);
+                accessDbMySql.AddParametrosMySql("@assist", Assistencia);
 
                 return accessDbMySql.ExecutarScalarMySql("spInsertProduto");
             }
@@ -414,8 +416,8 @@ namespace Negocios
                     proidmarca = Convert.ToInt32(row["proidmarca"]),
                     proidfornecedor = Convert.ToInt32(row["proidfornecedor"]),
                     proDataCad = Convert.ToDateTime(row["proDataCad"]),
-                    procodkit = Convert.ToString(row["procodkit"]),
-                    prodetalhes = Convert.ToString(row["proDescricao"]) + "/" + Convert.ToString(row["marcadescricao"]) + " (" + Convert.ToString(row["prodcatnome"]) + "/" + Convert.ToString(row["prodsubcatnome"]) + ")"
+                    prodetalhes = Convert.ToString(row["proDescricao"]) + "/" + Convert.ToString(row["marcadescricao"]) + " (" + Convert.ToString(row["prodcatnome"]) + "/" + Convert.ToString(row["prodsubcatnome"]) + ")",
+                    proassist = (EnumAssistencia)Convert.ToInt32(row["proassist"]),
                 };
 
                 colecao.Add(produtosInfo);
@@ -423,6 +425,6 @@ namespace Negocios
 
             return colecao;
         }
-        
+
     }
 }

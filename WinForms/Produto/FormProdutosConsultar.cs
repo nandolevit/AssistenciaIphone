@@ -15,7 +15,7 @@ namespace WinForms
 {
     public partial class FormProdutosConsultar : Form
     {
-        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao);
+        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
         ProdutoColecao produtosColecao;
 
         public int CodProd { get; set; }

@@ -19,7 +19,8 @@ namespace WinForms
     {
         Form1 form1 = new Form1();
         FuncNegocios funcNegocios = new FuncNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
-        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao);
+        EstoqueNegocios negocioEstoque;
+        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
         ClienteNegocios clienteNegocios = new ClienteNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
         VendaNegocios vendaNegocios = new VendaNegocios(Form1.Empresa.empconexao);
 
@@ -337,7 +338,8 @@ namespace WinForms
                 {
                     int cod = produtoInfo.proId;
                     produtoInfo = new ProdutoInfo();
-                    produtoInfo = produtoNegocios.ConsultarEstoqueIdProdutoUnid(cod, Form1.Unidade.uniid);
+                    negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+                    produtoInfo = negocioEstoque.ConsultarEstoqueIdProdutoUnid(cod, Form1.Unidade.uniid);
                     
                     if (produtoInfo.prodestoquequant < 1)
                     {
@@ -601,11 +603,13 @@ namespace WinForms
 
                 if (produtoInfo.proControleEstoque == true)
                 {
+
+                    negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
                     produtoInfo = new ProdutoInfo();
-                    produtoInfo = produtoNegocios.ConsultarEstoqueIdProdutoUnid(item.Id, Form1.Unidade.uniid);
+                    produtoInfo = negocioEstoque.ConsultarEstoqueIdProdutoUnid(item.Id, Form1.Unidade.uniid);
                     produtoInfo.prodestoquequant -=item.Quant;
 
-                    if (produtoNegocios.UpdateEstoqueId(produtoInfo) == 0)
+                    if (negocioEstoque.UpdateEstoqueId(produtoInfo) == 0)
                     {
                         FormMessage.ShowMessegeWarning("Falha ao salvar os itens!");
                         return;
@@ -619,7 +623,7 @@ namespace WinForms
                         movestoquevalor = item.ValorDesc
                     };
 
-                    if (!produtoNegocios.InsertMovEstoque(movEstoqueInfo))
+                    if (!negocioEstoque.InsertMovEstoque(movEstoqueInfo))
                     {
                         FormMessage.ShowMessegeWarning("Falha ao salvar os itens!");
                         return;

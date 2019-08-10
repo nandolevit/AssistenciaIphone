@@ -10,11 +10,11 @@ using System.Data;
 
 namespace Negocios
 {
-    public class EstoqueNegocios
+    public class EstoqueNegocios : ProdutoNegocios
     {
         public static string EmpConexao { get; set; }
 
-        public EstoqueNegocios(string conexao)
+        public EstoqueNegocios(string conexao, EnumAssistencia assistencia) : base(conexao, assistencia)
         {
             EmpConexao = conexao;
         }
@@ -332,7 +332,7 @@ namespace Negocios
 
         private ProdutoInfo CadProdUnidade(int prod, int unid)
         {
-            ProdutoNegocios produtoNegocios = new ProdutoNegocios(EmpConexao);
+            ProdutoNegocios produtoNegocios = new ProdutoNegocios(EmpConexao, EnumAssistencia.Assistencia);
             ProdutoInfo produtoInfo = produtoNegocios.ConsultarProdutosId(prod);
 
             if (produtoInfo.proControleEstoque == true)
@@ -489,7 +489,6 @@ namespace Negocios
                     proidmarca = Convert.ToInt32(row["marcaid"]),
                     proidfornecedor = Convert.ToInt32(row["proidfornecedor"]),
                     proDataCad = Convert.ToDateTime(row["proDataCad"]),
-                    procodkit = Convert.ToString(row["procodkit"]),
                     prodetalhes = Convert.ToString(row["proDescricao"]) + "/" + Convert.ToString(row["marcadescricao"]) + " (" + Convert.ToString(row["prodcatnome"]) + "/" + Convert.ToString(row["prodsubcatnome"]) + ")",
                     prodestoquedatacad = Convert.ToDateTime(row["prodestoquedatacad"]),
                     prodestoqueidproduto = Convert.ToInt32(row["prodestoqueidproduto"]),

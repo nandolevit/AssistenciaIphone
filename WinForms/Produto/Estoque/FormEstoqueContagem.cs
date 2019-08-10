@@ -16,8 +16,7 @@ namespace WinForms
 {
     public partial class FormEstoqueContagem : Form
     {
-        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao);
-        EstoqueNegocios estoqueNegocios = new EstoqueNegocios(Form1.Empresa.empconexao);
+        EstoqueNegocios negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
         SerializarNegocios serializarNegocios = new SerializarNegocios(Form1.Caminho);
         ProdutoInfo produtoInfo;
         EstoqueContarInfo estoqueContarInfo;
@@ -62,7 +61,7 @@ namespace WinForms
 
             if (radioButtonBarras.Checked)
             {
-                produtoInfo = produtoNegocios.ConsultarProdutoCodBarras(textBoxProdutoCod.Text);
+                produtoInfo = negocioEstoque.ConsultarProdutoCodBarras(textBoxProdutoCod.Text);
 
                 if (produtoInfo != null)
                     PreencherProdForm(produtoInfo);
@@ -79,7 +78,7 @@ namespace WinForms
             {
                 if (int.TryParse(textBoxProdutoCod.Text, out int cod))
                 {
-                    produtoInfo = produtoNegocios.ConsultarProdutosId(cod);
+                    produtoInfo = negocioEstoque.ConsultarProdutosId(cod);
 
                     if (produtoInfo != null)
                         PreencherProdForm(produtoInfo);
@@ -95,13 +94,13 @@ namespace WinForms
         private void PreencherProdForm(ProdutoInfo produto)
         {
             if (produto.proControleEstoque)
-                produto = produtoNegocios.ConsultarEstoqueIdProdutoUnid(produtoInfo.proId, Form1.Unidade.uniid);
+                produto = negocioEstoque.ConsultarEstoqueIdProdutoUnid(produtoInfo.proId, Form1.Unidade.uniid);
             else
             {
                 if (FormMessage.ShowMessegeQuestion("O controle de estoque não está ativo para este produto! Deseja ativar o controle?") == DialogResult.Yes)
                 {
-                    if (produtoNegocios.UpdateProdutoConfirmarLancEstoqueId(produtoInfo.proId) > 0)
-                        produto = produtoNegocios.ConsultarEstoqueIdProdutoUnid(produtoInfo.proId, Form1.Unidade.uniid);
+                    if (negocioEstoque.UpdateProdutoConfirmarLancEstoqueId(produtoInfo.proId) > 0)
+                        produto = negocioEstoque.ConsultarEstoqueIdProdutoUnid(produtoInfo.proId, Form1.Unidade.uniid);
                 }
                 else
                     return;
@@ -175,16 +174,16 @@ namespace WinForms
                     estoquecontardetalhesvalor = gridLancarEstoqueInfo.valorUnit
                 };
 
-                EstoqueContarDetalhesInfo contar = estoqueNegocios.ConsultarEstoqueContarDetalhesIdProd(gridLancarEstoqueInfo.idproduto, gridLancarEstoqueInfo.id);
+                EstoqueContarDetalhesInfo contar = negocioEstoque.ConsultarEstoqueContarDetalhesIdProd(gridLancarEstoqueInfo.idproduto, gridLancarEstoqueInfo.id);
 
                 if (contar != null)
                 {
                     estoquecontar.estoquecontardetalhesid = contar.estoquecontardetalhesid;
-                    produtoNegocios.UpdateEstoqueContarDetalhes(estoquecontar);
+                    negocioEstoque.UpdateEstoqueContarDetalhes(estoquecontar);
                 }
                 else
                 {
-                    produtoNegocios.InsertEstoqueContarDetalhes(estoquecontar);
+                    negocioEstoque.InsertEstoqueContarDetalhes(estoquecontar);
                 }
 
                 GridLancarEstoqueColecao novo = new GridLancarEstoqueColecao
@@ -241,7 +240,7 @@ namespace WinForms
 
             if (gridLancarEstoqueColecao.Count > 0)
             {
-                estoqueContarInfo = produtoNegocios.ConstularEstoqueContarId(gridLancarEstoqueColecao[0].id);
+                estoqueContarInfo = negocioEstoque.ConstularEstoqueContarId(gridLancarEstoqueColecao[0].id);
 
                 if (estoqueContarInfo != null)
                     if (estoqueContarInfo.estoquecontarconfirmado == 1 && estoqueContarInfo.estoquecontaridunidade == Form1.Unidade.uniid)
@@ -292,7 +291,7 @@ namespace WinForms
                         estoquecontaridunidade = Form1.Unidade.uniid
                     };
 
-                    int cod = produtoNegocios.InsertEstoqueContar(estoqueContarInfo);
+                    int cod = negocioEstoque.InsertEstoqueContar(estoqueContarInfo);
 
                     if (cod > 0)
                     {
@@ -308,7 +307,7 @@ namespace WinForms
             {
                 if (int.TryParse(textBoxValorCod.Text, out int cod))
                 {
-                    estoqueContarInfo = produtoNegocios.ConstularEstoqueContarId(cod);
+                    estoqueContarInfo = negocioEstoque.ConstularEstoqueContarId(cod);
 
                     if (estoqueContarInfo != null)
                     {
@@ -316,14 +315,14 @@ namespace WinForms
                         {
                             PreencherFormEstoque(estoqueContarInfo);
 
-                            EstoqueContarDetalhesColecao contar = produtoNegocios.ConsultarEstoqueContarDetalhesIdContar(estoqueContarInfo.estoquecontarid);
+                            EstoqueContarDetalhesColecao contar = negocioEstoque.ConsultarEstoqueContarDetalhesIdContar(estoqueContarInfo.estoquecontarid);
 
                             if (contar != null)
                             {
                                 gridLancarEstoqueColecao = new GridLancarEstoqueColecao();
                                 foreach (EstoqueContarDetalhesInfo item in contar)
                                 {
-                                    ProdutoInfo prod = produtoNegocios.ConsultarProdutosId(item.estoquecontardetalhesidproduto);
+                                    ProdutoInfo prod = negocioEstoque.ConsultarProdutosId(item.estoquecontardetalhesidproduto);
                                     GridLancarEstoqueInfo grid = new GridLancarEstoqueInfo
                                     {
                                         descricao = prod.proCodBarras + " - " + prod.proDescricao,
@@ -378,7 +377,7 @@ namespace WinForms
             if (dataGridViewLancarEstoqueDetalhes.Rows.Count > 0)
             {
                 if (!ProdContagem) //somente zerar o estoque caso não for no modo contagem
-                    produtoNegocios.UpdateProdEstoqueZerar(Form1.Unidade.uniid, estoqueContarInfo.estoquecontarid);
+                    negocioEstoque.UpdateProdEstoqueZerar(Form1.Unidade.uniid, estoqueContarInfo.estoquecontarid);
 
                 int cont = 1;
                 foreach (DataGridViewRow row in dataGridViewLancarEstoqueDetalhes.Rows)
@@ -395,15 +394,15 @@ namespace WinForms
                         estoquecontardetalhesvalor = gridLancarEstoqueInfo.valorUnit
                     };
 
-                    if (!(produtoNegocios.InsertEstoqueContarDetalhes(estoqueContarDetalhesInfo) > 0))
+                    if (!(negocioEstoque.InsertEstoqueContarDetalhes(estoqueContarDetalhesInfo) > 0))
                     {
                         FormMessage.ShowMessegeWarning("Falha ao tentar salvar!");
                         return;
                     }
 
-                    ProdutoInfo produto = produtoNegocios.ConsultarEstoqueIdProdutoUnid(gridLancarEstoqueInfo.idproduto, Form1.Unidade.uniid);
+                    ProdutoInfo produto = negocioEstoque.ConsultarEstoqueIdProdutoUnid(gridLancarEstoqueInfo.idproduto, Form1.Unidade.uniid);
                     produto.prodestoquequant = gridLancarEstoqueInfo.quant;
-                    if (!(produtoNegocios.UpdateEstoqueId(produto) > 0))
+                    if (!(negocioEstoque.UpdateEstoqueId(produto) > 0))
                     {
                         FormMessage.ShowMessegeWarning("Falha ao tentar salvar!");
                         return;
@@ -414,7 +413,7 @@ namespace WinForms
                 estoqueContarInfo.estoquecontarquant = Convert.ToInt32(labelValorTotalQuant.Text);
                 estoqueContarInfo.estoquecontarvalor = Convert.ToDecimal(labelValorTotal.Text.Replace("R$ ",""));
 
-                if (produtoNegocios.UpdateEstoqueContarId(estoqueContarInfo) > 0)
+                if (negocioEstoque.UpdateEstoqueContarId(estoqueContarInfo) > 0)
                 {
                     progressBar1.Visible = false;
                     FormMessage.ShowMessegeInfo("O estoque foi contado com sucesso!");
@@ -436,7 +435,7 @@ namespace WinForms
             {
                 if (FormMessage.ShowMessegeQuestion("Deseja cancelar a contagem?") == DialogResult.Yes)
                 {
-                    if (produtoNegocios.DeleteEstoqueContar(estoqueContarInfo.estoquecontarid) > 0)
+                    if (negocioEstoque.DeleteEstoqueContar(estoqueContarInfo.estoquecontarid) > 0)
                     {
                         FormMessage.ShowMessegeInfo("Contagem foi cancelada com sucesso!");
                         LimparForm();

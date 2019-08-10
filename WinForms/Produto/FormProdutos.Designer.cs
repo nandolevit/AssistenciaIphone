@@ -75,8 +75,6 @@
             this.buttonBuscarSubCategoria = new System.Windows.Forms.Button();
             this.buttonAddCategoria = new System.Windows.Forms.Button();
             this.buttonBuscarCategoria = new System.Windows.Forms.Button();
-            this.labelCodKit = new System.Windows.Forms.Label();
-            this.textBoxCodKit = new System.Windows.Forms.TextBox();
             this.groupBoxEstoque.SuspendLayout();
             this.groupBoxClasse.SuspendLayout();
             this.SuspendLayout();
@@ -134,7 +132,7 @@
             // labelBarras
             // 
             this.labelBarras.AutoSize = true;
-            this.labelBarras.Location = new System.Drawing.Point(186, 17);
+            this.labelBarras.Location = new System.Drawing.Point(332, 17);
             this.labelBarras.Name = "labelBarras";
             this.labelBarras.Size = new System.Drawing.Size(139, 13);
             this.labelBarras.TabIndex = 2;
@@ -142,7 +140,7 @@
             // 
             // textBoxBarras
             // 
-            this.textBoxBarras.Location = new System.Drawing.Point(186, 30);
+            this.textBoxBarras.Location = new System.Drawing.Point(332, 30);
             this.textBoxBarras.Name = "textBoxBarras";
             this.textBoxBarras.Size = new System.Drawing.Size(195, 20);
             this.textBoxBarras.TabIndex = 3;
@@ -588,29 +586,11 @@
             this.buttonBuscarCategoria.UseVisualStyleBackColor = true;
             this.buttonBuscarCategoria.Click += new System.EventHandler(this.buttonBuscarCategoria_Click);
             // 
-            // labelCodKit
-            // 
-            this.labelCodKit.AutoSize = true;
-            this.labelCodKit.Location = new System.Drawing.Point(387, 17);
-            this.labelCodKit.Name = "labelCodKit";
-            this.labelCodKit.Size = new System.Drawing.Size(122, 13);
-            this.labelCodKit.TabIndex = 4;
-            this.labelCodKit.Text = "Código do Kit (opcional):";
-            // 
-            // textBoxCodKit
-            // 
-            this.textBoxCodKit.Location = new System.Drawing.Point(387, 30);
-            this.textBoxCodKit.Name = "textBoxCodKit";
-            this.textBoxCodKit.Size = new System.Drawing.Size(139, 20);
-            this.textBoxCodKit.TabIndex = 5;
-            // 
             // FormProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(539, 393);
-            this.Controls.Add(this.labelCodKit);
-            this.Controls.Add(this.textBoxCodKit);
             this.Controls.Add(this.groupBoxClasse);
             this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(this.buttonFechar);
@@ -690,8 +670,6 @@
         private System.Windows.Forms.Button buttonBuscarFornecedor;
         private System.Windows.Forms.Button buttonAddStatus;
         private System.Windows.Forms.Button buttonBuscarStatus;
-        private System.Windows.Forms.Label labelCodKit;
-        private System.Windows.Forms.TextBox textBoxCodKit;
         private System.Windows.Forms.Label labelEstoque;
         private System.Windows.Forms.Label labelEstoqueValor;
     }

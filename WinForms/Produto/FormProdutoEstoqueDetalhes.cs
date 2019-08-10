@@ -16,8 +16,8 @@ namespace WinForms
 {
     public partial class FormProdutoEstoqueDetalhes : Form
     {
-        EstoqueNegocios estoqueNegocios = new EstoqueNegocios(Form1.Empresa.empconexao);
-        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao);
+        EstoqueNegocios estoqueNegocios = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
         GridFormProdutoEstoqueColecao gridProdEstoque = new GridFormProdutoEstoqueColecao();
         GridFormProdutoEstoqueColecao gridProdEstoqueCopia = new GridFormProdutoEstoqueColecao(); //mantem uma copia do gridProdEstoque
         int dbLista;

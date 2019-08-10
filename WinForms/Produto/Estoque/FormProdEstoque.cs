@@ -15,7 +15,8 @@ namespace WinForms
 {
     public partial class FormProdEstoque : Form
     {
-        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao);
+        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+        EstoqueNegocios negocioEstoque;
         ProdutoEstoqueInfo produtoEstoqueInfo = new ProdutoEstoqueInfo();
         PessoaInfo infoPessoa;
         PessoaNegocio negocioPessoa;
@@ -203,7 +204,8 @@ namespace WinForms
 
                 if (gridLancarEstoqueColecao != null)
                 {
-                    estoqueLancamentoInfo = produtoNegocios.ConsultarEstoqueLancamento(gridLancarEstoqueColecao[0].id);
+                    negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+                    estoqueLancamentoInfo = negocioEstoque.ConsultarEstoqueLancamento(gridLancarEstoqueColecao[0].id);
 
                     if (estoqueLancamentoInfo != null && estoqueLancamentoInfo.estoquelancamentoidunid == Form1.Unidade.uniid)
                     {
@@ -292,7 +294,8 @@ namespace WinForms
                     estoquelancamentodatahora = DateTime.Now
                 };
 
-                estoqueLancamentoInfo.estoquelancamentoid = produtoNegocios.InsertEstoqueLancamento(estoqueLancamentoInfo, Form1.Unidade.uniid);
+                negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+                estoqueLancamentoInfo.estoquelancamentoid = negocioEstoque.InsertEstoqueLancamento(estoqueLancamentoInfo, Form1.Unidade.uniid);
 
                 if (!string.IsNullOrEmpty(textBoxFornecedorCod.Text) && estoqueLancamentoInfo.estoquelancamentoid > 0) //o número 1 é referente a compra de mercadoria
                 {
@@ -340,7 +343,8 @@ namespace WinForms
                 {
                     if (produtoInfo.proControleEstoque == true)
                     {
-                        ProdutoInfo produto = produtoNegocios.ConsultarEstoqueIdProdutoUnid(produtoInfo.proId, Form1.Unidade.uniid);
+                        negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+                        ProdutoInfo produto = negocioEstoque.ConsultarEstoqueIdProdutoUnid(produtoInfo.proId, Form1.Unidade.uniid);
 
                         if (produto != null)
                         {
@@ -359,9 +363,10 @@ namespace WinForms
                         }
                         else
                         {
-                            if (produtoNegocios.InsertProdutoEstoque(produtoInfo.proId, Form1.Unidade.uniid) > 0)
+                            negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+                            if (negocioEstoque.InsertProdutoEstoque(produtoInfo.proId, Form1.Unidade.uniid) > 0)
                             {
-                                produto = produtoNegocios.ConsultarEstoqueIdProdutoUnid(produtoInfo.proId, Form1.Unidade.uniid);
+                                produto = negocioEstoque.ConsultarEstoqueIdProdutoUnid(produtoInfo.proId, Form1.Unidade.uniid);
                                 PreencherFormProduto(produto);
                             }
                             else
@@ -491,7 +496,8 @@ namespace WinForms
                 estoquedetalhesvalor = lancar.valorUnit
             };
 
-            if (produtoNegocios.InsertEstoqueLancamentoDetalhes(detalhes) > 0)
+            negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+            if (negocioEstoque.InsertEstoqueLancamentoDetalhes(detalhes) > 0)
                 return true;
             else
                 return false;
@@ -505,7 +511,8 @@ namespace WinForms
                 estoqueLancamentoInfo.estoquelancamentoquant = Convert.ToInt32(labelValorTotalQuant.Text);
                 Caixa caixa = new Caixa();
 
-                if (produtoNegocios.UpdateEstoqueLancamentoId(estoqueLancamentoInfo) > 0)
+                negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+                if (negocioEstoque.UpdateEstoqueLancamentoId(estoqueLancamentoInfo) > 0)
                 {
                     EntradaSaidaInfo entradaSaidaSalvar = new EntradaSaidaInfo
                     {
@@ -550,7 +557,8 @@ namespace WinForms
                             prodestoquequant = lancar.quant
                         };
 
-                        int cod = produtoNegocios.UpdateEstoqueId(estoque);
+                        negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+                        int cod = negocioEstoque.UpdateEstoqueId(estoque);
                         if (cod > 0)
                         {
                             MovEstoqueInfo movEstoqueInfo = new MovEstoqueInfo
@@ -561,7 +569,7 @@ namespace WinForms
                                 movestoquevalor = lancar.valorUnit
                             };
 
-                            if (!produtoNegocios.InsertMovEstoque(movEstoqueInfo))
+                            if (!negocioEstoque.InsertMovEstoque(movEstoqueInfo))
                             {
                                 FormMessage.ShowMessegeWarning("Falha ao tentar salvar!");
                                 return;
@@ -620,7 +628,8 @@ namespace WinForms
             {
                 if (FormMessage.ShowMessegeQuestion("Deseja cancelar este lançamento?") == DialogResult.Yes)
                 {
-                    if (produtoNegocios.UpdateEstoqueLancamentoStatus(estoqueLancamentoInfo.estoquelancamentoid, 3) > 0)
+                    negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+                    if (negocioEstoque.UpdateEstoqueLancamentoStatus(estoqueLancamentoInfo.estoquelancamentoid, 3) > 0)
                     {
                         FormMessage.ShowMessegeInfo("O lançamento foi cancelado com sucesso!");
                         LimparCampos();

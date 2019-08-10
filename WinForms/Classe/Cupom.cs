@@ -12,7 +12,7 @@ namespace WinForms
     public class Cupom
     {
         ClienteNegocios clienteNegocios = new ClienteNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
-        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao);
+        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
         FuncNegocios funcNegocios = new FuncNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
         VendaNegocios vendaNegocios = new VendaNegocios(Form1.Empresa.empconexao);
         CaixaNegocios caixaNegocios = new CaixaNegocios(Form1.Empresa.empconexao);
@@ -142,7 +142,7 @@ namespace WinForms
         {
             servico = string.IsNullOrEmpty(servico) ? "" : "(" + servico + ")";
             string cupom = string.Empty;
-            
+
             string fiscal = "CUPOM NÃO FISCAL";
             string a = fiscal.Substring(0, fiscal.Length / 2).PadLeft(tam / 2, '=');
             string b = fiscal.Substring(fiscal.Length / 2).PadRight(tam / 2, '=');
@@ -180,7 +180,7 @@ namespace WinForms
 
                 string dadositem = string.Empty;
                 VendaDetalhesColecao venDetalhesColecao = vendaNegocios.ConsultarVendaDetalhesIdVenda(venda.venid);
-                
+
                 //dados da empresa
                 string empresa = "EMPRESA";
                 string empA = string.Empty;
@@ -222,7 +222,7 @@ namespace WinForms
                 dadoscliente += "End.: " + infoPessoa.pssendcomplemento + ", " + Environment.NewLine
                     + infoPessoa.pssendlogradouro + Environment.NewLine;
                 dadoscliente += infoPessoa.pssendbairro + ", " + infoPessoa.pssendcidade + "-" + infoPessoa.pssenduf + Environment.NewLine;
-                
+
 
                 dadoscliente += "Telefone: " + infoPessoa.psstelefone + Environment.NewLine;
                 dadoscliente += "Email: " + infoPessoa.pssemail + Environment.NewLine;
@@ -234,11 +234,7 @@ namespace WinForms
                     ProdutoInfo produtoInfo = produtoNegocios.ConsultarProdutosId(detalhes.vendetalhesidprod);
 
                     decimal calc = 0;
-
-                    if (produtoInfo.protaxa)
-                        calc = -detalhes.vendetalhesvalordesc;
-                    else
-                        calc = (detalhes.vendetalhesvalorunit - detalhes.vendetalhesvalordesc) * detalhes.vendetalhesquant;
+                    calc = (detalhes.vendetalhesvalorunit - detalhes.vendetalhesvalordesc) * detalhes.vendetalhesquant;
 
                     string desc = string.Empty;
                     string prod = string.Empty;
@@ -261,7 +257,7 @@ namespace WinForms
                 //formas de pagamentos
                 string dadosformapag = string.Empty;
                 string troco = string.Empty;
-                
+
                 if (venda.venmodo > 0)
                 {
                     string pagamento = "FORMA DE PAGAMENTO";
@@ -296,7 +292,7 @@ namespace WinForms
 
                         dadosformapag += descricao + pag.pagdetalhesvalor.ToString("C2").PadLeft(tam - descricao.Length) + Environment.NewLine;
                     }
-                    
+
                     troco += Environment.NewLine;
 
                     if (desconto > 0)

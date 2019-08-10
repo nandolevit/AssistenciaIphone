@@ -23,9 +23,7 @@ namespace ObjTransfer
         public int proidmarca { get; set; }
         public int proidfornecedor { get; set; }
         public int proidstatus { get; set; }
-        public string procodkit { get; set; }
         public string prodetalhes { get; set; }
-        public bool protaxa { get; set; }
         public EnumAssistencia proassist { get; set; }
     }
 }

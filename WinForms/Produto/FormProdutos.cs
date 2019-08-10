@@ -17,8 +17,8 @@ namespace WinForms
     public partial class FormProdutos : Form
     {
         PessoaNegocio negocioPessoa;
-        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao);
-        EstoqueNegocios estoque = new EstoqueNegocios(Form1.Empresa.empconexao);
+        ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+        EstoqueNegocios negocioEstoque;
         ProdutoInfo infoProd;
 
         private int ProdCod { get; set; }
@@ -195,17 +195,16 @@ namespace WinForms
                     proidmarca = marca,
                     proidstatus = status,
                     proidsubcategoria = categoria,
-                    proidUser = Form1.User.useidfuncionario,
-                    procodkit = textBoxCodKit.Text
+                    proidUser = Form1.User.useidfuncionario
                 };
 
                 //opção para salvar ou alterar o produto
                 if (!alterar)
                 {//salvar o produto
                     int cod = produtoNegocios.InsertProduto(infoProd);
-
+                    negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
                     if (radioButtonSim.Checked)
-                        produtoNegocios.InsertProdutoEstoque(cod, Form1.Unidade.uniid);
+                        negocioEstoque.InsertProdutoEstoque(cod, Form1.Unidade.uniid);
 
                     if (cod > 0)
                     {
@@ -304,7 +303,6 @@ namespace WinForms
                 textBoxCod.Text = string.Format("{0:000000}", produtosInfo.proId);
                 textBoxDescricao.Text = produtosInfo.proDescricao;
                 textBoxBarras.Text = produtosInfo.proCodBarras;
-                textBoxCodKit.Text = produtosInfo.procodkit;
                 textBoxCompra.Text = string.Format("{0}", produtosInfo.proValorCompra);
                 textBoxVarejo.Text = string.Format("{0}", produtosInfo.proValorVarejo);
                 textBoxAtacado.Text = string.Format("{0}", produtosInfo.proValorAtacado);
@@ -312,7 +310,7 @@ namespace WinForms
 
                 if (produtosInfo.proControleEstoque == true)
                 {
-                    ProdutoInfo contar =  estoque.ConsultarEstoqueIdProdutoUnid(produtosInfo.proId, Form1.Unidade.uniid);
+                    ProdutoInfo contar =  negocioEstoque.ConsultarEstoqueIdProdutoUnid(produtosInfo.proId, Form1.Unidade.uniid);
                     radioButtonSim.Checked = true;
                     labelEstoque.Visible = true;
                     labelEstoqueValor.Visible = true;
@@ -590,6 +588,7 @@ namespace WinForms
             {
                 if (int.TryParse(textBoxCodFornecedor.Text, out int cod))
                 {
+                    negocioPessoa = new PessoaNegocio(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
                     PessoaInfo fornecedor = negocioPessoa.ConsultarPessoaId(cod);
 
                     if (fornecedor != null)
