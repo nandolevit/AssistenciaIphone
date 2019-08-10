@@ -180,7 +180,7 @@ namespace WinForms
                         if (Empresa.empativada == 1)
                         {
                             TimeSpan timeSpan = Empresa.empdataativo.Subtract(DateTime.Now.Date);
-                            if (timeSpan.Days > 0)
+                            if (timeSpan.Days >= 0)
                             {
                                 if (timeSpan.Days < 7)
                                     FormMessage.ShowMessegeWarning(Empresa.empobs.Replace("**", timeSpan.Days.ToString()));
@@ -319,13 +319,17 @@ namespace WinForms
                         if (Unidade.uniassistencia == EnumAssistencia.Loja)
                         {
                             MenuItemEstoque.Visible = false;
-                            buttonOs.Enabled = false;
+                            buttonOs.Image = Properties.Resources.icons8_iPhone_32;
+                            buttonOs.Text = "&Iphone (Alt+I)";
+                            //buttonOs.Enabled = false;
                             iphoneToolStripMenuItem.Visible = true;
                         }
                         else
                         {
                             MenuItemEstoque.Visible = true;
-                            buttonOs.Enabled = true;
+                            buttonOs.Image = Properties.Resources.icons8_Maintenance_32;
+                            buttonOs.Text = "&Serviço (Alt+S)";
+                            //buttonOs.Enabled = true;
                             iphoneToolStripMenuItem.Visible = false;
                         }
 
@@ -810,6 +814,10 @@ namespace WinForms
                 FormServicoListar formServicoListar = new FormServicoListar();
                 AbrirForm(formServicoListar, true);
             }
+            else
+            {
+                IphoneAbrir();
+            }
         }
 
         private void buttonBuscarCliente_Click(object sender, EventArgs e)
@@ -942,12 +950,16 @@ namespace WinForms
             formEmail.ShowDialog(this);
         }
 
-        private void IphoneToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void IphoneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IphoneAbrir();
+        }
+
+        private void IphoneAbrir()
         {
             FormIphoneCadastrar formIphoneCadastrar = new FormIphoneCadastrar();
             AbrirForm(formIphoneCadastrar);
         }
-
         private void FornecedorToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             CadPessoa(EnumPessoaTipo.Fornecedor);
