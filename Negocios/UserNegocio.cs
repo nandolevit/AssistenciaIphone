@@ -22,11 +22,11 @@ namespace Negocios
             EmpConexao = conexao;
         }
 
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
+        AccessDbMySql accessDbMySql= new AccessDbMySql(EmpConexao);
 
         public int UpdateUserAdmin(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -36,16 +36,9 @@ namespace Negocios
                 return 0;
         }
 
-        public bool TestarConexaoSemPersistencia(string access)
-        {
-            bool teste = accessDbMySql.ConectarSemPersistencia(access);
-            accessDbMySql.FecharConexao();
-            return teste;
-        }
-
         public bool TestarConexaoSemPersistencia()
         {
-            bool teste = accessDbMySql.ConectarSemPersistencia(DadosDB.ConexaoSys);
+            bool teste = accessDbMySql.ConectarSemPersistencia();
             accessDbMySql.FecharConexao();
             return teste;
         }
@@ -61,7 +54,7 @@ namespace Negocios
         public UserColecao ConsultarTodosLogins()
         {
 
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
                 dataTable = accessDbMySql.dataTableMySql("spConsultarCadastroTodosLogins");
@@ -76,7 +69,7 @@ namespace Negocios
 
         public int UpdateUser(UserInfo userInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@login", userInfo.uselogin);
                 accessDbMySql.AddParametrosMySql("@id", userInfo.useid);
@@ -90,7 +83,7 @@ namespace Negocios
 
         public UserInfo ConsultarUsuarioFuncId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DeletarUserLogin();
                 accessDbMySql.AddParametrosMySql("@id", id);
@@ -108,7 +101,7 @@ namespace Negocios
 
         public UserInfo ConsultarUsuarioId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DeletarUserLogin();
                 accessDbMySql.AddParametrosMySql("@id", id);
@@ -126,7 +119,7 @@ namespace Negocios
 
         public UserInfo ConsultarLogin(string login)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@login", login);
 
@@ -143,13 +136,13 @@ namespace Negocios
 
         private void DeletarUserLogin()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
                 accessDbMySql.ExecutarScalarMySql("spDeletarUserLogin");
         }
 
         public int InsertUser(UserInfo userInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@funcionario", userInfo.useidfuncionario);
                 accessDbMySql.AddParametrosMySql("@login", userInfo.uselogin);

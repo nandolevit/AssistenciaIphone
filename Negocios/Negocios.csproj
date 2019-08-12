@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AparelhoNegocio.cs" />
     <Compile Include="CaixaNegocios.cs" />
     <Compile Include="ClienteNegocios.cs" />
     <Compile Include="EmailNegocio.cs" />

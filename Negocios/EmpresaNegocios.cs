@@ -12,21 +12,22 @@ namespace Negocios
 {
     public class EmpresaNegocios
     {
-        private static string EmpConexao { get; set; }
+        private string EmpConexao { get; set; }
+        AccessDbMySql accessDbMySql;
 
         public EmpresaNegocios(){} //esse construtor serve para compatibilidade
 
         public EmpresaNegocios(string conexao)
         {
             EmpConexao = conexao;
+            accessDbMySql = new AccessDbMySql(EmpConexao);
         }
 
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
         EmpresaAccessDB empresaAccessDB = new EmpresaAccessDB();
 
         public bool ConsultarComputadorOnlineCriarLogin(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -73,7 +74,7 @@ namespace Negocios
 
         public int UpdateComputadorLog(ComputerInfo comp)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", comp.compid);
                 accessDbMySql.AddParametrosMySql("@ip", comp.compip);
@@ -87,7 +88,7 @@ namespace Negocios
 
         public ComputerInfo ConsultarComputadorId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -103,7 +104,7 @@ namespace Negocios
 
         public ComputerColecao ConsultarComputadorIdUnid(int unid)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@unid", unid);
 
@@ -119,7 +120,7 @@ namespace Negocios
 
         public int InsertComputador(ComputerInfo comp)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@adaptador", comp.compadaptador);
                 accessDbMySql.AddParametrosMySql("@hostname", comp.comphostname);
@@ -136,7 +137,7 @@ namespace Negocios
         public EmpresaInfo ConsultarEmpresaSysIdOffline(string id)
         {
 
-            if (accessDbMySql.ConectarOffline(EmpConexao))
+            if (accessDbMySql.ConectarOffline())
             {
                 DataTable dataTable = new DataTable();
                 accessDbMySql.AddParametrosMySql("@cod", id);
@@ -170,7 +171,7 @@ namespace Negocios
         
         public UnidadeInfo ConsultarUnidadeId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
                 DataTable dataTable = new DataTable();
@@ -187,7 +188,7 @@ namespace Negocios
 
         public UnidadeInfo ConsultarUnidadeSede()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
 
@@ -204,7 +205,7 @@ namespace Negocios
 
         public UnidadeColecao ConsultarAssistencia()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
 
@@ -221,7 +222,7 @@ namespace Negocios
 
         public UnidadeColecao ConsultarUnidade()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
 
@@ -238,7 +239,7 @@ namespace Negocios
         
         public int InsertUnidade(UnidadeInfo unidadeInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@bairro", unidadeInfo.unibairro);
                 accessDbMySql.AddParametrosMySql("@cep", unidadeInfo.unicep);
@@ -268,7 +269,7 @@ namespace Negocios
 
         public EmpresaColecao ConsultarEmpresa(string conexao)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
                 dataTable = accessDbMySql.dataTableMySql("spConsultarEmpresa");
@@ -284,7 +285,7 @@ namespace Negocios
 
         public EmpresaInfo ConsultarEmpresaId(string id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
                 accessDbMySql.AddParametrosMySql("@cod", id);

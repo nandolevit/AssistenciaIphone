@@ -11,6 +11,6 @@ namespace ObjTransfer.Aparelho.Enum
         Desktop = 1,
         Notebook = 2,
         All_in_One = 3,
-        Macbook = 4
+        Mac = 4
     }
 }

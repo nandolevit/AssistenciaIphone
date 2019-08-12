@@ -18,7 +18,7 @@ namespace ObjTransfer.Aparelho.Computadores
         }
         public EnumTipoPc CategoriaPc { get; set; }
         public PC_RamColecao Memoria { get; set; }
-        public PC_Storage Hd { get; set; }
+        public PC_StorageColecao Hd { get; set; }
         public PC_Specification Specification { get; set; }
         public PC_VideoColecao VideoPlaca { get; set; }
 

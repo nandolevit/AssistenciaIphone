@@ -177,11 +177,6 @@ namespace WinForms
                     {
                         Empresa = empresaNegocios.ConsultarEmpresaSysId(Empresa.empcod);
 
-                        ObjTransfer.Aparelho.Computadores.Computador computador = new ObjTransfer.Aparelho.Computadores.Computador
-                        {
-                            
-                        };
-
                         if (Empresa.empativada == 1)
                         {
                             TimeSpan timeSpan = Empresa.empdataativo.Subtract(DateTime.Now.Date);

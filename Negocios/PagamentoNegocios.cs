@@ -18,11 +18,11 @@ namespace Negocios
         {
             EmpConexao = conexao;
         }
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
+        AccessDbMySql accessDbMySql= new AccessDbMySql(EmpConexao);
 
         public int InsertPagamentoDetalhes(PagamentoDetalhesInfo pagamentoDetalhesInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@maq", pagamentoDetalhesInfo.pagdetalhesidmaquineta);
                 accessDbMySql.AddParametrosMySql("@tipo", pagamentoDetalhesInfo.pagdetalhesidtipopag);
@@ -39,7 +39,7 @@ namespace Negocios
 
         public int InsertPagamento(PagamentoInfo pagamentoInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@venda", pagamentoInfo.pagamentoidvenda);
                 accessDbMySql.AddParametrosMySql("@quant", pagamentoInfo.pagamentoquantforma);
@@ -54,7 +54,7 @@ namespace Negocios
 
         public CodDescricaoColecao ConsultarPagamentoTipo()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarPagamentoTipo");
 

@@ -13,18 +13,19 @@ namespace Negocios
     public class PessoaNegocio
     {
         private string EmpConexao { get; set; }
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
+        AccessDbMySql accessDbMySql;
         EnumPessoaTipo enumTipo;
         EnumAssistencia Assistencia;
         public PessoaNegocio(string conexao, EnumAssistencia assistencia)
         {
             EmpConexao = conexao;
             Assistencia = assistencia;
+            accessDbMySql = new AccessDbMySql(EmpConexao);
         }
 
         public PessoaInfo ConsultarPessoaPadrao(EnumPessoaTipo tipo, bool pad = true)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@tipo", tipo);
                 accessDbMySql.AddParametrosMySql("@padrao", pad);
@@ -40,7 +41,7 @@ namespace Negocios
         }
         public PessoaInfo ConsultarPessoaCpf(string cpf)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@cpf", cpf);
                 accessDbMySql.AddParametrosMySql("@assist", Assistencia);
@@ -63,7 +64,7 @@ namespace Negocios
 
         public PessoaInfo ConsultarPessoaId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -84,7 +85,7 @@ namespace Negocios
 
         public PessoaColecao ConsultarPessoaDescricaoTodos(string descricao, EnumAssistencia assistencia)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@descricao", descricao);
                 accessDbMySql.AddParametrosMySql("@assist", assistencia);
@@ -100,7 +101,7 @@ namespace Negocios
 
         public PessoaColecao ConsultarPessoaDescricao(string descricao, EnumPessoaTipo tipo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@descricao", descricao);
                 accessDbMySql.AddParametrosMySql("@tipo", tipo);
@@ -117,7 +118,7 @@ namespace Negocios
 
         public int UpdatePessoa(PessoaInfo pessoa)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", pessoa.pssid);
                 accessDbMySql.AddParametrosMySql("@cpf", pessoa.psscpf);
@@ -140,7 +141,7 @@ namespace Negocios
 
         public int InsertPessoa(PessoaInfo pessoa)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@assist", Assistencia);
                 accessDbMySql.AddParametrosMySql("@cpf", pessoa.psscpf);

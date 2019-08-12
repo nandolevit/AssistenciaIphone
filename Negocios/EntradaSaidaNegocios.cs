@@ -19,11 +19,11 @@ namespace Negocios
             EmpConexao = conexao;
         }
 
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
+        AccessDbMySql accessDbMySql= new AccessDbMySql(EmpConexao);
 
         public int InsertEntradaDiversos(EntradaDiversosInfo diversos)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@entrada", diversos.diversosidentrada);
                 accessDbMySql.AddParametrosMySql("@turno", diversos.diversosidturno);
@@ -36,7 +36,7 @@ namespace Negocios
 
         public int InsertEntradaSaidaCategoria(TipoEntradaSaidaInfo tipoEntradaSaidaInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@descricao", tipoEntradaSaidaInfo.TipoDescricao);
                 accessDbMySql.AddParametrosMySql("@tipo", tipoEntradaSaidaInfo.TipoEntSai);
@@ -49,7 +49,7 @@ namespace Negocios
         
         public int UpdateEntradaSaidaLancamentoConfirmar(EntradaSaidaInfo entradaSaidaInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@pago", entradaSaidaInfo.entravalorpago);
                 accessDbMySql.AddParametrosMySql("@venc", entradaSaidaInfo.entradatavenc);
@@ -64,7 +64,7 @@ namespace Negocios
 
         public int UpdateEntradaSaidaLancamentoParcelas(EntradaSaidaInfo entradaSaidaInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@total", entradaSaidaInfo.entranumtotalparcelas);
                 accessDbMySql.AddParametrosMySql("@id", entradaSaidaInfo.entraid);
@@ -77,7 +77,7 @@ namespace Negocios
 
         public int UpdateEntradaSaidaLancamento(EntradaSaidaInfo entradaSaidaInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@venc", entradaSaidaInfo.entradatavenc);
                 accessDbMySql.AddParametrosMySql("@obs", entradaSaidaInfo.entraobs);
@@ -94,7 +94,7 @@ namespace Negocios
 
         public CodDescricaoInfo ConsultarEntradaSaidaPorIdCategoria(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -111,7 +111,7 @@ namespace Negocios
 
         public EntradaSaidaInfo ConsultarEntradaSaidaId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -128,7 +128,7 @@ namespace Negocios
 
         public int UpdateEntradaSaidaLancamentoCodParcelas(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -140,7 +140,7 @@ namespace Negocios
 
         public int InsertEntradaSaidaLancamento(EntradaSaidaInfo entradaSaidaInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@unid", entradaSaidaInfo.entraidunidade);
                 accessDbMySql.AddParametrosMySql("@func", entradaSaidaInfo.entraidfunc);
@@ -164,7 +164,7 @@ namespace Negocios
 
         public CodDescricaoInfo ConsultarEntradaSaidaCategoriaId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -181,7 +181,7 @@ namespace Negocios
 
         public int DesativarEntradaSaidaLancamento(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -193,7 +193,7 @@ namespace Negocios
 
         public EntradaSaidaColecao ConsultarEntradaDiversosSaldoIdCaixa(int idcaixa)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", idcaixa);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarEntradaDiversosSaldoIdCaixa");
@@ -209,7 +209,7 @@ namespace Negocios
 
         public EntradaSaidaColecao ConsultarEntradaDiversosSaldoIdTurno(int idturno)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", idturno);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarEntradaDiversosSaldoIdTurno");
@@ -225,7 +225,7 @@ namespace Negocios
 
         public EntradaSaidaColecao ConsultarEntradaLancamento(EntradaSaidaPesquisar entradaSaidaPesquisar)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@conf", entradaSaidaPesquisar.Confirmado);
                 accessDbMySql.AddParametrosMySql("@cat", entradaSaidaPesquisar.Categoria);
@@ -247,7 +247,7 @@ namespace Negocios
         
         public CodDescricaoColecao ConsultarCategoriaEntradaSaidaId(string id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 

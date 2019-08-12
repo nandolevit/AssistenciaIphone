@@ -8,12 +8,45 @@ namespace AccessDB
     {
         private bool conectado;
         private MySqlParameterCollection mySqlParameterCollection = new MySqlCommand().Parameters;
+        public string EmpConexao { get; set; }
 
         MySqlConnection conn; //acessa o banco online
 
+        public OnlineDB(string empConexao)
+        {
+            EmpConexao = empConexao;
+        }
+
         public bool ConectarSys()
         {
-            return Conectar(DadosDB.ConexaoSys);
+            DateTime tempo = DateTime.Now;
+            int conta = 1; //conta quantas vezes o sistema tentou se conectar sem êxito
+
+            while (true)
+            {
+                while (tempo <= DateTime.Now)
+                {
+                    conta++;
+
+                    try
+                    {
+                        conn = new MySqlConnection(DadosDB.ConexaoSys);
+
+                        conn.Open();
+                        conectado = true;
+                        return true;
+                    }
+                    catch (MySqlException)
+                    {
+                        tempo = DateTime.Now;
+                        double sec = 5 * conta;
+                        tempo = tempo.AddSeconds(sec);
+
+                        if (conta > 2)
+                            return false;
+                    }
+                }
+            }
         }
 
         public void FecharConexao()
@@ -22,11 +55,11 @@ namespace AccessDB
             conn.Dispose();
         }
 
-        public bool Conectar(string empaccess)
+        public bool Conectar()
         {
             try
             {
-                conn = new MySqlConnection(empaccess);
+                conn = new MySqlConnection(EmpConexao);
 
                 conn.Open();
                 conectado = true;

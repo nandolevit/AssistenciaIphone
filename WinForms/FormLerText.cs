@@ -18,6 +18,7 @@ namespace WinForms
     public partial class FormLerText : Form
     {
         string path = Directory.GetCurrentDirectory() + @"\_Txt\";
+        Computador pc;
         public FormLerText()
         {
             InitializeComponent();
@@ -48,6 +49,12 @@ namespace WinForms
                 ram = ConsultarMemory();
                 sto = ConsultarStorage();
                 proc = ConsultaProcessor();
+
+                pc = new Computador
+                {
+                    CategoriaPc = ObjTransfer.Aparelho.Enum.EnumTipoPc.Notebook,
+                    
+                };
 
                 PreencherForm(mon, proc, ram, sto, spec, video);
                 buttonSalvar.Enabled = true;

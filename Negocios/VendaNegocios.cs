@@ -14,11 +14,11 @@ namespace Negocios
     {
         public VendaNegocios(string conexao) : base(conexao) { }
 
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
+        AccessDbMySql accessDbMySql= new AccessDbMySql(EmpConexao);
 
         public GridViewComissaoColecao ConsultarVendaDetalhesTodosFunc(DateTime dataini, DateTime datafim)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("dataini", dataini);
                 accessDbMySql.AddParametrosMySql("datafim", datafim);
@@ -53,7 +53,7 @@ namespace Negocios
 
         public GridViewComissaoColecao ConsultarVendaDetalhesIdFunc(int idfunc, DateTime dataini, DateTime datafim)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("idfunc", idfunc);
                 accessDbMySql.AddParametrosMySql("dataini", dataini);
@@ -94,7 +94,7 @@ namespace Negocios
 
         public VendaCanceladaInfo ConsultarVendaCanceladaIdVenda(int idvenda)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@idvenda", idvenda);
 
@@ -126,7 +126,7 @@ namespace Negocios
 
         public int InsertVendaCancelada(int func, int venda, string descricao)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@func", func);
                 accessDbMySql.AddParametrosMySql("@venda", venda);
@@ -140,7 +140,7 @@ namespace Negocios
 
         public FormaPagamentoPorVendaColecao ConsultarFormaPagamentoPorVenda(int idvenda)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@idvenda", idvenda);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarFormaPagamentoIdVenda");
@@ -171,7 +171,7 @@ namespace Negocios
         
         public VendaColecao ConsultarVendaPeriodo(DateTime ini, DateTime final, int idstatus)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@datainicial", ini);
                 accessDbMySql.AddParametrosMySql("@datafinal", final);
@@ -190,7 +190,7 @@ namespace Negocios
 
         public PagamentoInfo ConsultarPagamentoIdVenda(int idvenda)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@idvenda", idvenda);
 
@@ -207,7 +207,7 @@ namespace Negocios
 
         public VFormaPagPorVendaColecao ConsultarVFormaPagPorVendaColecao(int idvenda)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@idvenda", idvenda);
 
@@ -224,7 +224,7 @@ namespace Negocios
 
         public VendaDetalhesColecao ConsultarVendaDetalhesIdVenda(int idvenda)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@idvenda", idvenda);
 
@@ -241,7 +241,7 @@ namespace Negocios
 
         public VendaInfo ConsultarVendaId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -258,7 +258,7 @@ namespace Negocios
 
         public FormaPagamentoInfo ConsultarFormaPagamentoId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -275,7 +275,7 @@ namespace Negocios
 
         public int InsertVendaDetalhes(VendaDetalhesInfo vendaDetalhesInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@venda", vendaDetalhesInfo.vendetalhesidvenda);
                 accessDbMySql.AddParametrosMySql("@prod", vendaDetalhesInfo.vendetalhesidprod);
@@ -291,7 +291,7 @@ namespace Negocios
 
         public int InsertVenda(VendaInfo vendaInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@dta", vendaInfo.vendata);
                 accessDbMySql.AddParametrosMySql("@cliente", vendaInfo.venidcliente);
@@ -312,7 +312,7 @@ namespace Negocios
 
         public FormaPagamentoColecao ConsultarFormaPagamento()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarFormaPagamento");
 

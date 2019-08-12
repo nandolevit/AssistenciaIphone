@@ -9,20 +9,19 @@ namespace Negocios
     public class OnlineNegocio
     {
         private static string EmpConexao { get; set; }
-
-        public OnlineNegocio() { }
+        OnlineDB online;
 
         public OnlineNegocio(string conexao)
         {
             EmpConexao = conexao;
+            online = new OnlineDB(EmpConexao);
         }
 
-        OnlineDB online = new OnlineDB();
 
         #region Chat
         public ChatOnlineColecao ConsultarChatGridNovaMensagem(int chatOn)
         {
-            if (online.Conectar(EmpConexao))
+            if (online.Conectar())
             {
                 online.AddParametrosMySql("@recebe", chatOn);
                 DataTable dataTable = online.dataTableMySql("spConsultarChatMensagemNova");
@@ -53,7 +52,7 @@ namespace Negocios
 
         public ChatOnlineColecao ConsultarChatNova(ChatOnlineInfo chatOn)
         {
-            if (online.Conectar(EmpConexao))
+            if (online.Conectar())
             {
                 online.AddParametrosMySql("@ident", chatOn.chatident);
                 online.AddParametrosMySql("@recebe", chatOn.chatidrecebe);
@@ -70,7 +69,7 @@ namespace Negocios
 
         public int UpdateChatMessageLida(string ident, int recebe)
         {
-            if (online.Conectar(EmpConexao))
+            if (online.Conectar())
             {
                 online.AddParametrosMySql("@ident", ident);
                 online.AddParametrosMySql("@recebe", recebe);
@@ -82,7 +81,7 @@ namespace Negocios
 
         public ChatOnlineColecao ConsultarChat(string ident)
         {
-            if (online.Conectar(EmpConexao))
+            if (online.Conectar())
             {
                 online.AddParametrosMySql("@ident", ident);
                 DataTable dataTable = online.dataTableMySql("spConsultarChat");
@@ -120,7 +119,7 @@ namespace Negocios
 
         public int InsertChat(ChatOnlineInfo chat)
         {
-            if (online.Conectar(EmpConexao))
+            if (online.Conectar())
             {
                 online.AddParametrosMySql("@envio", chat.chatidenvio);
                 online.AddParametrosMySql("@recebe", chat.chatidrecebe);
@@ -136,7 +135,7 @@ namespace Negocios
         public UserLoginColecao ConsultarUserOnline(int id)
         {
             //esse método é exclusivo para o chat online, possui um método de conexão exclusiva
-            if (online.Conectar(EmpConexao))
+            if (online.Conectar())
             {
                 online.AddParametrosMySql("@id", id);
                 DataTable dataTable = new DataTable();
@@ -155,7 +154,7 @@ namespace Negocios
         #region User
         public int InsertUserLogin(UserInfo userInfo)
         {
-            if (online.Conectar(EmpConexao))
+            if (online.Conectar())
             {
                 online.AddParametrosMySql("@id", userInfo.useid);
 
@@ -167,7 +166,7 @@ namespace Negocios
 
         public int UpdateUserLogin(int userLogin)
         {
-            if (online.Conectar(EmpConexao))
+            if (online.Conectar())
             {
                 online.AddParametrosMySql("@id", userLogin);
                 return online.ExecutarScalarMySql("spUpdateUserLogin");
@@ -198,7 +197,7 @@ namespace Negocios
 
         public UserLoginInfo ConsultarUserLogin(int id)
         {
-            if (online.Conectar(EmpConexao))
+            if (online.Conectar())
             {
                 online.AddParametrosMySql("@id", id);
                 DataTable dataTable = dataTable = online.dataTableMySql("spConsultarUserLogin");

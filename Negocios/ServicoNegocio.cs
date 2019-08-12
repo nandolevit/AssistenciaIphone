@@ -19,12 +19,12 @@ namespace Negocios
             EmpConexao = conexao;
         }
 
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
+        AccessDbMySql accessDbMySql= new AccessDbMySql(EmpConexao);
 
         #region Servico
         public GridServicoInfo ConsultarGridServicoOs(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarvServicoIphoneOs");
@@ -39,7 +39,7 @@ namespace Negocios
 
         public GridServicoColecao ConsultarGridServicoDia()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarvServicoIphoneDia");
                 if (dataTable != null)
@@ -53,7 +53,7 @@ namespace Negocios
         }
         public GridServicoColecao ConsultarGridServicoCliente(string nome)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@nome", nome);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarvServicoIphoneCliente");
@@ -89,7 +89,7 @@ namespace Negocios
 
         private int InsertServico(ServicoInfo servico)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@agend", servico.serdataagend);
                 accessDbMySql.AddParametrosMySql("@atend", servico.seridatendente);
@@ -112,7 +112,7 @@ namespace Negocios
 
         public int InsertIphoneCompra(IphoneCompraInfo compraInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@compra", compraInfo.iphcompradatacompra);
                 accessDbMySql.AddParametrosMySql("@garantia", compraInfo.iphcompradatagarantia);
@@ -133,7 +133,7 @@ namespace Negocios
 
         public int UpdateServicoIphone(ServicoIphoneInfo defeito)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@autofrontal", defeito.iphdefautofrontal);
                 accessDbMySql.AddParametrosMySql("@autointerno", defeito.iphdefautointerno);
@@ -169,7 +169,7 @@ namespace Negocios
 
             if (id > 0)
             {
-                if (accessDbMySql.Conectar(EmpConexao))
+                if (accessDbMySql.Conectar())
                 {
                     accessDbMySql.AddParametrosMySql("@autofrontal", defeito.iphdefautofrontal);
                     accessDbMySql.AddParametrosMySql("@autointerno", defeito.iphdefautointerno);
@@ -205,7 +205,7 @@ namespace Negocios
 
         public ServicoIphoneInfo ConsultarServicoIphoneId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@phone", id);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarIphoneDefeitoId");
@@ -252,7 +252,7 @@ namespace Negocios
 
         public IphoneCelularInfo ConsultarIphoneCelularId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarIphoneCelularId");
@@ -267,7 +267,7 @@ namespace Negocios
 
         public IphoneCelularColecao ConsultarIphoneCelularIdCliente(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarIphoneCelularIdCliente");
@@ -313,7 +313,7 @@ namespace Negocios
 
         public int InsertIphoneCelular(IphoneCelularInfo phone)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@phone", phone.celidmodiphone);
                 accessDbMySql.AddParametrosMySql("@compra", phone.celanocompra);
@@ -406,7 +406,7 @@ namespace Negocios
 
         public int UpdateFotoIphoneModelo(IphoneModeloCorInfo cor)
         {
-            if (accessDbMySql.Conectar(DadosDB.ConexaoSys))
+            if (accessDbMySql.ConectarSys())
             {
                 accessDbMySql.AddParametrosMySql("@phone", cor.modcoridiphone);
                 accessDbMySql.AddParametrosMySql("@foto", cor.modcorfoto);

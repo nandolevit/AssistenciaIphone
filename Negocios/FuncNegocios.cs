@@ -13,17 +13,17 @@ namespace Negocios
     public class FuncNegocios : PessoaNegocio
     {
         private string EmpConexao { get; set; }
+        AccessDbMySql accessDbMySql;
 
         public FuncNegocios(string conexao, EnumAssistencia assistencia) : base(conexao, assistencia)
         {
             EmpConexao = conexao;
+            accessDbMySql = new AccessDbMySql(EmpConexao);
         }
-
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
 
         public CodDescricaoColecao ConsultarCargos()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
 
@@ -54,7 +54,7 @@ namespace Negocios
 
         public PessoaColecao ConsultarFuncTecnico()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
 

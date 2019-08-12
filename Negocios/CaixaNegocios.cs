@@ -19,11 +19,11 @@ namespace Negocios
             EmpConexao = conexao;
         }
 
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
+        AccessDbMySql accessDbMySql= new AccessDbMySql(EmpConexao);
 
         public CaixaTurnoInfo ConsultarCaixaTurnoId(int idturno)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", idturno);
 
@@ -40,7 +40,7 @@ namespace Negocios
 
         public CaixaAbrirInfo ConsultarCaixaPorId(int idcaixa)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@idcaixa", idcaixa);
 
@@ -56,7 +56,7 @@ namespace Negocios
 
         public int UpdateFechamentoTurno(CaixaTurnoInfo caixaTurnoInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", caixaTurnoInfo.caixaturnoid);
                 accessDbMySql.AddParametrosMySql("@carne", caixaTurnoInfo.caixaturnovalorcarne);
@@ -81,7 +81,7 @@ namespace Negocios
 
         public CaixaAbrirInfo ConsultarCaixaAbrirUltimoAberto(int unid)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@unid", unid);
 
@@ -99,7 +99,7 @@ namespace Negocios
 
         public int InsertCaixaTurno(CaixaTurnoInfo caixaTurnoInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@num", caixaTurnoInfo.caixaturnonum);
                 accessDbMySql.AddParametrosMySql("@func", caixaTurnoInfo.caixaturnoidfuncabrir);
@@ -114,7 +114,7 @@ namespace Negocios
 
         public decimal ConsultarSangriaSaldoIdCaixa(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarSangriaSaldoIdCaixa");
@@ -140,7 +140,7 @@ namespace Negocios
 
         public decimal ConsultarSangriaSaldoIdTurno(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarSangriaSaldoIdTurno");
@@ -166,7 +166,7 @@ namespace Negocios
 
         public CodDescricaoColecao ConsultarSangriaTipo()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarSangriaTipo");
 
@@ -181,7 +181,7 @@ namespace Negocios
 
         public SangriaInfo ConsultarSangriaId(int idcaixa)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", idcaixa);
 
@@ -198,7 +198,7 @@ namespace Negocios
 
         public SangriaColecao ConsultarSangriaIdCaixa(int idcaixa)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", idcaixa);
 
@@ -215,7 +215,7 @@ namespace Negocios
 
         public int InsertSangriaTipo(CodDescricaoInfo descricao)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@descricao", descricao.descricao);
 
@@ -227,7 +227,7 @@ namespace Negocios
 
         public int InsertSangria(SangriaInfo sangriaInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@func", sangriaInfo.sangriaidfunc);
                 accessDbMySql.AddParametrosMySql("@tipo", sangriaInfo.sangriaidtipo);
@@ -244,7 +244,7 @@ namespace Negocios
 
         public CaixaTurnoInfo ConsutarCaixaTurnoAnterior(int idcaixa)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@idcaixa", idcaixa);
 
@@ -260,7 +260,7 @@ namespace Negocios
 
         public CaixaTurnoColecao ConsultarCaixaTurnoIdCaixa(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@caixa", id);
 
@@ -276,7 +276,7 @@ namespace Negocios
 
         public CaixaDiaColecao ConsultarCaixaDiaTotal(int idcaixa)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", idcaixa);
 
@@ -292,7 +292,7 @@ namespace Negocios
 
         public CaixaDiaColecao ConsultarCaixaDiaTurno(int idturno)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", idturno);
 
@@ -308,7 +308,7 @@ namespace Negocios
 
         public CaixaAbrirInfo ConsultarCaixaAberto(int idunid)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@unid", idunid);
 
@@ -324,7 +324,7 @@ namespace Negocios
 
         public int InsertCaixaAbrir(CaixaAbrirInfo caixaAbrirInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@func", caixaAbrirInfo.caixaabriridfunc);
                 accessDbMySql.AddParametrosMySql("@valor", caixaAbrirInfo.caixaabrirvalor);
@@ -338,7 +338,7 @@ namespace Negocios
 
         public int UpdateCaixaFechar(CaixaAbrirInfo caixaFecharInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", caixaFecharInfo.caixaabririd);
                 accessDbMySql.AddParametrosMySql("@dataf", caixaFecharInfo.caixafechardata);

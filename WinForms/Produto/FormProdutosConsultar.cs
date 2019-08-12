@@ -78,6 +78,7 @@ namespace WinForms
             }
             else
             {
+                dataGridViewProd.Rows.Clear();
                 dataGridViewProd.Rows.Add(null, null, "Nenhum produto foi encontrado!");
                 textBoxPesquisar.Select();
             }

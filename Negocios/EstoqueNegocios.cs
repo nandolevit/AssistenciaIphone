@@ -19,11 +19,11 @@ namespace Negocios
             EmpConexao = conexao;
         }
 
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
+        AccessDbMySql accessDbMySql= new AccessDbMySql(EmpConexao);
 
         public GridFormProdutoEstoqueColecao ConsultarEstoqueProdutosDescricao(string descricao)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@descricao", descricao);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarEstoqueProdutoDescricao");
@@ -39,7 +39,7 @@ namespace Negocios
 
         public GridFormProdutoEstoqueColecao ConsultarEstoqueProdutos()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarEstoqueProdutos");
 
@@ -54,7 +54,7 @@ namespace Negocios
 
         public EstoqueLancamentoInfo ConsultarEstoqueLancamento(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -71,7 +71,7 @@ namespace Negocios
 
         public int UpdateProdEstoqueZerar(int unid, int contar)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@unid", unid);
                 accessDbMySql.AddParametrosMySql("@contar", contar);
@@ -84,7 +84,7 @@ namespace Negocios
 
         public int UpdateEstoqueContarId(EstoqueContarInfo estoqueContarInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", estoqueContarInfo.estoquecontarid);
                 accessDbMySql.AddParametrosMySql("@conf", estoqueContarInfo.estoquecontarconfirmado);
@@ -99,7 +99,7 @@ namespace Negocios
 
         public EstoqueContarInfo ConstularEstoqueContarId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -116,7 +116,7 @@ namespace Negocios
 
         public int DeleteEstoqueContar(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -128,7 +128,7 @@ namespace Negocios
 
         public EstoqueContarDetalhesInfo ConsultarEstoqueContarDetalhesIdProd(int idprod, int idcontar)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@idprod", idprod);
                 accessDbMySql.AddParametrosMySql("@idcontar", idcontar);
@@ -146,7 +146,7 @@ namespace Negocios
 
         public EstoqueContarDetalhesColecao ConsultarEstoqueContarDetalhesIdContar(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -163,7 +163,7 @@ namespace Negocios
 
         public int UpdateEstoqueContarDetalhes(EstoqueContarDetalhesInfo estoqueContarDetalhesInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", estoqueContarDetalhesInfo.estoquecontardetalhesid);
                 accessDbMySql.AddParametrosMySql("@quant", estoqueContarDetalhesInfo.estoquecontardetalhesquant);
@@ -177,7 +177,7 @@ namespace Negocios
 
         public int InsertEstoqueContarDetalhes(EstoqueContarDetalhesInfo estoqueContarDetalhesInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@contar", estoqueContarDetalhesInfo.estoquecontardetalhesidcontar);
                 accessDbMySql.AddParametrosMySql("@prod", estoqueContarDetalhesInfo.estoquecontardetalhesidproduto);
@@ -192,7 +192,7 @@ namespace Negocios
 
         public int InsertEstoqueContar(EstoqueContarInfo estoqueContarInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@func", estoqueContarInfo.estoquecontaridfunc);
                 accessDbMySql.AddParametrosMySql("@unid", estoqueContarInfo.estoquecontaridunidade);
@@ -206,7 +206,7 @@ namespace Negocios
 
         public int UpdateEstoqueLancamentoStatus(int idlanc, int idstatus)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("id", idlanc);
                 accessDbMySql.AddParametrosMySql("idstatus", idstatus);
@@ -219,7 +219,7 @@ namespace Negocios
 
         public int InsertEstoqueLancamentoDetalhes(EstoqueLancamentoDetalhesInfo estoqueLancamentoDetalhesInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@lanc", estoqueLancamentoDetalhesInfo.estoquedetalhesidlancamento);
                 accessDbMySql.AddParametrosMySql("@prod", estoqueLancamentoDetalhesInfo.estoquedetalhesidprod);
@@ -234,7 +234,7 @@ namespace Negocios
 
         public int UpdateEstoqueLancamentoId(EstoqueLancamentoInfo estoqueLancamentoInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", estoqueLancamentoInfo.estoquelancamentoid);
                 accessDbMySql.AddParametrosMySql("@valor", estoqueLancamentoInfo.estoquelancamentovalor);
@@ -248,7 +248,7 @@ namespace Negocios
 
         public bool InsertMovEstoque(MovEstoqueInfo movEstoqueInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@prod", movEstoqueInfo.movestoqueidproduto);
                 accessDbMySql.AddParametrosMySql("@tipo", movEstoqueInfo.movestoqueidtipomovimento);
@@ -263,7 +263,7 @@ namespace Negocios
 
         public int UpdateEstoqueId(ProdutoEstoqueInfo produtoEstoqueInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", produtoEstoqueInfo.prodestoqueid);
                 accessDbMySql.AddParametrosMySql("@quant", produtoEstoqueInfo.prodestoquequant);
@@ -276,7 +276,7 @@ namespace Negocios
 
         public int InsertEstoqueLancamento(EstoqueLancamentoInfo estoqueLancamentoInfo, int unid)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@dataadd", estoqueLancamentoInfo.estoquelancamentodatahora);
                 accessDbMySql.AddParametrosMySql("@unid", unid);
@@ -289,7 +289,7 @@ namespace Negocios
 
         public bool UpdateEstoqueUnidade(ProdutoEstoqueInfo prod)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@prod", prod.prodestoqueid);
                 accessDbMySql.AddParametrosMySql("@quant", prod.prodestoquequant);
@@ -301,7 +301,7 @@ namespace Negocios
         }
         public int InsertProdutoEstoque(int prod, int unid)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@prod", prod);
                 accessDbMySql.AddParametrosMySql("@unid", unid);
@@ -314,7 +314,7 @@ namespace Negocios
 
         public ProdutoInfo ConsultarEstoqueIdProdutoUnid(int prod, int unid)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@prod", prod);
                 accessDbMySql.AddParametrosMySql("@unid", unid);

@@ -22,11 +22,11 @@ namespace Negocios
             Assistencia = assistencia;
         }
 
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
+        AccessDbMySql accessDbMySql= new AccessDbMySql(EmpConexao);
 
         public int UpdateProdutoConfirmarLancEstoqueId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -38,7 +38,7 @@ namespace Negocios
 
         public CodDescricaoInfo ConsultarProdutoMarcaId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarProdMarcaId");
@@ -62,7 +62,7 @@ namespace Negocios
 
         public CodDescricaoColecao ConsultarProdutoMarca()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarProdMarca");
                 if (dataTable != null)
@@ -90,7 +90,7 @@ namespace Negocios
         }
         public ProdutoColecao ConsultarProdutoEstoqueFornecedorId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@fornecedor", id);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarProdutoIdFornecedor");
@@ -105,7 +105,7 @@ namespace Negocios
 
         public ProdutoColecao ConsultarProdutosTodos()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
 
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarProdutoTodos");
@@ -121,7 +121,7 @@ namespace Negocios
 
         public CodDescricaoColecao ConsultarProdStatus()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarProdStatus");
                 if (dataTable != null)
@@ -153,7 +153,7 @@ namespace Negocios
 
         public int InsertProdSubCategoria(ProdSubCategoriaInfo prodSubCategoriaInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@nome", prodSubCategoriaInfo.Prodsubcatnome);
                 accessDbMySql.AddParametrosMySql("@categoria", prodSubCategoriaInfo.prodsubcatidcategoria);
@@ -166,7 +166,7 @@ namespace Negocios
 
         public int InsertProdMarca(string descricao)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@nome", descricao);
 
@@ -178,7 +178,7 @@ namespace Negocios
 
         public int InsertProdCategoria(string descricao)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@nome", descricao);
 
@@ -190,7 +190,7 @@ namespace Negocios
 
         public CodDescricaoInfo ConsultarProdCategoriaId(int cat)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
                 accessDbMySql.AddParametrosMySql("@categoria", cat);
@@ -207,7 +207,7 @@ namespace Negocios
 
         public ProdSubCategoriaInfo ConsultarProdSubCategoriaId(int sub)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
                 accessDbMySql.AddParametrosMySql("@sub", sub);
@@ -224,7 +224,7 @@ namespace Negocios
 
         public ProdSubCategoriaColecao ConsultarProdSubCategoria(int cat)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
                 accessDbMySql.AddParametrosMySql("@categoria", cat);
@@ -278,7 +278,7 @@ namespace Negocios
 
         public ProdutoColecao ConsultarProdutosDescricao(string descricao)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@descricao", descricao);
                 accessDbMySql.AddParametrosMySql("@assist", Assistencia);
@@ -296,7 +296,7 @@ namespace Negocios
 
         public bool UpdateProduto(ProdutoInfo prod)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@barras", prod.proCodBarras);
                 accessDbMySql.AddParametrosMySql("@estoque", prod.proControleEstoque);
@@ -319,7 +319,7 @@ namespace Negocios
 
         public ProdutoInfo ConsultarProdutosId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -337,7 +337,7 @@ namespace Negocios
 
         public ProdutoInfo ConsultarProdutoCodBarras(string barras)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@barras", barras);
                 accessDbMySql.AddParametrosMySql("@assist", Assistencia);
@@ -355,7 +355,7 @@ namespace Negocios
 
         public int InsertProduto(ProdutoInfo prod)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@barras", prod.proCodBarras);
                 accessDbMySql.AddParametrosMySql("@estoque", prod.proControleEstoque);
@@ -379,7 +379,7 @@ namespace Negocios
 
         public CodDescricaoColecao ConsultarProdCategoria()
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 DataTable dataTable = new DataTable();
                 dataTable = accessDbMySql.dataTableMySql("spConsultarProdCategoria");

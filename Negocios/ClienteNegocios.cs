@@ -13,14 +13,14 @@ namespace Negocios
     public class ClienteNegocios : PessoaNegocio
     {
         enum Tipo { Id, Cpf, Nome, Email, Telefone }
+        AccessDbMySql accessDbMySql;
         private string EmpConexao { get; set; }
 
         public ClienteNegocios(string conexao, EnumAssistencia assistencia) : base(conexao, assistencia)
         {
             EmpConexao = conexao;
+            accessDbMySql = new AccessDbMySql(EmpConexao);
         }
-
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
 
     }
 }

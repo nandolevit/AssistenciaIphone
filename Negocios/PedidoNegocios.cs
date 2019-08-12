@@ -19,11 +19,11 @@ namespace Negocios
             EmpConexao = conexao;
         }
 
-        AccessDbMySql accessDbMySql = new AccessDbMySql();
+        AccessDbMySql accessDbMySql= new AccessDbMySql(EmpConexao);
 
         public int DeletePedidoDetalhes(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
                 return accessDbMySql.ExecutarScalarMySql("spDeletePedidoDetalhes");
@@ -34,7 +34,7 @@ namespace Negocios
 
         public PedidoDetalhesColecao ConsultarPedidoDetalhesPedId(int id)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
 
@@ -51,7 +51,7 @@ namespace Negocios
 
         public PedidoInfo ConsultarPedidoCod(string cod)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@cod", cod);
 
@@ -68,7 +68,7 @@ namespace Negocios
 
         public PedidoColecao ConsultarPedidoOs(int os)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@os", os);
 
@@ -85,7 +85,7 @@ namespace Negocios
 
         public bool InsertPedidoDetalhes(PedidoDetalhesInfo pedidoDetalhesInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@prod", pedidoDetalhesInfo.peddetalhesidprod);
                 accessDbMySql.AddParametrosMySql("@quant", pedidoDetalhesInfo.peddetalhesquant);
@@ -100,7 +100,7 @@ namespace Negocios
 
         public int InsertPedido(PedidoInfo pedidoInfo)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@peddata", pedidoInfo.pedidodata);
                 accessDbMySql.AddParametrosMySql("@func", pedidoInfo.pedidoidfunc);
@@ -118,7 +118,7 @@ namespace Negocios
 
         public int UpdatePedidoCod(int id, string cod)
         {
-            if (accessDbMySql.Conectar(EmpConexao))
+            if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
                 accessDbMySql.AddParametrosMySql("@cod", cod);
