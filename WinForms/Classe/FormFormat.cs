@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace WinForms
 {
@@ -62,6 +63,9 @@ namespace WinForms
                 //modo exibição das células
                 grid.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             }
+
+            //formata o grid para receber propriedade dentro de propriedade
+            grid.CellFormatting += new DataGridViewCellFormattingEventHandler(DataGridView_CellFormatting);
 
             //desativa a alteração pelas linhas
             grid.AllowUserToAddRows = false;
@@ -245,6 +249,49 @@ namespace WinForms
                 else
                     mask.Mask = "(00) 0000-0000";
             }
+        }
+
+        private static void DataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView view = (DataGridView)sender;
+
+            if ((view.Rows[e.RowIndex].DataBoundItem != null) && (view.Columns[e.ColumnIndex].DataPropertyName.Contains('.')))
+            {
+                e.Value = CarregarPropriedade(view.Rows[e.RowIndex].DataBoundItem, view.Columns[e.ColumnIndex].DataPropertyName);
+            }
+        }
+
+        private static object CarregarPropriedade(object propObjeto, string propName)
+        {
+            object retProp = string.Empty;
+
+            if (propName.Contains('.'))
+            {
+                PropertyInfo[] propInfo;
+                string propAntesPonto;
+
+                propAntesPonto = propName.Substring(0, propName.IndexOf('.'));
+                propInfo = propObjeto.GetType().GetProperties();
+
+                foreach (PropertyInfo info in propInfo)
+                {
+                    if (info.Name == propAntesPonto)
+                    {
+                        retProp = CarregarPropriedade(info.GetValue(propObjeto, null), propName.Substring(propName.IndexOf('.')) + 1);
+                    }
+                }
+            }
+            else
+            {
+                Type propTipo;
+                PropertyInfo proInfo;
+
+                propTipo = propObjeto.GetType();
+                proInfo = propTipo.GetProperty(propName);
+                retProp = proInfo.GetValue(propObjeto, null);
+            }
+
+            return retProp;
         }
     }
 }

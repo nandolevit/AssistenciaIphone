@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjTransfer.Computador
+namespace ObjTransfer.Aparelho.Computadores
 {
-    public class PC_VideoColecao : List<PC_Video>
+    public class Notebook
     {
+        public PC_Monitor Tela { get; set; }
     }
 }

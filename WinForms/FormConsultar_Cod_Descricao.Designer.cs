@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewConsultar = new System.Windows.Forms.DataGridView();
             this.colCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,8 +57,8 @@
             // colCod
             // 
             this.colCod.DataPropertyName = "Cod";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colCod.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colCod.DefaultCellStyle = dataGridViewCellStyle1;
             this.colCod.HeaderText = "Código";
             this.colCod.Name = "colCod";
             this.colCod.Width = 50;

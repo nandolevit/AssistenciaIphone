@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using ObjTransfer;
 using Negocios;
-using ObjTransfer.Computador;
+using ObjTransfer.Aparelho.Computadores;
 
 namespace WinForms
 {

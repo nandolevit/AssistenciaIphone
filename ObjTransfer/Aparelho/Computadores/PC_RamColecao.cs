@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjTransfer.Computador
+namespace ObjTransfer.Aparelho.Computadores
 {
-    public class PC_MonitorColecao : List<PC_Monitor>
+    public class PC_RamColecao : List<PC_Ram>
     {
     }
 }

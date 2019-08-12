@@ -177,6 +177,11 @@ namespace WinForms
                     {
                         Empresa = empresaNegocios.ConsultarEmpresaSysId(Empresa.empcod);
 
+                        ObjTransfer.Aparelho.Computadores.Computador computador = new ObjTransfer.Aparelho.Computadores.Computador
+                        {
+                            
+                        };
+
                         if (Empresa.empativada == 1)
                         {
                             TimeSpan timeSpan = Empresa.empdataativo.Subtract(DateTime.Now.Date);
@@ -184,7 +189,6 @@ namespace WinForms
                             {
                                 if (timeSpan.Days < 7)
                                     FormMessage.ShowMessegeWarning(Empresa.empobs.Replace("**", timeSpan.Days.ToString()));
-
                                 colecaoUnidade = empresaNegocios.ConsultarUnidade();
                                 InicializarSistema();
                                 this.Text += " :: " + Empresa.empfantasia;
@@ -197,7 +201,13 @@ namespace WinForms
                                     Application.Exit();
                                 }
                                 else
-                                    FormMessage.ShowMessegeWarning("Seu sistema será bloqueado em * dias!".Replace("*", (-timeSpan.Days).ToString()));
+                                {
+                                    FormMessage.ShowMessegeWarning("Seu sistema será bloqueado em * dias!".Replace("*", (15 + timeSpan.Days).ToString()));
+
+                                    colecaoUnidade = empresaNegocios.ConsultarUnidade();
+                                    InicializarSistema();
+                                    this.Text += " :: " + Empresa.empfantasia;
+                                }
                             }
                         }
                         else

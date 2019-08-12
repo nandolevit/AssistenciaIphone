@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjTransfer.Computador
+namespace ObjTransfer.Aparelho.Computadores
 {
     public class PC_Processor_Windows
     {

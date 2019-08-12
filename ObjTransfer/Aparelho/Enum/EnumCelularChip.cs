@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjTransfer.Computador
+namespace ObjTransfer.Aparelho.Enum
 {
-    public class PC_RamColecao : List<PC_Ram>
+    public enum EnumCelularChip : int
     {
+        Dual = 1,
+        Single = 2
     }
 }
