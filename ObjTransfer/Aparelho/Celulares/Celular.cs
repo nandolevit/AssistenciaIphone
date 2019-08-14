@@ -4,22 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ObjTransfer.Aparelho.Enum;
+using ObjTransfer.Pessoas;
 
 namespace ObjTransfer.Aparelho.Celulares
 {
-    class Celular : Aparelho
+    class Celular : IAparelho
     {
-        public enum EnumSistemaCel : int
-        {
-            Android = EnumSistema.Android,
-            Windows_Phone = EnumSistema.Windows_Phone,
-            Ios = EnumSistema.Ios
-        }
-
         public string IMEI { get; set; }
         public string Capacidade { get; set; }
         public string Bateria { get; set; }
         public EnumCelularChip Chip { get; set; }
         public EnumCelularConector Conector { get; set; }
+
+        public int Id { get ; set ; }
+        public Pessoa Pessoa { get; set; }
+        public string Descricao { get; set; }
+        public string Serie { get; set; }
+        public int Tipo { get; set; }
+        public AparelhoMarca Marca { get; set; }
+        public string Modelo { get; set; }
+        public int Ano { get; set; }
+        public string Sistema { get; set; }
     }
 }

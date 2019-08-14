@@ -221,7 +221,7 @@ namespace WinForms
                             if (ler.Contains("Capacity"))
                                 storage[2] = ler;
 
-                            if (ler.Contains("Type") && !ler.Contains("RAID"))
+                            if (ler.Contains("Type") && !ler.Contains("RAID") && !ler.Contains("Bus"))
                                 storage[3] = ler.Replace("Fixed", "Interno");
 
                             if (ler.Contains("Volume"))
