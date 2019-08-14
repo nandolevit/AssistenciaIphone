@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timerOnline = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewOnline = new System.Windows.Forms.DataGridView();
             this.colNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewChat = new System.Windows.Forms.DataGridView();
+            this.colMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEnvio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEnviado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewChatNovaMessage = new System.Windows.Forms.DataGridView();
             this.colMensagem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.notifyIconChat = new System.Windows.Forms.NotifyIcon(this.components);
@@ -48,9 +51,6 @@
             this.textBoxMessage = new System.Windows.Forms.TextBox();
             this.buttonNovaMensagem = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.colMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEnvio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEnviado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOnline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChatNovaMessage)).BeginInit();
@@ -70,25 +70,25 @@
             this.dataGridViewOnline.AllowUserToResizeColumns = false;
             this.dataGridViewOnline.AllowUserToResizeRows = false;
             this.dataGridViewOnline.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewOnline.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewOnline.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewOnline.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewOnline.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNome});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewOnline.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewOnline.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewOnline.Location = new System.Drawing.Point(12, 35);
             this.dataGridViewOnline.MultiSelect = false;
             this.dataGridViewOnline.Name = "dataGridViewOnline";
@@ -135,30 +135,54 @@
             this.dataGridViewChat.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridViewChat_RowPostPaint);
             this.dataGridViewChat.Click += new System.EventHandler(this.dataGridViewChat_Click);
             // 
+            // colMessage
+            // 
+            this.colMessage.DataPropertyName = "chatmessage";
+            this.colMessage.HeaderText = "Mensagem:";
+            this.colMessage.Name = "colMessage";
+            this.colMessage.Width = 500;
+            // 
+            // colEnvio
+            // 
+            this.colEnvio.DataPropertyName = "chatdata";
+            dataGridViewCellStyle13.Format = "G";
+            dataGridViewCellStyle13.NullValue = null;
+            this.colEnvio.DefaultCellStyle = dataGridViewCellStyle13;
+            this.colEnvio.HeaderText = "Envio:";
+            this.colEnvio.Name = "colEnvio";
+            this.colEnvio.Width = 115;
+            // 
+            // colEnviado
+            // 
+            this.colEnviado.DataPropertyName = "chatidenvio";
+            this.colEnviado.HeaderText = "Enviado:";
+            this.colEnviado.Name = "colEnviado";
+            this.colEnviado.Visible = false;
+            // 
             // dataGridViewChatNovaMessage
             // 
             this.dataGridViewChatNovaMessage.AllowUserToAddRows = false;
             this.dataGridViewChatNovaMessage.AllowUserToDeleteRows = false;
             this.dataGridViewChatNovaMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewChatNovaMessage.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewChatNovaMessage.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewChatNovaMessage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewChatNovaMessage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMensagem});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewChatNovaMessage.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewChatNovaMessage.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewChatNovaMessage.Location = new System.Drawing.Point(12, 319);
             this.dataGridViewChatNovaMessage.MultiSelect = false;
             this.dataGridViewChatNovaMessage.Name = "dataGridViewChatNovaMessage";
@@ -264,30 +288,6 @@
             this.toolTip1.SetToolTip(this.buttonNovaMensagem, "Novo chat.");
             this.buttonNovaMensagem.UseVisualStyleBackColor = true;
             this.buttonNovaMensagem.Click += new System.EventHandler(this.buttonNovaMensagem_Click);
-            // 
-            // colMessage
-            // 
-            this.colMessage.DataPropertyName = "chatmessage";
-            this.colMessage.HeaderText = "Mensagem:";
-            this.colMessage.Name = "colMessage";
-            this.colMessage.Width = 500;
-            // 
-            // colEnvio
-            // 
-            this.colEnvio.DataPropertyName = "chatdata";
-            dataGridViewCellStyle3.Format = "G";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colEnvio.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colEnvio.HeaderText = "Envio:";
-            this.colEnvio.Name = "colEnvio";
-            this.colEnvio.Width = 115;
-            // 
-            // colEnviado
-            // 
-            this.colEnviado.DataPropertyName = "chatidenvio";
-            this.colEnviado.HeaderText = "Enviado:";
-            this.colEnviado.Name = "colEnviado";
-            this.colEnviado.Visible = false;
             // 
             // FormOnline
             // 

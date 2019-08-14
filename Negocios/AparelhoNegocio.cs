@@ -21,6 +21,98 @@ namespace Negocios
             accessDbMySql = new AccessDbMySql(EmpConexao);
         }
 
+        public SistemaOperacionalModeloColecao ConsultarSistemaModelo(int win)
+        {
+            if (accessDbMySql.ConectarSys())
+            {
+                accessDbMySql.AddParametrosMySql("@win", win);
+                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarSistemaModelo");
+
+                if (dataTable != null)
+                {
+                    SistemaOperacionalModeloColecao colecao = new SistemaOperacionalModeloColecao();
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        SistemaOperacionalModelo operacional = new SistemaOperacionalModelo
+                        {
+                            Descricao = Convert.ToString(row["winverdescricao"]),
+                            Id = Convert.ToInt32(row["winverid"]),
+                            IdSo = Convert.ToInt32(row["winveridwin"])
+                        };
+
+                        colecao.Add(operacional);
+                    }
+
+                    return colecao;
+                }
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+
+        public SistemaOperacionalVersaoColecao ConsultarSistemaVersao(int win)
+        {
+            if (accessDbMySql.ConectarSys())
+            {
+                accessDbMySql.AddParametrosMySql("@win", win);
+                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarSistemaVersao");
+
+                if (dataTable != null)
+                {
+                    SistemaOperacionalVersaoColecao colecao = new SistemaOperacionalVersaoColecao();
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        SistemaOperacionalVersao operacional = new SistemaOperacionalVersao
+                        {
+                            Descricao = Convert.ToString(row["windescricao"]),
+                            Id = Convert.ToInt32(row["winid"]),
+                            IdSo = Convert.ToInt32(row["winidso"])
+                        };
+
+                        colecao.Add(operacional);
+                    }
+
+                    return colecao;
+                }
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+
+        public SistemaOperacionalColecao ConsultarSistemaPorLinha(int lina)
+        {
+            if (accessDbMySql.ConectarSys())
+            {
+                accessDbMySql.AddParametrosMySql("@linha", lina);
+                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarSistemaPorLinha");
+
+                if (dataTable != null)
+                {
+                    SistemaOperacionalColecao colecao = new SistemaOperacionalColecao();
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        SistemaOperacional operacional = new SistemaOperacional
+                        {
+                            Descricao = Convert.ToString(row["sodescricao"]),
+                            Id = Convert.ToInt32(row["soid"])
+                        };
+
+                        colecao.Add(operacional);
+                    }
+
+                    return colecao;
+                }
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+
         public AparelhoLinhaColecao ConsultarAparelhoLinha()
         {
             if (accessDbMySql.ConectarSys())

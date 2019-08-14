@@ -39,29 +39,29 @@ namespace WinForms
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 path = dialog.FileName;
-            }
 
-            if (ValidacaoTxt())
-            {
-                mon = ConsultarMonitor();
-                video = ConsultaVideo();
-                spec = ConsultarMainBoard();
-                ram = ConsultarMemory();
-                sto = ConsultarStorage();
-                proc = ConsultaProcessor();
-
-                pc = new Computador
+                if (ValidacaoTxt())
                 {
-                    CategoriaPc = ObjTransfer.Aparelho.Enum.EnumTipoPc.Notebook,
-                    
-                };
+                    mon = ConsultarMonitor();
+                    video = ConsultaVideo();
+                    spec = ConsultarMainBoard();
+                    ram = ConsultarMemory();
+                    sto = ConsultarStorage();
+                    proc = ConsultaProcessor();
 
-                PreencherForm(mon, proc, ram, sto, spec, video);
-                buttonSalvar.Enabled = true;
-                groupBoxPrincipal.Enabled = true;
+                    pc = new Computador
+                    {
+                        CategoriaPc = ObjTransfer.Aparelho.Enum.EnumTipoPc.Notebook,
+
+                    };
+
+                    PreencherForm(mon, proc, ram, sto, spec, video);
+                    buttonSalvar.Enabled = true;
+                    groupBoxPrincipal.Enabled = true;
+                }
+                else
+                    FormMessage.ShowMessegeWarning("Parace que este arquivo Txt não válido, pois não esta no formato padrão!");
             }
-            else
-                FormMessage.ShowMessegeWarning("Parace que este arquivo Txt não válido, pois não esta no formato padrão!");
         }
 
         private PC_RamColecao ConsultarMemory()

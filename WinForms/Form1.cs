@@ -756,30 +756,38 @@ namespace WinForms
                                     FormServicoTipo formServicoTipo = new FormServicoTipo();
                                     if (formServicoTipo.ShowDialog(this) == DialogResult.Yes)
                                     {
-                                        FormIphoneModelo formIphoneModelo = new FormIphoneModelo();
-                                        if (formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
+
+                                        switch (formServicoTipo.SelecionadaLinha.linhaid)
                                         {
-                                            IphoneCelularInfo celular = formIphoneModelo.SelecionadoIphone;
+                                            case 3:
 
-                                            celular.celidcliente = p.pssid;
-                                            ServicoNegocio negocioServ = new ServicoNegocio(Empresa.empconexao);
-                                            celular.celid = negocioServ.InsertIphoneCelular(celular);
-
-                                            if (celular.celid > 0)
-                                            {
-                                                FormServico formServico = new FormServico(p);
-                                                if (formServico.ShowDialog(this) == DialogResult.Yes)
+                                                FormIphoneModelo formIphoneModelo = new FormIphoneModelo();
+                                                if (formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
                                                 {
-                                                    FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
+                                                    IphoneCelularInfo celular = formIphoneModelo.SelecionadoIphone;
+
+                                                    celular.celidcliente = p.pssid;
+                                                    ServicoNegocio negocioServ = new ServicoNegocio(Empresa.empconexao);
+                                                    celular.celid = negocioServ.InsertIphoneCelular(celular);
+
+                                                    if (celular.celid > 0)
+                                                    {
+                                                        FormServico formServico = new FormServico(p);
+                                                        if (formServico.ShowDialog(this) == DialogResult.Yes)
+                                                        {
+                                                            FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
+                                                        }
+                                                    }
                                                 }
-                                            }
+                                                break;
+                                            default:
+
+                                                Aparelho.FormAparelhoCadastrar formAparelhoCadastrar = new Aparelho.FormAparelhoCadastrar(formServicoTipo.SelecionadaLinha, p);
+                                                formAparelhoCadastrar.ShowDialog(this);
+                                                formAparelhoCadastrar.Dispose();
+
+                                                break;
                                         }
-                                    }
-                                    else if (formServicoTipo.DialogResult == DialogResult.OK)
-                                    {
-                                        FormLerText formLerText = new FormLerText();
-                                        formLerText.ShowDialog();
-                                        formLerText.Dispose();
                                     }
                                     formServicoTipo.Dispose();
 

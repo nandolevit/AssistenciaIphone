@@ -20,7 +20,5 @@ namespace ObjTransfer.Aparelho
         string Cor { get; set; }
         int Ano { get; set; }
         string Sistema { get; set; }
-
-
     }
 }

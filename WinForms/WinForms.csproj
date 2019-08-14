@@ -111,6 +111,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aparelho\FormAparelhoCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aparelho\FormAparelhoCadastrar.Designer.cs">
+      <DependentUpon>FormAparelhoCadastrar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classe\AccessLogin.cs" />
     <Compile Include="Classe\Caixa.cs" />
     <Compile Include="Classe\Cupom.cs" />
@@ -400,6 +406,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Aparelho\FormAparelhoCadastrar.resx">
+      <DependentUpon>FormAparelhoCadastrar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Email\FormEmail.resx">
       <DependentUpon>FormEmail.cs</DependentUpon>
     </EmbeddedResource>

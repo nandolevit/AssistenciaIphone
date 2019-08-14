@@ -62,6 +62,7 @@
     <Compile Include="Aparelho\AparelhoLinha.cs" />
     <Compile Include="Aparelho\AparelhoLinhaColecao.cs" />
     <Compile Include="Aparelho\AparelhoMarca.cs" />
+    <Compile Include="Aparelho\AparelhoMarcaColecao.cs" />
     <Compile Include="Aparelho\IAparelho.cs" />
     <Compile Include="Aparelho\Celulares\Celular.cs" />
     <Compile Include="Aparelho\Computadores\Computador.cs" />
@@ -80,7 +81,11 @@
     <Compile Include="Aparelho\Computadores\PC_Video.cs" />
     <Compile Include="Aparelho\Computadores\PC_VideoColecao.cs" />
     <Compile Include="Aparelho\SistemaOperacional.cs" />
+    <Compile Include="Aparelho\SistemaOperacionalColecao.cs" />
+    <Compile Include="Aparelho\SistemaOperacionalModelo.cs" />
+    <Compile Include="Aparelho\SistemaOperacionalModeloColecao.cs" />
     <Compile Include="Aparelho\SistemaOperacionalVersao.cs" />
+    <Compile Include="Aparelho\SistemaOperacionalVersaoColecao.cs" />
     <Compile Include="EmailColecao.cs" />
     <Compile Include="EmailInfo.cs" />
     <Compile Include="Entrada\EntradaDiversosColecao.cs" />

@@ -154,6 +154,11 @@ namespace WinForms
                     MaskedTextBox mask = (MaskedTextBox)c;
                     EventoMaskTextBox(mask);
                 }
+                else if (c.GetType() == typeof(ComboBox))
+                {
+                    ComboBox combo = (ComboBox)c;
+                    EventoComboBox(combo);
+                }
                 else if (c.GetType() == typeof(DataGridView))
                 {
                     DataGridView grid = (DataGridView)c;
@@ -193,6 +198,11 @@ namespace WinForms
                     }
                 }
             }
+        }
+
+        private static void EventoComboBox(ComboBox combo)
+        {
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private static void EventoMaskTextBox(MaskedTextBox mask)

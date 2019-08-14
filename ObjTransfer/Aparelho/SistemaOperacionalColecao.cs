@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjTransfer.Aparelho
 {
-    public class SistemaOperacionalVersao
+    public class SistemaOperacionalColecao : List<SistemaOperacional>
     {
-        public int Id { get; set; }
-        public string Descricao { get; set; }
-        public int IdSo { get; set; }
     }
 }

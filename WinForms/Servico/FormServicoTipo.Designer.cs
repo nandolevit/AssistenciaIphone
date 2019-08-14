@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxLinha = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonoK = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonNotebook
@@ -104,12 +105,25 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Qual Linha?";
             // 
+            // buttonoK
+            // 
+            this.buttonoK.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonoK.Location = new System.Drawing.Point(269, 183);
+            this.buttonoK.Name = "buttonoK";
+            this.buttonoK.Size = new System.Drawing.Size(75, 23);
+            this.buttonoK.TabIndex = 7;
+            this.buttonoK.Text = "OK";
+            this.buttonoK.UseVisualStyleBackColor = true;
+            this.buttonoK.Visible = false;
+            this.buttonoK.Click += new System.EventHandler(this.ButtonoK_Click);
+            // 
             // FormServicoTipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(363, 214);
+            this.ClientSize = new System.Drawing.Size(363, 218);
+            this.Controls.Add(this.buttonoK);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxLinha);
             this.Controls.Add(this.label1);
@@ -133,5 +147,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxLinha;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonoK;
     }
 }

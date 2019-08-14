@@ -19,13 +19,14 @@ namespace WinForms
     {
         AparelhoNegocio negocioAparelho;
         AparelhoLinhaColecao colecaoLinha;
+        public AparelhoLinha SelecionadaLinha { get; set; }
         public FormServicoTipo()
         {
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
             this.FormBorderStyle = FormBorderStyle.None;
-            //this.KeyPreview = true;
+            this.AcceptButton = buttonoK;
         }
 
         private void ButtonCelular_Click(object sender, EventArgs e)
@@ -35,20 +36,17 @@ namespace WinForms
 
         private void ButtonNotebook_Click(object sender, EventArgs e)
         {
-            Notebook();
+            Computador();
         }
 
         private void Celular()
         {
             CrecercomboBoxLinha(2);
-            
-            //this.DialogResult = DialogResult.Yes;
         }
 
-        private void Notebook()
+        private void Computador()
         {
             CrecercomboBoxLinha(1);
-            //this.DialogResult = DialogResult.OK;
         }
 
         private void FormServicoTipo_KeyDown(object sender, KeyEventArgs e)
@@ -60,7 +58,7 @@ namespace WinForms
                     Celular();
                     break;
                 case Keys.F2:
-                    Notebook();
+                    Computador();
                     break;
                 default:
                     break;
@@ -87,6 +85,13 @@ namespace WinForms
             comboBoxLinha.Width = 170;
             comboBoxLinha.SelectedIndex = 0;
             comboBoxLinha.Select();
+            buttonoK.Visible = true;
+        }
+
+        private void ButtonoK_Click(object sender, EventArgs e)
+        {
+            SelecionadaLinha = comboBoxLinha.SelectedItem as AparelhoLinha;
+            this.DialogResult = DialogResult.Yes;
         }
     }
 }
