@@ -8,13 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Negocios;
 using ObjTransfer;
+using ObjTransfer.Aparelho;
 
 
 namespace WinForms
 {
     public partial class FormServicoTipo : Form
     {
+        AparelhoNegocio negocioAparelho;
+        AparelhoLinhaColecao colecaoLinha;
         public FormServicoTipo()
         {
             InitializeComponent();
@@ -36,12 +40,15 @@ namespace WinForms
 
         private void Celular()
         {
-            this.DialogResult = DialogResult.Yes;
+            CrecercomboBoxLinha(2);
+            
+            //this.DialogResult = DialogResult.Yes;
         }
 
         private void Notebook()
         {
-            this.DialogResult = DialogResult.OK;
+            CrecercomboBoxLinha(1);
+            //this.DialogResult = DialogResult.OK;
         }
 
         private void FormServicoTipo_KeyDown(object sender, KeyEventArgs e)
@@ -58,6 +65,28 @@ namespace WinForms
                 default:
                     break;
             }
+        }
+
+        private void FormServicoTipo_Load(object sender, EventArgs e)
+        {
+
+            comboBoxLinha.DisplayMember = "linhadescricao";
+            comboBoxLinha.ValueMember = "linhaid";
+            negocioAparelho = new AparelhoNegocio(Form1.Empresa.empconexao);
+            colecaoLinha = negocioAparelho.ConsultarAparelhoLinha();
+        }
+
+        private void CrecercomboBoxLinha(int l)
+        {
+            comboBoxLinha.Items.Clear();
+
+            foreach (AparelhoLinha linha in colecaoLinha)
+                if (linha.linhaidtipo == l)
+                    comboBoxLinha.Items.Add(linha);
+
+            comboBoxLinha.Width = 170;
+            comboBoxLinha.SelectedIndex = 0;
+            comboBoxLinha.Select();
         }
     }
 }

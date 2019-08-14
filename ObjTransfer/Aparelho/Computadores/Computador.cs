@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using ObjTransfer.Aparelho.Enum;
 using ObjTransfer.Pessoas;
 
@@ -21,6 +22,23 @@ namespace ObjTransfer.Aparelho.Computadores
         public string Modelo { get; set; }
         public int Ano { get; set; }
         public string Sistema { get; set; }
+        public string Cor { get; set; }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(Descricao);
+            sb.Append(Descricao);
+            sb.Append(Descricao);
+            sb.Append(Descricao);
+            sb.Append(Descricao);
+            sb.Append(Descricao);
+            sb.Append(Descricao);
+            sb.Append(Descricao);
+            sb.Append(Descricao);
+            return base.ToString();
+        }
 
     }
 }

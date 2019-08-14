@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aparelho\AparelhoLinha.cs" />
+    <Compile Include="Aparelho\AparelhoLinhaColecao.cs" />
     <Compile Include="Aparelho\AparelhoMarca.cs" />
     <Compile Include="Aparelho\IAparelho.cs" />
     <Compile Include="Aparelho\Celulares\Celular.cs" />

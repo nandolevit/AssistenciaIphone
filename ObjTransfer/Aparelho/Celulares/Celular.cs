@@ -25,5 +25,11 @@ namespace ObjTransfer.Aparelho.Celulares
         public string Modelo { get; set; }
         public int Ano { get; set; }
         public string Sistema { get; set; }
+        public string Cor { get; set; }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

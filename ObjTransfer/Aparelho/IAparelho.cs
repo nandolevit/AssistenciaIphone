@@ -17,8 +17,10 @@ namespace ObjTransfer.Aparelho
         int Tipo { get; set; }
         AparelhoMarca Marca { get; set; }
         string Modelo { get; set; }
+        string Cor { get; set; }
         int Ano { get; set; }
         string Sistema { get; set; }
+
 
     }
 }
