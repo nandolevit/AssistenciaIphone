@@ -73,6 +73,16 @@ namespace WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap aiopc {
+            get {
+                object obj = ResourceManager.GetObject("aiopc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap amd_vs_intel {
             get {
                 object obj = ResourceManager.GetObject("amd_vs_intel", resourceCulture);
@@ -126,6 +136,16 @@ namespace WinForms.Properties {
         internal static System.Drawing.Bitmap consultar_cep {
             get {
                 object obj = ResourceManager.GetObject("consultar_cep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cpuz {
+            get {
+                object obj = ResourceManager.GetObject("cpuz", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -633,6 +653,16 @@ namespace WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imac {
+            get {
+                object obj = ResourceManager.GetObject("imac", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iphone_6splus_colors {
             get {
                 object obj = ResourceManager.GetObject("iphone-6splus-colors", resourceCulture);
@@ -656,6 +686,26 @@ namespace WinForms.Properties {
         internal static System.Drawing.Bitmap loader2 {
             get {
                 object obj = ResourceManager.GetObject("loader2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap macmini {
+            get {
+                object obj = ResourceManager.GetObject("macmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap macpro {
+            get {
+                object obj = ResourceManager.GetObject("macpro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -693,9 +743,29 @@ namespace WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap notebooks {
+            get {
+                object obj = ResourceManager.GetObject("notebooks", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nvidia_amd {
             get {
                 object obj = ResourceManager.GetObject("nvidia_amd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outrospc {
+            get {
+                object obj = ResourceManager.GetObject("outrospc", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -716,6 +786,26 @@ namespace WinForms.Properties {
         internal static System.Drawing.Bitmap senhas_post {
             get {
                 object obj = ResourceManager.GetObject("senhas_post", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap servidores {
+            get {
+                object obj = ResourceManager.GetObject("servidores", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap smartphone {
+            get {
+                object obj = ResourceManager.GetObject("smartphone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -746,6 +836,16 @@ namespace WinForms.Properties {
         internal static System.Drawing.Bitmap SteveJob {
             get {
                 object obj = ResourceManager.GetObject("SteveJob", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tablets {
+            get {
+                object obj = ResourceManager.GetObject("tablets", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

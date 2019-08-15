@@ -21,6 +21,41 @@ namespace Negocios
             accessDbMySql = new AccessDbMySql(EmpConexao);
         }
 
+        public AparelhoMarcaColecao ConsultarAparelhoMarca(int linha)
+        {
+            if (accessDbMySql.ConectarSys())
+            {
+                DataTable dataTable;
+
+                if (linha == 2)
+                    dataTable = accessDbMySql.dataTableMySql("spConsultarAparelhoMarcaPc");
+                else
+                    dataTable = accessDbMySql.dataTableMySql("spConsultarAparelhoMarcaCelular");
+
+                if (dataTable != null)
+                {
+                    AparelhoMarcaColecao colecao = new AparelhoMarcaColecao();
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        AparelhoMarca marca = new AparelhoMarca
+                        {
+                            Descricao = Convert.ToString(row["marcadescricao"]),
+                            Id = Convert.ToInt32(row["marcaid"])
+                        };
+
+                        colecao.Add(marca);
+                    }
+
+                    return colecao;
+                }
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+
         public SistemaOperacionalModeloColecao ConsultarSistemaModelo(int win)
         {
             if (accessDbMySql.ConectarSys())

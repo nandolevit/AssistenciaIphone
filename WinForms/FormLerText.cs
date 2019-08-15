@@ -49,12 +49,6 @@ namespace WinForms
                     sto = ConsultarStorage();
                     proc = ConsultaProcessor();
 
-                    pc = new Computador
-                    {
-                        CategoriaPc = ObjTransfer.Aparelho.Enum.EnumTipoPc.Notebook,
-
-                    };
-
                     PreencherForm(mon, proc, ram, sto, spec, video);
                     buttonSalvar.Enabled = true;
                     groupBoxPrincipal.Enabled = true;

@@ -723,5 +723,35 @@
   <ItemGroup>
     <None Include="Resources\SteveJob.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\servidores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notebooks.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smartphone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outrospc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aiopc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imac.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\macpro.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\macmini.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tablets.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cpuz.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

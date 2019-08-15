@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Text;
-using ObjTransfer.Aparelho.Enum;
 using ObjTransfer.Pessoas;
 
 namespace ObjTransfer.Aparelho.Computadores
 {
     public class Computador : IAparelho
     {
-        public EnumTipoPc CategoriaPc { get; set; }
         public PC_RamColecao Memoria { get; set; }
         public PC_StorageColecao Hd { get; set; }
         public PC_Specification Specification { get; set; }

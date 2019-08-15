@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ObjTransfer.Aparelho.Enum;
 using ObjTransfer.Pessoas;
 
 namespace ObjTransfer.Aparelho.Celulares
@@ -13,8 +12,6 @@ namespace ObjTransfer.Aparelho.Celulares
         public string IMEI { get; set; }
         public string Capacidade { get; set; }
         public string Bateria { get; set; }
-        public EnumCelularChip Chip { get; set; }
-        public EnumCelularConector Conector { get; set; }
 
         public int Id { get ; set ; }
         public Pessoa Pessoa { get; set; }
