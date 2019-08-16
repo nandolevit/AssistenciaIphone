@@ -19,8 +19,12 @@ namespace WinForms.Aparelho
         AparelhoNegocio negocioAparelho;
         AparelhoLinha linhaAparelho;
         PessoaInfo infoPessoa;
+        AparelhoMarcaColecao colecaoMarca;
+        SistemaOperacionalColecao colecaoSistema;
+        SistemaOperacionalVersaoColecao colecaoVersao;
+        SistemaOperacionalModeloColecao colecaoModelo;
 
-        public FormAparelhoCadastrar(AparelhoLinha linha, PessoaInfo pessoa)
+        public FormAparelhoCadastrar(AparelhoLinha linha, PessoaInfo pessoa, AparelhoMarcaColecao marca, SistemaOperacionalColecao sistema, SistemaOperacionalVersaoColecao versao, SistemaOperacionalModeloColecao modelo)
         {
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);
@@ -30,13 +34,15 @@ namespace WinForms.Aparelho
             textBoxLinha.Text = linha.linhadescricao;
             infoPessoa = pessoa;
             textBoxNome.Text = pessoa.pssnome;
+            colecaoMarca = marca;
+            colecaoSistema = sistema;
+            colecaoVersao = versao;
+            colecaoModelo = modelo;
         }
 
         private void FormAparelhoCadastrar_Load(object sender, EventArgs e)
         {
-            negocioAparelho = new AparelhoNegocio(Form1.Empresa.empconexao);
-            SistemaOperacionalColecao colecaoSistema = negocioAparelho.ConsultarSistemaPorLinha(linhaAparelho.linhaid);
-            AparelhoMarcaColecao colecaoMarca = new AparelhoMarcaColecao();
+            colecaoMarca = new AparelhoMarcaColecao();
 
             comboBoxSistema.ValueMember = "Id";
             comboBoxSistema.DisplayMember = "Descricao";
@@ -65,11 +71,9 @@ namespace WinForms.Aparelho
                     comboBoxSistema.Text = "Windows";
                     comboBoxVersao.Text = "Windows 10";
                     buttonCpuz.Visible = true;
-                    colecaoMarca = negocioAparelho.ConsultarAparelhoMarca(2);
                     break;
                 case 4:
                     comboBoxCategoria.Text = "SmartPhone";
-                    colecaoMarca = negocioAparelho.ConsultarAparelhoMarca(4);
                     break;
                 default:
                     break;
@@ -81,6 +85,7 @@ namespace WinForms.Aparelho
                 comboBoxMarca.ValueMember = "Id";
                 comboBoxMarca.DataSource = colecaoMarca;
                 comboBoxMarca.SelectedIndex = -1;
+                comboBoxVersao.Width = 127;
             }
 
             PreencherComboBoxCategoria();
@@ -90,19 +95,19 @@ namespace WinForms.Aparelho
         {
             negocioAparelho = new AparelhoNegocio(Form1.Empresa.empconexao);
             int id = Convert.ToInt32(comboBoxSistema.SelectedValue);
-            SistemaOperacionalVersaoColecao versao = negocioAparelho.ConsultarSistemaVersao(id);
+            colecaoVersao.Where(p => p.IdSo == id);
 
-            if (versao == null)
+            if (colecaoVersao == null)
             {
                 comboBoxVersao.DropDownStyle = ComboBoxStyle.Simple;
-                comboBoxVersao.DataSource = versao;
+                comboBoxVersao.DataSource = colecaoVersao;
             }
             else
             {
                 comboBoxVersao.DropDownStyle = ComboBoxStyle.DropDownList;
                 comboBoxVersao.ValueMember = "Id";
                 comboBoxVersao.DisplayMember = "Descricao";
-                comboBoxVersao.DataSource = versao;
+                comboBoxVersao.DataSource = colecaoVersao;
             }
 
             comboBoxVersao.Select();
@@ -112,15 +117,15 @@ namespace WinForms.Aparelho
         {
             negocioAparelho = new AparelhoNegocio(Form1.Empresa.empconexao);
             int id = Convert.ToInt32(comboBoxVersao.SelectedValue);
-            SistemaOperacionalModeloColecao modelo = negocioAparelho.ConsultarSistemaModelo(id);
+            colecaoModelo.Where(p => p.IdSo == id);
 
-            if (modelo != null)
+            if (colecaoModelo != null)
             {
                 labelModelo.Visible = true;
                 comboBoxModelo.Visible = true;
                 comboBoxModelo.ValueMember = "Id";
                 comboBoxModelo.DisplayMember = "Descricao";
-                comboBoxModelo.DataSource = modelo;
+                comboBoxModelo.DataSource = colecaoModelo;
                 comboBoxModelo.Select();
             }
             else

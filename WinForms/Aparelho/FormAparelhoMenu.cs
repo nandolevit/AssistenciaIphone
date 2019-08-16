@@ -19,6 +19,11 @@ namespace WinForms.Aparelho
         AparelhoLinhaColecao colecaoLinha;
         AparelhoNegocio negocioAparelho;
         PessoaInfo infoPessoa;
+        AparelhoMarcaColecao colecaoMarcaPc;
+        AparelhoMarcaColecao colecaoMarcaCelular;
+        SistemaOperacionalColecao colecaoSistema;
+        SistemaOperacionalVersaoColecao colecaoVersao;
+        SistemaOperacionalModeloColecao colecaoModelo;
 
         public FormAparelhoMenu(PessoaInfo pessoa)
         {
@@ -41,31 +46,39 @@ namespace WinForms.Aparelho
         {
             panelSeta.Top = buttonSmart.Top;
             AparelhoLinha linha = colecaoLinha.Where(p => p.linhaid == 4).FirstOrDefault();
-            AbrirForm(linha);
+            var colecao = colecaoSistema.Where(p => p.Soidlinha == 4);
+            AbrirForm(linha, colecaoMarcaCelular, SistemaColecao(colecao as SistemaOperacionalColecao));
         }
 
         private void ButtonWin_Click(object sender, EventArgs e)
         {
             panelSeta.Top = buttonWin.Top;
             AparelhoLinha linha = colecaoLinha.Where(p => p.linhaid == 2).FirstOrDefault();
-            AbrirForm(linha);
+            colecaoSistema.Where(p => p.Soidlinha == 2).ToList();
+            AbrirForm(linha, colecaoMarcaPc, SistemaColecao(colecaoSistema));
         }
 
         private void ButtonMac_Click(object sender, EventArgs e)
         {
             panelSeta.Top = buttonMac.Top;
             AparelhoLinha linha = colecaoLinha.Where(p => p.linhaid == 1).FirstOrDefault();
-            AbrirForm(linha);
+            colecaoSistema.Where(p => p.Soidlinha == 1);
+            AbrirForm(linha, colecaoMarcaPc, colecaoSistema);
         }
 
         private void FormAparelhoMenu_Load(object sender, EventArgs e)
         {
             negocioAparelho = new AparelhoNegocio(Form1.Empresa.empconexao);
             colecaoLinha = negocioAparelho.ConsultarAparelhoLinha();
+            colecaoSistema = negocioAparelho.ConsultarSistemaPorLinha();
+            colecaoVersao = negocioAparelho.ConsultarSistemaVersao();
+            colecaoMarcaPc = negocioAparelho.ConsultarAparelhoMarca(2);
+            colecaoMarcaCelular = negocioAparelho.ConsultarAparelhoMarca(4);
+            colecaoModelo = negocioAparelho.ConsultarSistemaModelo();
             AbrirFormIphone();
         }
 
-        private void AbrirForm(AparelhoLinha linha)
+        private void AbrirForm(AparelhoLinha linha, AparelhoMarcaColecao marca, SistemaOperacionalColecao sistema)
         {
             if (Application.OpenForms["FormIphoneModelo"] != null)
                 Application.OpenForms["FormIphoneModelo"].Close();
@@ -77,7 +90,7 @@ namespace WinForms.Aparelho
             this.Width = 950;
             this.CenterToScreen();
 
-            FormAparelhoCadastrar formAparelhoCadastrar = new FormAparelhoCadastrar(linha, infoPessoa);
+            FormAparelhoCadastrar formAparelhoCadastrar = new FormAparelhoCadastrar(linha, infoPessoa, marca, sistema, colecaoVersao, colecaoModelo);
             formAparelhoCadastrar.WindowState = FormWindowState.Maximized;
             formAparelhoCadastrar.FormBorderStyle = FormBorderStyle.None;
             formAparelhoCadastrar.MdiParent = this;
@@ -104,6 +117,16 @@ namespace WinForms.Aparelho
         {
             if (FormMessage.ShowMessegeQuestion("Deseja encerrar este forrmulário?") == DialogResult.No)
                 e.Cancel = true;
+        }
+
+        private SistemaOperacionalColecao SistemaColecao(SistemaOperacionalColecao colecao)
+        {
+            SistemaOperacionalColecao sistemas = new SistemaOperacionalColecao();
+            foreach (SistemaOperacional item in colecao)
+                sistemas.Add(item);
+
+            return sistemas;
+
         }
     }
 }

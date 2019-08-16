@@ -57,11 +57,10 @@ namespace Negocios
                 return null;
         }
 
-        public SistemaOperacionalModeloColecao ConsultarSistemaModelo(int win)
+        public SistemaOperacionalModeloColecao ConsultarSistemaModelo()
         {
             if (accessDbMySql.ConectarSys())
             {
-                accessDbMySql.AddParametrosMySql("@win", win);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarSistemaModelo");
 
                 if (dataTable != null)
@@ -88,11 +87,10 @@ namespace Negocios
                 return null;
         }
 
-        public SistemaOperacionalVersaoColecao ConsultarSistemaVersao(int win)
+        public SistemaOperacionalVersaoColecao ConsultarSistemaVersao()
         {
             if (accessDbMySql.ConectarSys())
             {
-                accessDbMySql.AddParametrosMySql("@win", win);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarSistemaVersao");
 
                 if (dataTable != null)
@@ -119,11 +117,10 @@ namespace Negocios
                 return null;
         }
 
-        public SistemaOperacionalColecao ConsultarSistemaPorLinha(int lina)
+        public SistemaOperacionalColecao ConsultarSistemaPorLinha()
         {
             if (accessDbMySql.ConectarSys())
             {
-                accessDbMySql.AddParametrosMySql("@linha", lina);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarSistemaPorLinha");
 
                 if (dataTable != null)
@@ -134,7 +131,8 @@ namespace Negocios
                         SistemaOperacional operacional = new SistemaOperacional
                         {
                             Descricao = Convert.ToString(row["sodescricao"]),
-                            Id = Convert.ToInt32(row["soid"])
+                            Id = Convert.ToInt32(row["soid"]),
+                            Soidlinha = Convert.ToInt32(row["soidlinha"])
                         };
 
                         colecao.Add(operacional);
