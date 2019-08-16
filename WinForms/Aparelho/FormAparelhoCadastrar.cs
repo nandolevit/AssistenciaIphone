@@ -66,7 +66,7 @@ namespace WinForms.Aparelho
                     comboBoxMarca.Items.Add(marca);
                     comboBoxMarca.SelectedIndex = 0;
                     comboBoxMarca.Enabled = false;
-                    comboBoxVersao.Width = 255;
+                    comboBoxVersao.Width = 343;
                     colecaoMarca = null;
                     break;
                 case 2:
@@ -75,6 +75,7 @@ namespace WinForms.Aparelho
                     buttonCpuz.Visible = true;
                     break;
                 case 4:
+                    comboBoxVersao.Width = 343;
                     comboBoxCategoria.Text = "SmartPhone";
                     break;
                 default:
@@ -87,7 +88,7 @@ namespace WinForms.Aparelho
                 comboBoxMarca.ValueMember = "Id";
                 comboBoxMarca.DataSource = colecaoMarca;
                 comboBoxMarca.SelectedIndex = -1;
-                comboBoxVersao.Width = 127;
+                comboBoxVersao.Width = 200;
             }
 
             PreencherComboBoxCategoria();
@@ -99,10 +100,11 @@ namespace WinForms.Aparelho
             int id = Convert.ToInt32(comboBoxSistema.SelectedValue);
             var colecao = colecaoVersao.Where(p => p.IdSo == id).ToList();
 
-            if (colecao.Count > 0)
+            if (colecao.Count == 0)
             {
                 comboBoxVersao.DropDownStyle = ComboBoxStyle.Simple;
-                comboBoxVersao.DataSource = colecao;
+                comboBoxVersao.Width = 343;
+                comboBoxVersao.DataSource = null;
             }
             else
             {
@@ -119,15 +121,15 @@ namespace WinForms.Aparelho
         {
             negocioAparelho = new AparelhoNegocio(Form1.Empresa.empconexao);
             int id = Convert.ToInt32(comboBoxVersao.SelectedValue);
-            colecaoModelo.Where(p => p.IdSo == id);
+            var colecao = colecaoModelo.Where(p => p.IdSo == id).ToList();
 
-            if (colecaoModelo != null)
+            if (colecao.Count > 0)
             {
                 labelModelo.Visible = true;
                 comboBoxModelo.Visible = true;
                 comboBoxModelo.ValueMember = "Id";
                 comboBoxModelo.DisplayMember = "Descricao";
-                comboBoxModelo.DataSource = colecaoModelo;
+                comboBoxModelo.DataSource = colecao;
                 comboBoxModelo.Select();
             }
             else
@@ -154,6 +156,7 @@ namespace WinForms.Aparelho
                 case 1:
                     comboBoxCategoria.Items.AddRange(catApple);
                     comboBoxCategoria.SelectedIndex = 0;
+                    comboBoxSub.SelectedIndex = 0;
                     break;
                 case 2:
                     comboBoxCategoria.Items.AddRange(catPc);
@@ -165,6 +168,7 @@ namespace WinForms.Aparelho
                 case 4:
                     comboBoxCategoria.Items.AddRange(catSmart);
                     comboBoxCategoria.SelectedIndex = 0;
+                    comboBoxVersao.Width = 343;
                     break;
                 default:
                     break;
@@ -248,7 +252,7 @@ namespace WinForms.Aparelho
 
         private void ComboBoxMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxMarca.Text == "OUTRAS")
+            if (comboBoxMarca.Text == "Outras")
             {
                 labelOutra.Visible = true;
                 textBoxOutra.Visible = true;
