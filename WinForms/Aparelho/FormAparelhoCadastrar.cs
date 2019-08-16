@@ -20,11 +20,11 @@ namespace WinForms.Aparelho
         AparelhoLinha linhaAparelho;
         PessoaInfo infoPessoa;
         AparelhoMarcaColecao colecaoMarca;
-        SistemaOperacionalColecao colecaoSistema;
+        List<SistemaOperacional> colecaoSistema;
         SistemaOperacionalVersaoColecao colecaoVersao;
         SistemaOperacionalModeloColecao colecaoModelo;
 
-        public FormAparelhoCadastrar(AparelhoLinha linha, PessoaInfo pessoa, AparelhoMarcaColecao marca, SistemaOperacionalColecao sistema, SistemaOperacionalVersaoColecao versao, SistemaOperacionalModeloColecao modelo)
+        public FormAparelhoCadastrar(AparelhoLinha linha, PessoaInfo pessoa, AparelhoMarcaColecao marca, List<SistemaOperacional> sistema, SistemaOperacionalVersaoColecao versao, SistemaOperacionalModeloColecao modelo)
         {
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);
@@ -42,7 +42,9 @@ namespace WinForms.Aparelho
 
         private void FormAparelhoCadastrar_Load(object sender, EventArgs e)
         {
-            colecaoMarca = new AparelhoMarcaColecao();
+
+            comboBoxVersao.ValueMember = "Id";
+            comboBoxVersao.DisplayMember = "Descricao";
 
             comboBoxSistema.ValueMember = "Id";
             comboBoxSistema.DisplayMember = "Descricao";
@@ -95,19 +97,19 @@ namespace WinForms.Aparelho
         {
             negocioAparelho = new AparelhoNegocio(Form1.Empresa.empconexao);
             int id = Convert.ToInt32(comboBoxSistema.SelectedValue);
-            colecaoVersao.Where(p => p.IdSo == id);
+            var colecao = colecaoVersao.Where(p => p.IdSo == id).ToList();
 
-            if (colecaoVersao == null)
+            if (colecao.Count > 0)
             {
                 comboBoxVersao.DropDownStyle = ComboBoxStyle.Simple;
-                comboBoxVersao.DataSource = colecaoVersao;
+                comboBoxVersao.DataSource = colecao;
             }
             else
             {
                 comboBoxVersao.DropDownStyle = ComboBoxStyle.DropDownList;
                 comboBoxVersao.ValueMember = "Id";
                 comboBoxVersao.DisplayMember = "Descricao";
-                comboBoxVersao.DataSource = colecaoVersao;
+                comboBoxVersao.DataSource = colecao;
             }
 
             comboBoxVersao.Select();

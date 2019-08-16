@@ -46,24 +46,24 @@ namespace WinForms.Aparelho
         {
             panelSeta.Top = buttonSmart.Top;
             AparelhoLinha linha = colecaoLinha.Where(p => p.linhaid == 4).FirstOrDefault();
-            var colecao = colecaoSistema.Where(p => p.Soidlinha == 4);
-            AbrirForm(linha, colecaoMarcaCelular, SistemaColecao(colecao as SistemaOperacionalColecao));
+            var colecao = colecaoSistema.Where(p => p.Soidlinha == 4).ToList();
+            AbrirForm(linha, colecaoMarcaCelular, colecao);
         }
 
         private void ButtonWin_Click(object sender, EventArgs e)
         {
             panelSeta.Top = buttonWin.Top;
             AparelhoLinha linha = colecaoLinha.Where(p => p.linhaid == 2).FirstOrDefault();
-            colecaoSistema.Where(p => p.Soidlinha == 2).ToList();
-            AbrirForm(linha, colecaoMarcaPc, SistemaColecao(colecaoSistema));
+            var colecao = colecaoSistema.Where(p => p.Soidlinha == 2).ToList();
+            AbrirForm(linha, colecaoMarcaPc, colecao);
         }
 
         private void ButtonMac_Click(object sender, EventArgs e)
         {
             panelSeta.Top = buttonMac.Top;
             AparelhoLinha linha = colecaoLinha.Where(p => p.linhaid == 1).FirstOrDefault();
-            colecaoSistema.Where(p => p.Soidlinha == 1);
-            AbrirForm(linha, colecaoMarcaPc, colecaoSistema);
+            var colecao = colecaoSistema.Where(p => p.Soidlinha == 1).ToList();
+            AbrirForm(linha, colecaoMarcaPc, colecao);
         }
 
         private void FormAparelhoMenu_Load(object sender, EventArgs e)
@@ -78,7 +78,7 @@ namespace WinForms.Aparelho
             AbrirFormIphone();
         }
 
-        private void AbrirForm(AparelhoLinha linha, AparelhoMarcaColecao marca, SistemaOperacionalColecao sistema)
+        private void AbrirForm(AparelhoLinha linha, AparelhoMarcaColecao marca, List<SistemaOperacional> sistema)
         {
             if (Application.OpenForms["FormIphoneModelo"] != null)
                 Application.OpenForms["FormIphoneModelo"].Close();
@@ -117,16 +117,6 @@ namespace WinForms.Aparelho
         {
             if (FormMessage.ShowMessegeQuestion("Deseja encerrar este forrmulário?") == DialogResult.No)
                 e.Cancel = true;
-        }
-
-        private SistemaOperacionalColecao SistemaColecao(SistemaOperacionalColecao colecao)
-        {
-            SistemaOperacionalColecao sistemas = new SistemaOperacionalColecao();
-            foreach (SistemaOperacional item in colecao)
-                sistemas.Add(item);
-
-            return sistemas;
-
         }
     }
 }
