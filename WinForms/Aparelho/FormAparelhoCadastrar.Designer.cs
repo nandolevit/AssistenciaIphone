@@ -66,6 +66,7 @@
             // labelNome
             // 
             this.labelNome.AutoSize = true;
+            this.labelNome.ForeColor = System.Drawing.Color.White;
             this.labelNome.Location = new System.Drawing.Point(12, 18);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(38, 13);
@@ -94,6 +95,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(190, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 13);
@@ -103,6 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(446, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
@@ -121,6 +124,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(323, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 13);
@@ -140,6 +144,7 @@
             // labelModelo
             // 
             this.labelModelo.AutoSize = true;
+            this.labelModelo.ForeColor = System.Drawing.Color.White;
             this.labelModelo.Location = new System.Drawing.Point(456, 68);
             this.labelModelo.Name = "labelModelo";
             this.labelModelo.Size = new System.Drawing.Size(72, 13);
@@ -160,6 +165,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(190, 151);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
@@ -186,6 +192,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(190, 191);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 13);
@@ -195,6 +202,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(9, 229);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
@@ -211,6 +219,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(527, 191);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 13);
@@ -227,6 +236,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(190, 229);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(26, 13);
@@ -243,6 +253,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(190, 108);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 13);
@@ -262,6 +273,7 @@
             // labelSub
             // 
             this.labelSub.AutoSize = true;
+            this.labelSub.ForeColor = System.Drawing.Color.White;
             this.labelSub.Location = new System.Drawing.Point(327, 108);
             this.labelSub.Name = "labelSub";
             this.labelSub.Size = new System.Drawing.Size(73, 13);
@@ -283,6 +295,7 @@
             // labelOutra
             // 
             this.labelOutra.AutoSize = true;
+            this.labelOutra.ForeColor = System.Drawing.Color.White;
             this.labelOutra.Location = new System.Drawing.Point(327, 153);
             this.labelOutra.Name = "labelOutra";
             this.labelOutra.Size = new System.Drawing.Size(68, 13);
@@ -301,6 +314,7 @@
             // labelOutraSub
             // 
             this.labelOutraSub.AutoSize = true;
+            this.labelOutraSub.ForeColor = System.Drawing.Color.White;
             this.labelOutraSub.Location = new System.Drawing.Point(456, 110);
             this.labelOutraSub.Name = "labelOutraSub";
             this.labelOutraSub.Size = new System.Drawing.Size(68, 13);
@@ -354,6 +368,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(594, 450);
             this.Controls.Add(this.buttonCpuz);
             this.Controls.Add(this.labelOutraSub);
@@ -386,6 +401,7 @@
             this.Controls.Add(this.labelNome);
             this.Controls.Add(this.textBoxNome);
             this.Controls.Add(this.buttonCliente);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAparelhoCadastrar";
             this.Text = "FormAparelhoCadastrar";
             this.Load += new System.EventHandler(this.FormAparelhoCadastrar_Load);

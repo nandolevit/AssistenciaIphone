@@ -47,6 +47,7 @@ namespace WinForms
             this.textBoxNum.MaxLength = 5;
             comboBoxModelo.ValueMember = "iphmodid";
             comboBoxModelo.DisplayMember = "iphmoddescricao";
+            this.KeyPreview = false;
         }
 
         private void FormIphoneModelo_Load(object sender, EventArgs e)
@@ -207,11 +208,6 @@ namespace WinForms
         private void ComboBoxCapacidade_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxCap.Text = comboBoxCapacidade.Text;
-        }
-
-        private void ButtonFechar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
         }
 
         private void ButtonSalvar_Click(object sender, EventArgs e)

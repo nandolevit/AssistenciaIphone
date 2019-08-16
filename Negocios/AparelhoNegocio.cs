@@ -38,9 +38,10 @@ namespace Negocios
 
                     foreach (DataRow row in dataTable.Rows)
                     {
+                        string descricao = Convert.ToString(row["marcadescricao"]);
                         AparelhoMarca marca = new AparelhoMarca
                         {
-                            Descricao = Convert.ToString(row["marcadescricao"]),
+                            Descricao = descricao.Substring(0, 1).ToUpper() + descricao.Substring(1).ToLower(),
                             Id = Convert.ToInt32(row["marcaid"])
                         };
 

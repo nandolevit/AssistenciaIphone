@@ -25,6 +25,7 @@ namespace WinForms.Aparelho
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
+            this.KeyPreview = false;
             linhaAparelho = linha;
             textBoxLinha.Text = linha.linhadescricao;
             infoPessoa = pessoa;
@@ -50,13 +51,15 @@ namespace WinForms.Aparelho
 
                     AparelhoMarca marca = new AparelhoMarca
                     {
-                        Descricao = "APPLE",
+                        Descricao = "Apple",
                         Id = 1
                     };
 
                     comboBoxMarca.Items.Add(marca);
                     comboBoxMarca.SelectedIndex = 0;
-                    comboBoxVersao.Width = 277;
+                    comboBoxMarca.Enabled = false;
+                    comboBoxVersao.Width = 255;
+                    colecaoMarca = null;
                     break;
                 case 2:
                     comboBoxSistema.Text = "Windows";
@@ -72,10 +75,14 @@ namespace WinForms.Aparelho
                     break;
             }
 
-            comboBoxMarca.DisplayMember = "Descricao";
-            comboBoxMarca.ValueMember = "Id";
-            comboBoxMarca.DataSource = colecaoMarca;
-            comboBoxMarca.SelectedIndex = -1;
+            if (colecaoMarca != null)
+            {
+                comboBoxMarca.DisplayMember = "Descricao";
+                comboBoxMarca.ValueMember = "Id";
+                comboBoxMarca.DataSource = colecaoMarca;
+                comboBoxMarca.SelectedIndex = -1;
+            }
+
             PreencherComboBoxCategoria();
         }
 
@@ -139,6 +146,7 @@ namespace WinForms.Aparelho
             {
                 case 1:
                     comboBoxCategoria.Items.AddRange(catApple);
+                    comboBoxCategoria.SelectedIndex = 0;
                     break;
                 case 2:
                     comboBoxCategoria.Items.AddRange(catPc);
@@ -149,6 +157,7 @@ namespace WinForms.Aparelho
                     break;
                 case 4:
                     comboBoxCategoria.Items.AddRange(catSmart);
+                    comboBoxCategoria.SelectedIndex = 0;
                     break;
                 default:
                     break;

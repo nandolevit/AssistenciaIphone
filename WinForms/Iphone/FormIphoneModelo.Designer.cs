@@ -96,7 +96,6 @@
             this.pictureBoxImagem = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.buttonSalvar = new System.Windows.Forms.Button();
-            this.buttonFechar = new System.Windows.Forms.Button();
             this.buttonFoto = new System.Windows.Forms.Button();
             this.textBoxNum = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -843,7 +842,7 @@
             this.buttonSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSalvar.Image = global::WinForms.Properties.Resources.conf_green;
             this.buttonSalvar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonSalvar.Location = new System.Drawing.Point(897, 494);
+            this.buttonSalvar.Location = new System.Drawing.Point(989, 494);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(85, 40);
             this.buttonSalvar.TabIndex = 7;
@@ -852,26 +851,12 @@
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.ButtonSalvar_Click);
             // 
-            // buttonFechar
-            // 
-            this.buttonFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFechar.Image = global::WinForms.Properties.Resources.exit_red;
-            this.buttonFechar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonFechar.Location = new System.Drawing.Point(989, 494);
-            this.buttonFechar.Name = "buttonFechar";
-            this.buttonFechar.Size = new System.Drawing.Size(85, 40);
-            this.buttonFechar.TabIndex = 8;
-            this.buttonFechar.Text = "&Fechar";
-            this.buttonFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonFechar.UseVisualStyleBackColor = true;
-            this.buttonFechar.Click += new System.EventHandler(this.ButtonFechar_Click);
-            // 
             // buttonFoto
             // 
             this.buttonFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFoto.Image = global::WinForms.Properties.Resources.conf_green;
             this.buttonFoto.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonFoto.Location = new System.Drawing.Point(806, 494);
+            this.buttonFoto.Location = new System.Drawing.Point(898, 494);
             this.buttonFoto.Name = "buttonFoto";
             this.buttonFoto.Size = new System.Drawing.Size(85, 40);
             this.buttonFoto.TabIndex = 9;
@@ -951,7 +936,6 @@
             this.Controls.Add(this.textBoxNum);
             this.Controls.Add(this.buttonFoto);
             this.Controls.Add(this.buttonSalvar);
-            this.Controls.Add(this.buttonFechar);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.comboBoxModelo);
@@ -1052,7 +1036,6 @@
         private System.Windows.Forms.TextBox textBoxResistente;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button buttonSalvar;
-        private System.Windows.Forms.Button buttonFechar;
         private System.Windows.Forms.Button buttonFoto;
         private System.Windows.Forms.TextBox textBoxNum;
         private System.Windows.Forms.Label label14;

@@ -117,6 +117,12 @@
     <Compile Include="Aparelho\FormAparelhoCadastrar.Designer.cs">
       <DependentUpon>FormAparelhoCadastrar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Aparelho\FormAparelhoMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aparelho\FormAparelhoMenu.Designer.cs">
+      <DependentUpon>FormAparelhoMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classe\AccessLogin.cs" />
     <Compile Include="Classe\Caixa.cs" />
     <Compile Include="Classe\Cupom.cs" />
@@ -408,6 +414,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Aparelho\FormAparelhoCadastrar.resx">
       <DependentUpon>FormAparelhoCadastrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Aparelho\FormAparelhoMenu.resx">
+      <DependentUpon>FormAparelhoMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Email\FormEmail.resx">
       <DependentUpon>FormEmail.cs</DependentUpon>

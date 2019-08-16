@@ -753,44 +753,9 @@ namespace WinForms
                             {
                                 case EnumEmpresaNegocio.Loja_Iphone:
 
-                                    FormServicoTipo formServicoTipo = new FormServicoTipo();
-                                    if (formServicoTipo.ShowDialog(this) == DialogResult.Yes)
-                                    {
-
-                                        switch (formServicoTipo.SelecionadaLinha.linhaid)
-                                        {
-                                            case 3:
-
-                                                FormIphoneModelo formIphoneModelo = new FormIphoneModelo();
-                                                if (formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
-                                                {
-                                                    IphoneCelularInfo celular = formIphoneModelo.SelecionadoIphone;
-
-                                                    celular.celidcliente = p.pssid;
-                                                    ServicoNegocio negocioServ = new ServicoNegocio(Empresa.empconexao);
-                                                    celular.celid = negocioServ.InsertIphoneCelular(celular);
-
-                                                    if (celular.celid > 0)
-                                                    {
-                                                        FormServico formServico = new FormServico(p);
-                                                        if (formServico.ShowDialog(this) == DialogResult.Yes)
-                                                        {
-                                                            FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
-                                                        }
-                                                    }
-                                                }
-                                                break;
-                                            default:
-
-                                                Aparelho.FormAparelhoCadastrar formAparelhoCadastrar = new Aparelho.FormAparelhoCadastrar(formServicoTipo.SelecionadaLinha, p);
-                                                formAparelhoCadastrar.ShowDialog(this);
-                                                formAparelhoCadastrar.Dispose();
-
-                                                break;
-                                        }
-                                    }
-                                    formServicoTipo.Dispose();
-
+                                    Aparelho.FormAparelhoMenu formAparelhoMenu = new Aparelho.FormAparelhoMenu(p);
+                                    formAparelhoMenu.ShowDialog(this);
+                                    formAparelhoMenu.Dispose();
                                     break;
                                 case EnumEmpresaNegocio.Refrigeracao:
                                     break;
