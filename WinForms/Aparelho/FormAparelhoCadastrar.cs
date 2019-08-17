@@ -43,6 +43,9 @@ namespace WinForms.Aparelho
         private void FormAparelhoCadastrar_Load(object sender, EventArgs e)
         {
 
+            for (int i = 0; i < tabControlEspecificacoes.TabCount; i++)
+                tabControlEspecificacoes.TabPages.RemoveAt(i);
+
             comboBoxVersao.ValueMember = "Id";
             comboBoxVersao.DisplayMember = "Descricao";
 
@@ -54,6 +57,7 @@ namespace WinForms.Aparelho
             {
                 case 1:
                 case 3:
+                    tabControlEspecificacoes.TabPages.RemoveAt(0);
                     comboBoxMarca.DisplayMember = "Descricao";
                     comboBoxMarca.ValueMember = "Id";
 
@@ -70,17 +74,24 @@ namespace WinForms.Aparelho
                     colecaoMarca = null;
                     break;
                 case 2:
+                    tabControlEspecificacoes.TabPages.RemoveAt(0);
                     comboBoxSistema.Text = "Windows";
                     comboBoxVersao.Text = "Windows 10";
                     buttonCpuz.Visible = true;
+                    tabControlEspecificacoes.TabPages.Add(tabPagePc);
                     break;
                 case 4:
+                    tabControlEspecificacoes.TabPages.RemoveAt(0);
                     comboBoxVersao.Width = 343;
                     comboBoxCategoria.Text = "SmartPhone";
+                    tabControlEspecificacoes.TabPages.Add(tabPageCelular);
                     break;
                 default:
                     break;
             }
+
+
+            //tabControlEspecificacoes.TabPages.RemoveAt(0);
 
             if (colecaoMarca != null)
             {
@@ -108,6 +119,7 @@ namespace WinForms.Aparelho
             }
             else
             {
+                comboBoxVersao.Width = 200;
                 comboBoxVersao.DropDownStyle = ComboBoxStyle.DropDownList;
                 comboBoxVersao.ValueMember = "Id";
                 comboBoxVersao.DisplayMember = "Descricao";
@@ -285,6 +297,27 @@ namespace WinForms.Aparelho
             using (FormLerText formLerText = new FormLerText())
             {
                 formLerText.ShowDialog(this);
+            }
+        }
+
+        private void ComboBoxConector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBoxConector.Text)
+            {
+                case "Mini USB":
+                    pictureBoxConector.Image = Properties.Resources.microusb;
+                    break;
+                case "Tipo C":
+                    pictureBoxConector.Image = Properties.Resources.tipo_c;
+                    break;
+                case "Lightning":
+                    pictureBoxConector.Image = Properties.Resources.lightning;
+                    break;
+                case "Outros":
+                    pictureBoxConector.Image = null;
+                    break;
+                default:
+                    break;
             }
         }
     }

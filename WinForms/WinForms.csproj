@@ -762,5 +762,14 @@
   <ItemGroup>
     <None Include="Resources\cpuz.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lightning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tipo-c.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\microusb.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
