@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Negocios;
 using ObjTransfer;
 using ObjTransfer.Aparelho;
+using ObjTransfer.Aparelho.Computadores;
 
 namespace WinForms.Aparelho
 {
@@ -23,8 +24,10 @@ namespace WinForms.Aparelho
         List<SistemaOperacional> colecaoSistema;
         SistemaOperacionalVersaoColecao colecaoVersao;
         SistemaOperacionalModeloColecao colecaoModelo;
+        ProcessadorModeloColecao colecaoModeloProc;
+        ProcessadorLinhaColecao colecaoLinhaProc;
 
-        public FormAparelhoCadastrar(AparelhoLinha linha, PessoaInfo pessoa, AparelhoMarcaColecao marca, List<SistemaOperacional> sistema, SistemaOperacionalVersaoColecao versao, SistemaOperacionalModeloColecao modelo)
+        public FormAparelhoCadastrar(AparelhoLinha linha, PessoaInfo pessoa, AparelhoMarcaColecao marca, List<SistemaOperacional> sistema, SistemaOperacionalVersaoColecao versao, SistemaOperacionalModeloColecao modelo, ProcessadorModeloColecao modproc, ProcessadorLinhaColecao linhaproc)
         {
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);
@@ -38,6 +41,8 @@ namespace WinForms.Aparelho
             colecaoSistema = sistema;
             colecaoVersao = versao;
             colecaoModelo = modelo;
+            colecaoLinhaProc = linhaproc;
+            colecaoModeloProc = modproc;
         }
 
         private void FormAparelhoCadastrar_Load(object sender, EventArgs e)
@@ -49,17 +54,19 @@ namespace WinForms.Aparelho
             comboBoxVersao.ValueMember = "Id";
             comboBoxVersao.DisplayMember = "Descricao";
 
+            comboBoxMarca.DisplayMember = "Descricao";
+            comboBoxMarca.ValueMember = "Id";
+
             comboBoxSistema.ValueMember = "Id";
             comboBoxSistema.DisplayMember = "Descricao";
             comboBoxSistema.DataSource = colecaoSistema;
+
+            tabControlEspecificacoes.TabPages.RemoveAt(0);
 
             switch (linhaAparelho.linhaid)
             {
                 case 1:
                 case 3:
-                    tabControlEspecificacoes.TabPages.RemoveAt(0);
-                    comboBoxMarca.DisplayMember = "Descricao";
-                    comboBoxMarca.ValueMember = "Id";
 
                     AparelhoMarca marca = new AparelhoMarca
                     {
@@ -74,14 +81,11 @@ namespace WinForms.Aparelho
                     colecaoMarca = null;
                     break;
                 case 2:
-                    tabControlEspecificacoes.TabPages.RemoveAt(0);
                     comboBoxSistema.Text = "Windows";
                     comboBoxVersao.Text = "Windows 10";
                     buttonCpuz.Visible = true;
-                    tabControlEspecificacoes.TabPages.Add(tabPagePc);
                     break;
                 case 4:
-                    tabControlEspecificacoes.TabPages.RemoveAt(0);
                     comboBoxVersao.Width = 343;
                     comboBoxCategoria.Text = "SmartPhone";
                     tabControlEspecificacoes.TabPages.Add(tabPageCelular);
@@ -91,15 +95,30 @@ namespace WinForms.Aparelho
             }
 
 
-            //tabControlEspecificacoes.TabPages.RemoveAt(0);
-
             if (colecaoMarca != null)
             {
-                comboBoxMarca.DisplayMember = "Descricao";
-                comboBoxMarca.ValueMember = "Id";
                 comboBoxMarca.DataSource = colecaoMarca;
                 comboBoxMarca.SelectedIndex = -1;
                 comboBoxVersao.Width = 200;
+            }
+
+            if (linhaAparelho.linhaidtipo == 1)
+            {
+
+                tabControlEspecificacoes.TabPages.Add(tabPagePc);
+
+                comboBoxProcLinha.DisplayMember = "Descricao";
+                comboBoxProcLinha.ValueMember = "Id";
+
+                if (linhaAparelho.linhaid == 2)
+                    comboBoxProcLinha.DataSource = colecaoLinhaProc;
+                else
+                {
+                    comboBoxProcLinha.DataSource = colecaoLinhaProc.Where(p => p.Id == 1).ToList();
+                    comboBoxProcLinha.SelectedIndex = 1;
+                }
+
+                comboBoxProcLinha.SelectedIndex = 0;
             }
 
             PreencherComboBoxCategoria();
@@ -319,6 +338,22 @@ namespace WinForms.Aparelho
                 default:
                     break;
             }
+        }
+
+        private void ComboBoxProcessador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxProcModelo.Select();
+        }
+
+        private void ComboBoxProcLinha_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxProcessador.ValueMember = "Id";
+            comboBoxProcessador.DisplayMember = "Descricao";
+
+            if (linhaAparelho.linhaid == 2)
+                comboBoxProcessador.DataSource = colecaoModeloProc.Where(p => p.IdLinha == Convert.ToInt32(comboBoxProcLinha.SelectedValue)).ToList();
+            else
+                comboBoxProcessador.DataSource = colecaoModeloProc.Where(p => p.Id <= 4).ToList();
         }
     }
 }

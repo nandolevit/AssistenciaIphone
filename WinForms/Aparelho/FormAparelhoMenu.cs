@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ObjTransfer.Aparelho;
-using System.Linq;
+using ObjTransfer.Aparelho.Computadores;
+//using System.Linq;
 using Negocios;
 using ObjTransfer;
 
@@ -24,6 +25,8 @@ namespace WinForms.Aparelho
         SistemaOperacionalColecao colecaoSistema;
         SistemaOperacionalVersaoColecao colecaoVersao;
         SistemaOperacionalModeloColecao colecaoModelo;
+        ProcessadorModeloColecao colecaoModeloProc;
+        ProcessadorLinhaColecao colecaoLinhaProc;
 
         public FormAparelhoMenu(PessoaInfo pessoa)
         {
@@ -75,6 +78,8 @@ namespace WinForms.Aparelho
             colecaoMarcaPc = negocioAparelho.ConsultarAparelhoMarca(2);
             colecaoMarcaCelular = negocioAparelho.ConsultarAparelhoMarca(4);
             colecaoModelo = negocioAparelho.ConsultarSistemaModelo();
+            colecaoModeloProc = negocioAparelho.ConsultarProcessadorModelo();
+            colecaoLinhaProc = negocioAparelho.ConsultarProcessadorLinha();
             AbrirFormIphone();
         }
 
@@ -90,7 +95,7 @@ namespace WinForms.Aparelho
             this.Width = 950;
             this.CenterToScreen();
 
-            FormAparelhoCadastrar formAparelhoCadastrar = new FormAparelhoCadastrar(linha, infoPessoa, marca, sistema, colecaoVersao, colecaoModelo);
+            FormAparelhoCadastrar formAparelhoCadastrar = new FormAparelhoCadastrar(linha, infoPessoa, marca, sistema, colecaoVersao, colecaoModelo, colecaoModeloProc, colecaoLinhaProc);
             formAparelhoCadastrar.WindowState = FormWindowState.Maximized;
             formAparelhoCadastrar.FormBorderStyle = FormBorderStyle.None;
             formAparelhoCadastrar.MdiParent = this;
