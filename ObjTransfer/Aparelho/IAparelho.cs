@@ -10,14 +10,18 @@ namespace ObjTransfer.Aparelho
     interface IAparelho
     {
         int Id { get; set; }
-        Pessoa Pessoa { get; set; }
-        string Descricao { get; set; }
-        string Serie { get; set; }
-        int Tipo { get; set; }
-        AparelhoMarca Marca { get; set; }
-        string Modelo { get; set; }
-        string Cor { get; set; }
         int Ano { get; set; }
+        string AparelhoLinha { get; set; }
+        string Categoria { get; set; }
+        string CategoriaSub { get; set; }
+        string Cor { get; set; }
+        string Descricao { get; set; }
+        string Marca { get; set; }
+        string Modelo { get; set; }
+        Pessoa Pessoa { get; set; }
+        string Senha { get; set; }
+        string Serie { get; set; }
         string Sistema { get; set; }
+        string SistemaVersao { get; set; }
     }
 }

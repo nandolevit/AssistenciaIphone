@@ -115,10 +115,10 @@ namespace WinForms.Aparelho
                 else
                 {
                     comboBoxProcLinha.DataSource = colecaoLinhaProc.Where(p => p.Id == 1).ToList();
-                    comboBoxProcLinha.SelectedIndex = 1;
+                    comboBoxProcessador.SelectedIndex = 1;
                 }
 
-                comboBoxProcLinha.SelectedIndex = 0;
+                //comboBoxProcLinha.SelectedIndex = 0;
             }
 
             PreencherComboBoxCategoria();
@@ -228,7 +228,7 @@ namespace WinForms.Aparelho
                     ComboBoxSub_Visible(false);
                     break;
                 case "All in One (AIO)":
-                    pictureBoxFoto.Image = Properties.Resources.aiopc;
+                    pictureBoxFoto.Image = Properties.Resources.All_in_One;
                     ComboBoxSub_Visible(false);
                     break;
                 case "Desktop":

@@ -120,8 +120,9 @@ namespace WinForms.Aparelho
 
         private void FormAparelhoMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (FormMessage.ShowMessegeQuestion("Deseja encerrar este forrmulário?") == DialogResult.No)
-                e.Cancel = true;
+            if (this.DialogResult != DialogResult.Yes)
+                if (FormMessage.ShowMessegeQuestion("Deseja encerrar este forrmulário?") == DialogResult.No)
+                    e.Cancel = true;
         }
     }
 }

@@ -153,7 +153,7 @@
             this.comboBoxModelo.FormattingEnabled = true;
             this.comboBoxModelo.Location = new System.Drawing.Point(243, 34);
             this.comboBoxModelo.Name = "comboBoxModelo";
-            this.comboBoxModelo.Size = new System.Drawing.Size(330, 21);
+            this.comboBoxModelo.Size = new System.Drawing.Size(150, 21);
             this.comboBoxModelo.TabIndex = 5;
             this.comboBoxModelo.SelectedIndexChanged += new System.EventHandler(this.ComboBoxModelo_SelectedIndexChanged);
             // 

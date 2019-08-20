@@ -83,6 +83,16 @@ namespace WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap All_in_One {
+            get {
+                object obj = ResourceManager.GetObject("All-in-One", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap amd_vs_intel {
             get {
                 object obj = ResourceManager.GetObject("amd_vs_intel", resourceCulture);

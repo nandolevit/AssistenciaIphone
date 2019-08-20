@@ -61,7 +61,6 @@ namespace WinForms
                 infoCelular = formIphoneModelo.SelecionadoIphone;
                 ConvertImagem(formIphoneModelo.SelecionadaFoto.modcorfoto);
                 textBoxModelo.Text = infoCelular.ToString();
-                textBoxObs.Text = infoCelular.celobs;
 
             }
             formIphoneModelo.Dispose();
@@ -181,6 +180,15 @@ namespace WinForms
                 iphcompravalorvenda = Convert.ToDecimal(textBoxVenda.Text),
                 iphcompraidfunc = Form1.User.useidfuncionario
             };
+        }
+
+        private void TextBoxMargem_TextChanged(object sender, EventArgs e)
+        {
+            FormTextoFormat.MoedaFormat(textBoxMargem);
+
+            decimal comp = Convert.ToDecimal(textBoxCompra.Text);
+            decimal marg = Convert.ToDecimal(textBoxMargem.Text);
+            textBoxVenda.Text = (comp * ((marg / 100) + 1)).ToString("F2");
         }
     }
 }

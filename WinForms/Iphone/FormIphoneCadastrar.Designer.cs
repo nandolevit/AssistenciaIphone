@@ -30,6 +30,8 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBoxCompra = new System.Windows.Forms.GroupBox();
+            this.textBoxMargem = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxPrazo = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -81,6 +83,8 @@
             // 
             // groupBoxCompra
             // 
+            this.groupBoxCompra.Controls.Add(this.textBoxMargem);
+            this.groupBoxCompra.Controls.Add(this.label8);
             this.groupBoxCompra.Controls.Add(this.label6);
             this.groupBoxCompra.Controls.Add(this.comboBoxPrazo);
             this.groupBoxCompra.Controls.Add(this.groupBox2);
@@ -105,6 +109,23 @@
             this.groupBoxCompra.TabIndex = 4;
             this.groupBoxCompra.TabStop = false;
             this.groupBoxCompra.Text = "Detalhes da compra:";
+            // 
+            // textBoxMargem
+            // 
+            this.textBoxMargem.Location = new System.Drawing.Point(93, 207);
+            this.textBoxMargem.Name = "textBoxMargem";
+            this.textBoxMargem.Size = new System.Drawing.Size(64, 20);
+            this.textBoxMargem.TabIndex = 14;
+            this.textBoxMargem.TextChanged += new System.EventHandler(this.TextBoxMargem_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(93, 191);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Margem (%):";
             // 
             // label6
             // 
@@ -204,26 +225,26 @@
             // 
             // textBoxVenda
             // 
-            this.textBoxVenda.Location = new System.Drawing.Point(130, 207);
+            this.textBoxVenda.Location = new System.Drawing.Point(163, 207);
             this.textBoxVenda.Name = "textBoxVenda";
-            this.textBoxVenda.Size = new System.Drawing.Size(115, 20);
-            this.textBoxVenda.TabIndex = 14;
+            this.textBoxVenda.Size = new System.Drawing.Size(82, 20);
+            this.textBoxVenda.TabIndex = 16;
             this.textBoxVenda.TextChanged += new System.EventHandler(this.TextBoxVenda_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(130, 191);
+            this.label7.Location = new System.Drawing.Point(163, 191);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 13);
-            this.label7.TabIndex = 13;
+            this.label7.TabIndex = 15;
             this.label7.Text = "Valor Venda:";
             // 
             // textBoxCompra
             // 
             this.textBoxCompra.Location = new System.Drawing.Point(5, 207);
             this.textBoxCompra.Name = "textBoxCompra";
-            this.textBoxCompra.Size = new System.Drawing.Size(115, 20);
+            this.textBoxCompra.Size = new System.Drawing.Size(82, 20);
             this.textBoxCompra.TabIndex = 12;
             this.textBoxCompra.TextChanged += new System.EventHandler(this.TextBoxCompra_TextChanged);
             // 
@@ -241,10 +262,9 @@
             this.textBoxObs.Location = new System.Drawing.Point(251, 129);
             this.textBoxObs.Multiline = true;
             this.textBoxObs.Name = "textBoxObs";
-            this.textBoxObs.ReadOnly = true;
             this.textBoxObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxObs.Size = new System.Drawing.Size(327, 98);
-            this.textBoxObs.TabIndex = 16;
+            this.textBoxObs.TabIndex = 18;
             // 
             // label5
             // 
@@ -252,7 +272,7 @@
             this.label5.Location = new System.Drawing.Point(251, 113);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 13);
-            this.label5.TabIndex = 15;
+            this.label5.TabIndex = 17;
             this.label5.Text = "Observações:";
             // 
             // label4
@@ -455,5 +475,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.Button buttonFechar;
+        private System.Windows.Forms.TextBox textBoxMargem;
+        private System.Windows.Forms.Label label8;
     }
 }

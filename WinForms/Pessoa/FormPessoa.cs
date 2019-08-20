@@ -38,14 +38,12 @@ namespace WinForms
             Inicializar();
             enumPessoa = pessoa;
             labelTitle.Text = pessoa.ToString();
-            Assistencia = Form1.Unidade.uniassistencia;
         }
 
         public FormPessoa(PessoaInfo pessoa)
         {
             Inicializar();
             infoPessoa = pessoa;
-            Assistencia = Form1.Unidade.uniassistencia;
             PreencherFormPessoa();
         }
 
@@ -55,6 +53,7 @@ namespace WinForms
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
             this.AcceptButton = buttonSalvar;
+            Assistencia = Form1.Unidade.uniassistencia;
             negocioPessoa = new ClienteNegocios(Form1.Empresa.empconexao, Assistencia);
         }
 

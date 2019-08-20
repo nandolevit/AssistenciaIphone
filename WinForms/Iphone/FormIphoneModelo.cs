@@ -216,8 +216,17 @@ namespace WinForms
             {
                 PreencherCelular();
 
-                SelecionadoIphone = infoCelular;
-                this.DialogResult = DialogResult.Yes;
+                if (this.Modal)
+                {
+                    SelecionadoIphone = infoCelular;
+                    this.DialogResult = DialogResult.Yes;
+                }
+                else
+                {
+                    this.Close();
+                    Application.OpenForms["FormAparelhoMenu"].DialogResult = DialogResult.Yes;
+
+                }
 
                 //thread = new Thread(Salvar);
                 //form1.ExecutarThread(thread);
@@ -294,6 +303,8 @@ namespace WinForms
 
         private void TipoSelecionando()
         {
+            comboBoxModelo.Width = 150;
+
             switch (comboBoxTipo.Text)
             {
                 case "Iphone":
@@ -308,6 +319,7 @@ namespace WinForms
                     break;
                 case "Ipad":
 
+                    comboBoxModelo.Width = 330;
                     comboBoxModelo.DataSource = colecaoIpad;
 
                     if (tabControl1.TabPages.Count > 1)

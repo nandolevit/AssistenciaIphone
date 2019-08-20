@@ -771,5 +771,8 @@
   <ItemGroup>
     <None Include="Resources\microusb.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\All-in-One.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
