@@ -15,7 +15,10 @@ namespace Negocios
         private string EmpConexao { get; set; }
         AccessDbMySql accessDbMySql;
 
-        public EmpresaNegocios(){} //esse construtor serve para compatibilidade
+        public EmpresaNegocios()
+        {
+            accessDbMySql = new AccessDbMySql(EmpConexao);
+        } //esse construtor serve para compatibilidade
 
         public EmpresaNegocios(string conexao)
         {

@@ -383,6 +383,7 @@
             // 
             // buttonSalvar
             // 
+            this.buttonSalvar.Enabled = false;
             this.buttonSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSalvar.Image = global::WinForms.Properties.Resources.conf_green;
             this.buttonSalvar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
