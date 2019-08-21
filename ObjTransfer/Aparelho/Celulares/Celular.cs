@@ -7,7 +7,7 @@ using ObjTransfer.Pessoas;
 
 namespace ObjTransfer.Aparelho.Celulares
 {
-    class Celular : IAparelho
+    public class Celular : IAparelho
     {
         public string IMEI { get; set; }
         public string Capacidade { get; set; }

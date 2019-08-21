@@ -12,11 +12,13 @@ using ObjTransfer.Aparelho.Computadores;
 //using System.Linq;
 using Negocios;
 using ObjTransfer;
+using ObjTransfer.Aparelho.Enum;
 
 namespace WinForms.Aparelho
 {
     public partial class FormAparelhoMenu : Form
     {
+        EnumAparelhoLinha enumAparelho;
         AparelhoLinhaColecao colecaoLinha;
         AparelhoNegocio negocioAparelho;
         PessoaInfo infoPessoa;
@@ -39,6 +41,7 @@ namespace WinForms.Aparelho
 
         private void ButtonIphone_Click(object sender, EventArgs e)
         {
+            enumAparelho = EnumAparelhoLinha.Iphone;
             panelSeta.Top = buttonIphone.Top;
             AbrirFormIphone();
 
@@ -47,6 +50,7 @@ namespace WinForms.Aparelho
 
         private void ButtonSmart_Click(object sender, EventArgs e)
         {
+            enumAparelho = EnumAparelhoLinha.SmartPhone;
             panelSeta.Top = buttonSmart.Top;
             AparelhoLinha linha = colecaoLinha.Where(p => p.linhaid == 4).FirstOrDefault();
             var colecao = colecaoSistema.Where(p => p.Soidlinha == 4).ToList();
@@ -55,6 +59,7 @@ namespace WinForms.Aparelho
 
         private void ButtonWin_Click(object sender, EventArgs e)
         {
+            enumAparelho = EnumAparelhoLinha.Pc;
             panelSeta.Top = buttonWin.Top;
             AparelhoLinha linha = colecaoLinha.Where(p => p.linhaid == 2).FirstOrDefault();
             var colecao = colecaoSistema.Where(p => p.Soidlinha == 2).ToList();
@@ -63,6 +68,7 @@ namespace WinForms.Aparelho
 
         private void ButtonMac_Click(object sender, EventArgs e)
         {
+            enumAparelho = EnumAparelhoLinha.Mac;
             panelSeta.Top = buttonMac.Top;
             AparelhoLinha linha = colecaoLinha.Where(p => p.linhaid == 1).FirstOrDefault();
             var colecao = colecaoSistema.Where(p => p.Soidlinha == 1).ToList();

@@ -11,11 +11,13 @@ using System.Windows.Forms;
 
 using Negocios;
 using ObjTransfer;
+using ObjTransfer.Aparelho.Celulares;
 
 namespace WinForms
 {
     public partial class FormIphoneModelo : Form
     {
+        Celular cel;
         IphoneModeloColecao colecaoIphone;
         IphoneModeloColecao colecaoIpad;
         IphoneModeloInfo infoIphone;

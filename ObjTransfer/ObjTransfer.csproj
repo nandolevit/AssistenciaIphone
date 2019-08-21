@@ -66,6 +66,7 @@
     <Compile Include="Aparelho\Computadores\ProcessadorLinha.cs" />
     <Compile Include="Aparelho\Computadores\ProcessadorModelo.cs" />
     <Compile Include="Aparelho\Computadores\ProcessadorModeloColecao.cs" />
+    <Compile Include="Aparelho\Enum\EnumAparelhoLinha.cs" />
     <Compile Include="Aparelho\IAparelho.cs" />
     <Compile Include="Aparelho\Celulares\Celular.cs" />
     <Compile Include="Aparelho\Computadores\Computador.cs" />
