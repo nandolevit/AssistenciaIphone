@@ -37,6 +37,17 @@ namespace WinForms
         private void TextBoxVenda_TextChanged(object sender, EventArgs e)
         {
             FormTextoFormat.MoedaFormat(textBoxVenda);
+
+            decimal comp = Convert.ToDecimal(textBoxCompra.Text);
+            decimal vend = Convert.ToDecimal(textBoxVenda.Text);
+            decimal liq = vend - comp;
+
+            if (liq > 0)
+            {
+                textBoxMargem.Text = ((liq / comp) * 100).ToString("F1");
+                textBoxLiquido.Text = liq.ToString("F2");
+            }
+
         }
 
         private void RadioButtonApple_CheckedChanged(object sender, EventArgs e)
@@ -180,15 +191,6 @@ namespace WinForms
                 iphcompravalorvenda = Convert.ToDecimal(textBoxVenda.Text),
                 iphcompraidfunc = Form1.User.useidfuncionario
             };
-        }
-
-        private void TextBoxMargem_TextChanged(object sender, EventArgs e)
-        {
-            FormTextoFormat.MoedaFormat(textBoxMargem);
-
-            decimal comp = Convert.ToDecimal(textBoxCompra.Text);
-            decimal marg = Convert.ToDecimal(textBoxMargem.Text);
-            textBoxVenda.Text = (comp * ((marg / 100) + 1)).ToString("F2");
         }
     }
 }
