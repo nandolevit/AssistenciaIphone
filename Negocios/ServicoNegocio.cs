@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using ObjTransfer;
+using ObjTransfer.Aparelho.Celulares;
 using AccessDB;
 using System.Data;
 
@@ -250,12 +251,12 @@ namespace Negocios
             return colecao;
         }
 
-        public IphoneCelularInfo ConsultarIphoneCelularId(int id)
+        public Celular ConsultarCelularId(int id)
         {
             if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
-                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarIphoneCelularId");
+                DataTable dataTable = accessDbMySql.dataTableMySql("");
                 if (dataTable != null)
                     return PreencherIphoneCelular(dataTable)[0];
                 else
@@ -265,12 +266,12 @@ namespace Negocios
                 return null;
         }
 
-        public IphoneCelularColecao ConsultarIphoneCelularIdCliente(int id)
+        public CelularColecao ConsultarCelularIdCliente(int id)
         {
             if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@id", id);
-                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarIphoneCelularIdCliente");
+                DataTable dataTable = accessDbMySql.dataTableMySql("");
                 if (dataTable != null)
                     return PreencherIphoneCelular(dataTable);
                 else
@@ -280,29 +281,14 @@ namespace Negocios
                 return null;
         }
 
-        private IphoneCelularColecao PreencherIphoneCelular(DataTable dataTable)
+        private CelularColecao PreencherIphoneCelular(DataTable dataTable)
         {
-            IphoneCelularColecao colecao = new IphoneCelularColecao();
+            CelularColecao colecao = new CelularColecao();
             foreach (DataRow row in dataTable.Rows)
             {
-                IphoneCelularInfo phone = new IphoneCelularInfo
+                Celular phone = new Celular
                 {
-                    celanocompra = Convert.ToString(row["celanocompra"]),
-                    celcapacidade = Convert.ToString(row["celcapacidade"]),
-                    celcor = Convert.ToString(row["celcor"]),
-                    celid = Convert.ToInt32(row["celid"]),
-                    celidcliente = Convert.ToInt32(row["celidcliente"]),
-                    celidmodiphone = Convert.ToInt32(row["celidmodiphone"]),
-                    celimei = Convert.ToString(row["celimei"]),
-                    celiphonedescricao = Convert.ToString(row["celiphonedescricao"]),
-                    celmodelo = Convert.ToString(row["celmodelo"]),
-                    celobs = Convert.ToString(row["celobs"]),
-                    celserie = Convert.ToString(row["celserie"]),
-                    celidcor = Convert.ToInt32(row["celidcor"]),
-                    celicloudlogin = Convert.ToString(row["celicloudlogin"]),
-                    celicloudsenha = Convert.ToString(row["celicloudsenha"]),
-                    celsenha = Convert.ToString(row["celsenha"]),
-                    celbateria = Convert.ToString(row["celbateria"])
+                    
                 };
 
                 colecao.Add(phone);
@@ -311,25 +297,29 @@ namespace Negocios
             return colecao;
         }
 
-        public int InsertIphoneCelular(IphoneCelularInfo phone)
+        public int InsertIphoneCelular(Iphone phone)
         {
             if (accessDbMySql.Conectar())
             {
-                accessDbMySql.AddParametrosMySql("@phone", phone.celidmodiphone);
-                accessDbMySql.AddParametrosMySql("@compra", phone.celanocompra);
-                accessDbMySql.AddParametrosMySql("@capacidade", phone.celcapacidade);
-                accessDbMySql.AddParametrosMySql("@cor", phone.celcor);
-                accessDbMySql.AddParametrosMySql("@cliente", phone.celidcliente);
-                accessDbMySql.AddParametrosMySql("@imei", phone.celimei);
-                accessDbMySql.AddParametrosMySql("@modelo", phone.celmodelo);
-                accessDbMySql.AddParametrosMySql("@obs", phone.celobs);
-                accessDbMySql.AddParametrosMySql("@serie", phone.celserie);
-                accessDbMySql.AddParametrosMySql("@descricao", phone.celiphonedescricao);
-                accessDbMySql.AddParametrosMySql("@senha", phone.celsenha);
-                accessDbMySql.AddParametrosMySql("@icloudlogin", phone.celicloudlogin);
-                accessDbMySql.AddParametrosMySql("@icloudsenha", phone.celicloudsenha);
-                accessDbMySql.AddParametrosMySql("@idcor", phone.celidcor);
-                accessDbMySql.AddParametrosMySql("@bateria", phone.celbateria);
+                accessDbMySql.AddParametrosMySql("@compra", phone.Ano);
+                accessDbMySql.AddParametrosMySql("@capacidade", phone.Capacidade);
+                accessDbMySql.AddParametrosMySql("@cor", phone.Cor);
+                accessDbMySql.AddParametrosMySql("@cliente", phone.Pessoa.Id);
+                accessDbMySql.AddParametrosMySql("@imei", phone.IMEI);
+                accessDbMySql.AddParametrosMySql("@imei2", phone.IMEI2);
+                accessDbMySql.AddParametrosMySql("@modelo", phone.Modelo);
+                accessDbMySql.AddParametrosMySql("@obs", phone.Obs);
+                accessDbMySql.AddParametrosMySql("@serie", phone.Serie);
+                accessDbMySql.AddParametrosMySql("@descricao", phone.Descricao);
+                accessDbMySql.AddParametrosMySql("@senha", phone.Senha);
+                accessDbMySql.AddParametrosMySql("@contalogin", phone.ContaLogin);
+                accessDbMySql.AddParametrosMySql("@contasenha", phone.ContaSenha);
+                accessDbMySql.AddParametrosMySql("@bateria", phone.Bateria);
+                accessDbMySql.AddParametrosMySql("@linha", phone.AparelhoLinha);
+                accessDbMySql.AddParametrosMySql("@saude", phone.BateriaSaude);
+
+                accessDbMySql.AddParametrosMySql("@contasenha", phone.);
+                accessDbMySql.AddParametrosMySql("@bateria", phone.Bateria);
 
                 return accessDbMySql.ExecutarScalarMySql("spInsertIphoneCelular");
             }
@@ -566,3 +556,4 @@ namespace Negocios
         #endregion Iphone
     }
 }
+

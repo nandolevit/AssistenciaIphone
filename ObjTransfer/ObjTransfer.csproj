@@ -63,6 +63,8 @@
     <Compile Include="Aparelho\AparelhoLinhaColecao.cs" />
     <Compile Include="Aparelho\AparelhoMarca.cs" />
     <Compile Include="Aparelho\AparelhoMarcaColecao.cs" />
+    <Compile Include="Aparelho\Celulares\Iphone.cs" />
+    <Compile Include="Aparelho\Celulares\SmartPhone.cs" />
     <Compile Include="Aparelho\Computadores\ProcessadorLinha.cs" />
     <Compile Include="Aparelho\Computadores\ProcessadorModelo.cs" />
     <Compile Include="Aparelho\Computadores\ProcessadorModeloColecao.cs" />
@@ -146,8 +148,6 @@
     <Compile Include="Grid\GridViewComissaoInfo.cs" />
     <Compile Include="Grid\GridViewVendaPeriodo.cs" />
     <Compile Include="Grid\GridViewVendaPeriodoColecao.cs" />
-    <Compile Include="Iphone\IphoneCelularColecao.cs" />
-    <Compile Include="Iphone\IphoneCelularInfo.cs" />
     <Compile Include="Servico\ServicoIphoneColecao.cs" />
     <Compile Include="Servico\ServicoIphoneInfo.cs" />
     <Compile Include="Iphone\IphoneModeloColecao.cs" />

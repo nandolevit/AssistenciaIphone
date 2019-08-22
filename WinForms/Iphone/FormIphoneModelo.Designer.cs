@@ -102,6 +102,7 @@
             this.pictureBoxLoad = new System.Windows.Forms.PictureBox();
             this.comboBoxTipo = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.buttonFechar = new System.Windows.Forms.Button();
             this.panelPrincipal.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -856,7 +857,7 @@
             this.buttonFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFoto.Image = global::WinForms.Properties.Resources.conf_green;
             this.buttonFoto.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonFoto.Location = new System.Drawing.Point(898, 494);
+            this.buttonFoto.Location = new System.Drawing.Point(807, 494);
             this.buttonFoto.Name = "buttonFoto";
             this.buttonFoto.Size = new System.Drawing.Size(85, 40);
             this.buttonFoto.TabIndex = 9;
@@ -923,12 +924,27 @@
             this.label15.TabIndex = 2;
             this.label15.Text = "Selecione o Aparelho:";
             // 
+            // buttonFechar
+            // 
+            this.buttonFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFechar.Image = global::WinForms.Properties.Resources.exit_red;
+            this.buttonFechar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.buttonFechar.Location = new System.Drawing.Point(898, 494);
+            this.buttonFechar.Name = "buttonFechar";
+            this.buttonFechar.Size = new System.Drawing.Size(85, 40);
+            this.buttonFechar.TabIndex = 22;
+            this.buttonFechar.Text = "&Fechar";
+            this.buttonFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonFechar.UseVisualStyleBackColor = true;
+            this.buttonFechar.Click += new System.EventHandler(this.ButtonFechar_Click);
+            // 
             // FormIphoneModelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1086, 546);
+            this.Controls.Add(this.buttonFechar);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.comboBoxTipo);
             this.Controls.Add(this.pictureBoxLoad);
@@ -1053,5 +1069,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxTipo;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button buttonFechar;
     }
 }

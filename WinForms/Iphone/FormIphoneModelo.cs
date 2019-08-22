@@ -23,8 +23,7 @@ namespace WinForms
         IphoneModeloInfo infoIphone;
         IphoneModeloCorColecao colecaoCor;
         IphoneModeloCorColecao colecaoCorSelecionada;
-        IphoneCelularInfo infoCelular;
-        public IphoneCelularInfo SelecionadoIphone { get; set; }
+        public Celular SelecionadoIphone { get; set; }
         public IphoneModeloCorInfo SelecionadaFoto { get; set; }
         int cod = 0;
 
@@ -49,7 +48,6 @@ namespace WinForms
             this.textBoxNum.MaxLength = 5;
             comboBoxModelo.ValueMember = "iphmodid";
             comboBoxModelo.DisplayMember = "iphmoddescricao";
-            this.KeyPreview = false;
         }
 
         private void FormIphoneModelo_Load(object sender, EventArgs e)
@@ -77,6 +75,8 @@ namespace WinForms
                 FormMessage.ShowMessegeWarning("O formulário ainda não está pronto, tente mais tarde!");
                 this.DialogResult = DialogResult.Cancel;
             }
+
+            if (!this.Modal) this.KeyPreview = false; this.buttonFechar.Visible = false;
 
         }
 
@@ -168,7 +168,7 @@ namespace WinForms
             if (foto != null)
             {
                 MemoryStream memoryStream = new MemoryStream(foto);
-                pictureBoxImagem.Image = Image.FromStream(memoryStream);
+                pictureBoxImagem.Image = Image.FromStream(memoryStream, true, true);
             }
             else
                 pictureBoxImagem.Image = null;
@@ -220,7 +220,7 @@ namespace WinForms
 
                 if (this.Modal)
                 {
-                    SelecionadoIphone = infoCelular;
+                    SelecionadoIphone = cel;
                     this.DialogResult = DialogResult.Yes;
                 }
                 else
@@ -282,24 +282,32 @@ namespace WinForms
 
         private void PreencherCelular()
         {
-            infoCelular = new IphoneCelularInfo
+            cel = new Celular
             {
-                celanocompra = maskedTextBoxAno.Text,
-                celcapacidade = textBoxCap.Text,
-                celcor = textBoxCor.Text,
-                celidcor = SelecionadaFoto.modcoridcor,
-                celid = 0,
-                celidcliente = 0,
-                celidmodiphone = infoIphone.iphmodid,
-                celimei = maskedTextBoxImei.Text,
-                celmodelo = textBoxNumMod.Text,
-                celobs = textBoxObs.Text,
-                celserie = textBoxSerie.Text,
-                celiphonedescricao = textBoxModelo.Text,
-                celicloudlogin = textBoxEmail.Text,
-                celicloudsenha = textBoxSenha.Text,
-                celsenha = maskedTextBoxSenha.Text,
-                celbateria = maskedTextBoxBateria.Text
+                Ano = Convert.ToInt32(maskedTextBoxAno.Text),
+                AparelhoLinha = "Iphone/Ipad",
+                Bateria = "",
+                BateriaSaude = maskedTextBoxBateria.Text == "00" ? "100" : maskedTextBoxBateria.Text,
+                Capacidade = textBoxCap.Text,
+                Categoria = "Iphone",
+                CategoriaSub = "",
+                Chip = "Single Chip",
+                Conector = "Lightning",
+                ContaLogin = textBoxEmail.Text,
+                ContaSenha = textBoxSenha.Text,
+                Cor = textBoxCor.Text,
+                Descricao = textBoxModelo.Text,
+                Id = 0,
+                IMEI = maskedTextBoxImei.Text,
+                Marca = "Apple",
+                Modelo = textBoxNumMod.Text,
+                Pessoa = null,
+                Senha = maskedTextBoxSenha.Text,
+                Serie = textBoxSerie.Text,
+                Sistema = "IOS",
+                SistemaVersao = "N/A",
+                Tela = "N/A",
+                Obs = textBoxObs.Text,
             };
         }
 
@@ -405,6 +413,11 @@ namespace WinForms
         private void ComboBoxTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             TipoSelecionando();
+        }
+
+        private void ButtonFechar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }
