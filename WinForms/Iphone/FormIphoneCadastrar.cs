@@ -158,6 +158,7 @@ namespace WinForms
             comboBoxPrazo.SelectedItem = "90";
             textBoxCompra.Text = "0";
             textBoxVenda.Text = "0";
+            buttonFornecedor.Select();
         }
 
         private void ComboBoxPrazo_SelectedIndexChanged(object sender, EventArgs e)
