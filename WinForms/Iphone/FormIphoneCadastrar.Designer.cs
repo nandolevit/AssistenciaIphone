@@ -252,7 +252,6 @@
             this.textBoxVenda.Name = "textBoxVenda";
             this.textBoxVenda.Size = new System.Drawing.Size(64, 20);
             this.textBoxVenda.TabIndex = 14;
-            this.textBoxVenda.Text = "0";
             this.textBoxVenda.TextChanged += new System.EventHandler(this.TextBoxVenda_TextChanged);
             // 
             // label7
@@ -270,7 +269,6 @@
             this.textBoxCompra.Name = "textBoxCompra";
             this.textBoxCompra.Size = new System.Drawing.Size(64, 20);
             this.textBoxCompra.TabIndex = 12;
-            this.textBoxCompra.Text = "0";
             this.textBoxCompra.TextChanged += new System.EventHandler(this.TextBoxCompra_TextChanged);
             // 
             // labelCompra

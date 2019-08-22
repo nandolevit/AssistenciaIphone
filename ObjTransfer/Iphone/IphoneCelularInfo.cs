@@ -30,10 +30,10 @@ namespace ObjTransfer
             StringBuilder sb = new StringBuilder();
 
             if (!string.IsNullOrEmpty(celiphonedescricao)) sb.Append(celiphonedescricao);
+            if (!string.IsNullOrEmpty(celmodelo)) sb.Append(" - " + celmodelo);
             if (!string.IsNullOrEmpty(celcor)) sb.Append(", Cor: " + celcor);
             if (!string.IsNullOrEmpty(celcapacidade)) sb.Append(", Capacidade: " + celcapacidade);
             if (!string.IsNullOrEmpty(celbateria)) sb.Append(", Bateria: " + celbateria + "%");
-            if (!string.IsNullOrEmpty(celmodelo)) sb.Append(", Modelo: " + celmodelo);
             if (!string.IsNullOrEmpty(celimei)) sb.Append(", IMEI: " + celimei);
             if (!string.IsNullOrEmpty(celserie)) sb.Append(", SÉRIE: " + celserie);
             if (!string.IsNullOrEmpty(celanocompra)) sb.Append(", Ano: " + celanocompra);
