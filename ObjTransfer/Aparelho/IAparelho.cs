@@ -7,7 +7,7 @@ using ObjTransfer.Pessoas;
 
 namespace ObjTransfer.Aparelho
 {
-    interface IAparelho
+    public interface IAparelho
     {
         int Id { get; set; }
         int Ano { get; set; }
@@ -23,5 +23,6 @@ namespace ObjTransfer.Aparelho
         string Serie { get; set; }
         string Sistema { get; set; }
         string SistemaVersao { get; set; }
+        string Obs { get; set; }
     }
 }

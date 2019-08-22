@@ -17,13 +17,13 @@ namespace WinForms
 {
     public partial class FormIphoneModelo : Form
     {
-        Celular cel;
+        Iphone cel;
         IphoneModeloColecao colecaoIphone;
         IphoneModeloColecao colecaoIpad;
         IphoneModeloInfo infoIphone;
         IphoneModeloCorColecao colecaoCor;
         IphoneModeloCorColecao colecaoCorSelecionada;
-        public Celular SelecionadoIphone { get; set; }
+        public Iphone SelecionadoIphone { get; set; }
         public IphoneModeloCorInfo SelecionadaFoto { get; set; }
         int cod = 0;
 
@@ -220,6 +220,14 @@ namespace WinForms
 
                 if (this.Modal)
                 {
+                    if (string.IsNullOrEmpty(maskedTextBoxImei.Text) || maskedTextBoxImei.Text.Length < 15)
+                    {
+                        FormMessage.ShowMessegeWarning("Insira o IMEI do aparelho!");
+                        labelImei.ForeColor = Color.Red;
+                        maskedTextBoxImei.Select();
+                        return;
+                    }
+
                     SelecionadoIphone = cel;
                     this.DialogResult = DialogResult.Yes;
                 }
@@ -261,7 +269,7 @@ namespace WinForms
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(maskedTextBoxSenha.Text))
+            if (string.IsNullOrEmpty(maskedTextBoxSenha.Text))
             {
                 FormMessage.ShowMessegeWarning("Insira a senha do aparelho!");
                 labelSenha.ForeColor = Color.Red;
@@ -282,7 +290,7 @@ namespace WinForms
 
         private void PreencherCelular()
         {
-            cel = new Celular
+            cel = new Iphone
             {
                 Ano = Convert.ToInt32(maskedTextBoxAno.Text),
                 AparelhoLinha = "Iphone/Ipad",

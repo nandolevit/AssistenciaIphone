@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data;
 using ObjTransfer.Aparelho;
+using ObjTransfer.Aparelho.Celulares;
 using ObjTransfer.Aparelho.Computadores;
 using AccessDB;
 
@@ -20,6 +21,92 @@ namespace Negocios
         {
             EmpConexao = empConexao;
             accessDbMySql = new AccessDbMySql(EmpConexao);
+        }
+
+        public Iphone ConsultarIphone(int id)
+        {
+            if (accessDbMySql.Conectar())
+            {
+                accessDbMySql.AddParametrosMySql("@id", id);
+                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarAparelhoIphone");
+                if (dataTable != null)
+                {
+
+                }
+            }
+        }
+
+        public int InsertIphone(Iphone iphone)
+        {
+            iphone.Id = InsertAparelho(iphone);
+
+            if (iphone.Id > 0)
+            {
+                int id = InsertCelular(iphone);
+
+                if (id > 0)
+                {
+                    if (accessDbMySql.Conectar())
+                    {
+                        accessDbMySql.AddParametrosMySql("@saude", iphone.BateriaSaude);
+                        accessDbMySql.AddParametrosMySql("@id", id);
+
+                        return accessDbMySql.ExecutarScalarMySql("spInsertIphone");
+                    }
+                    else
+                        return 0;
+                }
+                else
+                    return 0;
+            }
+            else
+                return 0;
+        }
+
+        private int InsertCelular(Celular cel)
+        {
+            if (accessDbMySql.Conectar())
+            {
+                accessDbMySql.AddParametrosMySql("@imei", cel.IMEI);
+                accessDbMySql.AddParametrosMySql("@imei2", cel.IMEI2);
+                accessDbMySql.AddParametrosMySql("@bateria", cel.Bateria);
+                accessDbMySql.AddParametrosMySql("@capacidade", cel.Capacidade);
+                accessDbMySql.AddParametrosMySql("@chip", cel.Chip);
+                accessDbMySql.AddParametrosMySql("@conector", cel.Conector);
+                accessDbMySql.AddParametrosMySql("@login", cel.ContaLogin);
+                accessDbMySql.AddParametrosMySql("@senha", cel.ContaSenha);
+                accessDbMySql.AddParametrosMySql("@tela", cel.Tela);
+                accessDbMySql.AddParametrosMySql("@aparelho", cel.Id);
+
+                return accessDbMySql.ExecutarScalarMySql("spInsertCelular");
+            }
+            else
+                return 0;
+        }
+
+        private int InsertAparelho(IAparelho aparelho)
+        {
+            if (accessDbMySql.Conectar())
+            {
+                accessDbMySql.AddParametrosMySql("@ano", aparelho.Ano);
+                accessDbMySql.AddParametrosMySql("@linha", aparelho.AparelhoLinha);
+                accessDbMySql.AddParametrosMySql("@categoria", aparelho.Categoria);
+                accessDbMySql.AddParametrosMySql("@sub", aparelho.CategoriaSub);
+                accessDbMySql.AddParametrosMySql("@cor", aparelho.Cor);
+                accessDbMySql.AddParametrosMySql("@descricao", aparelho.Descricao);
+                accessDbMySql.AddParametrosMySql("@marca", aparelho.Marca);
+                accessDbMySql.AddParametrosMySql("@modelo", aparelho.Modelo);
+                accessDbMySql.AddParametrosMySql("@pessoa", aparelho.Pessoa.Id);
+                accessDbMySql.AddParametrosMySql("@senha", aparelho.Senha);
+                accessDbMySql.AddParametrosMySql("@serie", aparelho.Serie);
+                accessDbMySql.AddParametrosMySql("@sistema", aparelho.Sistema);
+                accessDbMySql.AddParametrosMySql("@versao", aparelho.SistemaVersao);
+                accessDbMySql.AddParametrosMySql("@obs", aparelho.Obs);
+
+                return accessDbMySql.ExecutarScalarMySql("spInsertAparelho");
+            }
+            else
+                return 0;
         }
 
         public ProcessadorModeloColecao ConsultarProcessadorModelo()

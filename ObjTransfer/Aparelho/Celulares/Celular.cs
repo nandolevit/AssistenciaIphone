@@ -18,7 +18,6 @@ namespace ObjTransfer.Aparelho.Celulares
         public abstract string Bateria { get; set; }
         public abstract string ContaLogin { get; set; }
         public abstract string ContaSenha { get; set; }
-        public abstract string Obs { get; set; }
 
         public abstract int Id { get; set; }
         public abstract int Ano { get; set; }
@@ -34,5 +33,6 @@ namespace ObjTransfer.Aparelho.Celulares
         public abstract string Serie { get; set; }
         public abstract string Sistema { get; set; }
         public abstract string SistemaVersao { get; set; }
+        public abstract string Obs { get; set; }
     }
 }
