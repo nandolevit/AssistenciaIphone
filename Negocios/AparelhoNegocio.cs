@@ -30,10 +30,52 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@id", id);
                 DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarAparelhoIphone");
                 if (dataTable != null)
-                {
-
-                }
+                    return PreencherIphone(dataTable)[0];
+                else
+                    return null;
             }
+            else
+                return null;
+        }
+
+        private IphoneColecao PreencherIphone(DataTable dataTable)
+        {
+            IphoneColecao colecao = new IphoneColecao();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                Iphone iphone = new Iphone
+                {
+                    Ano = Convert.ToInt32(row["apaano"]),
+                    AparelhoLinha = Convert.ToString(row["apalinha"]),
+                    Bateria = Convert.ToString(row["apabateria"]),
+                    BateriaSaude = Convert.ToString(row["iphsaude"]),
+                    Capacidade = Convert.ToString(row["celcapacidade"]),
+                    Categoria = Convert.ToString(row["apacategoria"]),
+                    CategoriaSub = Convert.ToString(row["apacategoriasub"]),
+                    Chip = Convert.ToString(row[""]),
+                    Conector = Convert.ToString(row[""]),
+                    ContaLogin = Convert.ToString(row[""]),
+                    ContaSenha = Convert.ToString(row[""]),
+                    Cor = Convert.ToString(row[""]),
+                    Descricao = Convert.ToString(row[""]),
+                    Id = Convert.ToInt32(row["apaid"]),
+                    IMEI = Convert.ToString(row[""]),
+                    IMEI2 = Convert.ToString(row[""]),
+                    Marca = Convert.ToString(row["apamarca"]),
+                    Modelo = Convert.ToString(row["apamodelo"]),
+                    Obs = Convert.ToString(row["apaobs"]),
+                    Pessoa = Convert.ToString(row["apaidpessoa"]),
+                    Senha = Convert.ToString(row["apasenha"]),
+                    Serie = Convert.ToString(row["apaserie"]),
+                    Sistema = Convert.ToString(row["apasistema"]),
+                    SistemaVersao = Convert.ToString(row["apaversao"]),
+                    Tela = Convert.ToString(row[""]),
+                };
+
+                colecao.Add(iphone);
+            }
+
+            return colecao;
         }
 
         public int InsertIphone(Iphone iphone)

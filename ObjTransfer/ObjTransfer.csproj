@@ -64,6 +64,7 @@
     <Compile Include="Aparelho\AparelhoMarca.cs" />
     <Compile Include="Aparelho\AparelhoMarcaColecao.cs" />
     <Compile Include="Aparelho\Celulares\Iphone.cs" />
+    <Compile Include="Aparelho\Celulares\IphoneColecao.cs" />
     <Compile Include="Aparelho\Celulares\SmartPhone.cs" />
     <Compile Include="Aparelho\Computadores\ProcessadorLinha.cs" />
     <Compile Include="Aparelho\Computadores\ProcessadorModelo.cs" />
