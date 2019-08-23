@@ -5,56 +5,62 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 using Negocios;
-using System.Diagnostics;
 
-namespace WinForms
+namespace WinForms.Pessoa
 {
-    public partial class FormPessoa : Form
+    public partial class FormPessoaCad : Form
     {
-        Form1 form1 = new Form1();
         string cpf;
-
         EnumPessoaTipo enumPessoa = new EnumPessoaTipo();
         EnumAssistencia Assistencia = new EnumAssistencia();
-        PessoaInfo infoPessoa;
+        PessoaFisica infoPessoa;
         public PessoaInfo SelecionadoPessoa { get; set; }
         PessoaNegocio negocioPessoa;
-
-        public FormPessoa(EnumPessoaTipo pessoa, EnumAssistencia assistencia)
-        {
-            Inicializar();
-            enumPessoa = pessoa;
-            labelTitle.Text = pessoa.ToString();
-            Assistencia = assistencia;
-        }
-
-        public FormPessoa(EnumPessoaTipo pessoa)
-        {
-            Inicializar();
-            enumPessoa = pessoa;
-            labelTitle.Text = pessoa.ToString();
-        }
-
-        public FormPessoa(PessoaInfo pessoa)
-        {
-            Inicializar();
-            infoPessoa = pessoa;
-            PreencherFormPessoa();
-        }
-
-        private void Inicializar()
+        public FormPessoaCad()
         {
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
-            this.AcceptButton = buttonSalvar;
-            Assistencia = Form1.Unidade.uniassistencia;
-            negocioPessoa = new ClienteNegocios(Form1.Empresa.empconexao, Assistencia);
+        }
+
+        private void ButtonEnd_Click(object sender, EventArgs e)
+        {
+            CepInfo cepInfo = new CepInfo();
+
+            cepInfo = negocioPessoa.ConsultarCep(maskedTextBoxCep.Text);
+
+            if (cepInfo != null)
+            {
+                textBoxLogradouro.Text = cepInfo.Logradouro;
+                textBoxBairro.Text = cepInfo.Bairro;
+                textBoxCidade.Text = cepInfo.Cidade;
+                textBoxUF.Text = cepInfo.Uf;
+                textBoxComplemento.Select();
+            }
+            else
+            {
+                FormMessage.ShowMessegeWarning("CEP não encontrado, tente outro CEP!");
+            }
+        }
+
+        private void ButtonAddNiver_Click(object sender, EventArgs e)
+        {
+            FormAddData formAddData = new FormAddData();
+            formAddData.ShowDialog(this);
+            formAddData.Dispose();
+
+            if (formAddData.DialogResult == DialogResult.Yes)
+            {
+                DateTime data = Convert.ToDateTime(formAddData.textoData);
+                textBoxNiver.Text = data.ToString("ddd, dd 'de' MMMM 'de' yyyy").ToUpper();
+                maskedTextBoxCep.Select();
+            }
         }
 
         private void PreencherFormClienteTeste()
@@ -76,30 +82,40 @@ namespace WinForms
             textBoxUF.Text = "ba";
         }
 
-        private void PreencherFormPessoa()
+        private void ButtonSalvar_Click(object sender, EventArgs e)
         {
-            textBoxId.Text = string.Format("{0:00000}", infoPessoa.pssid);
-            maskedTextBoxCpf.Text = infoPessoa.psscpf;
-            textBoxEmail.Text = infoPessoa.pssemail;
-            textBoxNome.Text = infoPessoa.pssnome;
-            textBoxNiver.Text = infoPessoa.pssniver.Date.ToShortDateString();
-
-            string[] tel = infoPessoa.psstelefone.Split('/');
-
-            if (tel.Length > 1)
+            if (CamposObrigatorios())
             {
-                maskedTextBoxTel1.Text = tel[0];
-                maskedTextBoxTel2.Text = tel[1];
-            }
-            else
-                maskedTextBoxTel1.Text = tel[0];
+                PreencherPessoaInfo();
 
-            textBoxBairro.Text = infoPessoa.pssendbairro;
-            maskedTextBoxCep.Text = infoPessoa.pssendcep;
-            textBoxCidade.Text = infoPessoa.pssendcidade;
-            textBoxComplemento.Text = infoPessoa.pssendcomplemento;
-            textBoxLogradouro.Text = infoPessoa.pssendlogradouro;
-            textBoxUF.Text = infoPessoa.pssenduf;
+                if (infoPessoa.Id == 0)
+                {
+                    if (FormMessage.ShowMessegeQuestion("Deseja salvar este registro?") == DialogResult.Yes)
+                    {
+                        infoPessoa.Id = negocioPessoa.InsertPessoa(infoPessoa);
+                        SelecionadoPessoa = infoPessoa;
+                        FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
+
+                        if (enumPessoa == EnumPessoaTipo.Funcionario)
+                            FormMessage.ShowMessegeInfo("O usuário e senha foram criados, no primeiro acesso deverá ser utilizado o CPF como LOGIN/SENHA!");
+
+                        if (this.Modal)
+                            this.DialogResult = DialogResult.Yes;
+                        else
+                            this.Close();
+                    }
+                }
+                else
+                {
+                    if (FormMessage.ShowMessegeQuestion("Deseja salvar as alterações para este registro?") == DialogResult.Yes)
+                    {
+                        negocioPessoa.UpdatePessoa(infoPessoa);
+                        FormMessage.ShowMessegeInfo("Alterações realizadas com sucesso!");
+                        this.DialogResult = DialogResult.OK;
+                    }
+                }
+
+            }
         }
 
         private bool CamposObrigatorios()
@@ -221,55 +237,8 @@ namespace WinForms
             SelecionadoPessoa = infoPessoa;
         }
 
-
-
-        private void buttonSalvar_Click(object sender, EventArgs e)
+        private void MaskedTextBoxCpf_Leave(object sender, EventArgs e)
         {
-            if (CamposObrigatorios())
-            {
-                PreencherPessoaInfo();
-
-                if (infoPessoa.pssid == 0)
-                {
-                    if (FormMessage.ShowMessegeQuestion("Deseja salvar este registro?") == DialogResult.Yes)
-                    {
-                        infoPessoa.pssid = negocioPessoa.InsertPessoa(infoPessoa);
-                        SelecionadoPessoa = infoPessoa;
-                        FormMessage.ShowMessegeInfo("Registro salvo com sucesso!");
-
-                        if (enumPessoa == EnumPessoaTipo.Funcionario)
-                            FormMessage.ShowMessegeInfo("O usuário e senha foram criados, no primeiro acesso deverá ser utilizado o CPF como LOGIN/SENHA!");
-
-                        if (this.Modal)
-                            this.DialogResult = DialogResult.Yes;
-                        else
-                            this.Close();
-                    }
-                }
-                else
-                {
-                    if (FormMessage.ShowMessegeQuestion("Deseja salvar as alterações para este registro?") == DialogResult.Yes)
-                    {
-                        negocioPessoa.UpdatePessoa(infoPessoa);
-                        FormMessage.ShowMessegeInfo("Alterações realizadas com sucesso!");
-                        this.DialogResult = DialogResult.OK;
-                    }
-                }
-
-            }
-        }
-
-
-
-        private void linkLabelCep_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-            Process.Start("http://www.buscacep.correios.com.br/sistemas/buscacep/");
-        }
-
-        private void maskedTextBoxCpf_Leave(object sender, EventArgs e)
-        {
-
             cpf = maskedTextBoxCpf.Text;
 
 
@@ -290,7 +259,7 @@ namespace WinForms
                         ConsultarCpf();
                     else
                     {
-                        if (radioButtonCnpj.Checked)
+                        if (!infoPessoa.booPF)
                             FormMessage.ShowMessegeWarning("CNPJ inválido! Tente novamente...");
                         else
                             FormMessage.ShowMessegeWarning("CPF inválido! Tente novamente...");
@@ -322,73 +291,30 @@ namespace WinForms
             }
         }
 
-        private void buttonFechar_Click(object sender, EventArgs e)
+        private void PreencherFormPessoa()
         {
-            if (this.Modal)
-                this.DialogResult = DialogResult.Cancel;
-            else
-                this.Close();
-        }
+            textBoxId.Text = string.Format("{0:00000}", infoPessoa.pssid);
+            maskedTextBoxCpf.Text = infoPessoa.psscpf;
+            textBoxEmail.Text = infoPessoa.pssemail;
+            textBoxNome.Text = infoPessoa.pssnome;
+            textBoxNiver.Text = infoPessoa.pssniver.Date.ToShortDateString();
 
-        private void buttonEnd_Click(object sender, EventArgs e)
-        {
-            CepInfo cepInfo = new CepInfo();
+            string[] tel = infoPessoa.psstelefone.Split('/');
 
-            cepInfo = negocioPessoa.ConsultarCep(maskedTextBoxCep.Text);
-
-            if (cepInfo != null)
+            if (tel.Length > 1)
             {
-                textBoxLogradouro.Text = cepInfo.Logradouro;
-                textBoxBairro.Text = cepInfo.Bairro;
-                textBoxCidade.Text = cepInfo.Cidade;
-                textBoxUF.Text = cepInfo.Uf;
-                textBoxComplemento.Select();
+                maskedTextBoxTel1.Text = tel[0];
+                maskedTextBoxTel2.Text = tel[1];
             }
             else
-            {
-                FormMessage.ShowMessegeWarning("CEP não encontrado, tente outro CEP!");
-            }
-        }
-        private void buttonAddNiver_Click(object sender, EventArgs e)
-        {
-            FormAddData formAddData = new FormAddData();
-            formAddData.ShowDialog(this);
-            formAddData.Dispose();
+                maskedTextBoxTel1.Text = tel[0];
 
-            if (formAddData.DialogResult == DialogResult.Yes)
-            {
-                DateTime data = Convert.ToDateTime(formAddData.textoData);
-                textBoxNiver.Text = data.ToString("ddd, dd 'de' MMMM 'de' yyyy").ToUpper();
-                maskedTextBoxCep.Select();
-            }
-
-        }
-
-        private void FormCadastroPessoa_Load(object sender, EventArgs e)
-        {
-            maskedTextBoxCpf.Select();
-            maskedTextBoxCpf.Mask = "000.000.000-00";
-        }
-
-        private void RadioButtonCpf_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonCpf.Checked)
-            {
-                maskedTextBoxCpf.Mask = "000.000.000-00";
-                labelCpf.Text = "CPF:";
-            }
-            else
-            {
-                maskedTextBoxCpf.Mask = "00.000.000/0000-00";
-                labelCpf.Text = "CNPJ:";
-            }
-
-            maskedTextBoxCpf.Select();
-        }
-
-        private void MaskedTextBoxCpf_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
+            textBoxBairro.Text = infoPessoa.pssendbairro;
+            maskedTextBoxCep.Text = infoPessoa.pssendcep;
+            textBoxCidade.Text = infoPessoa.pssendcidade;
+            textBoxComplemento.Text = infoPessoa.pssendcomplemento;
+            textBoxLogradouro.Text = infoPessoa.pssendlogradouro;
+            textBoxUF.Text = infoPessoa.pssenduf;
         }
     }
 }

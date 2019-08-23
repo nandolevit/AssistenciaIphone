@@ -114,7 +114,6 @@
     <Compile Include="Pessoas\Enum\EnumAssistencia.cs" />
     <Compile Include="Pessoas\Enum\EnumPessoaTipo.cs" />
     <Compile Include="Pessoas\Pessoa.cs" />
-    <Compile Include="Pessoas\PessoaColecao.cs" />
     <Compile Include="Pessoas\PessoaFisica.cs" />
     <Compile Include="Pessoas\PessoaInfo.cs" />
     <Compile Include="Pessoas\PessoaJuridica.cs" />

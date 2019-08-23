@@ -192,6 +192,12 @@
     <Compile Include="Caixa\FormCaixa.Designer.cs">
       <DependentUpon>FormCaixa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pessoa\FormPessoaCad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pessoa\FormPessoaCad.Designer.cs">
+      <DependentUpon>FormPessoaCad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pessoa\FormPessoaConsultar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -450,6 +456,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Caixa\FormCaixa.resx">
       <DependentUpon>FormCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pessoa\FormPessoaCad.resx">
+      <DependentUpon>FormPessoaCad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pessoa\FormPessoaConsultar.resx">
       <DependentUpon>FormPessoaConsultar.cs</DependentUpon>

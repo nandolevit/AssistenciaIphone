@@ -12,7 +12,7 @@ namespace ObjTransfer.Pessoas
         public string Rg { get; set; }
 
         public override int Id { get; set; }
-        public override DateTime Criacao { get; set; }
+        public override DateTime Nascimento { get; set; }
         public override UserInfo User { get; set; }
         public override EnumPessoaTipo Tipo { get; set; }
         public override DateTime DataRegistro { get; set; }
@@ -23,6 +23,7 @@ namespace ObjTransfer.Pessoas
         public override CepInfo Endereco { get; set; }
         public override bool Padrao { get; set; }
         public override EnumAssistencia Assistencia { get; set; }
+        public override bool booPF { get; set; }
 
         private string CpfFormat()
         {
