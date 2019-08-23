@@ -17,12 +17,60 @@ namespace WinForms.Pessoa
     public partial class FormPessoaCad : Form
     {
         string cpf;
+        bool fisica;
         EnumPessoaTipo enumPessoa = new EnumPessoaTipo();
         EnumAssistencia Assistencia = new EnumAssistencia();
         PessoaFisica infoPessoa;
-        public PessoaInfo SelecionadoPessoa { get; set; }
+        public PessoaFisica SelecionadoPessoa { get; set; }
         PessoaNegocio negocioPessoa;
-        public FormPessoaCad()
+
+        public FormPessoaCad(EnumPessoaTipo tipo, bool pfisica)
+        {
+            Inicializar();
+            enumPessoa = tipo;
+            TipoPessoa(pfisica);
+        }
+
+        public void TipoPessoa(bool pfisica)
+        {
+            fisica = pfisica;
+
+            if (pfisica)
+            {
+                maskedTextBoxCpf.Mask = "000.000.000-00";
+            }
+            else
+            {
+                labelCpf.Text = "CNPJ:";
+                labelNome.Text = "Nome Fantasia:";
+                labelNiver.Text = "Fundada em:";
+
+                labelRazao.Visible = true;
+                textBoxRazao.Visible = true;
+
+                labelSite.Visible = true;
+                textBoxSite.Visible = true;
+
+                labelPontoReferencia.Visible = true;
+                textBoxPontoReferencia.Visible = true;
+
+                maskedTextBoxCpf.Mask = "00.000.000./0000-00";
+            }
+
+            if (tipo == EnumPessoaTipo.Unidade)
+            {
+                labelIdent.Visible = true;
+                textBoxIdent.Visible = true;
+            }
+        }
+
+        public FormPessoaCad(PessoaFisica pessoa)
+        {
+            Inicializar();
+            infoPessoa = pessoa;
+        }
+
+        private void Inicializar()
         {
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);

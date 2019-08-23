@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBoxEnd = new System.Windows.Forms.GroupBox();
+            this.buttonEnd = new System.Windows.Forms.Button();
             this.labelIdent = new System.Windows.Forms.Label();
             this.textBoxIdent = new System.Windows.Forms.TextBox();
             this.textBoxUF = new System.Windows.Forms.TextBox();
@@ -46,6 +47,9 @@
             this.textBoxComplemento = new System.Windows.Forms.TextBox();
             this.labelComplemento = new System.Windows.Forms.Label();
             this.groupBoxDadosPessoais = new System.Windows.Forms.GroupBox();
+            this.buttonAddNiver = new System.Windows.Forms.Button();
+            this.textBoxNiver = new System.Windows.Forms.TextBox();
+            this.labelNiver = new System.Windows.Forms.Label();
             this.labelSite = new System.Windows.Forms.Label();
             this.textBoxSite = new System.Windows.Forms.TextBox();
             this.labelRazao = new System.Windows.Forms.Label();
@@ -63,10 +67,6 @@
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.buttonFechar = new System.Windows.Forms.Button();
-            this.buttonEnd = new System.Windows.Forms.Button();
-            this.buttonAddNiver = new System.Windows.Forms.Button();
-            this.textBoxNiver = new System.Windows.Forms.TextBox();
-            this.labelNiver = new System.Windows.Forms.Label();
             this.groupBoxEnd.SuspendLayout();
             this.groupBoxDadosPessoais.SuspendLayout();
             this.SuspendLayout();
@@ -96,6 +96,21 @@
             this.groupBoxEnd.TabIndex = 5;
             this.groupBoxEnd.TabStop = false;
             this.groupBoxEnd.Text = "Endereço:";
+            // 
+            // buttonEnd
+            // 
+            this.buttonEnd.BackgroundImage = global::WinForms.Properties.Resources.consultar_cep;
+            this.buttonEnd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonEnd.FlatAppearance.BorderSize = 0;
+            this.buttonEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEnd.Location = new System.Drawing.Point(101, 25);
+            this.buttonEnd.Name = "buttonEnd";
+            this.buttonEnd.Size = new System.Drawing.Size(93, 29);
+            this.buttonEnd.TabIndex = 17;
+            this.buttonEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonEnd.UseVisualStyleBackColor = true;
+            this.buttonEnd.Click += new System.EventHandler(this.ButtonEnd_Click);
             // 
             // labelIdent
             // 
@@ -262,6 +277,37 @@
             this.groupBoxDadosPessoais.TabStop = false;
             this.groupBoxDadosPessoais.Text = "Dados Pessoais";
             // 
+            // buttonAddNiver
+            // 
+            this.buttonAddNiver.BackgroundImage = global::WinForms.Properties.Resources.icons8_Add_New_32;
+            this.buttonAddNiver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonAddNiver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddNiver.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonAddNiver.Location = new System.Drawing.Point(494, 147);
+            this.buttonAddNiver.Name = "buttonAddNiver";
+            this.buttonAddNiver.Size = new System.Drawing.Size(24, 23);
+            this.buttonAddNiver.TabIndex = 17;
+            this.buttonAddNiver.UseVisualStyleBackColor = true;
+            this.buttonAddNiver.Click += new System.EventHandler(this.ButtonAddNiver_Click);
+            // 
+            // textBoxNiver
+            // 
+            this.textBoxNiver.Location = new System.Drawing.Point(381, 148);
+            this.textBoxNiver.Name = "textBoxNiver";
+            this.textBoxNiver.ReadOnly = true;
+            this.textBoxNiver.Size = new System.Drawing.Size(107, 20);
+            this.textBoxNiver.TabIndex = 16;
+            this.textBoxNiver.TabStop = false;
+            // 
+            // labelNiver
+            // 
+            this.labelNiver.AutoSize = true;
+            this.labelNiver.Location = new System.Drawing.Point(381, 132);
+            this.labelNiver.Name = "labelNiver";
+            this.labelNiver.Size = new System.Drawing.Size(107, 13);
+            this.labelNiver.TabIndex = 15;
+            this.labelNiver.Text = "Data de Nascimento:";
+            // 
             // labelSite
             // 
             this.labelSite.AutoSize = true;
@@ -341,9 +387,9 @@
             this.labelCpf.AutoSize = true;
             this.labelCpf.Location = new System.Drawing.Point(102, 17);
             this.labelCpf.Name = "labelCpf";
-            this.labelCpf.Size = new System.Drawing.Size(26, 13);
+            this.labelCpf.Size = new System.Drawing.Size(30, 13);
             this.labelCpf.TabIndex = 2;
-            this.labelCpf.Text = "Cpf:";
+            this.labelCpf.Text = "CPF:";
             // 
             // labelTel
             // 
@@ -422,52 +468,6 @@
             this.buttonFechar.Text = "&Fechar";
             this.buttonFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonFechar.UseVisualStyleBackColor = true;
-            // 
-            // buttonEnd
-            // 
-            this.buttonEnd.BackgroundImage = global::WinForms.Properties.Resources.consultar_cep;
-            this.buttonEnd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonEnd.FlatAppearance.BorderSize = 0;
-            this.buttonEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEnd.Location = new System.Drawing.Point(101, 25);
-            this.buttonEnd.Name = "buttonEnd";
-            this.buttonEnd.Size = new System.Drawing.Size(93, 29);
-            this.buttonEnd.TabIndex = 17;
-            this.buttonEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonEnd.UseVisualStyleBackColor = true;
-            this.buttonEnd.Click += new System.EventHandler(this.ButtonEnd_Click);
-            // 
-            // buttonAddNiver
-            // 
-            this.buttonAddNiver.BackgroundImage = global::WinForms.Properties.Resources.icons8_Add_New_32;
-            this.buttonAddNiver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonAddNiver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddNiver.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAddNiver.Location = new System.Drawing.Point(494, 147);
-            this.buttonAddNiver.Name = "buttonAddNiver";
-            this.buttonAddNiver.Size = new System.Drawing.Size(24, 23);
-            this.buttonAddNiver.TabIndex = 17;
-            this.buttonAddNiver.UseVisualStyleBackColor = true;
-            this.buttonAddNiver.Click += new System.EventHandler(this.ButtonAddNiver_Click);
-            // 
-            // textBoxNiver
-            // 
-            this.textBoxNiver.Location = new System.Drawing.Point(381, 148);
-            this.textBoxNiver.Name = "textBoxNiver";
-            this.textBoxNiver.ReadOnly = true;
-            this.textBoxNiver.Size = new System.Drawing.Size(107, 20);
-            this.textBoxNiver.TabIndex = 16;
-            this.textBoxNiver.TabStop = false;
-            // 
-            // labelNiver
-            // 
-            this.labelNiver.AutoSize = true;
-            this.labelNiver.Location = new System.Drawing.Point(381, 132);
-            this.labelNiver.Name = "labelNiver";
-            this.labelNiver.Size = new System.Drawing.Size(107, 13);
-            this.labelNiver.TabIndex = 15;
-            this.labelNiver.Text = "Data de Nascimento:";
             // 
             // FormPessoaCad
             // 

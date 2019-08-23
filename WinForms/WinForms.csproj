@@ -168,12 +168,6 @@
     <Compile Include="Pessoa\FormAlterarSenha.Designer.cs">
       <DependentUpon>FormAlterarSenha.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pessoa\FormPessoa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pessoa\FormPessoa.Designer.cs">
-      <DependentUpon>FormPessoa.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormCadTexto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -444,9 +438,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pessoa\FormAlterarSenha.resx">
       <DependentUpon>FormAlterarSenha.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pessoa\FormPessoa.resx">
-      <DependentUpon>FormPessoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCadTexto.resx">
       <DependentUpon>FormCadTexto.cs</DependentUpon>
