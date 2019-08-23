@@ -11,7 +11,7 @@ using ObjTransfer.Aparelho;
 using ObjTransfer.Aparelho.Computadores;
 //using System.Linq;
 using Negocios;
-using ObjTransfer;
+using ObjTransfer.Pessoas;
 using ObjTransfer.Aparelho.Enum;
 
 namespace WinForms.Aparelho

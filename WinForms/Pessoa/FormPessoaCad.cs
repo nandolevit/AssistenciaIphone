@@ -21,8 +21,16 @@ namespace WinForms.Pessoa
         EnumPessoaTipo enumPessoa = new EnumPessoaTipo();
         EnumAssistencia Assistencia = new EnumAssistencia();
         PessoaFisica infoPessoa;
-        public PessoaFisica SelecionadoPessoa { get; set; }
+        public PessoaInfo SelecionadoPessoa { get; set; }
         PessoaNegocio negocioPessoa;
+
+        public FormPessoaCad(EnumPessoaTipo tipo, EnumAssistencia assist, bool pfisica = true)
+        {
+            Inicializar();
+            enumPessoa = tipo;
+            TipoPessoa(pfisica);
+            Assistencia = assist;
+        }
 
         public FormPessoaCad(EnumPessoaTipo tipo, bool pfisica)
         {
@@ -57,7 +65,7 @@ namespace WinForms.Pessoa
                 maskedTextBoxCpf.Mask = "00.000.000./0000-00";
             }
 
-            if (tipo == EnumPessoaTipo.Unidade)
+            if (enumPessoa == EnumPessoaTipo.Unidade)
             {
                 labelIdent.Visible = true;
                 textBoxIdent.Visible = true;

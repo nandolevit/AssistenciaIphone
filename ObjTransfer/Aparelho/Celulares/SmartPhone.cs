@@ -29,7 +29,7 @@ namespace ObjTransfer.Aparelho.Celulares
         public override string Descricao { get; set; }
         public override string Marca { get; set; }
         public override string Modelo { get; set; }
-        public override Pessoa Pessoa { get; set; }
+        public override PessoaInfo Pessoa { get; set; }
         public override string Senha { get; set; }
         public override string Serie { get; set; }
         public override string Sistema { get; set; }

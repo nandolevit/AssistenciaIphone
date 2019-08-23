@@ -21,7 +21,7 @@ namespace ObjTransfer.Aparelho.Computadores
         public string Descricao { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
-        public Pessoa Pessoa { get; set; }
+        public PessoaInfo Pessoa { get; set; }
         public string Senha { get; set; }
         public string Serie { get; set; }
         public string Sistema { get; set; }

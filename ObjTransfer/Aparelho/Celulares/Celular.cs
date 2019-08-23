@@ -28,7 +28,7 @@ namespace ObjTransfer.Aparelho.Celulares
         public abstract string Descricao { get; set; }
         public abstract string Marca { get; set; }
         public abstract string Modelo { get; set; }
-        public abstract Pessoa Pessoa { get; set; }
+        public abstract PessoaInfo Pessoa { get; set; }
         public abstract string Senha { get; set; }
         public abstract string Serie { get; set; }
         public abstract string Sistema { get; set; }

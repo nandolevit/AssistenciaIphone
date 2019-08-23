@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 using Negocios;
 using ObjTransfer;
+using WinForms.Pessoa;
+using ObjTransfer.Pessoas;
 using System.IO;
 using System.Threading;
 using System.Net;
@@ -254,16 +256,16 @@ namespace WinForms
             FormEmpresa formEmpresa = new FormEmpresa();
             if (formEmpresa.ShowDialog(this) == DialogResult.Yes)
             {
-                Desserializar();
-                negocioPessoa = new PessoaNegocio(Empresa.empconexao, EnumAssistencia.Assistencia);
-                PessoaInfo pessoa = negocioPessoa.ConsultarPessoaPadrao(EnumPessoaTipo.Funcionario, false);
+                //Desserializar();
+                //negocioPessoa = new PessoaNegocio(Empresa.empconexao, EnumAssistencia.Assistencia);
+                //PessoaInfo pessoa = negocioPessoa.ConsultarPessoaPadrao(EnumPessoaTipo.Funcionario);
 
-                if (pessoa == null)
-                {
-                    FormPessoa formPessoa = new FormPessoa(EnumPessoaTipo.Funcionario);
-                    formPessoa.ShowDialog(this);
-                    formPessoa.Dispose();
-                }
+                //if (pessoa == null)
+                //{
+                //    FormPessoaCad formPessoa = new FormPessoaCad(EnumPessoaTipo.Funcionario, true);
+                //    formPessoa.ShowDialog(this);
+                //    formPessoa.Dispose();
+                //}
             }
 
             formEmpresa.Dispose();
@@ -376,7 +378,7 @@ namespace WinForms
             }
             else
             {
-                FormPessoa formPessoa = new FormPessoa(EnumPessoaTipo.Funcionario);
+                FormPessoaCad formPessoa = new FormPessoaCad(EnumPessoaTipo.Funcionario, true);
                 if (formPessoa.ShowDialog(this) == DialogResult.Yes)
                 {
                     goto Iniciar;
@@ -712,7 +714,7 @@ namespace WinForms
                     Application.OpenForms["FormLogin"].Dispose();
 
                 FecharForm();
-                FormPessoa formPessoa = new FormPessoa(EnumPessoaTipo.Funcionario, EnumAssistencia.Assistencia);
+                FormPessoaCad formPessoa = new FormPessoaCad(EnumPessoaTipo.Funcionario, EnumAssistencia.Assistencia);
                 if (formPessoa.ShowDialog(this) == DialogResult.Yes)
                 {
                     AoCarregar();
@@ -737,15 +739,29 @@ namespace WinForms
 
         private void CadPessoa(EnumPessoaTipo pessoa)
         {
-            FormPessoa formPessoa = new FormPessoa(pessoa);
+            FormPessoaFisicaJuridica formPessoa = new FormPessoaFisicaJuridica();
+            FormPessoaCad formPessoaCad;
+
+            if (formPessoa.ShowDialog(this) == DialogResult.Yes)
+            {
+                formPessoaCad = new FormPessoaCad(pessoa, true);
+            }
+            else
+            {
+                formPessoaCad = new FormPessoaCad(pessoa, false);
+            }
+
+            formPessoa.Dispose();
+
+
             if (pessoa == EnumPessoaTipo.Cliente)
             {
-                if (formPessoa.ShowDialog(this) == DialogResult.Yes)
+                if (formPessoaCad.ShowDialog(this) == DialogResult.Yes)
                 {
                     if (Unidade.uniassistencia == EnumAssistencia.Assistencia)
                     {
-                        PessoaInfo p = formPessoa.SelecionadoPessoa;
-                        int id = p.pssid;
+                        PessoaInfo p = formPessoaCad.SelecionadoPessoa;
+                        int id = p.Id;
 
                         if (id > 0)
                         {

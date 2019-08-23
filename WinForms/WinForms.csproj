@@ -204,6 +204,12 @@
     <Compile Include="FormConexao.Designer.cs">
       <DependentUpon>FormConexao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pessoa\FormPessoaFisicaJuridica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pessoa\FormPessoaFisicaJuridica.Designer.cs">
+      <DependentUpon>FormPessoaFisicaJuridica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pessoa\FormUserEsqueciSenha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -456,6 +462,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormConexao.resx">
       <DependentUpon>FormConexao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pessoa\FormPessoaFisicaJuridica.resx">
+      <DependentUpon>FormPessoaFisicaJuridica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pessoa\FormUserEsqueciSenha.resx">
       <DependentUpon>FormUserEsqueciSenha.cs</DependentUpon>

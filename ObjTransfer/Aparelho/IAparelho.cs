@@ -18,7 +18,7 @@ namespace ObjTransfer.Aparelho
         string Descricao { get; set; }
         string Marca { get; set; }
         string Modelo { get; set; }
-        Pessoa Pessoa { get; set; }
+        PessoaInfo Pessoa { get; set; }
         string Senha { get; set; }
         string Serie { get; set; }
         string Sistema { get; set; }

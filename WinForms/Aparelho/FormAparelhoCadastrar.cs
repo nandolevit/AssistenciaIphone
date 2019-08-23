@@ -9,7 +9,7 @@ using System.Threading;
 using System.Windows.Forms;
 
 using Negocios;
-using ObjTransfer;
+using ObjTransfer.Pessoas;
 using ObjTransfer.Aparelho;
 using ObjTransfer.Aparelho.Computadores;
 
@@ -36,7 +36,7 @@ namespace WinForms.Aparelho
             linhaAparelho = linha;
             textBoxLinha.Text = linha.linhadescricao;
             infoPessoa = pessoa;
-            textBoxNome.Text = pessoa.pssnome;
+            textBoxNome.Text = pessoa.Nome;
             colecaoMarca = marca;
             colecaoSistema = sistema;
             colecaoVersao = versao;
