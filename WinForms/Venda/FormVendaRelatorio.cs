@@ -11,6 +11,7 @@ using System.Threading;
 
 using ObjTransfer;
 using Negocios;
+using ObjTransfer.Pessoas;
 
 namespace WinForms
 {
@@ -173,7 +174,7 @@ namespace WinForms
                     GridViewVendaPeriodo gridViewVendaPeriodo = new GridViewVendaPeriodo
                     {
                         Cheque = cheque,
-                        Cliente = infoPessoa.pssnome,
+                        Cliente = infoPessoa.Nome,
                         Credito = credito,
                         Data = venda.vendata,
                         Debito = debito,

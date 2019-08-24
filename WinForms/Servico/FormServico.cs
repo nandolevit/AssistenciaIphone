@@ -9,6 +9,8 @@ using System.Threading;
 using System.Windows.Forms;
 
 using ObjTransfer;
+using ObjTransfer.Aparelho.Celulares;
+using ObjTransfer.Pessoas;
 using Negocios;
 
 namespace WinForms
@@ -23,7 +25,7 @@ namespace WinForms
         ServicoColecao colecaoServ;
         ServicoIphoneInfo infoServIphone;
         ServicoIphoneColecao colecaoServIphone;
-        IphoneCelularInfo infoCelular;
+        Iphone infoCelular;
 
         ServicoNegocio negocioServ = new ServicoNegocio(Form1.Empresa.empconexao);
         FuncNegocios negocioFunc = new FuncNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
@@ -61,7 +63,7 @@ namespace WinForms
 
         private void PreencherForm()
         {
-            textBoxNome.Text = infoPessoa.pssid + " - " + infoPessoa.pssnome;
+            textBoxNome.Text = infoPessoa.Id + " - " + infoPessoa.Nome;
 
             thread = new Thread(PreencherFormThread);
             form1.ExecutarThread(thread);
@@ -69,8 +71,8 @@ namespace WinForms
             if (colecaoPessoa.Count == 1)
             {
                 responsavel = colecaoPessoa[0];
-                textBoxCodTec.Text = string.Format("{0:000}", responsavel.pssid);
-                textBoxResponsavel.Text = responsavel.pssnome;
+                textBoxCodTec.Text = string.Format("{0:000}", responsavel.Id);
+                textBoxResponsavel.Text = responsavel.Nome;
             }
             else
                 ConsultarResponsavel(colecaoPessoa);
@@ -150,9 +152,9 @@ namespace WinForms
             infoServIphone.seridunid = Form1.Unidade.uniid;
             infoServIphone.seridatendente = Form1.User.useidfuncionario;
             infoServIphone.seridstatus = 1;
-            infoServIphone.seridtec_resp = responsavel.pssid;
+            infoServIphone.seridtec_resp = responsavel.Id;
             infoServIphone.seraparelhodescricao = infoServIphone.ToString();
-            infoServIphone.seridcliente = infoPessoa.pssid;
+            infoServIphone.seridcliente = infoPessoa.Id;
 
             negocioServ.InsertServicoIphone(infoServIphone);
             colecaoServIphone.Add(infoServIphone);
@@ -217,8 +219,8 @@ namespace WinForms
 
                 if (responsavel != null)
                 {
-                    textBoxCodTec.Text = string.Format("{0:000}", responsavel.pssid);
-                    textBoxResponsavel.Text = responsavel.pssnome;
+                    textBoxCodTec.Text = string.Format("{0:000}", responsavel.Id);
+                    textBoxResponsavel.Text = responsavel.Nome;
                 }
                 else
                 {
@@ -237,8 +239,8 @@ namespace WinForms
             {
                 Form_Consultar form_Consultar = new Form_Consultar
                 {
-                    Cod = string.Format("{0:000}", func.pssid),
-                    Descricao = func.pssnome
+                    Cod = string.Format("{0:000}", func.Id),
+                    Descricao = func.Nome
                 };
 
                 form_ConsultarColecao.Add(form_Consultar);

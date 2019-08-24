@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 using Negocios;
 using System.Threading;
 
@@ -113,8 +114,8 @@ namespace WinForms
             PessoaColecao funcColecao = new PessoaColecao();
             PessoaInfo funcInfo = new PessoaInfo
             {
-                pssid = 0,
-                pssnome = "*RESUMO - TODOS FUNCIONÁRIOS*"
+                Id = 0,
+                Nome = "*RESUMO - TODOS FUNCIONÁRIOS*"
             };
 
             funcColecao.Add(funcInfo);

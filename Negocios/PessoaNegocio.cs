@@ -15,7 +15,6 @@ namespace Negocios
     {
         private string EmpConexao { get; set; }
         AccessDbMySql accessDbMySql;
-        EnumPessoaTipo enumTipo;
         EnumAssistencia Assistencia;
         public PessoaNegocio(string conexao, EnumAssistencia assistencia)
         {
@@ -145,20 +144,22 @@ namespace Negocios
             if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@assist", Assistencia);
-                accessDbMySql.AddParametrosMySql("@cpf", pessoa.Ident);
+                accessDbMySql.AddParametrosMySql("@ident", pessoa.Ident);
                 accessDbMySql.AddParametrosMySql("@email", pessoa.Email);
                 accessDbMySql.AddParametrosMySql("@bairro", pessoa.Endereco.Bairro);
                 accessDbMySql.AddParametrosMySql("@cep", pessoa.Endereco.Cep);
                 accessDbMySql.AddParametrosMySql("@cidade", pessoa.Endereco.Cidade);
                 accessDbMySql.AddParametrosMySql("@comp", pessoa.Endereco.Complemento);
                 accessDbMySql.AddParametrosMySql("@log", pessoa.Endereco.Logradouro);
+                accessDbMySql.AddParametrosMySql("@ref", pessoa.Endereco.PontoReferencia);
                 accessDbMySql.AddParametrosMySql("@uf", pessoa.Endereco.Uf);
                 accessDbMySql.AddParametrosMySql("@tipo", pessoa.Tipo);
-                accessDbMySql.AddParametrosMySql("@user", pessoa.User.useidfuncionario);
-                accessDbMySql.AddParametrosMySql("@niver", pessoa.Nascimento);
+                accessDbMySql.AddParametrosMySql("@iduser", pessoa.User.useidfuncionario);
+                accessDbMySql.AddParametrosMySql("@nascimento", pessoa.Nascimento);
                 accessDbMySql.AddParametrosMySql("@nome", pessoa.Nome);
                 accessDbMySql.AddParametrosMySql("@telefone", pessoa.Telefone);
                 accessDbMySql.AddParametrosMySql("@padrao", pessoa.Padrao);
+                accessDbMySql.AddParametrosMySql("@pessoa", pessoa.booPF);
 
                 return accessDbMySql.ExecutarScalarMySql("spInsertPessoa");
             }

@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 using Negocios;
 using ObjTransfer;
+using ObjTransfer.Pessoas;
+using WinForms.Pessoa;
 
 namespace WinForms
 {
@@ -91,8 +93,8 @@ namespace WinForms
             {
                 negocioPessoa = new PessoaNegocio(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
                 PessoaInfo forn = negocioPessoa.ConsultarPessoaPadrao(EnumPessoaTipo.Fornecedor);
-                textBoxCodFornecedor.Text = string.Format("{0:000}", forn.pssid);
-                labelValorFornecedor.Text = forn.pssnome;
+                textBoxCodFornecedor.Text = string.Format("{0:000}", forn.Id);
+                labelValorFornecedor.Text = forn.Nome;
             }
         }
 
@@ -536,8 +538,8 @@ namespace WinForms
                 {
                     Form_Consultar form_Consultar = new Form_Consultar
                     {
-                        Cod = string.Format("{0:000}", info.pssid),
-                        Descricao = info.pssnome
+                        Cod = string.Format("{0:000}", info.Id),
+                        Descricao = info.Nome
                     };
 
                     form_ConsultarColecao.Add(form_Consultar);
@@ -593,8 +595,8 @@ namespace WinForms
 
                     if (fornecedor != null)
                     {
-                        textBoxCodFornecedor.Text = string.Format("{0:000}", fornecedor.pssid);
-                        labelValorFornecedor.Text = fornecedor.pssnome;
+                        textBoxCodFornecedor.Text = string.Format("{0:000}", fornecedor.Id);
+                        labelValorFornecedor.Text = fornecedor.Nome;
                     }
                     else
                     {
@@ -722,8 +724,14 @@ namespace WinForms
 
         private void buttonAddFornecedor_Click(object sender, EventArgs e)
         {
-            FormPessoa formCadastroPessoa = new FormPessoa(EnumPessoaTipo.Fornecedor);
-            if(formCadastroPessoa.ShowDialog(this) == DialogResult.Yes)
+            FormPessoaCad formCadastroPessoa;
+            FormPessoaFisicaJuridica formPessoaFisicaJuridica = new FormPessoaFisicaJuridica();
+            if (formPessoaFisicaJuridica.ShowDialog(this) == DialogResult.Yes)
+                formCadastroPessoa = new FormPessoaCad(EnumPessoaTipo.Fornecedor, true);
+            else
+                formCadastroPessoa = new FormPessoaCad(EnumPessoaTipo.Fornecedor, false);
+
+            if (formCadastroPessoa.ShowDialog(this) == DialogResult.Yes)
             {
 
             }

@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 using Negocios;
+using WinForms.Pessoa;
 
 namespace WinForms
 {
@@ -58,8 +60,8 @@ namespace WinForms
                 {
                     Form_Consultar form_Consultar = new Form_Consultar
                     {
-                        Cod = string.Format("{0:000}", info.pssid),
-                        Descricao = info.pssnome
+                        Cod = string.Format("{0:000}", info.Id),
+                        Descricao = info.Nome
                     };
 
                     form_ConsultarColecao.Add(form_Consultar);
@@ -99,7 +101,7 @@ namespace WinForms
 
         private void buttonAddFornecedor_Click(object sender, EventArgs e)
         {
-            FormPessoa formCadastroPessoa = new FormPessoa(EnumPessoaTipo.Fornecedor);
+            FormPessoaCad formCadastroPessoa = new FormPessoaCad(EnumPessoaTipo.Fornecedor, false);
             if(formCadastroPessoa.ShowDialog(this) == DialogResult.Yes)
             {
 
@@ -172,7 +174,7 @@ namespace WinForms
         {
             if (textBoxFornecedorCod.Text != "000")
             {
-                FormProdutos formProdutos = new FormProdutos(infoPessoa.pssid);
+                FormProdutos formProdutos = new FormProdutos(infoPessoa.Id);
                 formProdutos.ShowDialog(this);
                 formProdutos.Dispose();
             }
@@ -249,8 +251,8 @@ namespace WinForms
 
                         if (infoPessoa != null)
                         {
-                            textBoxFornecedorCod.Text = string.Format("{0:000}", infoPessoa.pssid);
-                            labelFornecedorDescricao.Text = infoPessoa.pssnome;
+                            textBoxFornecedorCod.Text = string.Format("{0:000}", infoPessoa.Id);
+                            labelFornecedorDescricao.Text = infoPessoa.Nome;
                             buttonInicializar.Enabled = true;
                             buttonInicializar.Select();
                         }
@@ -352,7 +354,7 @@ namespace WinForms
                                 PreencherFormProduto(produto);
                             else
                             {
-                                if (produto.proidfornecedor == infoPessoa.pssid)
+                                if (produto.proidfornecedor == infoPessoa.Id)
                                     PreencherFormProduto(produto);
                                 else
                                 {

@@ -67,7 +67,7 @@ namespace WinForms
 
         private void ConsultarAparelhoCliente()
         {
-            colecaoCelular = negocioServ.ConsultarIphoneCelularIdCliente(infoCliente.Id);
+            //colecaoCelular = negocioServ.ConsultarIphoneCelularIdCliente(infoCliente.Id);
             textBoxDefeito.Select();
             Form1.encerrarThread = true;
             pictureBoxLoad.Visible = false;
@@ -131,7 +131,7 @@ namespace WinForms
                 Form_Consultar consultar = formConsultar_Cod_Descricao.Selecionado;
                 textBoxCodProd.Text = consultar.Cod;
                 textBoxProdDescricao.Text = consultar.Descricao;
-                infoCelular = negocioServ.ConsultarIphoneCelularId(Convert.ToInt32(consultar.Cod));
+                //infoCelular = negocioServ.ConsultarIphoneCelularId(Convert.ToInt32(consultar.Cod));
                 SelecionadoCelular = infoCelular;
             }
             else

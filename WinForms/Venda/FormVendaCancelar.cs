@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using Negocios;
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 
 namespace WinForms
 {
@@ -52,7 +53,7 @@ namespace WinForms
                         string nome = string.Empty;
 
                         if (infoPessoa != null)
-                            nome = infoPessoa.pssnome;
+                            nome = infoPessoa.Nome;
                         else
                             nome = "CLIENTE AVULSO";
 

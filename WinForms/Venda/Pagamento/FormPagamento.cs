@@ -11,6 +11,7 @@ using System.Threading;
 
 using Negocios;
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 
 namespace WinForms
 {
@@ -434,7 +435,7 @@ namespace WinForms
                             entranumparcela = 1,
                             entranumtotalparcelas = 1,
                             entraobs = "Controle da venda: " + string.Format("{0:000000000}", pagamentoInfo.pagamentoidvenda) + Environment.NewLine +
-                            "Cliente: " + infoPessoa.pssnome + Environment.NewLine + "Vendedor: " + Form1.User.usenome,
+                            "Cliente: " + infoPessoa.Nome + Environment.NewLine + "Vendedor: " + Form1.User.usenome,
                             entratipocatdecricao = "",
                             entratipoidcat = 4,
                             entravalor = pagamentoInfo.pagamentovalor,

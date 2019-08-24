@@ -69,7 +69,7 @@ namespace WinForms
                     if (caixaTurnoInfo != null)
                     {
                         labelValorTurno.Text = caixaTurnoInfo.caixaturnonum.ToString() + "/3";
-                        labelAbrirFunc.Text = funcNegocios.ConsultarPessoaId(caixaTurnoInfo.caixaturnoidfuncabrir).pssnome;
+                        labelAbrirFunc.Text = funcNegocios.ConsultarPessoaId(caixaTurnoInfo.caixaturnoidfuncabrir).Nome;
                         labelDataAbertura.Text = caixaTurnoInfo.caixaturnodata.ToShortDateString();
                         labelHoraAbertura.Text = caixaTurnoInfo.caixaturnodata.ToShortTimeString();
                         labelValorAbertura.Text = caixaTurnoInfo.caixaturnovalorabrir.ToString("C2");
@@ -83,7 +83,7 @@ namespace WinForms
                     labelDataAbertura.Text = caixaaberto.caixaabrirdata.ToShortDateString();
                     labelHoraAbertura.Text = caixaaberto.caixaabrirdata.ToShortTimeString();
                     labelValorAbertura.Text = caixaAbrir.ToString("C2");
-                    labelAbrirFunc.Text = funcNegocios.ConsultarPessoaId(caixaaberto.caixafecharidfunc).pssnome;
+                    labelAbrirFunc.Text = funcNegocios.ConsultarPessoaId(caixaaberto.caixafecharidfunc).Nome;
 
                     CaixaTurnoColecao turno = caixa.ConsultarTurnoColecaoIdCaixa();
                     if (turno != null)

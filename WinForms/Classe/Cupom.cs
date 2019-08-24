@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Negocios;
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 
 namespace WinForms
 {
@@ -32,7 +33,7 @@ namespace WinForms
                 tituloTurno = aturno + bturno;
 
                 dadosTurno += tituloTurno + Environment.NewLine;
-                dadosTurno += "ABERTO POR: " + funTurnoAbrir.pssnome + Environment.NewLine;
+                dadosTurno += "ABERTO POR: " + funTurnoAbrir.Nome + Environment.NewLine;
                 dadosTurno += "DATA/HORA ABERTURA: " + turno.caixaturnodata.ToString(@"ddd, dd\/MM\/yyyy - HH:mm") + Environment.NewLine;
                 dadosTurno += "TURNO ABERTO COM: " + turno.caixaturnovalorabrir.ToString("C2").PadLeft(tam - 18) + Environment.NewLine;
                 dadosTurno += "".PadLeft(tam, '.') + Environment.NewLine;
@@ -48,7 +49,7 @@ namespace WinForms
                 dadosTurno += Environment.NewLine;
                 dadosTurno += "VALOR EM SANGRIA: " + turno.caixaturnovalorsangria.ToString("C2").PadLeft(tam - 18) + Environment.NewLine;
                 dadosTurno += "".PadLeft(tam, '.') + Environment.NewLine;
-                dadosTurno += "FECHADO POR: " + funTurnoFechar.pssnome + Environment.NewLine;
+                dadosTurno += "FECHADO POR: " + funTurnoFechar.Nome + Environment.NewLine;
                 dadosTurno += "DATA/HORA FECHAMENTO: " + turno.caixaturnodatafechamento.ToString(@"ddd, dd\/MM\/yyyy - HH:mm") + Environment.NewLine;
                 dadosTurno += "SALDO EM ESPÉCIE EM CAIXA: " + turno.caixaturnovalorsaldoespecie.ToString("C2").PadLeft(tam - 27) + Environment.NewLine;
                 dadosTurno += "SALDO TOTAL DE VENDAS: " + turno.caixaturnovalortotal.ToString("C2").PadLeft(tam - 23) + Environment.NewLine;
@@ -74,7 +75,7 @@ namespace WinForms
 
             string dadosCaixa = string.Empty;
             PessoaInfo funcCaixa = funcNegocios.ConsultarPessoaId(caixa.caixaabriridfunc);
-            dadosCaixa += "ABERTO POR: " + funcCaixa.pssnome + Environment.NewLine;
+            dadosCaixa += "ABERTO POR: " + funcCaixa.Nome + Environment.NewLine;
             dadosCaixa += "VALOR DE ABERTURA: " + caixa.caixaabrirvalor.ToString("C2") + Environment.NewLine;
             dadosCaixa += "HORA DE ABERTURA: " + caixa.caixaabrirdata.ToShortTimeString() + Environment.NewLine;
             dadosCaixa += "QUANT TURNOS: " + caixaTurnoColecao.Count.ToString() + Environment.NewLine;
@@ -89,7 +90,7 @@ namespace WinForms
 
                 PessoaInfo funcFechar = funcNegocios.ConsultarPessoaId(caixaFecharInfo.caixafecharidfunc);
                 dadosCaixaFechar = fechamento + Environment.NewLine;
-                dadosCaixaFechar += "FECHADO POR: " + funcFechar.pssnome + Environment.NewLine;
+                dadosCaixaFechar += "FECHADO POR: " + funcFechar.Nome + Environment.NewLine;
                 dadosCaixaFechar += "DATA/HORA FECHAMENTO: " + caixaFecharInfo.caixafechardata.ToString(@"ddd, dd\/MM\/yyyy - HH:mm") + Environment.NewLine;
                 dadosCaixaFechar += "".PadLeft(tam, '.') + Environment.NewLine;
                 dadosCaixaFechar += Environment.NewLine;
@@ -175,7 +176,7 @@ namespace WinForms
                 PessoaInfo funcInfo = funcNegocios.ConsultarPessoaId(venda.venidfunc);
                 string dadosvenda = string.Empty;
                 dadosvenda += "CONTROLE: " + string.Format("{0:00000000}", venda.venid) + Environment.NewLine;
-                dadosvenda += "VENDEDOR: " + funcInfo.pssnome + Environment.NewLine;
+                dadosvenda += "VENDEDOR: " + funcInfo.Nome + Environment.NewLine;
                 dadosvenda += "DATA/HORA: " + venda.vendatacad + Environment.NewLine;
 
                 string dadositem = string.Empty;
@@ -217,15 +218,15 @@ namespace WinForms
 
                 string dadoscliente = string.Empty;
                 dadoscliente += cliente + Environment.NewLine;
-                dadoscliente += infoPessoa.pssnome + Environment.NewLine;
+                dadoscliente += infoPessoa.Nome + Environment.NewLine;
 
-                dadoscliente += "End.: " + infoPessoa.pssendcomplemento + ", " + Environment.NewLine
-                    + infoPessoa.pssendlogradouro + Environment.NewLine;
-                dadoscliente += infoPessoa.pssendbairro + ", " + infoPessoa.pssendcidade + "-" + infoPessoa.pssenduf + Environment.NewLine;
+                dadoscliente += "End.: " + infoPessoa.Endereco.Complemento + ", " + Environment.NewLine
+                    + infoPessoa.Endereco.Logradouro + Environment.NewLine;
+                dadoscliente += infoPessoa.Endereco.Bairro + ", " + infoPessoa.Endereco.Cidade + "-" + infoPessoa.Endereco.Uf + Environment.NewLine;
 
 
-                dadoscliente += "Telefone: " + infoPessoa.psstelefone + Environment.NewLine;
-                dadoscliente += "Email: " + infoPessoa.pssemail + Environment.NewLine;
+                dadoscliente += "Telefone: " + infoPessoa.Telefone + Environment.NewLine;
+                dadoscliente += "Email: " + infoPessoa.Telefone + Environment.NewLine;
 
                 //produtos
                 int item = 1;

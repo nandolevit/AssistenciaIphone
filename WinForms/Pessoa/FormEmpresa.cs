@@ -11,6 +11,7 @@ using System.IO;
 
 using Negocios;
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 
 namespace WinForms
 {
@@ -206,33 +207,40 @@ namespace WinForms
                             negocioPessoa = new PessoaNegocio(infoEmpresa.empconexao, Form1.Unidade.uniassistencia);
                             PessoaInfo pessoa = new PessoaInfo
                             {
-                                pssassistencia = EnumAssistencia.Assistencia,
-                                psscpf = infoUnid.unicnpj,
-                                pssdataregistro = DateTime.Now,
-                                pssemail = infoUnid.uniemail,
-                                pssendbairro = infoUnid.unibairro,
-                                pssendcep = infoUnid.unicep,
-                                pssendcidade = infoUnid.unicidade,
-                                pssendcomplemento = infoUnid.unicomplemento,
-                                pssendlogradouro = infoUnid.unilogradouro,
-                                pssenduf = infoUnid.uniuf,
-                                pssidtipo = EnumPessoaTipo.Funcionario,
-                                pssniver = DateTime.Now,
-                                pssnome = "FUNCIONARIO PADRAO",
-                                psstelefone = infoUnid.unitelefone,
-                                pssiduser = 0,
-                                psspadrao = true
+                                Assistencia = EnumAssistencia.Assistencia,
+                                Ident = infoUnid.unicnpj,
+                                DataRegistro = DateTime.Now,
+                                Email = infoUnid.uniemail,
+                                Tipo = EnumPessoaTipo.Funcionario,
+                                Nascimento = DateTime.Now,
+                                Nome = "FUNCIONARIO PADRAO",
+                                Telefone = infoUnid.unitelefone,
+                                Padrao = true,
+                                booPF = false,
                             };
+
+                            pessoa.User = new UserInfo();
+
+                            pessoa.Endereco = new EnderecoInfo
+                            {
+                                Bairro = infoUnid.unibairro,
+                                Cep = infoUnid.unicep,
+                                Cidade = infoUnid.unicidade,
+                                Complemento = infoUnid.unicomplemento,
+                                Logradouro = infoUnid.unilogradouro,
+                                Uf = infoUnid.uniuf,
+                            };
+
                             int id = negocioPessoa.InsertPessoa(pessoa);
                             UserNegocio negocio = new UserNegocio(Form1.Empresa.empconexao);
                             negocio.UpdateUserAdmin(id);
 
-                            pessoa.pssidtipo = EnumPessoaTipo.Fornecedor;
-                            pessoa.pssnome = "FORNECEDOR PADRAO";
+                            pessoa.Tipo = EnumPessoaTipo.Fornecedor;
+                            pessoa.Nome = "FORNECEDOR PADRAO";
                             negocioPessoa.InsertPessoa(pessoa);
 
-                            pessoa.pssidtipo = EnumPessoaTipo.Cliente;
-                            pessoa.pssnome = "CLIENTE AVULSO";
+                            pessoa.Tipo = EnumPessoaTipo.Cliente;
+                            pessoa.Nome = "CLIENTE AVULSO";
                             negocioPessoa.InsertPessoa(pessoa);
 
                             textBoxUnidNome.Text = infoUnid.uniunidade;

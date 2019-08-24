@@ -89,6 +89,12 @@ namespace WinForms.Pessoa
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
+            if (Form1.Unidade == null)
+                Assistencia = EnumAssistencia.Assistencia;
+            else
+                Assistencia = Form1.Unidade.uniassistencia;
+
+            negocioPessoa = new PessoaNegocio(Form1.Empresa.empconexao, Assistencia);
         }
 
         private void ButtonEnd_Click(object sender, EventArgs e)
@@ -282,17 +288,22 @@ namespace WinForms.Pessoa
             if (infoPessoa == null)
                 infoPessoa = new PessoaInfo();
 
-            infoPessoa.Endereco.Bairro = textBoxBairro.Text;
-            infoPessoa.Endereco.Cep = maskedTextBoxCep.Text;
-            infoPessoa.Endereco.Cidade = textBoxCidade.Text;
+            infoPessoa.Endereco = new EnderecoInfo
+            {
+                Bairro = textBoxBairro.Text,
+                Cep = maskedTextBoxCep.Text,
+                Cidade = textBoxCidade.Text,
+                Complemento = textBoxComplemento.Text,
+                Logradouro = textBoxLogradouro.Text,
+                Uf = textBoxUF.Text,
+            };
+
             infoPessoa.Ident = maskedTextBoxCpf.Text;
-            infoPessoa.Endereco.Complemento = textBoxComplemento.Text;
             infoPessoa.Email = textBoxEmail.Text;
-            infoPessoa.Endereco.Logradouro = textBoxLogradouro.Text;
             infoPessoa.Nome = textBoxNome.Text;
             infoPessoa.Telefone = maskedTextBoxTel1.Text + (string.IsNullOrEmpty(maskedTextBoxTel2.Text) ? "" : "/" + maskedTextBoxTel2.Text);
-            infoPessoa.Endereco.Uf = textBoxUF.Text;
-            infoPessoa.User = Form1.User;
+
+            infoPessoa.User = Form1.User == null ? new UserInfo() : Form1.User;
             infoPessoa.Tipo = enumPessoa;
             infoPessoa.Nascimento = string.IsNullOrEmpty(textBoxNiver.Text) ? DateTime.Now.Date : Convert.ToDateTime(textBoxNiver.Text).Date;
 
