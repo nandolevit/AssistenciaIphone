@@ -36,6 +36,7 @@ namespace WinForms.Pessoa
         {
             Inicializar();
             infoPessoa = pessoa;
+            PreencherFormPessoa();
         }
 
         public FormPessoaCad(EnumPessoaTipo tipo, bool pfisica)
@@ -51,7 +52,7 @@ namespace WinForms.Pessoa
 
             if (pfisica)
             {
-                maskedTextBoxCpf.Mask = "000.000.000-00";
+                maskedTextBoxCpf.Mask = "000,000,000-00";
             }
             else
             {
@@ -68,7 +69,7 @@ namespace WinForms.Pessoa
                 labelPontoReferencia.Visible = true;
                 textBoxPontoReferencia.Visible = true;
 
-                maskedTextBoxCpf.Mask = "00.000.000./0000-00";
+                maskedTextBoxCpf.Mask = "00,000,000/0000-00";
             }
 
             if (enumPessoa == EnumPessoaTipo.Unidade)
@@ -78,15 +79,10 @@ namespace WinForms.Pessoa
             }
         }
 
-        public FormPessoaCad(PessoaFisica pessoa)
-        {
-            Inicializar();
-            infoPessoa = pessoa;
-        }
-
         private void Inicializar()
         {
             InitializeComponent();
+            this.AcceptButton = buttonSalvar;
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
             if (Form1.Unidade == null)
@@ -306,43 +302,47 @@ namespace WinForms.Pessoa
             infoPessoa.User = Form1.User == null ? new UserInfo() : Form1.User;
             infoPessoa.Tipo = enumPessoa;
             infoPessoa.Nascimento = string.IsNullOrEmpty(textBoxNiver.Text) ? DateTime.Now.Date : Convert.ToDateTime(textBoxNiver.Text).Date;
-
+            infoPessoa.booPF = fisica;
             SelecionadoPessoa = infoPessoa;
         }
 
         private void MaskedTextBoxCpf_Leave(object sender, EventArgs e)
         {
-            cpf = maskedTextBoxCpf.Text;
 
-
-            //preencher o formulário com os meus dados para testes
-            if (cpf == "71992776512")
+            if (infoPessoa == null || string.IsNullOrEmpty(infoPessoa.Ident))
             {
-                PreencherFormClienteTeste();
-                return;
-            }
+                cpf = maskedTextBoxCpf.Text;
 
-            ValidarCpfCnpj validarCpfCnpj = new ValidarCpfCnpj(cpf);
 
-            if (cpf != "00000000000")
-            {
-                if (maskedTextBoxCpf.Text.Length >= 11)
+                //preencher o formulário com os meus dados para testes
+                if (cpf == "71992776512")
                 {
-                    if (validarCpfCnpj.CpfCpnjValido())
-                        ConsultarCpf();
-                    else
-                    {
-                        if (!infoPessoa.booPF)
-                            FormMessage.ShowMessegeWarning("CNPJ inválido! Tente novamente...");
-                        else
-                            FormMessage.ShowMessegeWarning("CPF inválido! Tente novamente...");
-
-                        maskedTextBoxCpf.Clear();
-                        maskedTextBoxCpf.Focus();
-                    }
+                    PreencherFormClienteTeste();
+                    return;
                 }
-                else
-                    maskedTextBoxCpf.Clear();
+
+                ValidarCpfCnpj validarCpfCnpj = new ValidarCpfCnpj(cpf);
+
+                if (cpf != "00000000000")
+                {
+                    if (maskedTextBoxCpf.Text.Length >= 11)
+                    {
+                        if (validarCpfCnpj.CpfCpnjValido())
+                            ConsultarCpf();
+                        else
+                        {
+                            if (!infoPessoa.booPF)
+                                FormMessage.ShowMessegeWarning("CNPJ inválido! Tente novamente...");
+                            else
+                                FormMessage.ShowMessegeWarning("CPF inválido! Tente novamente...");
+
+                            maskedTextBoxCpf.Clear();
+                            maskedTextBoxCpf.Focus();
+                        }
+                    }
+                    else
+                        maskedTextBoxCpf.Clear();
+                }
             }
         }
         private void ConsultarCpf()
@@ -366,8 +366,14 @@ namespace WinForms.Pessoa
 
         private void PreencherFormPessoa()
         {
+            TipoPessoa(infoPessoa.booPF);
+
             textBoxId.Text = string.Format("{0:00000}", infoPessoa.Id);
             maskedTextBoxCpf.Text = infoPessoa.Ident;
+
+            if (!string.IsNullOrEmpty(infoPessoa.Ident))
+                maskedTextBoxCpf.ReadOnly = true;
+
             textBoxEmail.Text = infoPessoa.Email;
             textBoxNome.Text = infoPessoa.Nome;
             textBoxNiver.Text = infoPessoa.Nascimento.Date.ToShortDateString();
@@ -388,6 +394,14 @@ namespace WinForms.Pessoa
             textBoxComplemento.Text = infoPessoa.Endereco.Complemento;
             textBoxLogradouro.Text = infoPessoa.Endereco.Logradouro;
             textBoxUF.Text = infoPessoa.Endereco.Uf;
+        }
+
+        private void ButtonFechar_Click(object sender, EventArgs e)
+        {
+            if (this.Modal)
+                this.DialogResult = DialogResult.Cancel;
+            else
+                this.Close();
         }
     }
 }

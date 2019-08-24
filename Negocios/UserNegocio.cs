@@ -166,7 +166,7 @@ namespace Negocios
                     useidfuncionario = Convert.ToInt32(row["useidfuncionario"]),
                     uselogin = Convert.ToString(row["uselogin"]),
                     usenovologin = Convert.ToInt32(row["usenovologin"]),
-                    usenome = Convert.ToString(row["pssnome"]),
+                    usenome = Convert.ToString(row["pessoanome"]),
                     usecargo = Convert.ToInt32(row["usecargo"]),
                     usesenha = Convert.ToString(row["usesenha"])
                 };

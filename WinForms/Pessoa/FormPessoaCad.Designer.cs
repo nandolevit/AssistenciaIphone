@@ -468,6 +468,7 @@
             this.buttonFechar.Text = "&Fechar";
             this.buttonFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonFechar.UseVisualStyleBackColor = true;
+            this.buttonFechar.Click += new System.EventHandler(this.ButtonFechar_Click);
             // 
             // FormPessoaCad
             // 
@@ -479,7 +480,6 @@
             this.Controls.Add(this.groupBoxEnd);
             this.Controls.Add(this.groupBoxDadosPessoais);
             this.Name = "FormPessoaCad";
-            this.Text = "FormPessoaCad";
             this.groupBoxEnd.ResumeLayout(false);
             this.groupBoxEnd.PerformLayout();
             this.groupBoxDadosPessoais.ResumeLayout(false);

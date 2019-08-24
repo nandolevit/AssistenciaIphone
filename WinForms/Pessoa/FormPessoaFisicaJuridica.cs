@@ -16,6 +16,9 @@ namespace WinForms.Pessoa
         {
             AcceptButton = buttonFisica;
             InitializeComponent();
+            FormFormat formFormat = new FormFormat(this);
+            formFormat.formatar();
+            this.FormBorderStyle = FormBorderStyle.None;
         }
 
         private void ButtonFisica_Click(object sender, EventArgs e)

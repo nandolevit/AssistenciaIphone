@@ -180,9 +180,11 @@ namespace Negocios
                     Nome = Convert.ToString(row["pessoanome"]),
                     Email = Convert.ToString(row["pessoaemail"]),
                     Id = Convert.ToInt32(row["pessoaid"]),
-                    Tipo = (EnumPessoaTipo)Convert.ToInt32(row["pessoaassistencia"]),
-                    Nascimento = Convert.ToDateTime(row["pessoaniver"]).Date,
+                    Tipo = (EnumPessoaTipo)Convert.ToInt32(row["pessoaidtipo"]),
+                    Nascimento = Convert.ToDateTime(row["pessoanascimento"]).Date,
                     Telefone = Convert.ToString(row["pessoatelefone"]),
+                    booPF = Convert.ToBoolean(row["pessoapf"]),
+                    Padrao = Convert.ToBoolean(row["pessoapadrao"]),
                 };
 
                 pessoa.Endereco = new EnderecoInfo

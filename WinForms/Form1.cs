@@ -141,80 +141,85 @@ namespace WinForms
                     ComputerInfo comp = empresaNegocios.ConsultarComputadorId(Computer.compid);
                     EmpresaEmail = empresaNegocios.ConsultarEmpresaEmail(Empresa.empid);
 
-                    if (!comp.compativo)
+                    if (comp != null)
                     {
-                        FormMessage.ShowMessegeWarning("A licença para este computador está expirada. O sistema será encerrado!");
-                        negocioEmail = new EmailNegocio(EmpresaEmail, Empresa.empfantasia);
-                        string mensagem = string.Empty;
-                        ConfiguracaoRede();
-                        mensagem += "Empresa: " + Empresa.empfantasia + Environment.NewLine;
-                        mensagem += Computer.ToString();
-
-                        negocioEmail.EnviarEmailBasico("nandolevit2012@gmail.com", "Computador - Licença Expirada!", mensagem);
-                        Application.Exit();
-                        return;
-                    }
-
-                    Thread t = new Thread(ConsultarNovoIphone);
-                    ExecutarThread(t);
-
-                    threadLogin = new Thread(UpdateUserLogin);
-                    threadLogin.Start();
-
-
-                    //if (Unidade != null)
-                    //{
-                    //    ComputerColecao colecao = empresaNegocios.ConsultarComputadorIdUnid(Unidade.uniid);
-
-                    //    if (colecao != null)
-                    //        foreach (ComputerInfo comp in colecao)
-                    //            if (comp.compserver)
-                    //            {
-                    //                Server = comp;
-                    //                break;
-                    //            }
-                    //}
-
-                    if (Empresa != null)
-                    {
-                        Empresa = empresaNegocios.ConsultarEmpresaSysId(Empresa.empcod);
-
-                        if (Empresa.empativada == 1)
+                        if (!comp.compativo)
                         {
-                            TimeSpan timeSpan = Empresa.empdataativo.Subtract(DateTime.Now.Date);
-                            if (timeSpan.Days >= 0)
-                            {
-                                if (timeSpan.Days < 7)
-                                    FormMessage.ShowMessegeWarning(Empresa.empobs.Replace("**", timeSpan.Days.ToString()));
-                                colecaoUnidade = empresaNegocios.ConsultarUnidade();
-                                InicializarSistema();
-                                this.Text += " :: " + Empresa.empfantasia;
-                            }
-                            else
-                            {
-                                if (timeSpan.Days < -15)
-                                {
-                                    FormMessage.ShowMessegeWarning("Seu sistema está bloqueado!");
-                                    Application.Exit();
-                                }
-                                else
-                                {
-                                    FormMessage.ShowMessegeWarning("Seu sistema será bloqueado em * dias!".Replace("*", (15 + timeSpan.Days).ToString()));
+                            FormMessage.ShowMessegeWarning("A licença para este computador está expirada. O sistema será encerrado!");
+                            negocioEmail = new EmailNegocio(EmpresaEmail, Empresa.empfantasia);
+                            string mensagem = string.Empty;
+                            ConfiguracaoRede();
+                            mensagem += "Empresa: " + Empresa.empfantasia + Environment.NewLine;
+                            mensagem += Computer.ToString();
 
+                            negocioEmail.EnviarEmailBasico("nandolevit2012@gmail.com", "Computador - Licença Expirada!", mensagem);
+                            Application.Exit();
+                            return;
+                        }
+
+                        Thread t = new Thread(ConsultarNovoIphone);
+                        ExecutarThread(t);
+
+                        threadLogin = new Thread(UpdateUserLogin);
+                        threadLogin.Start();
+
+
+                        //if (Unidade != null)
+                        //{
+                        //    ComputerColecao colecao = empresaNegocios.ConsultarComputadorIdUnid(Unidade.uniid);
+
+                        //    if (colecao != null)
+                        //        foreach (ComputerInfo comp in colecao)
+                        //            if (comp.compserver)
+                        //            {
+                        //                Server = comp;
+                        //                break;
+                        //            }
+                        //}
+
+                        if (Empresa != null)
+                        {
+                            Empresa = empresaNegocios.ConsultarEmpresaSysId(Empresa.empcod);
+
+                            if (Empresa.empativada == 1)
+                            {
+                                TimeSpan timeSpan = Empresa.empdataativo.Subtract(DateTime.Now.Date);
+                                if (timeSpan.Days >= 0)
+                                {
+                                    if (timeSpan.Days < 7)
+                                        FormMessage.ShowMessegeWarning(Empresa.empobs.Replace("**", timeSpan.Days.ToString()));
                                     colecaoUnidade = empresaNegocios.ConsultarUnidade();
                                     InicializarSistema();
                                     this.Text += " :: " + Empresa.empfantasia;
                                 }
+                                else
+                                {
+                                    if (timeSpan.Days < -15)
+                                    {
+                                        FormMessage.ShowMessegeWarning("Seu sistema está bloqueado!");
+                                        Application.Exit();
+                                    }
+                                    else
+                                    {
+                                        FormMessage.ShowMessegeWarning("Seu sistema será bloqueado em * dias!".Replace("*", (15 + timeSpan.Days).ToString()));
+
+                                        colecaoUnidade = empresaNegocios.ConsultarUnidade();
+                                        InicializarSistema();
+                                        this.Text += " :: " + Empresa.empfantasia;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                FormMessage.ShowMessegeWarning("Seu sistema está bloqueado!");
+                                Application.Exit();
                             }
                         }
                         else
-                        {
-                            FormMessage.ShowMessegeWarning("Seu sistema está bloqueado!");
-                            Application.Exit();
-                        }
+                            FormMessage.ShowMessegeWarning("Falha!");
                     }
                     else
-                        FormMessage.ShowMessegeWarning("Falha!");
+                        AbrirFormEmpresa();
                 }
                 else
                 {
@@ -743,13 +748,11 @@ namespace WinForms
             FormPessoaCad formPessoaCad;
 
             if (formPessoa.ShowDialog(this) == DialogResult.Yes)
-            {
                 formPessoaCad = new FormPessoaCad(pessoa, true);
-            }
-            else
-            {
+            else if (formPessoa.DialogResult == DialogResult.OK)
                 formPessoaCad = new FormPessoaCad(pessoa, false);
-            }
+            else
+                return;
 
             formPessoa.Dispose();
 
