@@ -15,14 +15,15 @@ namespace Negocios
         private static string EmpConexao { get; set; }
 
         EnumAssistencia Assistencia;
+        AccessDbMySql accessDbMySql;
 
         public ProdutoNegocios(string conexao, EnumAssistencia assistencia)
         {
             EmpConexao = conexao;
             Assistencia = assistencia;
+            accessDbMySql = new AccessDbMySql(EmpConexao);
         }
 
-        AccessDbMySql accessDbMySql= new AccessDbMySql(EmpConexao);
 
         public int UpdateProdutoConfirmarLancEstoqueId(int id)
         {

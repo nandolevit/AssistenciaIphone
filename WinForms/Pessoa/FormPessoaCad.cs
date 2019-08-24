@@ -308,11 +308,9 @@ namespace WinForms.Pessoa
 
         private void MaskedTextBoxCpf_Leave(object sender, EventArgs e)
         {
-
             if (infoPessoa == null || string.IsNullOrEmpty(infoPessoa.Ident))
             {
                 cpf = maskedTextBoxCpf.Text;
-
 
                 //preencher o formulário com os meus dados para testes
                 if (cpf == "71992776512")
@@ -321,28 +319,25 @@ namespace WinForms.Pessoa
                     return;
                 }
 
-                ValidarCpfCnpj validarCpfCnpj = new ValidarCpfCnpj(cpf);
-
-                if (cpf != "00000000000")
+                if (cpf.Length >= 11)
                 {
-                    if (maskedTextBoxCpf.Text.Length >= 11)
-                    {
-                        if (validarCpfCnpj.CpfCpnjValido())
-                            ConsultarCpf();
-                        else
-                        {
-                            if (!infoPessoa.booPF)
-                                FormMessage.ShowMessegeWarning("CNPJ inválido! Tente novamente...");
-                            else
-                                FormMessage.ShowMessegeWarning("CPF inválido! Tente novamente...");
+                    ValidarCpfCnpj validarCpfCnpj = new ValidarCpfCnpj(cpf);
 
-                            maskedTextBoxCpf.Clear();
-                            maskedTextBoxCpf.Focus();
-                        }
-                    }
+                    if (validarCpfCnpj.CpfCpnjValido())
+                        ConsultarCpf();
                     else
+                    {
+                        if (!infoPessoa.booPF)
+                            FormMessage.ShowMessegeWarning("CNPJ inválido! Tente novamente...");
+                        else
+                            FormMessage.ShowMessegeWarning("CPF inválido! Tente novamente...");
+
                         maskedTextBoxCpf.Clear();
+                        maskedTextBoxCpf.Focus();
+                    }
                 }
+                else
+                    maskedTextBoxCpf.Clear();
             }
         }
         private void ConsultarCpf()
