@@ -64,13 +64,15 @@ namespace Negocios
                     Marca = Convert.ToString(row["apamarca"]),
                     Modelo = Convert.ToString(row["apamodelo"]),
                     Obs = Convert.ToString(row["apaobs"]),
-                    Pessoa = Convert.ToString(row["apaidpessoa"]),
                     Senha = Convert.ToString(row["apasenha"]),
                     Serie = Convert.ToString(row["apaserie"]),
                     Sistema = Convert.ToString(row["apasistema"]),
                     SistemaVersao = Convert.ToString(row["apaversao"]),
                     Tela = Convert.ToString(row[""]),
                 };
+
+                PessoaNegocio pessoaNegocio = new PessoaNegocio(EmpConexao, ObjTransfer.EnumAssistencia.Loja);
+                iphone.Pessoa = pessoaNegocio.ConsultarPessoaId(Convert.ToInt32(row["apaidpessoa"]));
 
                 colecao.Add(iphone);
             }

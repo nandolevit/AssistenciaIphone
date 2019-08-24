@@ -9,6 +9,8 @@ using System.Threading;
 using System.Windows.Forms;
 
 using ObjTransfer;
+using ObjTransfer.Aparelho.Celulares;
+using ObjTransfer.Pessoas;
 using Negocios;
 
 namespace WinForms
@@ -21,12 +23,12 @@ namespace WinForms
 
         Thread thread;
         PessoaInfo infoCliente;
-        IphoneCelularInfo infoCelular;
-        IphoneCelularColecao colecaoCelular;
+        Iphone infoCelular;
+        IphoneColecao colecaoCelular;
         ServicoIphoneInfo infoDefeito;
 
         public ServicoIphoneInfo SelecionandoDefeito { get; set; }
-        public IphoneCelularInfo SelecionadoCelular { get; set; }
+        public Iphone SelecionadoCelular { get; set; }
 
         public FormAprelhoDefeito(PessoaInfo cliente)
         {
@@ -65,7 +67,7 @@ namespace WinForms
 
         private void ConsultarAparelhoCliente()
         {
-            colecaoCelular = negocioServ.ConsultarIphoneCelularIdCliente(infoCliente.pssid);
+            colecaoCelular = negocioServ.ConsultarIphoneCelularIdCliente(infoCliente.Id);
             textBoxDefeito.Select();
             Form1.encerrarThread = true;
             pictureBoxLoad.Visible = false;
@@ -97,7 +99,7 @@ namespace WinForms
                     AbrirListaAparelho(true);
                 else
                 {
-                    textBoxCodProd.Text = string.Format("{0:00000}", colecaoCelular[0].celid);
+                    textBoxCodProd.Text = string.Format("{0:00000}", colecaoCelular[0].Id);
                     textBoxProdDescricao.Text = colecaoCelular[0].ToString();
                     infoCelular = colecaoCelular[0];
                 }
@@ -111,11 +113,11 @@ namespace WinForms
             Form_ConsultarColecao colecao = new Form_ConsultarColecao();
             if (colecaoCelular != null)
             {
-                foreach (IphoneCelularInfo aparelho in colecaoCelular)
+                foreach (Iphone aparelho in colecaoCelular)
                 {
                     Form_Consultar form_Consultar = new Form_Consultar
                     {
-                        Cod = string.Format("{0:00000}", aparelho.celid),
+                        Cod = string.Format("{0:00000}", aparelho.Id),
                         Descricao = aparelho.ToString()
                     };
 
@@ -184,7 +186,7 @@ namespace WinForms
             if (formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
             {
                 infoCelular = formIphoneModelo.SelecionadoIphone;
-                textBoxCodProd.Text = string.Format("{0:00000}", infoCelular.celid);
+                textBoxCodProd.Text = string.Format("{0:00000}", infoCelular.Id);
                 textBoxProdDescricao.Text = infoCelular.ToString();
             }
             formIphoneModelo.Dispose();

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 using AccessDB;
 using System.Data;
 
@@ -120,18 +121,18 @@ namespace Negocios
         {
             if (accessDbMySql.Conectar())
             {
-                accessDbMySql.AddParametrosMySql("@id", pessoa.pssid);
-                accessDbMySql.AddParametrosMySql("@cpf", pessoa.psscpf);
-                accessDbMySql.AddParametrosMySql("@email", pessoa.pssemail);
-                accessDbMySql.AddParametrosMySql("@bairro", pessoa.pssendbairro);
-                accessDbMySql.AddParametrosMySql("@cep", pessoa.pssendcep);
-                accessDbMySql.AddParametrosMySql("@cidade", pessoa.pssendcidade);
-                accessDbMySql.AddParametrosMySql("@comp", pessoa.pssendcomplemento);
-                accessDbMySql.AddParametrosMySql("@log", pessoa.pssendlogradouro);
-                accessDbMySql.AddParametrosMySql("@uf", pessoa.pssenduf);
-                accessDbMySql.AddParametrosMySql("@niver", pessoa.pssniver);
-                accessDbMySql.AddParametrosMySql("@nome", pessoa.pssnome);
-                accessDbMySql.AddParametrosMySql("@telefone", pessoa.psstelefone);
+                accessDbMySql.AddParametrosMySql("@id", pessoa.Id);
+                accessDbMySql.AddParametrosMySql("@cpf", pessoa.Ident);
+                accessDbMySql.AddParametrosMySql("@email", pessoa.Email);
+                accessDbMySql.AddParametrosMySql("@bairro", pessoa.Endereco.Bairro);
+                accessDbMySql.AddParametrosMySql("@cep", pessoa.Endereco.Cep);
+                accessDbMySql.AddParametrosMySql("@cidade", pessoa.Endereco.Cidade);
+                accessDbMySql.AddParametrosMySql("@comp", pessoa.Endereco.Complemento);
+                accessDbMySql.AddParametrosMySql("@log", pessoa.Endereco.Logradouro);
+                accessDbMySql.AddParametrosMySql("@uf", pessoa.Endereco.Uf);
+                accessDbMySql.AddParametrosMySql("@niver", pessoa.Nascimento);
+                accessDbMySql.AddParametrosMySql("@nome", pessoa.Nome);
+                accessDbMySql.AddParametrosMySql("@telefone", pessoa.Telefone);
 
                 return accessDbMySql.ExecutarScalarMySql("spUpdatePessoa");
             }
@@ -144,20 +145,20 @@ namespace Negocios
             if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@assist", Assistencia);
-                accessDbMySql.AddParametrosMySql("@cpf", pessoa.psscpf);
-                accessDbMySql.AddParametrosMySql("@email", pessoa.pssemail);
-                accessDbMySql.AddParametrosMySql("@bairro", pessoa.pssendbairro);
-                accessDbMySql.AddParametrosMySql("@cep", pessoa.pssendcep);
-                accessDbMySql.AddParametrosMySql("@cidade", pessoa.pssendcidade);
-                accessDbMySql.AddParametrosMySql("@comp", pessoa.pssendcomplemento);
-                accessDbMySql.AddParametrosMySql("@log", pessoa.pssendlogradouro);
-                accessDbMySql.AddParametrosMySql("@uf", pessoa.pssenduf);
-                accessDbMySql.AddParametrosMySql("@tipo", pessoa.pssidtipo);
-                accessDbMySql.AddParametrosMySql("@user", pessoa.pssiduser);
-                accessDbMySql.AddParametrosMySql("@niver", pessoa.pssniver);
-                accessDbMySql.AddParametrosMySql("@nome", pessoa.pssnome);
-                accessDbMySql.AddParametrosMySql("@telefone", pessoa.psstelefone);
-                accessDbMySql.AddParametrosMySql("@padrao", pessoa.psspadrao);
+                accessDbMySql.AddParametrosMySql("@cpf", pessoa.Ident);
+                accessDbMySql.AddParametrosMySql("@email", pessoa.Email);
+                accessDbMySql.AddParametrosMySql("@bairro", pessoa.Endereco.Bairro);
+                accessDbMySql.AddParametrosMySql("@cep", pessoa.Endereco.Cep);
+                accessDbMySql.AddParametrosMySql("@cidade", pessoa.Endereco.Cidade);
+                accessDbMySql.AddParametrosMySql("@comp", pessoa.Endereco.Complemento);
+                accessDbMySql.AddParametrosMySql("@log", pessoa.Endereco.Logradouro);
+                accessDbMySql.AddParametrosMySql("@uf", pessoa.Endereco.Uf);
+                accessDbMySql.AddParametrosMySql("@tipo", pessoa.Tipo);
+                accessDbMySql.AddParametrosMySql("@user", pessoa.User.useidfuncionario);
+                accessDbMySql.AddParametrosMySql("@niver", pessoa.Nascimento);
+                accessDbMySql.AddParametrosMySql("@nome", pessoa.Nome);
+                accessDbMySql.AddParametrosMySql("@telefone", pessoa.Telefone);
+                accessDbMySql.AddParametrosMySql("@padrao", pessoa.Padrao);
 
                 return accessDbMySql.ExecutarScalarMySql("spInsertPessoa");
             }
@@ -170,48 +171,32 @@ namespace Negocios
             PessoaColecao colecao = new PessoaColecao();
             foreach (DataRow row in dataTable.Rows)
             {
-                enumTipo = new EnumPessoaTipo();
-                EnumAssistencia assist = new EnumAssistencia();
-
-                switch (Convert.ToInt32(row["pssassistencia"]))
-                {
-                    case 1:
-                        enumTipo = EnumPessoaTipo.Cliente;
-                        break;
-                    case 2:
-                        enumTipo = EnumPessoaTipo.Funcionario;
-                        break;
-                    case 3:
-                        enumTipo = EnumPessoaTipo.Fornecedor;
-                        break;
-                    default:
-                        break;
-                }
-
-                if (Convert.ToBoolean(row["pssassistencia"]))
-                    assist = EnumAssistencia.Assistencia;
-                else
-                    assist = EnumAssistencia.Loja;
-
                 PessoaInfo pessoa = new PessoaInfo
                 {
-                    pssassistencia = assist,
-                    psscpf = Convert.ToString(row["psscpf"]),
-                    pssdataregistro = Convert.ToDateTime(row["pssdataregistro"]).Date,
-                    pssnome = Convert.ToString(row["pssnome"]),
-                    pssemail = Convert.ToString(row["pssemail"]),
-                    pssendbairro = Convert.ToString(row["pssendbairro"]),
-                    pssendcep = Convert.ToString(row["pssendcep"]),
-                    pssendcidade = Convert.ToString(row["pssendcidade"]),
-                    pssendcomplemento = Convert.ToString(row["pssendcomplemento"]),
-                    pssendlogradouro = Convert.ToString(row["pssendlogradouro"]),
-                    pssenduf = Convert.ToString(row["pssenduf"]),
-                    pssid = Convert.ToInt32(row["pssid"]),
-                    pssidtipo = enumTipo,
-                    pssiduser = Convert.ToInt32(row["pssiduser"]),
-                    pssniver = Convert.ToDateTime(row["pssniver"]).Date,
-                    psstelefone = Convert.ToString(row["psstelefone"]),
+                    Assistencia = (EnumAssistencia)Convert.ToInt32(row["pessoaassistencia"]),
+                    Ident = Convert.ToString(row["pessoaident"]),
+                    DataRegistro = Convert.ToDateTime(row["pessoadataregistro"]).Date,
+                    Nome = Convert.ToString(row["pessoanome"]),
+                    Email = Convert.ToString(row["pessoaemail"]),
+                    Id = Convert.ToInt32(row["pessoaid"]),
+                    Tipo = (EnumPessoaTipo)Convert.ToInt32(row["pessoaassistencia"]),
+                    Nascimento = Convert.ToDateTime(row["pessoaniver"]).Date,
+                    Telefone = Convert.ToString(row["pessoatelefone"]),
                 };
+
+                pessoa.Endereco = new EnderecoInfo
+                {
+                    Bairro = Convert.ToString(row["pessoaendbairro"]),
+                    Cep = Convert.ToString(row["pessoaendcep"]),
+                    Cidade = Convert.ToString(row["pessoaendcidade"]),
+                    Complemento = Convert.ToString(row["pessoaendcomplemento"]),
+                    Logradouro = Convert.ToString(row["pessoaendlogradouro"]),
+                    PontoReferencia = Convert.ToString(row["pessoaendpontoref"]),
+                    Uf = Convert.ToString(row["pessoaenduf"]),
+                };
+
+                UserNegocio userNegocio = new UserNegocio(EmpConexao);
+                pessoa.User = userNegocio.ConsultarUsuarioFuncId(Convert.ToInt32(row["pessoaiduser"]));
 
                 colecao.Add(pessoa);
             }

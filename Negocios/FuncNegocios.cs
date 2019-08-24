@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using AccessDB;
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 
 namespace Negocios
 {

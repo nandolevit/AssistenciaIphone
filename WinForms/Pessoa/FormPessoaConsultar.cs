@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 using Negocios;
 using ObjTransfer;
+using ObjTransfer.Pessoas;
+using WinForms.Pessoa;
 
 namespace WinForms
 {
@@ -18,7 +20,7 @@ namespace WinForms
         Form1 form1 = new Form1();
         Thread thread;
         PessoaNegocio negocioPessoa;
-        PessoaInfo inforPessoa;
+        PessoaInfo infoPessoa;
         PessoaColecao colecaoPessoa;
 
         EnumPessoaTipo enumPessoa;
@@ -86,7 +88,7 @@ namespace WinForms
             {
                 PessoaInfo cliente = new PessoaInfo
                 {
-                    pssnome = "NENHUM REGISTRO FOI ENCONTRADO!"
+                    Nome = "NENHUM REGISTRO FOI ENCONTRADO!"
                 };
 
                 colecaoPessoa = new PessoaColecao
@@ -117,7 +119,7 @@ namespace WinForms
 
         private void AbrirCliente()
         {
-            if (colecaoPessoa[0].pssnome != "NENHUM REGISTRO FOI ENCONTRADO!")
+            if (colecaoPessoa[0].Nome != "NENHUM REGISTRO FOI ENCONTRADO!")
             {
                 Selecionado();
 
@@ -125,7 +127,7 @@ namespace WinForms
                     DialogResult = DialogResult.Yes;
                 else
                 {
-                    FormPessoa formCadastroPessoa = new FormPessoa(inforPessoa);
+                    FormPessoaCad formCadastroPessoa = new FormPessoaCad(infoPessoa);
                     formCadastroPessoa.ShowDialog(this);
                     formCadastroPessoa.Dispose();
                 }
@@ -138,8 +140,8 @@ namespace WinForms
         {
             if (dataGridViewPesquisarCliente.SelectedRows.Count > 0)
             {
-                inforPessoa = (PessoaInfo)dataGridViewPesquisarCliente.SelectedRows[0].DataBoundItem;
-                SelecionadoCliente = inforPessoa;
+                infoPessoa = (PessoaInfo)dataGridViewPesquisarCliente.SelectedRows[0].DataBoundItem;
+                SelecionadoCliente = infoPessoa;
             }
         }
 

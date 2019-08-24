@@ -17,7 +17,7 @@ namespace ObjTransfer.Pessoas
         public  string Ident { get; set; }
         public  string Email { get; set; }
         public  string Telefone { get; set; }
-        public  CepInfo Endereco { get; set; }
+        public  EnderecoInfo Endereco { get; set; }
         public  bool Padrao { get; set; }
         public  EnumAssistencia Assistencia { get; set; }
         public  bool booPF { get; set; }

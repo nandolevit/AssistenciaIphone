@@ -9,14 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ObjTransfer;
+using ObjTransfer.Aparelho.Celulares;
+using ObjTransfer.Pessoas;
 using Negocios;
 using System.IO;
+using WinForms.Pessoa;
 
 namespace WinForms
 {
     public partial class FormIphoneCadastrar : Form
     {
-        IphoneCelularInfo infoCelular;
+        Iphone infoCelular;
         PessoaInfo infoFornecedor;
         ServicoNegocio negocioServ;
         IphoneCompraInfo iphoneCompraInfo;
@@ -106,7 +109,13 @@ namespace WinForms
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            FormPessoa formPessoa = new FormPessoa(EnumPessoaTipo.Fornecedor);
+            FormPessoaCad formPessoa;
+            FormPessoaFisicaJuridica formPessoaFisicaJuridica = new FormPessoaFisicaJuridica();
+            if (formPessoaFisicaJuridica.ShowDialog(this) == DialogResult.Yes)
+                formPessoa = new FormPessoaCad(EnumPessoaTipo.Fornecedor, true);
+            else
+                formPessoa = new FormPessoaCad(EnumPessoaTipo.Fornecedor, false);
+
             if (formPessoa.ShowDialog(this) == DialogResult.Yes)
             {
                 infoFornecedor = formPessoa.SelecionadoPessoa;
@@ -116,7 +125,7 @@ namespace WinForms
 
         private void Selecionado()
         {
-            textBoxFornecedor.Text = infoFornecedor.pssnome;
+            textBoxFornecedor.Text = infoFornecedor.Nome;
             groupBoxCompra.Enabled = true;
         }
 
@@ -169,8 +178,8 @@ namespace WinForms
         private void ButtonSalvar_Click(object sender, EventArgs e)
         {
             negocioServ = new ServicoNegocio(Form1.Empresa.empconexao);
-            infoCelular.celidcliente = infoFornecedor.pssid;
-            infoCelular.celid = negocioServ.InsertIphoneCelular(infoCelular);
+            infoCelular.Pessoa = infoFornecedor;
+            infoCelular.Id = negocioServ.InsertIphoneCelular(infoCelular);
             PreencherInfo();
             negocioServ.InsertIphoneCompra(iphoneCompraInfo);
             FormMessage.ShowMessegeInfo("Registro salva com sucesso!");
@@ -185,8 +194,8 @@ namespace WinForms
                 iphcompragarantiaapple = radioButtonApple.Checked,
                 iphcompragarantiadias = Convert.ToInt32(comboBoxPrazo.Text),
                 iphcompraid = 0,
-                iphcompraidaparelho = infoCelular.celid,
-                iphcompraidfornecedor = infoFornecedor.pssid,
+                iphcompraidaparelho = infoCelular.Id,
+                iphcompraidfornecedor = infoFornecedor.Id,
                 iphcompranovo = radioButtonNovo.Checked,
                 iphcompravalorcompra = Convert.ToDecimal(textBoxCompra.Text),
                 iphcompravalorvenda = Convert.ToDecimal(textBoxVenda.Text),

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 using Negocios;
 
 namespace WinForms
@@ -40,10 +41,10 @@ namespace WinForms
 
                 if (pessoa != null)
                 {
-                    labelNome.Text = "Nome: " + pessoa.pssnome;
-                    labelEmail.Text = "E-mail: " + pessoa.pssemail;
+                    labelNome.Text = "Nome: " + pessoa.Nome;
+                    labelEmail.Text = "E-mail: " + pessoa.Email;
 
-                    user = negocioUser.ConsultarUsuarioFuncId(pessoa.pssid);
+                    user = negocioUser.ConsultarUsuarioFuncId(pessoa.Id);
 
                     buttonBuscar.Enabled = false;
                     buttonEmail.Enabled = true;
@@ -60,7 +61,7 @@ namespace WinForms
 
         private void ButtonEmail_Click(object sender, EventArgs e)
         {
-            if (pessoa.pssemail == "sem@email.com")
+            if (pessoa.Email == "sem@email.com")
             {
                 FormMessage.ShowMessegeWarning("O email não é válido,  não será possível enviar o email!");
                 return;
@@ -76,7 +77,7 @@ namespace WinForms
             mensagem += "Att," + Environment.NewLine;
             mensagem += "LevitSoft Soluções.";
 
-            if (negocioEmail.EnviarEmailBasico(pessoa.pssemail, "Esqueci minha senha!", mensagem))
+            if (negocioEmail.EnviarEmailBasico(pessoa.Email, "Esqueci minha senha!", mensagem))
                 this.DialogResult = DialogResult.Yes;
             else
                 this.DialogResult = DialogResult.Abort;

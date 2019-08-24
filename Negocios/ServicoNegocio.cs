@@ -251,52 +251,6 @@ namespace Negocios
             return colecao;
         }
 
-        public Celular ConsultarCelularId(int id)
-        {
-            if (accessDbMySql.Conectar())
-            {
-                accessDbMySql.AddParametrosMySql("@id", id);
-                DataTable dataTable = accessDbMySql.dataTableMySql("");
-                if (dataTable != null)
-                    return PreencherIphoneCelular(dataTable)[0];
-                else
-                    return null;
-            }
-            else
-                return null;
-        }
-
-        public CelularColecao ConsultarCelularIdCliente(int id)
-        {
-            if (accessDbMySql.Conectar())
-            {
-                accessDbMySql.AddParametrosMySql("@id", id);
-                DataTable dataTable = accessDbMySql.dataTableMySql("");
-                if (dataTable != null)
-                    return PreencherIphoneCelular(dataTable);
-                else
-                    return null;
-            }
-            else
-                return null;
-        }
-
-        private CelularColecao PreencherIphoneCelular(DataTable dataTable)
-        {
-            CelularColecao colecao = new CelularColecao();
-            foreach (DataRow row in dataTable.Rows)
-            {
-                Celular phone = new Celular
-                {
-                    
-                };
-
-                colecao.Add(phone);
-            }
-
-            return colecao;
-        }
-
         public int InsertIphoneCelular(Iphone phone)
         {
             if (accessDbMySql.Conectar())
@@ -317,9 +271,6 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@bateria", phone.Bateria);
                 accessDbMySql.AddParametrosMySql("@linha", phone.AparelhoLinha);
                 accessDbMySql.AddParametrosMySql("@saude", phone.BateriaSaude);
-
-                accessDbMySql.AddParametrosMySql("@contasenha", phone.);
-                accessDbMySql.AddParametrosMySql("@bateria", phone.Bateria);
 
                 return accessDbMySql.ExecutarScalarMySql("spInsertIphoneCelular");
             }

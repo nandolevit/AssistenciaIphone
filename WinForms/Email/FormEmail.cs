@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using Negocios;
 using ObjTransfer;
+using ObjTransfer.Pessoas;
 
 namespace WinForms
 {
@@ -131,13 +132,13 @@ namespace WinForms
             {
                 infoPessoa = formPessoaConsultar.SelecionadoCliente;
 
-                if (infoPessoa.pssemail == "sem@email.com")
+                if (infoPessoa.Email == "sem@email.com")
                 {
                     FormMessage.ShowMessegeWarning("A pessoa selecionada não possui e-mail cadastrado!");
                     return;
                 }
 
-                string novoEmail = FormTextoFormat.PrimeiroNome(infoPessoa.pssnome) + " - " + infoPessoa.pssemail;
+                string novoEmail = FormTextoFormat.PrimeiroNome(infoPessoa.Nome) + " - " + infoPessoa.Email;
                 if (string.IsNullOrEmpty(box.Text))
                     box.Text = novoEmail;
                 else

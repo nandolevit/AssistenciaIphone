@@ -111,8 +111,11 @@
     <Compile Include="Iphone\IphoneCompraInfo.cs" />
     <Compile Include="Pessoas\Empresa.cs" />
     <Compile Include="Pessoas\Empresa\EmpresaEmailInfo.cs" />
+    <Compile Include="Pessoas\EnderecoColecao.cs" />
+    <Compile Include="Pessoas\EnderecoInfo.cs" />
     <Compile Include="Pessoas\Enum\EnumAssistencia.cs" />
     <Compile Include="Pessoas\Enum\EnumPessoaTipo.cs" />
+    <Compile Include="Pessoas\PessoaColecao.cs" />
     <Compile Include="Pessoas\PessoaInfo.cs" />
     <Compile Include="Pessoas\PessoaFisica.cs" />
     <Compile Include="Pessoas\PessoaJuridica.cs" />

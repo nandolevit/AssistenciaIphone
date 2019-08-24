@@ -26,6 +26,7 @@ namespace ObjTransfer.Aparelho.Computadores
         public string Serie { get; set; }
         public string Sistema { get; set; }
         public string SistemaVersao { get; set; }
+        public string Obs { get; set; }
 
         public override string ToString()
         {

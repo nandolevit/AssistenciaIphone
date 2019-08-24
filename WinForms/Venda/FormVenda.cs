@@ -11,6 +11,8 @@ using System.Threading;
 
 using Negocios;
 using ObjTransfer;
+using ObjTransfer.Pessoas;
+
 
 namespace WinForms
 {
@@ -85,7 +87,7 @@ namespace WinForms
         private void PreencherCliente()
         {
             infoPessoa = clienteNegocios.ConsultarPessoaId(vendaInfo.venidcliente);
-            labelCliente.Text = "Cliente: " + infoPessoa.pssnome;
+            labelCliente.Text = "Cliente: " + infoPessoa.Nome;
             labelValorVolume.Text = string.Format("{0:000}", vendaInfo.venquant);
             labelValorTotal.Text = vendaInfo.venvalor.ToString("C");
 
@@ -128,7 +130,7 @@ namespace WinForms
             {
 
                 string texto = "Cancelado por: ";
-                texto += responsavel == null ? "" : responsavel.pssnome + Environment.NewLine + Environment.NewLine;
+                texto += responsavel == null ? "" : responsavel.Nome + Environment.NewLine + Environment.NewLine;
                 texto += "Motivo do cancelamento: " + vendaCanceladaInfo.vendacanceladadescricao;
                 textBoxObs.Text = texto;
                 this.Text = "Venda Cancelada!";
@@ -139,7 +141,7 @@ namespace WinForms
             labelOperacao.Text += " " + string.Format("{0:00000000}", vendaInfo.venid);
             labelVendedor.Text += " " + Form1.User.usenome;
             
-            labelCliente.Text = "Cliente: " + infoPessoa.pssnome;
+            labelCliente.Text = "Cliente: " + infoPessoa.Nome;
             labelValorVolume.Text = string.Format("{0:000}", vendaInfo.venquant);
             labelValorTotal.Text = vendaInfo.venvalor.ToString("C");
 
@@ -159,7 +161,7 @@ namespace WinForms
                     VendaInfo vendaNova = new VendaInfo
                     {
                         vendata = DateTime.Now.Date,
-                        venidcliente = infoPessoa.pssid,
+                        venidcliente = infoPessoa.Id,
                         venidfunc = Form1.User.useidfuncionario,
                         venidunidade = Form1.Unidade.uniid,
                         venquant = qtTotal,
@@ -289,8 +291,8 @@ namespace WinForms
                         Quant = detalhes.vendetalhesquant,
                         Total = detalhes.vendetalhesquant * detalhes.vendetalhesvalordesc,
                         ValorUnit = detalhes.vendetalhesvalorunit,
-                        funid = responsavel.pssid,
-                        funnome = responsavel.pssnome
+                        funid = responsavel.Id,
+                        funnome = responsavel.Nome
                     };
 
                     colecaoItemVenda.Add(itemVendaInfo);
@@ -311,8 +313,8 @@ namespace WinForms
                     Quant = dbQuant,
                     Total = dbTotal,
                     ValorUnit = produtoInfo.proValorVarejo,
-                    funid = responsavel.pssid,
-                    funnome = responsavel.pssnome
+                    funid = responsavel.Id,
+                    funnome = responsavel.Nome
                 };
                 
                 if (colecaoItemVenda.Count > 0)
@@ -380,8 +382,8 @@ namespace WinForms
             {
                 if (colecaoItemVenda[i].Id == item.Id)
                 {
-                    item.funid = responsavel.pssid;
-                    item.funnome = responsavel.pssnome;
+                    item.funid = responsavel.Id;
+                    item.funnome = responsavel.Nome;
                     colecaoItemVenda.RemoveAt(i);
                     break;
                 }
@@ -427,7 +429,7 @@ namespace WinForms
                 ClienteNegocios clienteNegocios = new ClienteNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
                 infoPessoa = clienteNegocios.ConsultarPessoaPadrao(EnumPessoaTipo.Cliente); //seleciona cliente avulso
 
-                labelCliente.Text = "Cliente: " + infoPessoa.pssnome;
+                labelCliente.Text = "Cliente: " + infoPessoa.Nome;
                 AtivarForm(true);
                 VendaVip = false;
             }
@@ -545,7 +547,7 @@ namespace WinForms
 
             VendaAtiva = ativar;
             responsavel = funcNegocios.ConsultarPessoaId(Form1.User.useidfuncionario);
-            labelVendedor.Text = "Vendedor: " + responsavel.pssnome;
+            labelVendedor.Text = "Vendedor: " + responsavel.Nome;
 
             if (ativar)
                 buttonProd.Select();
@@ -702,7 +704,7 @@ namespace WinForms
                 if (formClienteConsultar.DialogResult == DialogResult.Yes)
                 {
                     infoPessoa = formClienteConsultar.SelecionadoCliente;
-                    labelCliente.Text = "Cliente: " + infoPessoa.pssnome;
+                    labelCliente.Text = "Cliente: " + infoPessoa.Nome;
                     AtivarForm(true);
                 }
 
@@ -758,8 +760,8 @@ namespace WinForms
                 {
                     Form_Consultar form_Consultar = new Form_Consultar
                     {
-                        Cod = string.Format("{0:000}", func.pssid),
-                        Descricao = func.pssnome
+                        Cod = string.Format("{0:000}", func.Id),
+                        Descricao = func.Nome
                     };
 
                     form_ConsultarColecao.Add(form_Consultar);

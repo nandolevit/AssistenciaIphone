@@ -20,7 +20,7 @@ namespace WinForms.Pessoa
         bool fisica;
         EnumPessoaTipo enumPessoa = new EnumPessoaTipo();
         EnumAssistencia Assistencia = new EnumAssistencia();
-        PessoaFisica infoPessoa;
+        PessoaInfo infoPessoa;
         public PessoaInfo SelecionadoPessoa { get; set; }
         PessoaNegocio negocioPessoa;
 
@@ -30,6 +30,12 @@ namespace WinForms.Pessoa
             enumPessoa = tipo;
             TipoPessoa(pfisica);
             Assistencia = assist;
+        }
+
+        public FormPessoaCad(PessoaInfo pessoa)
+        {
+            Inicializar();
+            infoPessoa = pessoa;
         }
 
         public FormPessoaCad(EnumPessoaTipo tipo, bool pfisica)
@@ -276,19 +282,19 @@ namespace WinForms.Pessoa
             if (infoPessoa == null)
                 infoPessoa = new PessoaInfo();
 
-            infoPessoa.pssendbairro = textBoxBairro.Text;
-            infoPessoa.pssendcep = maskedTextBoxCep.Text;
-            infoPessoa.pssendcidade = textBoxCidade.Text;
-            infoPessoa.psscpf = maskedTextBoxCpf.Text;
-            infoPessoa.pssendcomplemento = textBoxComplemento.Text;
-            infoPessoa.pssemail = textBoxEmail.Text;
-            infoPessoa.pssendlogradouro = textBoxLogradouro.Text;
-            infoPessoa.pssnome = textBoxNome.Text;
-            infoPessoa.psstelefone = maskedTextBoxTel1.Text + (string.IsNullOrEmpty(maskedTextBoxTel2.Text) ? "" : "/" + maskedTextBoxTel2.Text);
-            infoPessoa.pssenduf = textBoxUF.Text;
-            infoPessoa.pssiduser = Form1.User == null ? 0 : Form1.User.useidfuncionario;
-            infoPessoa.pssidtipo = enumPessoa;
-            infoPessoa.pssniver = string.IsNullOrEmpty(textBoxNiver.Text) ? DateTime.Now.Date : Convert.ToDateTime(textBoxNiver.Text).Date;
+            infoPessoa.Endereco.Bairro = textBoxBairro.Text;
+            infoPessoa.Endereco.Cep = maskedTextBoxCep.Text;
+            infoPessoa.Endereco.Cidade = textBoxCidade.Text;
+            infoPessoa.Ident = maskedTextBoxCpf.Text;
+            infoPessoa.Endereco.Complemento = textBoxComplemento.Text;
+            infoPessoa.Email = textBoxEmail.Text;
+            infoPessoa.Endereco.Logradouro = textBoxLogradouro.Text;
+            infoPessoa.Nome = textBoxNome.Text;
+            infoPessoa.Telefone = maskedTextBoxTel1.Text + (string.IsNullOrEmpty(maskedTextBoxTel2.Text) ? "" : "/" + maskedTextBoxTel2.Text);
+            infoPessoa.Endereco.Uf = textBoxUF.Text;
+            infoPessoa.User = Form1.User;
+            infoPessoa.Tipo = enumPessoa;
+            infoPessoa.Nascimento = string.IsNullOrEmpty(textBoxNiver.Text) ? DateTime.Now.Date : Convert.ToDateTime(textBoxNiver.Text).Date;
 
             SelecionadoPessoa = infoPessoa;
         }
@@ -336,7 +342,7 @@ namespace WinForms.Pessoa
 
                 if (infoPessoa != null)
                 {
-                    if (FormMessage.ShowMessegeQuestion("Cliente: " + infoPessoa.pssnome + " já está cadastrada com este CPF/CNPJ. Deseja abrir este registro?") == DialogResult.Yes)
+                    if (FormMessage.ShowMessegeQuestion("Cliente: " + infoPessoa.Nome + " já está cadastrada com este CPF/CNPJ. Deseja abrir este registro?") == DialogResult.Yes)
                         PreencherFormPessoa();
                     else
                     {
@@ -349,13 +355,13 @@ namespace WinForms.Pessoa
 
         private void PreencherFormPessoa()
         {
-            textBoxId.Text = string.Format("{0:00000}", infoPessoa.pssid);
-            maskedTextBoxCpf.Text = infoPessoa.psscpf;
-            textBoxEmail.Text = infoPessoa.pssemail;
-            textBoxNome.Text = infoPessoa.pssnome;
-            textBoxNiver.Text = infoPessoa.pssniver.Date.ToShortDateString();
+            textBoxId.Text = string.Format("{0:00000}", infoPessoa.Id);
+            maskedTextBoxCpf.Text = infoPessoa.Ident;
+            textBoxEmail.Text = infoPessoa.Email;
+            textBoxNome.Text = infoPessoa.Nome;
+            textBoxNiver.Text = infoPessoa.Nascimento.Date.ToShortDateString();
 
-            string[] tel = infoPessoa.psstelefone.Split('/');
+            string[] tel = infoPessoa.Telefone.Split('/');
 
             if (tel.Length > 1)
             {
@@ -365,12 +371,12 @@ namespace WinForms.Pessoa
             else
                 maskedTextBoxTel1.Text = tel[0];
 
-            textBoxBairro.Text = infoPessoa.pssendbairro;
-            maskedTextBoxCep.Text = infoPessoa.pssendcep;
-            textBoxCidade.Text = infoPessoa.pssendcidade;
-            textBoxComplemento.Text = infoPessoa.pssendcomplemento;
-            textBoxLogradouro.Text = infoPessoa.pssendlogradouro;
-            textBoxUF.Text = infoPessoa.pssenduf;
+            textBoxBairro.Text = infoPessoa.Endereco.Bairro;
+            maskedTextBoxCep.Text = infoPessoa.Endereco.Cep;
+            textBoxCidade.Text = infoPessoa.Endereco.Cidade;
+            textBoxComplemento.Text = infoPessoa.Endereco.Complemento;
+            textBoxLogradouro.Text = infoPessoa.Endereco.Logradouro;
+            textBoxUF.Text = infoPessoa.Endereco.Uf;
         }
     }
 }
