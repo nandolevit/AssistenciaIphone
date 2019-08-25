@@ -111,27 +111,6 @@ namespace Negocios
 
         #region Iphone
 
-        public int InsertIphoneCompra(IphoneCompraInfo compraInfo)
-        {
-            if (accessDbMySql.Conectar())
-            {
-                accessDbMySql.AddParametrosMySql("@compra", compraInfo.iphcompradatacompra);
-                accessDbMySql.AddParametrosMySql("@garantia", compraInfo.iphcompradatagarantia);
-                accessDbMySql.AddParametrosMySql("@apple", compraInfo.iphcompragarantiaapple);
-                accessDbMySql.AddParametrosMySql("@dias", compraInfo.iphcompragarantiadias);
-                accessDbMySql.AddParametrosMySql("@aparelho", compraInfo.iphcompraidaparelho);
-                accessDbMySql.AddParametrosMySql("@fornecedor", compraInfo.iphcompraidfornecedor);
-                accessDbMySql.AddParametrosMySql("@novo", compraInfo.iphcompranovo);
-                accessDbMySql.AddParametrosMySql("@valorcompra", compraInfo.iphcompravalorcompra);
-                accessDbMySql.AddParametrosMySql("@valorvenda", compraInfo.iphcompravalorvenda);
-                accessDbMySql.AddParametrosMySql("@func", compraInfo.iphcompraidfunc);
-
-                return accessDbMySql.ExecutarScalarMySql("spInsertIphoneCompra");
-            }
-            else
-                return 0;
-        }
-
         public int UpdateServicoIphone(ServicoIphoneInfo defeito)
         {
             if (accessDbMySql.Conectar())
@@ -249,33 +228,6 @@ namespace Negocios
             }
 
             return colecao;
-        }
-
-        public int InsertIphoneCelular(Iphone phone)
-        {
-            if (accessDbMySql.Conectar())
-            {
-                accessDbMySql.AddParametrosMySql("@compra", phone.Ano);
-                accessDbMySql.AddParametrosMySql("@capacidade", phone.Capacidade);
-                accessDbMySql.AddParametrosMySql("@cor", phone.Cor);
-                accessDbMySql.AddParametrosMySql("@cliente", phone.Pessoa.Id);
-                accessDbMySql.AddParametrosMySql("@imei", phone.IMEI);
-                accessDbMySql.AddParametrosMySql("@imei2", phone.IMEI2);
-                accessDbMySql.AddParametrosMySql("@modelo", phone.Modelo);
-                accessDbMySql.AddParametrosMySql("@obs", phone.Obs);
-                accessDbMySql.AddParametrosMySql("@serie", phone.Serie);
-                accessDbMySql.AddParametrosMySql("@descricao", phone.Descricao);
-                accessDbMySql.AddParametrosMySql("@senha", phone.Senha);
-                accessDbMySql.AddParametrosMySql("@contalogin", phone.ContaLogin);
-                accessDbMySql.AddParametrosMySql("@contasenha", phone.ContaSenha);
-                accessDbMySql.AddParametrosMySql("@bateria", phone.Bateria);
-                accessDbMySql.AddParametrosMySql("@linha", phone.AparelhoLinha);
-                accessDbMySql.AddParametrosMySql("@saude", phone.BateriaSaude);
-
-                return accessDbMySql.ExecutarScalarMySql("spInsertIphoneCelular");
-            }
-            else
-                return 0;
         }
 
         public IphoneModeloCorColecao ConsultarIphoneModeloCorFotoId(int id)

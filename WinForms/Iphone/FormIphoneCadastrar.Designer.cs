@@ -78,7 +78,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(596, 297);
+            this.groupBox1.Size = new System.Drawing.Size(596, 320);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalhes:";
@@ -109,14 +109,14 @@
             this.groupBoxCompra.Enabled = false;
             this.groupBoxCompra.Location = new System.Drawing.Point(6, 58);
             this.groupBoxCompra.Name = "groupBoxCompra";
-            this.groupBoxCompra.Size = new System.Drawing.Size(584, 233);
+            this.groupBoxCompra.Size = new System.Drawing.Size(584, 256);
             this.groupBoxCompra.TabIndex = 4;
             this.groupBoxCompra.TabStop = false;
             this.groupBoxCompra.Text = "Detalhes da compra:";
             // 
             // textBoxLiquido
             // 
-            this.textBoxLiquido.Location = new System.Drawing.Point(188, 207);
+            this.textBoxLiquido.Location = new System.Drawing.Point(186, 227);
             this.textBoxLiquido.Name = "textBoxLiquido";
             this.textBoxLiquido.ReadOnly = true;
             this.textBoxLiquido.Size = new System.Drawing.Size(57, 20);
@@ -126,7 +126,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(188, 191);
+            this.label9.Location = new System.Drawing.Point(186, 211);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 17;
@@ -134,7 +134,7 @@
             // 
             // textBoxMargem
             // 
-            this.textBoxMargem.Location = new System.Drawing.Point(145, 207);
+            this.textBoxMargem.Location = new System.Drawing.Point(143, 227);
             this.textBoxMargem.Name = "textBoxMargem";
             this.textBoxMargem.ReadOnly = true;
             this.textBoxMargem.Size = new System.Drawing.Size(37, 20);
@@ -144,7 +144,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(145, 191);
+            this.label8.Location = new System.Drawing.Point(143, 211);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(24, 13);
             this.label8.TabIndex = 15;
@@ -248,7 +248,7 @@
             // 
             // textBoxVenda
             // 
-            this.textBoxVenda.Location = new System.Drawing.Point(75, 207);
+            this.textBoxVenda.Location = new System.Drawing.Point(73, 227);
             this.textBoxVenda.Name = "textBoxVenda";
             this.textBoxVenda.Size = new System.Drawing.Size(64, 20);
             this.textBoxVenda.TabIndex = 14;
@@ -257,7 +257,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(75, 191);
+            this.label7.Location = new System.Drawing.Point(73, 211);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 13);
             this.label7.TabIndex = 13;
@@ -265,7 +265,7 @@
             // 
             // textBoxCompra
             // 
-            this.textBoxCompra.Location = new System.Drawing.Point(5, 207);
+            this.textBoxCompra.Location = new System.Drawing.Point(3, 227);
             this.textBoxCompra.Name = "textBoxCompra";
             this.textBoxCompra.Size = new System.Drawing.Size(64, 20);
             this.textBoxCompra.TabIndex = 12;
@@ -274,7 +274,7 @@
             // labelCompra
             // 
             this.labelCompra.AutoSize = true;
-            this.labelCompra.Location = new System.Drawing.Point(5, 191);
+            this.labelCompra.Location = new System.Drawing.Point(3, 211);
             this.labelCompra.Name = "labelCompra";
             this.labelCompra.Size = new System.Drawing.Size(64, 13);
             this.labelCompra.TabIndex = 11;
@@ -282,7 +282,7 @@
             // 
             // textBoxObs
             // 
-            this.textBoxObs.Location = new System.Drawing.Point(251, 129);
+            this.textBoxObs.Location = new System.Drawing.Point(249, 149);
             this.textBoxObs.Multiline = true;
             this.textBoxObs.Name = "textBoxObs";
             this.textBoxObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -292,7 +292,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(251, 113);
+            this.label5.Location = new System.Drawing.Point(249, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 19;
@@ -301,7 +301,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 152);
+            this.label4.Location = new System.Drawing.Point(3, 172);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 13);
             this.label4.TabIndex = 9;
@@ -309,7 +309,7 @@
             // 
             // dateTimePickerGarantia
             // 
-            this.dateTimePickerGarantia.Location = new System.Drawing.Point(5, 168);
+            this.dateTimePickerGarantia.Location = new System.Drawing.Point(3, 188);
             this.dateTimePickerGarantia.Name = "dateTimePickerGarantia";
             this.dateTimePickerGarantia.Size = new System.Drawing.Size(240, 20);
             this.dateTimePickerGarantia.TabIndex = 10;
@@ -318,7 +318,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 113);
+            this.label3.Location = new System.Drawing.Point(3, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 7;
@@ -326,7 +326,7 @@
             // 
             // dateTimePickerCompra
             // 
-            this.dateTimePickerCompra.Location = new System.Drawing.Point(5, 129);
+            this.dateTimePickerCompra.Location = new System.Drawing.Point(3, 149);
             this.dateTimePickerCompra.Name = "dateTimePickerCompra";
             this.dateTimePickerCompra.Size = new System.Drawing.Size(240, 20);
             this.dateTimePickerCompra.TabIndex = 8;
@@ -347,9 +347,10 @@
             // textBoxModelo
             // 
             this.textBoxModelo.Location = new System.Drawing.Point(6, 90);
+            this.textBoxModelo.Multiline = true;
             this.textBoxModelo.Name = "textBoxModelo";
             this.textBoxModelo.ReadOnly = true;
-            this.textBoxModelo.Size = new System.Drawing.Size(546, 20);
+            this.textBoxModelo.Size = new System.Drawing.Size(546, 40);
             this.textBoxModelo.TabIndex = 5;
             // 
             // label1
@@ -410,7 +411,7 @@
             this.buttonSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSalvar.Image = global::WinForms.Properties.Resources.conf_green;
             this.buttonSalvar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonSalvar.Location = new System.Drawing.Point(431, 315);
+            this.buttonSalvar.Location = new System.Drawing.Point(431, 338);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(85, 40);
             this.buttonSalvar.TabIndex = 1;
@@ -424,7 +425,7 @@
             this.buttonFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFechar.Image = global::WinForms.Properties.Resources.exit_red;
             this.buttonFechar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonFechar.Location = new System.Drawing.Point(523, 315);
+            this.buttonFechar.Location = new System.Drawing.Point(523, 338);
             this.buttonFechar.Name = "buttonFechar";
             this.buttonFechar.Size = new System.Drawing.Size(85, 40);
             this.buttonFechar.TabIndex = 2;
@@ -438,7 +439,7 @@
             this.pictureBoxFoto.Image = global::WinForms.Properties.Resources.SteveJob;
             this.pictureBoxFoto.Location = new System.Drawing.Point(614, 12);
             this.pictureBoxFoto.Name = "pictureBoxFoto";
-            this.pictureBoxFoto.Size = new System.Drawing.Size(185, 297);
+            this.pictureBoxFoto.Size = new System.Drawing.Size(204, 320);
             this.pictureBoxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFoto.TabIndex = 1;
             this.pictureBoxFoto.TabStop = false;
@@ -448,7 +449,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(815, 361);
+            this.ClientSize = new System.Drawing.Size(830, 387);
             this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(this.buttonFechar);
             this.Controls.Add(this.groupBox1);

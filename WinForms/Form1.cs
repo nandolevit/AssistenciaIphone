@@ -785,10 +785,10 @@ namespace WinForms
                     }
                 }
 
-                formPessoa.Dispose();
+                formPessoaCad.Dispose();
             }
             else
-                AbrirForm(formPessoa);
+                AbrirForm(formPessoaCad);
 
 
         }

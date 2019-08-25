@@ -35,5 +35,21 @@ namespace ObjTransfer.Aparelho.Celulares
         public override string Serie { get; set; }
         public override string Sistema { get; set; }
         public override string SistemaVersao { get; set; }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(Descricao);
+            sb.Append(" - " + Modelo);
+            sb.Append(", Cor: " + Cor);
+            sb.Append(", Cap.: " + Capacidade);
+            sb.Append(", Saúde: " + BateriaSaude);
+            sb.Append(", IMEI: " + IMEI);
+            sb.Append(", Ano: " + Ano);
+            sb.Append(", Série: " + Serie);
+
+            return sb.ToString();
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace WinForms
     {
         Iphone infoCelular;
         PessoaInfo infoFornecedor;
-        ServicoNegocio negocioServ;
+        AparelhoNegocio negocioAparelho;
         IphoneCompraInfo iphoneCompraInfo;
 
 
@@ -75,7 +75,7 @@ namespace WinForms
                 infoCelular = formIphoneModelo.SelecionadoIphone;
                 ConvertImagem(formIphoneModelo.SelecionadaFoto.modcorfoto);
                 textBoxModelo.Text = infoCelular.ToString();
-
+                buttonSalvar.Enabled = true;
             }
             formIphoneModelo.Dispose();
         }
@@ -177,11 +177,11 @@ namespace WinForms
 
         private void ButtonSalvar_Click(object sender, EventArgs e)
         {
-            negocioServ = new ServicoNegocio(Form1.Empresa.empconexao);
+            negocioAparelho = new  AparelhoNegocio(Form1.Empresa.empconexao);
             infoCelular.Pessoa = infoFornecedor;
-            infoCelular.Id = negocioServ.InsertIphoneCelular(infoCelular);
+            infoCelular.Id = negocioAparelho.InsertIphone(infoCelular);
             PreencherInfo();
-            negocioServ.InsertIphoneCompra(iphoneCompraInfo);
+            negocioAparelho.InsertIphoneCompra(iphoneCompraInfo);
             FormMessage.ShowMessegeInfo("Registro salva com sucesso!");
         }
 

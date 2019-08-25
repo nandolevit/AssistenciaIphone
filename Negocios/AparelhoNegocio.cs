@@ -9,6 +9,7 @@ using ObjTransfer.Aparelho;
 using ObjTransfer.Aparelho.Celulares;
 using ObjTransfer.Aparelho.Computadores;
 using AccessDB;
+using ObjTransfer;
 
 namespace Negocios
 {
@@ -80,6 +81,27 @@ namespace Negocios
             return colecao;
         }
 
+        public int InsertIphoneCompra(IphoneCompraInfo compraInfo)
+        {
+            if (accessDbMySql.Conectar())
+            {
+                accessDbMySql.AddParametrosMySql("@compra", compraInfo.iphcompradatacompra);
+                accessDbMySql.AddParametrosMySql("@garantia", compraInfo.iphcompradatagarantia);
+                accessDbMySql.AddParametrosMySql("@apple", compraInfo.iphcompragarantiaapple);
+                accessDbMySql.AddParametrosMySql("@dias", compraInfo.iphcompragarantiadias);
+                accessDbMySql.AddParametrosMySql("@aparelho", compraInfo.iphcompraidaparelho);
+                accessDbMySql.AddParametrosMySql("@fornecedor", compraInfo.iphcompraidfornecedor);
+                accessDbMySql.AddParametrosMySql("@novo", compraInfo.iphcompranovo);
+                accessDbMySql.AddParametrosMySql("@valorcompra", compraInfo.iphcompravalorcompra);
+                accessDbMySql.AddParametrosMySql("@valorvenda", compraInfo.iphcompravalorvenda);
+                accessDbMySql.AddParametrosMySql("@func", compraInfo.iphcompraidfunc);
+
+                return accessDbMySql.ExecutarScalarMySql("spInsertIphoneCompra");
+            }
+            else
+                return 0;
+        }
+
         public int InsertIphone(Iphone iphone)
         {
             iphone.Id = InsertAparelho(iphone);
@@ -112,7 +134,6 @@ namespace Negocios
             if (accessDbMySql.Conectar())
             {
                 accessDbMySql.AddParametrosMySql("@imei", cel.IMEI);
-                accessDbMySql.AddParametrosMySql("@imei2", cel.IMEI2);
                 accessDbMySql.AddParametrosMySql("@bateria", cel.Bateria);
                 accessDbMySql.AddParametrosMySql("@capacidade", cel.Capacidade);
                 accessDbMySql.AddParametrosMySql("@chip", cel.Chip);

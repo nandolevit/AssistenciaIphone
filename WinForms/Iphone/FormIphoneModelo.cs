@@ -295,7 +295,7 @@ namespace WinForms
                 Ano = Convert.ToInt32(maskedTextBoxAno.Text),
                 AparelhoLinha = "Iphone/Ipad",
                 Bateria = "",
-                BateriaSaude = maskedTextBoxBateria.Text == "00" ? "100" : maskedTextBoxBateria.Text,
+                BateriaSaude = maskedTextBoxBateria.Text == "00" ? "100%" : maskedTextBoxBateria.Text + "%",
                 Capacidade = textBoxCap.Text,
                 Categoria = "Iphone",
                 CategoriaSub = "",
