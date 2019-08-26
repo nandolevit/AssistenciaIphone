@@ -106,6 +106,7 @@ namespace Negocios
             {
                 IphoneInfo iphone = ConsultarAparelhoIphone(Convert.ToInt32(row["iphcompraidaparelho"]));
 
+                decimal marg = Convert.ToDecimal(row["iphcompravalorvenda"]) - Convert.ToDecimal(row["iphcompravalorcompra"]);
                 IphoneCompraInfo compra = new IphoneCompraInfo
                 {
                     Descricao = iphone.ToString(),
@@ -113,9 +114,9 @@ namespace Negocios
                     iphcompradatacompra = Convert.ToDateTime(row["iphcompradatacompra"]),
                     iphcompradatacontrole = Convert.ToDateTime(row["iphcompradatacontrole"]),
                     iphcompradatagarantia = Convert.ToDateTime(row["iphcompradatagarantia"]),
-                    iphcomprafornecedor = negocio.ConsultarPessoaId(Convert.ToInt32(row["iphcompragarantiadias"])),
+                    iphcomprafornecedor = negocio.ConsultarPessoaId(Convert.ToInt32(row["iphcompraidfornecedor"])),
                     iphcompragarantiaapple = Convert.ToBoolean(row["iphcompragarantiaapple"]),
-                    DescricaoGarantia = Convert.ToBoolean(row["iphcompragarantiaapple"]) ? Convert.ToBoolean(row["iphcompranovo"]) ? "1 ano pela Apple" : "Apple, ate " + Convert.ToDateTime(row["iphcompradatagarantia"]).Date: "Loja, " + Convert.ToInt32(row["iphcompragarantiadias"]) + " dias, ate " + Convert.ToDateTime(row["iphcompradatagarantia"]).Date,
+                    DescricaoGarantia = Convert.ToBoolean(row["iphcompragarantiaapple"]) ? Convert.ToBoolean(row["iphcompranovo"]) ? "1 ano pela Apple" : "Apple, ate " + Convert.ToDateTime(row["iphcompradatagarantia"]).ToShortDateString() : "Loja, " + Convert.ToInt32(row["iphcompragarantiadias"]) + " dias, ate " + (DateTime.Now.AddDays(Convert.ToInt32(row["iphcompragarantiadias"])).ToShortDateString()),
                     iphcompragarantiadias = Convert.ToInt32(row["iphcompragarantiadias"]),
                     iphcompraid = Convert.ToInt32(row["iphcompraid"]),
                     iphcomprafunc = user.ConsultarUsuarioFuncId(Convert.ToInt32(row["iphcompraidfunc"])),
@@ -123,6 +124,7 @@ namespace Negocios
                     DescricaoEstado = Convert.ToBoolean(row["iphcompranovo"]) ? "Novo" : "Semi novo",
                     iphcompravalorcompra = Convert.ToDecimal(row["iphcompravalorcompra"]),
                     iphcompravalorvenda = Convert.ToDecimal(row["iphcompravalorvenda"]),
+                    DescricaoMargem = marg.ToString("C2") + "/" + ((marg * 100) / Convert.ToDecimal(row["iphcompravalorcompra"])).ToString("F1") + "%"
                 };
 
                 colecao.Add(compra);
@@ -167,7 +169,8 @@ namespace Negocios
                         accessDbMySql.AddParametrosMySql("@saude", iphone.BateriaSaude);
                         accessDbMySql.AddParametrosMySql("@celular", id);
 
-                        return accessDbMySql.ExecutarScalarMySql("spInsertIphone");
+                        accessDbMySql.ExecutarScalarMySql("spInsertIphone");
+                        return iphone.Id;
                     }
                     else
                         return 0;

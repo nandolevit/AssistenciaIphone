@@ -185,6 +185,7 @@ namespace WinForms
                 PreencherInfo();
                 negocioAparelho.InsertIphoneCompra(iphoneCompraInfo);
                 FormMessage.ShowMessegeInfo("Registro salva com sucesso!");
+                this.DialogResult = DialogResult.Yes;
             }
             else
                 FormMessage.ShowMessegeWarning("Informe os valores de compra de venda e compra!");

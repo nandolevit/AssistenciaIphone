@@ -15,6 +15,7 @@ namespace ObjTransfer
         public string Descricao { get; set; }
         public string DescricaoGarantia { get; set; }
         public string DescricaoEstado { get; set; }
+        public string DescricaoMargem { get; set; }
         public PessoaInfo iphcomprafornecedor { get; set; }
         public IphoneInfo iphcompraaparelho { get; set; }
         public bool iphcompranovo { get; set; }

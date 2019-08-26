@@ -813,9 +813,7 @@ namespace WinForms
             }
             else
             {
-                Iphone.FormIphoneListar formIphoneListar = new Iphone.FormIphoneListar();
-                AbrirForm(formIphoneListar, true);
-                //IphoneAbrir();
+                IphoneAbrir();
             }
         }
 
@@ -956,8 +954,8 @@ namespace WinForms
 
         private void IphoneAbrir()
         {
-            FormIphoneCadastrar formIphoneCadastrar = new FormIphoneCadastrar();
-            AbrirForm(formIphoneCadastrar);
+            Iphone.FormIphoneListar formIphoneListar = new Iphone.FormIphoneListar();
+            AbrirForm(formIphoneListar, true);
         }
         private void FornecedorToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
