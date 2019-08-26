@@ -24,7 +24,7 @@ namespace Negocios
             accessDbMySql = new AccessDbMySql(EmpConexao);
         }
 
-        public IphoneInfo ConsultarIphone(int id)
+        public IphoneInfo ConsultarAparelhoIphone(int id)
         {
             if (accessDbMySql.Conectar())
             {
@@ -41,6 +41,7 @@ namespace Negocios
 
         private IphoneColecao PreencherIphone(DataTable dataTable)
         {
+            PessoaNegocio negocio = new PessoaNegocio(EmpConexao, EnumAssistencia.Loja);
             IphoneColecao colecao = new IphoneColecao();
             foreach (DataRow row in dataTable.Rows)
             {
@@ -48,34 +49,83 @@ namespace Negocios
                 {
                     Ano = Convert.ToInt32(row["apaano"]),
                     AparelhoLinha = Convert.ToString(row["apalinha"]),
-                    Bateria = Convert.ToString(row["apabateria"]),
-                    BateriaSaude = Convert.ToString(row["iphsaude"]),
+                    Bateria = Convert.ToString(row["celbateria"]),
+                    BateriaSaude = Convert.ToString(row["iphbateriasaude"]),
                     Capacidade = Convert.ToString(row["celcapacidade"]),
                     Categoria = Convert.ToString(row["apacategoria"]),
                     CategoriaSub = Convert.ToString(row["apacategoriasub"]),
-                    Chip = Convert.ToString(row[""]),
-                    Conector = Convert.ToString(row[""]),
-                    ContaLogin = Convert.ToString(row[""]),
-                    ContaSenha = Convert.ToString(row[""]),
-                    Cor = Convert.ToString(row[""]),
-                    Descricao = Convert.ToString(row[""]),
+                    Chip = Convert.ToString(row["celchip"]),
+                    Conector = Convert.ToString(row["celconector"]),
+                    ContaLogin = Convert.ToString(row["celcontalogin"]),
+                    ContaSenha = Convert.ToString(row["celcontasenha"]),
+                    Cor = Convert.ToString(row["apacor"]),
+                    Descricao = Convert.ToString(row["apadescricao"]),
                     Id = Convert.ToInt32(row["apaid"]),
-                    IMEI = Convert.ToString(row[""]),
-                    IMEI2 = Convert.ToString(row[""]),
+                    IMEI = Convert.ToString(row["celimei"]),
                     Marca = Convert.ToString(row["apamarca"]),
                     Modelo = Convert.ToString(row["apamodelo"]),
                     Obs = Convert.ToString(row["apaobs"]),
                     Senha = Convert.ToString(row["apasenha"]),
                     Serie = Convert.ToString(row["apaserie"]),
                     Sistema = Convert.ToString(row["apasistema"]),
-                    SistemaVersao = Convert.ToString(row["apaversao"]),
-                    Tela = Convert.ToString(row[""]),
+                    SistemaVersao = Convert.ToString(row["apasistemaversao"]),
+                    Tela = Convert.ToString(row["celtela"]),
+                    Pessoa = negocio.ConsultarPessoaId(Convert.ToInt32(row["apaidpessoa"])),
                 };
 
                 PessoaNegocio pessoaNegocio = new PessoaNegocio(EmpConexao, ObjTransfer.EnumAssistencia.Loja);
                 iphone.Pessoa = pessoaNegocio.ConsultarPessoaId(Convert.ToInt32(row["apaidpessoa"]));
 
                 colecao.Add(iphone);
+            }
+
+            return colecao;
+        }
+
+        public IphoneCompraColecao ConsultarIphoneCompra()
+        {
+            if (accessDbMySql.Conectar())
+            {
+                DataTable dataTable = accessDbMySql.dataTableMySql("spConsultarIphoneCompra");
+
+                if (dataTable != null)
+                    return PreencherIphoneCompra(dataTable);
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+
+        private IphoneCompraColecao PreencherIphoneCompra(DataTable dataTable)
+        {
+            PessoaNegocio negocio = new PessoaNegocio(EmpConexao, EnumAssistencia.Loja);
+            UserNegocio user = new UserNegocio(EmpConexao);
+            IphoneCompraColecao colecao = new IphoneCompraColecao();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                IphoneInfo iphone = ConsultarAparelhoIphone(Convert.ToInt32(row["iphcompraidaparelho"]));
+
+                IphoneCompraInfo compra = new IphoneCompraInfo
+                {
+                    Descricao = iphone.ToString(),
+                    iphcompraaparelho = iphone,
+                    iphcompradatacompra = Convert.ToDateTime(row["iphcompradatacompra"]),
+                    iphcompradatacontrole = Convert.ToDateTime(row["iphcompradatacontrole"]),
+                    iphcompradatagarantia = Convert.ToDateTime(row["iphcompradatagarantia"]),
+                    iphcomprafornecedor = negocio.ConsultarPessoaId(Convert.ToInt32(row["iphcompragarantiadias"])),
+                    iphcompragarantiaapple = Convert.ToBoolean(row["iphcompragarantiaapple"]),
+                    DescricaoGarantia = Convert.ToBoolean(row["iphcompragarantiaapple"]) ? Convert.ToBoolean(row["iphcompranovo"]) ? "1 ano pela Apple" : "Apple, ate " + Convert.ToDateTime(row["iphcompradatagarantia"]).Date: "Loja, " + Convert.ToInt32(row["iphcompragarantiadias"]) + " dias, ate " + Convert.ToDateTime(row["iphcompradatagarantia"]).Date,
+                    iphcompragarantiadias = Convert.ToInt32(row["iphcompragarantiadias"]),
+                    iphcompraid = Convert.ToInt32(row["iphcompraid"]),
+                    iphcomprafunc = user.ConsultarUsuarioFuncId(Convert.ToInt32(row["iphcompraidfunc"])),
+                    iphcompranovo = Convert.ToBoolean(row["iphcompranovo"]),
+                    DescricaoEstado = Convert.ToBoolean(row["iphcompranovo"]) ? "Novo" : "Semi novo",
+                    iphcompravalorcompra = Convert.ToDecimal(row["iphcompravalorcompra"]),
+                    iphcompravalorvenda = Convert.ToDecimal(row["iphcompravalorvenda"]),
+                };
+
+                colecao.Add(compra);
             }
 
             return colecao;
@@ -94,7 +144,7 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@novo", compraInfo.iphcompranovo);
                 accessDbMySql.AddParametrosMySql("@valorcompra", compraInfo.iphcompravalorcompra);
                 accessDbMySql.AddParametrosMySql("@valorvenda", compraInfo.iphcompravalorvenda);
-                accessDbMySql.AddParametrosMySql("@func", compraInfo.iphcompraidfunc);
+                accessDbMySql.AddParametrosMySql("@func", compraInfo.iphcomprafunc.useidfuncionario);
 
                 return accessDbMySql.ExecutarScalarMySql("spInsertIphoneCompra");
             }

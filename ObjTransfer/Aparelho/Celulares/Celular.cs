@@ -10,7 +10,6 @@ namespace ObjTransfer.Aparelho.Celulares
     public abstract class Celular : IAparelho
     {
         public abstract string IMEI { get; set; }
-        public string IMEI2 { get; set; }
         public abstract string Capacidade { get; set; }
         public abstract string Conector { get; set; }
         public abstract string Tela { get; set; }

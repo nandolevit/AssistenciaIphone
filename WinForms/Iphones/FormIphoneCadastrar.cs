@@ -218,7 +218,7 @@ namespace WinForms
                 iphcompranovo = radioButtonNovo.Checked,
                 iphcompravalorcompra = Convert.ToDecimal(textBoxCompra.Text),
                 iphcompravalorvenda = Convert.ToDecimal(textBoxVenda.Text),
-                iphcompraidfunc = Form1.User.useidfuncionario
+                iphcomprafunc = Form1.User
             };
         }
     }

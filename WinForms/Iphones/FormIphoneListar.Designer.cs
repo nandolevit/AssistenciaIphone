@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewListar = new System.Windows.Forms.DataGridView();
             this.colIphone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDataCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,16 +75,19 @@
             // 
             this.colGarantia.HeaderText = "Garantia:";
             this.colGarantia.Name = "colGarantia";
+            this.colGarantia.Width = 150;
             // 
             // colEstado
             // 
             this.colEstado.HeaderText = "Estado:";
             this.colEstado.Name = "colEstado";
+            this.colEstado.Width = 75;
             // 
             // colDataGarantia
             // 
             this.colDataGarantia.HeaderText = "Data Garantia:";
             this.colDataGarantia.Name = "colDataGarantia";
+            this.colDataGarantia.Visible = false;
             // 
             // colFornecedor
             // 
@@ -91,11 +96,15 @@
             // 
             // colValorCompra
             // 
+            dataGridViewCellStyle1.Format = "C2";
+            this.colValorCompra.DefaultCellStyle = dataGridViewCellStyle1;
             this.colValorCompra.HeaderText = "Valor Compra:";
             this.colValorCompra.Name = "colValorCompra";
             // 
             // colValorVenda
             // 
+            dataGridViewCellStyle2.Format = "C2";
+            this.colValorVenda.DefaultCellStyle = dataGridViewCellStyle2;
             this.colValorVenda.HeaderText = "Valor Venda:";
             this.colValorVenda.Name = "colValorVenda";
             // 
@@ -107,6 +116,7 @@
             this.Controls.Add(this.dataGridViewListar);
             this.Name = "FormIphoneListar";
             this.Text = "FormIphoneListar";
+            this.Load += new System.EventHandler(this.FormIphoneListar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListar)).EndInit();
             this.ResumeLayout(false);
 

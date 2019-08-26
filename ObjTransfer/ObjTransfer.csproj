@@ -63,6 +63,7 @@
     <Compile Include="Aparelho\AparelhoLinhaColecao.cs" />
     <Compile Include="Aparelho\AparelhoMarca.cs" />
     <Compile Include="Aparelho\AparelhoMarcaColecao.cs" />
+    <Compile Include="Aparelho\Celulares\IphoneCompraColecao.cs" />
     <Compile Include="Aparelho\Celulares\IphoneInfo.cs" />
     <Compile Include="Aparelho\Celulares\IphoneColecao.cs" />
     <Compile Include="Aparelho\Celulares\SmartPhone.cs" />
