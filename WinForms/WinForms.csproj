@@ -144,10 +144,10 @@
     <Compile Include="Caixa\FormAbrirCaixa.Designer.cs">
       <DependentUpon>FormAbrirCaixa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Iphone\FormIphoneCadastrar.cs">
+    <Compile Include="Iphones\FormIphoneCadastrar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Iphone\FormIphoneCadastrar.Designer.cs">
+    <Compile Include="Iphones\FormIphoneCadastrar.Designer.cs">
       <DependentUpon>FormIphoneCadastrar.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLerText.cs">
@@ -155,6 +155,12 @@
     </Compile>
     <Compile Include="FormLerText.Designer.cs">
       <DependentUpon>FormLerText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Iphones\FormIphoneListar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Iphones\FormIphoneListar.Designer.cs">
+      <DependentUpon>FormIphoneListar.cs</DependentUpon>
     </Compile>
     <Compile Include="Pessoa\FormAddData.cs">
       <SubType>Form</SubType>
@@ -258,10 +264,10 @@
       <DependentUpon>FormEstoqueContagem.cs</DependentUpon>
     </Compile>
     <Compile Include="Classe\FormFormat.cs" />
-    <Compile Include="Iphone\FormIphoneModelo.cs">
+    <Compile Include="Iphones\FormIphoneModelo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Iphone\FormIphoneModelo.Designer.cs">
+    <Compile Include="Iphones\FormIphoneModelo.Designer.cs">
       <DependentUpon>FormIphoneModelo.cs</DependentUpon>
     </Compile>
     <Compile Include="Entrada\FormLancamentos.cs">
@@ -355,10 +361,10 @@
     <Compile Include="Relatorio\FormReportViewerCupomSemRodape.Designer.cs">
       <DependentUpon>FormReportViewerCupomSemRodape.cs</DependentUpon>
     </Compile>
-    <Compile Include="Iphone\FormIphoneSalvarFoto.cs">
+    <Compile Include="Iphones\FormIphoneSalvarFoto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Iphone\FormIphoneSalvarFoto.Designer.cs">
+    <Compile Include="Iphones\FormIphoneSalvarFoto.Designer.cs">
       <DependentUpon>FormIphoneSalvarFoto.cs</DependentUpon>
     </Compile>
     <Compile Include="Caixa\FormSangria.cs">
@@ -433,11 +439,14 @@
     <EmbeddedResource Include="Caixa\FormAbrirCaixa.resx">
       <DependentUpon>FormAbrirCaixa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Iphone\FormIphoneCadastrar.resx">
+    <EmbeddedResource Include="Iphones\FormIphoneCadastrar.resx">
       <DependentUpon>FormIphoneCadastrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLerText.resx">
       <DependentUpon>FormLerText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Iphones\FormIphoneListar.resx">
+      <DependentUpon>FormIphoneListar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pessoa\FormAddData.resx">
       <DependentUpon>FormAddData.cs</DependentUpon>
@@ -487,7 +496,7 @@
     <EmbeddedResource Include="Produto\Estoque\FormEstoqueContagem.resx">
       <DependentUpon>FormEstoqueContagem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Iphone\FormIphoneModelo.resx">
+    <EmbeddedResource Include="Iphones\FormIphoneModelo.resx">
       <DependentUpon>FormIphoneModelo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Entrada\FormLancamentos.resx">
@@ -535,7 +544,7 @@
     <EmbeddedResource Include="Relatorio\FormReportViewerCupomSemRodape.resx">
       <DependentUpon>FormReportViewerCupomSemRodape.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Iphone\FormIphoneSalvarFoto.resx">
+    <EmbeddedResource Include="Iphones\FormIphoneSalvarFoto.resx">
       <DependentUpon>FormIphoneSalvarFoto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Caixa\FormSangria.resx">

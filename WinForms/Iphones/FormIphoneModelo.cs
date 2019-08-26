@@ -17,13 +17,13 @@ namespace WinForms
 {
     public partial class FormIphoneModelo : Form
     {
-        Iphone cel;
+        IphoneInfo cel;
         IphoneModeloColecao colecaoIphone;
         IphoneModeloColecao colecaoIpad;
         IphoneModeloInfo infoIphone;
         IphoneModeloCorColecao colecaoCor;
         IphoneModeloCorColecao colecaoCorSelecionada;
-        public Iphone SelecionadoIphone { get; set; }
+        public IphoneInfo SelecionadoIphone { get; set; }
         public IphoneModeloCorInfo SelecionadaFoto { get; set; }
         int cod = 0;
 
@@ -290,7 +290,7 @@ namespace WinForms
 
         private void PreencherCelular()
         {
-            cel = new Iphone
+            cel = new IphoneInfo
             {
                 Ano = Convert.ToInt32(maskedTextBoxAno.Text),
                 AparelhoLinha = "Iphone/Ipad",

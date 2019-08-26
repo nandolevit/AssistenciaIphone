@@ -7,7 +7,7 @@ using ObjTransfer.Pessoas;
 
 namespace ObjTransfer.Aparelho.Celulares
 {
-    public class Iphone : Celular
+    public class IphoneInfo : Celular
     {
         public string BateriaSaude { get; set; }
 

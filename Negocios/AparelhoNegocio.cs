@@ -24,7 +24,7 @@ namespace Negocios
             accessDbMySql = new AccessDbMySql(EmpConexao);
         }
 
-        public Iphone ConsultarIphone(int id)
+        public IphoneInfo ConsultarIphone(int id)
         {
             if (accessDbMySql.Conectar())
             {
@@ -44,7 +44,7 @@ namespace Negocios
             IphoneColecao colecao = new IphoneColecao();
             foreach (DataRow row in dataTable.Rows)
             {
-                Iphone iphone = new Iphone
+                IphoneInfo iphone = new IphoneInfo
                 {
                     Ano = Convert.ToInt32(row["apaano"]),
                     AparelhoLinha = Convert.ToString(row["apalinha"]),
@@ -89,8 +89,8 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@garantia", compraInfo.iphcompradatagarantia);
                 accessDbMySql.AddParametrosMySql("@apple", compraInfo.iphcompragarantiaapple);
                 accessDbMySql.AddParametrosMySql("@dias", compraInfo.iphcompragarantiadias);
-                accessDbMySql.AddParametrosMySql("@aparelho", compraInfo.iphcompraidaparelho);
-                accessDbMySql.AddParametrosMySql("@fornecedor", compraInfo.iphcompraidfornecedor);
+                accessDbMySql.AddParametrosMySql("@aparelho", compraInfo.iphcompraaparelho.Id);
+                accessDbMySql.AddParametrosMySql("@fornecedor", compraInfo.iphcomprafornecedor.Id);
                 accessDbMySql.AddParametrosMySql("@novo", compraInfo.iphcompranovo);
                 accessDbMySql.AddParametrosMySql("@valorcompra", compraInfo.iphcompravalorcompra);
                 accessDbMySql.AddParametrosMySql("@valorvenda", compraInfo.iphcompravalorvenda);
@@ -102,7 +102,7 @@ namespace Negocios
                 return 0;
         }
 
-        public int InsertIphone(Iphone iphone)
+        public int InsertIphone(IphoneInfo iphone)
         {
             iphone.Id = InsertAparelho(iphone);
 
@@ -115,7 +115,7 @@ namespace Negocios
                     if (accessDbMySql.Conectar())
                     {
                         accessDbMySql.AddParametrosMySql("@saude", iphone.BateriaSaude);
-                        accessDbMySql.AddParametrosMySql("@id", id);
+                        accessDbMySql.AddParametrosMySql("@celular", id);
 
                         return accessDbMySql.ExecutarScalarMySql("spInsertIphone");
                     }

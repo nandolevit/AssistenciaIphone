@@ -181,7 +181,6 @@
             this.comboBoxAtendente.Name = "comboBoxAtendente";
             this.comboBoxAtendente.Size = new System.Drawing.Size(344, 21);
             this.comboBoxAtendente.TabIndex = 7;
-            this.comboBoxAtendente.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtendente_SelectedIndexChanged);
             // 
             // labelStatus
             // 
@@ -201,7 +200,6 @@
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(185, 21);
             this.comboBoxStatus.TabIndex = 5;
-            this.comboBoxStatus.SelectedIndexChanged += new System.EventHandler(this.comboBoxStatus_SelectedIndexChanged);
             // 
             // labelDataFim
             // 
@@ -227,7 +225,6 @@
             this.dateTimePickerFim.Name = "dateTimePickerFim";
             this.dateTimePickerFim.Size = new System.Drawing.Size(239, 20);
             this.dateTimePickerFim.TabIndex = 3;
-            this.dateTimePickerFim.ValueChanged += new System.EventHandler(this.dateTimePickerFim_ValueChanged);
             // 
             // dateTimePickerIni
             // 
@@ -235,7 +232,6 @@
             this.dateTimePickerIni.Name = "dateTimePickerIni";
             this.dateTimePickerIni.Size = new System.Drawing.Size(239, 20);
             this.dateTimePickerIni.TabIndex = 1;
-            this.dateTimePickerIni.ValueChanged += new System.EventHandler(this.dateTimePickerIni_ValueChanged);
             // 
             // groupBoxTipo
             // 
@@ -256,7 +252,6 @@
             this.textBoxPesquisar.Name = "textBoxPesquisar";
             this.textBoxPesquisar.Size = new System.Drawing.Size(566, 20);
             this.textBoxPesquisar.TabIndex = 2;
-            this.textBoxPesquisar.TextChanged += new System.EventHandler(this.textBoxPesquisar_TextChanged);
             // 
             // radioButtonNome
             // 
@@ -270,7 +265,6 @@
             this.radioButtonNome.TabStop = true;
             this.radioButtonNome.Text = "Cliente";
             this.radioButtonNome.UseVisualStyleBackColor = true;
-            this.radioButtonNome.CheckedChanged += new System.EventHandler(this.radioButtonNome_CheckedChanged);
             // 
             // buttonPesquisar
             // 

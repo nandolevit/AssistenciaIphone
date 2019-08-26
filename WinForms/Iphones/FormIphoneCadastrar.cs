@@ -19,7 +19,7 @@ namespace WinForms
 {
     public partial class FormIphoneCadastrar : Form
     {
-        Iphone infoCelular;
+        IphoneInfo infoCelular;
         PessoaInfo infoFornecedor;
         AparelhoNegocio negocioAparelho;
         IphoneCompraInfo iphoneCompraInfo;
@@ -177,12 +177,31 @@ namespace WinForms
 
         private void ButtonSalvar_Click(object sender, EventArgs e)
         {
-            negocioAparelho = new  AparelhoNegocio(Form1.Empresa.empconexao);
-            infoCelular.Pessoa = infoFornecedor;
-            infoCelular.Id = negocioAparelho.InsertIphone(infoCelular);
-            PreencherInfo();
-            negocioAparelho.InsertIphoneCompra(iphoneCompraInfo);
-            FormMessage.ShowMessegeInfo("Registro salva com sucesso!");
+            if (Campos())
+            {
+                negocioAparelho = new AparelhoNegocio(Form1.Empresa.empconexao);
+                infoCelular.Pessoa = infoFornecedor;
+                infoCelular.Id = negocioAparelho.InsertIphone(infoCelular);
+                PreencherInfo();
+                negocioAparelho.InsertIphoneCompra(iphoneCompraInfo);
+                FormMessage.ShowMessegeInfo("Registro salva com sucesso!");
+            }
+            else
+                FormMessage.ShowMessegeWarning("Informe os valores de compra de venda e compra!");
+        }
+
+        private bool Campos()
+        {
+            if (infoCelular == null)
+                return false;
+
+            if (Convert.ToDecimal(textBoxCompra.Text) <= 0)
+                return false;
+
+            if (Convert.ToDecimal(textBoxVenda.Text) <= 0)
+                return false;
+
+            return true;
         }
 
         private void PreencherInfo()
@@ -194,8 +213,8 @@ namespace WinForms
                 iphcompragarantiaapple = radioButtonApple.Checked,
                 iphcompragarantiadias = Convert.ToInt32(comboBoxPrazo.Text),
                 iphcompraid = 0,
-                iphcompraidaparelho = infoCelular.Id,
-                iphcompraidfornecedor = infoFornecedor.Id,
+                iphcompraaparelho = infoCelular,
+                iphcomprafornecedor = infoFornecedor,
                 iphcompranovo = radioButtonNovo.Checked,
                 iphcompravalorcompra = Convert.ToDecimal(textBoxCompra.Text),
                 iphcompravalorvenda = Convert.ToDecimal(textBoxVenda.Text),

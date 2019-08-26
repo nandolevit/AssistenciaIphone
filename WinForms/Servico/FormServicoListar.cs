@@ -156,41 +156,6 @@ namespace WinForms
             dataFim = dateTimePickerFim.Value;
         }
 
-        private void checkBoxGarantia_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxAtendente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePickerIni_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePickerFim_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPesquisar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButtonNome_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Pesquisar()
         {
             palavraPesquisa = textBoxPesquisar.Text;

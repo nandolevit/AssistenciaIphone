@@ -23,12 +23,12 @@ namespace WinForms
 
         Thread thread;
         PessoaInfo infoCliente;
-        Iphone infoCelular;
+        IphoneInfo infoCelular;
         IphoneColecao colecaoCelular;
         ServicoIphoneInfo infoDefeito;
 
         public ServicoIphoneInfo SelecionandoDefeito { get; set; }
-        public Iphone SelecionadoCelular { get; set; }
+        public IphoneInfo SelecionadoCelular { get; set; }
 
         public FormAprelhoDefeito(PessoaInfo cliente)
         {
@@ -113,7 +113,7 @@ namespace WinForms
             Form_ConsultarColecao colecao = new Form_ConsultarColecao();
             if (colecaoCelular != null)
             {
-                foreach (Iphone aparelho in colecaoCelular)
+                foreach (IphoneInfo aparelho in colecaoCelular)
                 {
                     Form_Consultar form_Consultar = new Form_Consultar
                     {

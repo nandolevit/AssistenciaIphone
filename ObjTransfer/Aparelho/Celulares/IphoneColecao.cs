@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObjTransfer.Aparelho.Celulares
 {
-    public class IphoneColecao : List<Iphone>
+    public class IphoneColecao : List<IphoneInfo>
     {
     }
 }

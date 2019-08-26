@@ -25,7 +25,7 @@ namespace WinForms
         ServicoColecao colecaoServ;
         ServicoIphoneInfo infoServIphone;
         ServicoIphoneColecao colecaoServIphone;
-        Iphone infoCelular;
+        IphoneInfo infoCelular;
 
         ServicoNegocio negocioServ = new ServicoNegocio(Form1.Empresa.empconexao);
         FuncNegocios negocioFunc = new FuncNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);

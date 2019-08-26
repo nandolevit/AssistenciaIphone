@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObjTransfer.Pessoas;
+using ObjTransfer.Aparelho.Celulares;
 
 namespace ObjTransfer
 {
@@ -10,8 +12,9 @@ namespace ObjTransfer
     {
 
         public int iphcompraid { get; set; }
-        public int iphcompraidfornecedor { get; set; }
-        public int iphcompraidaparelho { get; set; }
+        public string Descricao { get; set; }
+        public PessoaInfo iphcomprafornecedor { get; set; }
+        public IphoneInfo iphcompraaparelho { get; set; }
         public bool iphcompranovo { get; set; }
         public bool iphcompragarantiaapple { get; set; }
         public int iphcompragarantiadias { get; set; }

@@ -813,7 +813,9 @@ namespace WinForms
             }
             else
             {
-                IphoneAbrir();
+                Iphone.FormIphoneListar formIphoneListar = new Iphone.FormIphoneListar();
+                AbrirForm(formIphoneListar, true);
+                //IphoneAbrir();
             }
         }
 
