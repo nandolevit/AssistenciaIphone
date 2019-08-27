@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewListar = new System.Windows.Forms.DataGridView();
-            this.labelItens = new System.Windows.Forms.Label();
-            this.labelVenda = new System.Windows.Forms.Label();
-            this.labelCompra = new System.Windows.Forms.Label();
-            this.labelMargem = new System.Windows.Forms.Label();
             this.colIphone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDataCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGarantia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,17 +40,25 @@
             this.colValorCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colValorVenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMargem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonAdicionar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelItens = new System.Windows.Forms.Label();
+            this.labelVenda = new System.Windows.Forms.Label();
+            this.labelCompra = new System.Windows.Forms.Label();
+            this.labelMargem = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonPesquisar = new System.Windows.Forms.Button();
             this.comboBoxGarantia = new System.Windows.Forms.ComboBox();
             this.comboBoxEstado = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxIphone = new System.Windows.Forms.ComboBox();
+            this.buttonPesquisar = new System.Windows.Forms.Button();
+            this.buttonAdicionar = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.groupBoxPesquisar = new System.Windows.Forms.GroupBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.checkBoxFiltrar = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListar)).BeginInit();
+            this.groupBoxPesquisar.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewListar
@@ -68,52 +73,11 @@
             this.colValorCompra,
             this.colValorVenda,
             this.colMargem});
-            this.dataGridViewListar.Location = new System.Drawing.Point(12, 66);
+            this.dataGridViewListar.Location = new System.Drawing.Point(12, 82);
             this.dataGridViewListar.Name = "dataGridViewListar";
             this.dataGridViewListar.RowHeadersVisible = false;
-            this.dataGridViewListar.Size = new System.Drawing.Size(1320, 454);
+            this.dataGridViewListar.Size = new System.Drawing.Size(1320, 438);
             this.dataGridViewListar.TabIndex = 0;
-            // 
-            // labelItens
-            // 
-            this.labelItens.AutoSize = true;
-            this.labelItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelItens.Location = new System.Drawing.Point(558, 523);
-            this.labelItens.Name = "labelItens";
-            this.labelItens.Size = new System.Drawing.Size(107, 13);
-            this.labelItens.TabIndex = 1;
-            this.labelItens.Text = "Total de Iphones:";
-            // 
-            // labelVenda
-            // 
-            this.labelVenda.AutoSize = true;
-            this.labelVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVenda.Location = new System.Drawing.Point(926, 523);
-            this.labelVenda.Name = "labelVenda";
-            this.labelVenda.Size = new System.Drawing.Size(106, 13);
-            this.labelVenda.TabIndex = 2;
-            this.labelVenda.Text = "Total em Vendas:";
-            // 
-            // labelCompra
-            // 
-            this.labelCompra.AutoSize = true;
-            this.labelCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCompra.Location = new System.Drawing.Point(704, 523);
-            this.labelCompra.Name = "labelCompra";
-            this.labelCompra.Size = new System.Drawing.Size(111, 13);
-            this.labelCompra.TabIndex = 3;
-            this.labelCompra.Text = "Total em compras:";
-            // 
-            // labelMargem
-            // 
-            this.labelMargem.AutoSize = true;
-            this.labelMargem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMargem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.labelMargem.Location = new System.Drawing.Point(1141, 523);
-            this.labelMargem.Name = "labelMargem";
-            this.labelMargem.Size = new System.Drawing.Size(55, 13);
-            this.labelMargem.TabIndex = 4;
-            this.labelMargem.Text = "Margem:";
             // 
             // colIphone
             // 
@@ -146,15 +110,15 @@
             // 
             // colValorCompra
             // 
-            dataGridViewCellStyle3.Format = "C2";
-            this.colValorCompra.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "C2";
+            this.colValorCompra.DefaultCellStyle = dataGridViewCellStyle1;
             this.colValorCompra.HeaderText = "Valor Compra:";
             this.colValorCompra.Name = "colValorCompra";
             // 
             // colValorVenda
             // 
-            dataGridViewCellStyle4.Format = "C2";
-            this.colValorVenda.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "C2";
+            this.colValorVenda.DefaultCellStyle = dataGridViewCellStyle2;
             this.colValorVenda.HeaderText = "Valor Venda:";
             this.colValorVenda.Name = "colValorVenda";
             // 
@@ -164,58 +128,67 @@
             this.colMargem.Name = "colMargem";
             this.colMargem.Width = 125;
             // 
-            // buttonAdicionar
+            // labelItens
             // 
-            this.buttonAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdicionar.Image = global::WinForms.Properties.Resources.add_32;
-            this.buttonAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonAdicionar.Location = new System.Drawing.Point(1183, 20);
-            this.buttonAdicionar.Name = "buttonAdicionar";
-            this.buttonAdicionar.Size = new System.Drawing.Size(149, 40);
-            this.buttonAdicionar.TabIndex = 5;
-            this.buttonAdicionar.Text = "&Adicionar Iphone";
-            this.buttonAdicionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonAdicionar.UseVisualStyleBackColor = true;
-            this.buttonAdicionar.Click += new System.EventHandler(this.ButtonAdicionar_Click);
+            this.labelItens.AutoSize = true;
+            this.labelItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelItens.ForeColor = System.Drawing.Color.Maroon;
+            this.labelItens.Location = new System.Drawing.Point(558, 523);
+            this.labelItens.Name = "labelItens";
+            this.labelItens.Size = new System.Drawing.Size(107, 13);
+            this.labelItens.TabIndex = 1;
+            this.labelItens.Text = "Total de Iphones:";
             // 
-            // textBox1
+            // labelVenda
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 31);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(246, 20);
-            this.textBox1.TabIndex = 6;
+            this.labelVenda.AutoSize = true;
+            this.labelVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVenda.ForeColor = System.Drawing.Color.Maroon;
+            this.labelVenda.Location = new System.Drawing.Point(926, 523);
+            this.labelVenda.Name = "labelVenda";
+            this.labelVenda.Size = new System.Drawing.Size(106, 13);
+            this.labelVenda.TabIndex = 2;
+            this.labelVenda.Text = "Total em Vendas:";
+            // 
+            // labelCompra
+            // 
+            this.labelCompra.AutoSize = true;
+            this.labelCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCompra.ForeColor = System.Drawing.Color.Maroon;
+            this.labelCompra.Location = new System.Drawing.Point(704, 523);
+            this.labelCompra.Name = "labelCompra";
+            this.labelCompra.Size = new System.Drawing.Size(111, 13);
+            this.labelCompra.TabIndex = 3;
+            this.labelCompra.Text = "Total em compras:";
+            // 
+            // labelMargem
+            // 
+            this.labelMargem.AutoSize = true;
+            this.labelMargem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMargem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.labelMargem.Location = new System.Drawing.Point(1141, 523);
+            this.labelMargem.Name = "labelMargem";
+            this.labelMargem.Size = new System.Drawing.Size(55, 13);
+            this.labelMargem.TabIndex = 4;
+            this.labelMargem.Text = "Margem:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(6, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Pesquisar por IMEI:";
             // 
-            // buttonPesquisar
-            // 
-            this.buttonPesquisar.BackgroundImage = global::WinForms.Properties.Resources.icons8_Filter_32;
-            this.buttonPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonPesquisar.FlatAppearance.BorderSize = 0;
-            this.buttonPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPesquisar.Location = new System.Drawing.Point(634, 29);
-            this.buttonPesquisar.Name = "buttonPesquisar";
-            this.buttonPesquisar.Size = new System.Drawing.Size(20, 20);
-            this.buttonPesquisar.TabIndex = 10;
-            this.buttonPesquisar.TabStop = false;
-            this.buttonPesquisar.UseVisualStyleBackColor = true;
-            this.buttonPesquisar.Click += new System.EventHandler(this.ButtonPesquisar_Click);
-            // 
             // comboBoxGarantia
             // 
+            this.comboBoxGarantia.Enabled = false;
             this.comboBoxGarantia.FormattingEnabled = true;
             this.comboBoxGarantia.Items.AddRange(new object[] {
-            "*Todos*",
             "Apple",
             "Loja"});
-            this.comboBoxGarantia.Location = new System.Drawing.Point(475, 30);
+            this.comboBoxGarantia.Location = new System.Drawing.Point(408, 30);
             this.comboBoxGarantia.Name = "comboBoxGarantia";
             this.comboBoxGarantia.Size = new System.Drawing.Size(69, 21);
             this.comboBoxGarantia.TabIndex = 11;
@@ -223,20 +196,21 @@
             // 
             // comboBoxEstado
             // 
+            this.comboBoxEstado.Enabled = false;
             this.comboBoxEstado.FormattingEnabled = true;
             this.comboBoxEstado.Items.AddRange(new object[] {
-            "*Todos*",
             "Novo",
             "Semi"});
-            this.comboBoxEstado.Location = new System.Drawing.Point(550, 30);
+            this.comboBoxEstado.Location = new System.Drawing.Point(483, 30);
             this.comboBoxEstado.Name = "comboBoxEstado";
             this.comboBoxEstado.Size = new System.Drawing.Size(69, 21);
             this.comboBoxEstado.TabIndex = 12;
+            this.comboBoxEstado.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEstado_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(547, 14);
+            this.label2.Location = new System.Drawing.Point(480, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 13;
@@ -245,7 +219,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(472, 14);
+            this.label3.Location = new System.Drawing.Point(405, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 14;
@@ -254,37 +228,106 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(261, 15);
+            this.label4.Location = new System.Drawing.Point(194, 14);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 16;
-            this.label4.Text = "Iphone";
+            this.label4.Text = "Iphone:";
             // 
             // comboBoxIphone
             // 
+            this.comboBoxIphone.Enabled = false;
             this.comboBoxIphone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxIphone.FormattingEnabled = true;
-            this.comboBoxIphone.Items.AddRange(new object[] {
-            "*Todos*"});
-            this.comboBoxIphone.Location = new System.Drawing.Point(264, 31);
+            this.comboBoxIphone.Location = new System.Drawing.Point(197, 30);
             this.comboBoxIphone.Name = "comboBoxIphone";
             this.comboBoxIphone.Size = new System.Drawing.Size(205, 21);
             this.comboBoxIphone.TabIndex = 15;
+            this.comboBoxIphone.SelectedIndexChanged += new System.EventHandler(this.ComboBoxIphone_SelectedIndexChanged);
+            // 
+            // buttonPesquisar
+            // 
+            this.buttonPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonPesquisar.FlatAppearance.BorderSize = 0;
+            this.buttonPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPesquisar.Image = global::WinForms.Properties.Resources.icons8_Filter_16;
+            this.buttonPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonPesquisar.Location = new System.Drawing.Point(567, 29);
+            this.buttonPesquisar.Name = "buttonPesquisar";
+            this.buttonPesquisar.Size = new System.Drawing.Size(84, 21);
+            this.buttonPesquisar.TabIndex = 10;
+            this.buttonPesquisar.TabStop = false;
+            this.buttonPesquisar.Text = "Pesquisar:";
+            this.buttonPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonPesquisar.UseVisualStyleBackColor = true;
+            this.buttonPesquisar.Click += new System.EventHandler(this.ButtonPesquisar_Click);
+            // 
+            // buttonAdicionar
+            // 
+            this.buttonAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdicionar.Image = global::WinForms.Properties.Resources.add_32;
+            this.buttonAdicionar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.buttonAdicionar.Location = new System.Drawing.Point(1183, 36);
+            this.buttonAdicionar.Name = "buttonAdicionar";
+            this.buttonAdicionar.Size = new System.Drawing.Size(149, 40);
+            this.buttonAdicionar.TabIndex = 5;
+            this.buttonAdicionar.Text = "&Adicionar Iphone";
+            this.buttonAdicionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonAdicionar.UseVisualStyleBackColor = true;
+            this.buttonAdicionar.Click += new System.EventHandler(this.ButtonAdicionar_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // groupBoxPesquisar
+            // 
+            this.groupBoxPesquisar.Controls.Add(this.checkBoxFiltrar);
+            this.groupBoxPesquisar.Controls.Add(this.maskedTextBox1);
+            this.groupBoxPesquisar.Controls.Add(this.label4);
+            this.groupBoxPesquisar.Controls.Add(this.label1);
+            this.groupBoxPesquisar.Controls.Add(this.comboBoxIphone);
+            this.groupBoxPesquisar.Controls.Add(this.buttonPesquisar);
+            this.groupBoxPesquisar.Controls.Add(this.label3);
+            this.groupBoxPesquisar.Controls.Add(this.comboBoxGarantia);
+            this.groupBoxPesquisar.Controls.Add(this.label2);
+            this.groupBoxPesquisar.Controls.Add(this.comboBoxEstado);
+            this.groupBoxPesquisar.Enabled = false;
+            this.groupBoxPesquisar.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxPesquisar.Name = "groupBoxPesquisar";
+            this.groupBoxPesquisar.Size = new System.Drawing.Size(717, 64);
+            this.groupBoxPesquisar.TabIndex = 17;
+            this.groupBoxPesquisar.TabStop = false;
+            this.groupBoxPesquisar.Text = "Pesquisar:";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(9, 32);
+            this.maskedTextBox1.Mask = "0000000000000000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(124, 20);
+            this.maskedTextBox1.TabIndex = 17;
+            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // checkBoxFiltrar
+            // 
+            this.checkBoxFiltrar.AutoSize = true;
+            this.checkBoxFiltrar.Location = new System.Drawing.Point(139, 32);
+            this.checkBoxFiltrar.Name = "checkBoxFiltrar";
+            this.checkBoxFiltrar.Size = new System.Drawing.Size(51, 17);
+            this.checkBoxFiltrar.TabIndex = 18;
+            this.checkBoxFiltrar.Text = "Filtrar";
+            this.checkBoxFiltrar.UseVisualStyleBackColor = true;
+            this.checkBoxFiltrar.CheckedChanged += new System.EventHandler(this.CheckBoxFiltrar_CheckedChanged);
             // 
             // FormIphoneListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 587);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBoxIphone);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBoxEstado);
-            this.Controls.Add(this.comboBoxGarantia);
-            this.Controls.Add(this.buttonPesquisar);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.groupBoxPesquisar);
             this.Controls.Add(this.buttonAdicionar);
             this.Controls.Add(this.labelMargem);
             this.Controls.Add(this.labelCompra);
@@ -294,6 +337,8 @@
             this.Name = "FormIphoneListar";
             this.Load += new System.EventHandler(this.FormIphoneListar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListar)).EndInit();
+            this.groupBoxPesquisar.ResumeLayout(false);
+            this.groupBoxPesquisar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,7 +361,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colValorVenda;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMargem;
         private System.Windows.Forms.Button buttonAdicionar;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonPesquisar;
         private System.Windows.Forms.ComboBox comboBoxGarantia;
@@ -325,5 +369,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxIphone;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.GroupBox groupBoxPesquisar;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.CheckBox checkBoxFiltrar;
     }
 }

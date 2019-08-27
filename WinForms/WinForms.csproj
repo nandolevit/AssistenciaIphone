@@ -796,5 +796,11 @@
     <Folder Include="Aparelho\Celular\" />
     <Folder Include="Aparelho\Computador\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Filter_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Filter_16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -73,9 +73,6 @@ namespace Negocios
                     Pessoa = negocio.ConsultarPessoaId(Convert.ToInt32(row["apaidpessoa"])),
                 };
 
-                PessoaNegocio pessoaNegocio = new PessoaNegocio(EmpConexao, ObjTransfer.EnumAssistencia.Loja);
-                iphone.Pessoa = pessoaNegocio.ConsultarPessoaId(Convert.ToInt32(row["apaidpessoa"]));
-
                 colecao.Add(iphone);
             }
 
@@ -124,7 +121,7 @@ namespace Negocios
                     DescricaoEstado = Convert.ToBoolean(row["iphcompranovo"]) ? "Novo" : "Semi novo",
                     iphcompravalorcompra = Convert.ToDecimal(row["iphcompravalorcompra"]),
                     iphcompravalorvenda = Convert.ToDecimal(row["iphcompravalorvenda"]),
-                    DescricaoMargem = marg.ToString("C2") + "/" + ((marg * 100) / Convert.ToDecimal(row["iphcompravalorcompra"])).ToString("F1") + "%"
+                    DescricaoMargem = marg.ToString("C2") + " (" + ((marg * 100) / Convert.ToDecimal(row["iphcompravalorcompra"])).ToString("F1") + "%)"
                 };
 
                 colecao.Add(compra);

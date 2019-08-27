@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 using ObjTransfer;
@@ -17,6 +17,7 @@ namespace WinForms.Iphone
 {
     public partial class FormIphoneListar : Form
     {
+        Thread thread;
         IphoneCompraColecao colecaoComprar;
         public FormIphoneListar()
         {
@@ -24,6 +25,8 @@ namespace WinForms.Iphone
             DefinirDataGrid();
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
+
+            this.AcceptButton = buttonPesquisar;
         }
 
         private void DefinirDataGrid()
@@ -40,47 +43,78 @@ namespace WinForms.Iphone
 
         private void FormIphoneListar_Load(object sender, EventArgs e)
         {
-            comboBoxIphone.SelectedIndex = 0;
             comboBoxEstado.SelectedIndex = 0;
             comboBoxGarantia.SelectedIndex = 0;
 
+            thread = new Thread(new ThreadStart(ConsultarIphone));
+            thread.Start();
+        }
+
+        private void ConsultarIphone()
+        {
             AparelhoNegocio negocio = new AparelhoNegocio(Form1.Empresa.empconexao);
             colecaoComprar = negocio.ConsultarIphoneCompra();
+
+            if (thread != null)
+                thread.Abort();
         }
 
         private void ButtonAdicionar_Click(object sender, EventArgs e)
         {
             FormIphoneCadastrar formIphoneCadastrar = new FormIphoneCadastrar();
             if (formIphoneCadastrar.ShowDialog(this) == DialogResult.Yes)
+            {
+                ConsultarIphone();
                 PreencherGrid();
+            }
 
             formIphoneCadastrar.Dispose();
         }
 
         private void ComboBoxGarantia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxGarantia.SelectedIndex == 2)
-            {
-                comboBoxEstado.SelectedIndex = 2;
-                comboBoxEstado.Enabled = false;
-            }
-            else
-                comboBoxEstado.Enabled = true;
+            //if (comboBoxGarantia.SelectedIndex == 2)
+            //{
+            //    comboBoxEstado.SelectedIndex = 2;
+            //    comboBoxEstado.Enabled = false;
+            //}
+            //else
+            //    comboBoxEstado.Enabled = true;
         }
 
         private void ButtonPesquisar_Click(object sender, EventArgs e)
         {
-            PreencherGrid();
+            IphoneCompraColecao colecao = new IphoneCompraColecao();
+            if (checkBoxFiltrar.Checked)
+            {
+                bool garantia = comboBoxGarantia.Text == "Apple" ? true : false;
+                bool novo = comboBoxEstado.Text == "Novo" ? true : false;
+                var grid = colecaoComprar.Where(g => g.iphcompraaparelho.Descricao == comboBoxIphone.Text && g.iphcompragarantiaapple == garantia && g.iphcompranovo == novo).ToList();
+
+                foreach (IphoneCompraInfo compra in grid)
+                    colecao.Add(compra);
+            }
+            else
+                colecao = colecaoComprar;
+            
+            dataGridViewListar.DataSource = colecao;
+            GridCalc(colecao);
         }
 
         private void PreencherGrid()
         {
             dataGridViewListar.DataSource = colecaoComprar;
-            GridCalc(colecaoComprar);
 
-            foreach (IphoneCompraInfo item in colecaoComprar)
-                if (!comboBoxIphone.Items.Contains(item.iphcompraaparelho.Descricao))
-                    comboBoxIphone.Items.Add(item.iphcompraaparelho.Descricao);
+            if (colecaoComprar != null)
+            {
+                GridCalc(colecaoComprar);
+
+                foreach (IphoneCompraInfo item in colecaoComprar)
+                    if (!comboBoxIphone.Items.Contains(item.iphcompraaparelho.Descricao))
+                        comboBoxIphone.Items.Add(item.iphcompraaparelho.Descricao);
+
+                comboBoxIphone.SelectedIndex = 0;
+            }
         }
 
         private void GridCalc(IphoneCompraColecao colecao)
@@ -102,7 +136,48 @@ namespace WinForms.Iphone
             labelVenda.Text = "Total em Vendas: " + vend.ToString("C2");
 
             decimal valor = venda.Sum() - compra.Sum();
-            labelMargem.Text += "Margem: " + lucro.ToString("C2") + " (" + ((lucro * 100) / comp).ToString("F1") + "%)";
+
+            if (colecao.Count > 0)
+                labelMargem.Text = "Margem: " + lucro.ToString("C2") + " (" + ((lucro * 100) / comp).ToString("F1") + "%)";
+            else
+                labelMargem.Text = "Margem: 0,00"; 
+
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            if (colecaoComprar != null)
+            {
+                PreencherGrid();
+                groupBoxPesquisar.Enabled = true;
+                timer1.Enabled = false;
+            }
+        }
+
+        private void CheckBoxFiltrar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxFiltrar.Checked)
+            {
+                comboBoxIphone.Enabled = true;
+                comboBoxEstado.Enabled = true;
+                comboBoxGarantia.Enabled = true;
+            }
+            else
+            {
+                comboBoxIphone.Enabled = false;
+                comboBoxEstado.Enabled = false;
+                comboBoxGarantia.Enabled = false;
+            }
+        }
+
+        private void ComboBoxIphone_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ComboBoxEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
