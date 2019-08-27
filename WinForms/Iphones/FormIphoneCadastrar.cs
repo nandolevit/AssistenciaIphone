@@ -42,6 +42,9 @@ namespace WinForms
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
+
+            textBoxCompra.Text = "0";
+            textBoxVenda.Text = "0";
         }
 
         private void PreencherForm()
@@ -65,12 +68,14 @@ namespace WinForms
             else
                 radioButtonSemi.Checked = true;
 
-
+            buttonFornecedor.Enabled = false;
+            buttonAdd.Enabled = false;
+            buttonModelo.Enabled = false;
         }
 
         private void TextBoxCompra_TextChanged(object sender, EventArgs e)
         {
-            //FormTextoFormat.MoedaFormat(textBoxCompra);
+            FormTextoFormat.MoedaFormat(textBoxCompra);
         }
 
         private void TextBoxVenda_TextChanged(object sender, EventArgs e)
@@ -201,8 +206,6 @@ namespace WinForms
         private void FormIphoneCadastrar_Load(object sender, EventArgs e)
         {
             comboBoxPrazo.SelectedItem = "90";
-            textBoxCompra.Text = "0";
-            textBoxVenda.Text = "0";
             buttonFornecedor.Select();
         }
 
@@ -216,10 +219,19 @@ namespace WinForms
             if (Campos())
             {
                 negocioAparelho = new AparelhoNegocio(Form1.Empresa.empconexao);
-                infoCelular.Pessoa = infoFornecedor;
-                infoCelular.Id = negocioAparelho.InsertIphone(infoCelular);
-                PreencherInfo();
-                negocioAparelho.InsertIphoneCompra(iphoneCompraInfo);
+
+                if (iphoneCompraInfo == null)
+                {
+                    infoCelular.Pessoa = infoFornecedor;
+                    infoCelular.Id = negocioAparelho.InsertIphone(infoCelular);
+                    PreencherInfo();
+                    negocioAparelho.InsertIphoneCompra(iphoneCompraInfo);
+                }
+                else
+                {
+
+                }
+
                 FormMessage.ShowMessegeInfo("Registro salva com sucesso!");
                 this.DialogResult = DialogResult.Yes;
             }

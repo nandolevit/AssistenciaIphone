@@ -159,6 +159,8 @@ namespace WinForms.Iphone
             {
                 PreencherGrid();
                 groupBoxPesquisar.Enabled = true;
+                buttonVender.Enabled = true;
+                buttonSelecionar.Enabled = true;
                 timer1.Enabled = false;
             }
         }

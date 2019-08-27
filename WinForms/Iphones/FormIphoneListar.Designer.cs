@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewListar = new System.Windows.Forms.DataGridView();
             this.colIphone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDataCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,15 +115,15 @@
             // 
             // colValorCompra
             // 
-            dataGridViewCellStyle5.Format = "C2";
-            this.colValorCompra.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Format = "C2";
+            this.colValorCompra.DefaultCellStyle = dataGridViewCellStyle1;
             this.colValorCompra.HeaderText = "Valor Compra:";
             this.colValorCompra.Name = "colValorCompra";
             // 
             // colValorVenda
             // 
-            dataGridViewCellStyle6.Format = "C2";
-            this.colValorVenda.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "C2";
+            this.colValorVenda.DefaultCellStyle = dataGridViewCellStyle2;
             this.colValorVenda.HeaderText = "Valor Venda:";
             this.colValorVenda.Name = "colValorVenda";
             // 
@@ -336,6 +336,7 @@
             // 
             // buttonSelecionar
             // 
+            this.buttonSelecionar.Enabled = false;
             this.buttonSelecionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSelecionar.Image = global::WinForms.Properties.Resources.conf_green;
             this.buttonSelecionar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -364,6 +365,7 @@
             // 
             // buttonVender
             // 
+            this.buttonVender.Enabled = false;
             this.buttonVender.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonVender.Image = global::WinForms.Properties.Resources.icons8_Low_Price_32;
             this.buttonVender.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
