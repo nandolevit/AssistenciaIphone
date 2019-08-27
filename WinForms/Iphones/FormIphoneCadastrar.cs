@@ -25,16 +25,52 @@ namespace WinForms
         IphoneCompraInfo iphoneCompraInfo;
 
 
+        public FormIphoneCadastrar(IphoneCompraInfo iphone)
+        {
+            Inicializar();
+            iphoneCompraInfo = iphone;
+            PreencherForm();
+        }
+
         public FormIphoneCadastrar()
+        {
+            Inicializar();
+        }
+
+        private void Inicializar()
         {
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
         }
 
+        private void PreencherForm()
+        {
+            groupBoxCompra.Enabled = true;
+            textBoxFornecedor.Text = iphoneCompraInfo.iphcomprafornecedor.Nome;
+            comboBoxPrazo.Text = iphoneCompraInfo.iphcompragarantiadias.ToString();
+            textBoxModelo.Text = iphoneCompraInfo.iphcompraaparelho.ToString();
+            dateTimePickerCompra.Value = iphoneCompraInfo.iphcompradatacompra;
+            dateTimePickerGarantia.Value = iphoneCompraInfo.iphcompradatagarantia;
+            textBoxCompra.Text = iphoneCompraInfo.iphcompravalorcompra.ToString();
+            textBoxVenda.Text = iphoneCompraInfo.iphcompravalorvenda.ToString();
+
+            if (iphoneCompraInfo.iphcompragarantiaapple)
+                radioButtonApple.Checked = true;
+            else
+                radioButtonLoja.Checked = true;
+
+            if (iphoneCompraInfo.iphcompranovo)
+                radioButtonNovo.Checked = true;
+            else
+                radioButtonSemi.Checked = true;
+
+
+        }
+
         private void TextBoxCompra_TextChanged(object sender, EventArgs e)
         {
-            FormTextoFormat.MoedaFormat(textBoxCompra);
+            //FormTextoFormat.MoedaFormat(textBoxCompra);
         }
 
         private void TextBoxVenda_TextChanged(object sender, EventArgs e)

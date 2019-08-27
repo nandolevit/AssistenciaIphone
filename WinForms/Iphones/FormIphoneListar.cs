@@ -19,6 +19,7 @@ namespace WinForms.Iphone
     {
         Thread thread;
         IphoneCompraColecao colecaoComprar;
+        public IphoneCompraColecao SelecionadoIphone { get; set; }
         public FormIphoneListar()
         {
             InitializeComponent();
@@ -200,14 +201,32 @@ namespace WinForms.Iphone
 
         private void ButtonSelecionar_Click(object sender, EventArgs e)
         {
-            if (this.Modal)
+            if (dataGridViewListar.SelectedRows.Count > 0)
             {
+                SelecionadoIphone = new IphoneCompraColecao();
+                foreach (DataGridViewRow row in dataGridViewListar.SelectedRows)
+                {
+                    IphoneCompraInfo comp = (IphoneCompraInfo)row.DataBoundItem;
+                    SelecionadoIphone.Add(comp);
+                }
 
+                if (this.Modal)
+                {
+                    this.DialogResult = DialogResult.Yes;
+                }
+                else
+                {
+                    FormIphoneCadastrar formIphoneCadastrar = new FormIphoneCadastrar(SelecionadoIphone[0]);
+                    if (formIphoneCadastrar.ShowDialog(this) == DialogResult.Yes)
+                    {
+
+                    }
+
+                    formIphoneCadastrar.Dispose();
+                }
             }
             else
-            {
-
-            }
+                FormMessage.ShowMessegeWarning("Selecione um item na lista!");
         }
     }
 }
