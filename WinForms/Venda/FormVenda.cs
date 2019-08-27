@@ -12,6 +12,8 @@ using System.Threading;
 using Negocios;
 using ObjTransfer;
 using ObjTransfer.Pessoas;
+using WinForms.Iphone;
+using WinForms.Venda;
 
 
 namespace WinForms
@@ -725,17 +727,33 @@ namespace WinForms
         
         private void buttonProd_Click(object sender, EventArgs e)
         {
+            if (Form1.Unidade.uniassistencia == EnumAssistencia.Assistencia)
+                AbrirFormProduto();
+            else
+            {
+                FormVendaProdutoTipo formVendaProdutoTipo = new FormVendaProdutoTipo();
+                if (formVendaProdutoTipo.ShowDialog(this) == DialogResult.Yes)
+                {
+                    FormIphoneListar formIphoneListar = new FormIphoneListar();
+                    if (formIphoneListar.ShowDialog(this) == DialogResult.Yes)
+                    {
 
+                    }
+                }
+                else if (formVendaProdutoTipo.DialogResult == DialogResult.OK)
+                    AbrirFormProduto();
+            }
+        }
+
+        private void AbrirFormProduto()
+        {
             FormProdutosConsultar formProdutosConsultar = new FormProdutosConsultar();
-            formProdutosConsultar.ShowDialog(this);
-            formProdutosConsultar.Dispose();
-
-            if (formProdutosConsultar.DialogResult == DialogResult.Yes)
+            if (formProdutosConsultar.ShowDialog(this) == DialogResult.Yes)
             {
                 produtoInfo = formProdutosConsultar.SelecionadoProduto;
                 PreencherFormProduto();
             }
-
+            formProdutosConsultar.Dispose();
         }
 
         private void labelOperacao_Click(object sender, EventArgs e)

@@ -295,6 +295,12 @@
     <Compile Include="FormOnline.Designer.cs">
       <DependentUpon>FormOnline.cs</DependentUpon>
     </Compile>
+    <Compile Include="Venda\FormVendaProdutoTipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venda\FormVendaProdutoTipo.Designer.cs">
+      <DependentUpon>FormVendaProdutoTipo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Venda\Pagamento\FormPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -510,6 +516,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormOnline.resx">
       <DependentUpon>FormOnline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Venda\FormVendaProdutoTipo.resx">
+      <DependentUpon>FormVendaProdutoTipo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Venda\Pagamento\FormPagamento.resx">
       <DependentUpon>FormPagamento.cs</DependentUpon>
@@ -801,6 +810,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_Filter_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_Apple_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

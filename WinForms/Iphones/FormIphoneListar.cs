@@ -43,6 +43,13 @@ namespace WinForms.Iphone
 
         private void FormIphoneListar_Load(object sender, EventArgs e)
         {
+            if (this.Modal)
+            {
+                buttonAdicionar.Visible = false;
+                buttonVender.Visible = false;
+                dataGridViewListar.MultiSelect = true;
+            }
+
             comboBoxEstado.SelectedIndex = 0;
             comboBoxGarantia.SelectedIndex = 0;
 
@@ -85,6 +92,7 @@ namespace WinForms.Iphone
         private void ButtonPesquisar_Click(object sender, EventArgs e)
         {
             IphoneCompraColecao colecao = new IphoneCompraColecao();
+            maskedTextBoxImei.Clear();
             if (checkBoxFiltrar.Checked)
             {
                 bool garantia = comboBoxGarantia.Text == "Apple" ? true : false;
@@ -96,7 +104,7 @@ namespace WinForms.Iphone
             }
             else
                 colecao = colecaoComprar;
-            
+
             dataGridViewListar.DataSource = colecao;
             GridCalc(colecao);
         }
@@ -140,7 +148,7 @@ namespace WinForms.Iphone
             if (colecao.Count > 0)
                 labelMargem.Text = "Margem: " + lucro.ToString("C2") + " (" + ((lucro * 100) / comp).ToString("F1") + "%)";
             else
-                labelMargem.Text = "Margem: 0,00"; 
+                labelMargem.Text = "Margem: 0,00";
 
         }
 
@@ -170,14 +178,36 @@ namespace WinForms.Iphone
             }
         }
 
-        private void ComboBoxIphone_SelectedIndexChanged(object sender, EventArgs e)
+        private void MaskedTextBoxImei_TextChanged(object sender, EventArgs e)
         {
+            if (maskedTextBoxImei.Text.Length >= 15)
+            {
+                IphoneCompraColecao colecao = new IphoneCompraColecao();
+                var grid = colecaoComprar.Where(g => g.iphcompraaparelho.IMEI == maskedTextBoxImei.Text).ToList();
 
+                foreach (IphoneCompraInfo compra in grid)
+                    colecao.Add(compra);
+
+                dataGridViewListar.DataSource = colecao;
+                GridCalc(colecao);
+            }
         }
 
-        private void ComboBoxEstado_SelectedIndexChanged(object sender, EventArgs e)
+        private void ButtonFechar_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void ButtonSelecionar_Click(object sender, EventArgs e)
+        {
+            if (this.Modal)
+            {
+
+            }
+            else
+            {
+
+            }
         }
     }
 }

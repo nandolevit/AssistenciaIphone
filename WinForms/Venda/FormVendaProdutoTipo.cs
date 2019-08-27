@@ -8,30 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinForms.Pessoa
+namespace WinForms.Venda
 {
-    public partial class FormPessoaFisicaJuridica : Form
+    public partial class FormVendaProdutoTipo : Form
     {
-        public FormPessoaFisicaJuridica()
+        public FormVendaProdutoTipo()
         {
             InitializeComponent();
-            AcceptButton = buttonFisica;
             FormFormat formFormat = new FormFormat(this);
             formFormat.formatar();
             this.FormBorderStyle = FormBorderStyle.None;
         }
 
-        private void ButtonFisica_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Yes;
-        }
-
-        private void ButtonJuridica_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-        }
-
-        private void FormPessoaFisicaJuridica_KeyDown(object sender, KeyEventArgs e)
+        private void ButtonJuridica_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -44,6 +33,16 @@ namespace WinForms.Pessoa
                 default:
                     break;
             }
+        }
+
+        private void ButtonApple_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Yes;
+        }
+
+        private void ButtonProduto_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }
