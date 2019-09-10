@@ -182,14 +182,14 @@ namespace WinForms
 
         private void AbrirIphoneModelo()
         {
-            FormIphoneModelo formIphoneModelo = new FormIphoneModelo();
-            if (formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
-            {
-                infoCelular = formIphoneModelo.SelecionadoIphone;
-                textBoxCodProd.Text = string.Format("{0:00000}", infoCelular.Id);
-                textBoxProdDescricao.Text = infoCelular.ToString();
-            }
-            formIphoneModelo.Dispose();
+            //FormIphoneModelo formIphoneModelo = new FormIphoneModelo();
+            //if (formIphoneModelo.ShowDialog(this) == DialogResult.Yes)
+            //{
+            //    infoCelular = formIphoneModelo.SelecionadoIphone;
+            //    textBoxCodProd.Text = string.Format("{0:00000}", infoCelular.Id);
+            //    textBoxProdDescricao.Text = infoCelular.ToString();
+            //}
+            //formIphoneModelo.Dispose();
         }
     }
 }

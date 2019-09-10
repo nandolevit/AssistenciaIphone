@@ -484,6 +484,7 @@
     <EmbeddedResource Include="Pessoa\FormUserEsqueciSenha.resx">
       <DependentUpon>FormUserEsqueciSenha.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Servico\FormServicoListar.resx">
       <DependentUpon>FormServicoListar.cs</DependentUpon>
     </EmbeddedResource>

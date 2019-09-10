@@ -93,7 +93,7 @@
             this.groupBoxEnd.Location = new System.Drawing.Point(12, 196);
             this.groupBoxEnd.Name = "groupBoxEnd";
             this.groupBoxEnd.Size = new System.Drawing.Size(524, 223);
-            this.groupBoxEnd.TabIndex = 5;
+            this.groupBoxEnd.TabIndex = 1;
             this.groupBoxEnd.TabStop = false;
             this.groupBoxEnd.Text = "Endereço:";
             // 
@@ -107,7 +107,7 @@
             this.buttonEnd.Location = new System.Drawing.Point(101, 25);
             this.buttonEnd.Name = "buttonEnd";
             this.buttonEnd.Size = new System.Drawing.Size(93, 29);
-            this.buttonEnd.TabIndex = 17;
+            this.buttonEnd.TabIndex = 2;
             this.buttonEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonEnd.UseVisualStyleBackColor = true;
             this.buttonEnd.Click += new System.EventHandler(this.ButtonEnd_Click);
@@ -204,7 +204,7 @@
             this.textBoxPontoReferencia.Location = new System.Drawing.Point(14, 96);
             this.textBoxPontoReferencia.Name = "textBoxPontoReferencia";
             this.textBoxPontoReferencia.Size = new System.Drawing.Size(504, 20);
-            this.textBoxPontoReferencia.TabIndex = 7;
+            this.textBoxPontoReferencia.TabIndex = 8;
             this.textBoxPontoReferencia.Visible = false;
             // 
             // labelPontoReferencia
@@ -213,7 +213,7 @@
             this.labelPontoReferencia.Location = new System.Drawing.Point(14, 83);
             this.labelPontoReferencia.Name = "labelPontoReferencia";
             this.labelPontoReferencia.Size = new System.Drawing.Size(108, 13);
-            this.labelPontoReferencia.TabIndex = 8;
+            this.labelPontoReferencia.TabIndex = 7;
             this.labelPontoReferencia.Text = "Ponto de Referência:";
             this.labelPontoReferencia.Visible = false;
             // 
@@ -239,7 +239,7 @@
             this.textBoxComplemento.Location = new System.Drawing.Point(14, 63);
             this.textBoxComplemento.Name = "textBoxComplemento";
             this.textBoxComplemento.Size = new System.Drawing.Size(504, 20);
-            this.textBoxComplemento.TabIndex = 5;
+            this.textBoxComplemento.TabIndex = 6;
             // 
             // labelComplemento
             // 
@@ -247,7 +247,7 @@
             this.labelComplemento.Location = new System.Drawing.Point(14, 50);
             this.labelComplemento.Name = "labelComplemento";
             this.labelComplemento.Size = new System.Drawing.Size(74, 13);
-            this.labelComplemento.TabIndex = 6;
+            this.labelComplemento.TabIndex = 5;
             this.labelComplemento.Text = "Complemento:";
             // 
             // groupBoxDadosPessoais
@@ -273,7 +273,7 @@
             this.groupBoxDadosPessoais.Location = new System.Drawing.Point(12, 12);
             this.groupBoxDadosPessoais.Name = "groupBoxDadosPessoais";
             this.groupBoxDadosPessoais.Size = new System.Drawing.Size(524, 178);
-            this.groupBoxDadosPessoais.TabIndex = 4;
+            this.groupBoxDadosPessoais.TabIndex = 0;
             this.groupBoxDadosPessoais.TabStop = false;
             this.groupBoxDadosPessoais.Text = "Dados Pessoais";
             // 
@@ -450,7 +450,7 @@
             this.buttonSalvar.Location = new System.Drawing.Point(359, 425);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(85, 40);
-            this.buttonSalvar.TabIndex = 6;
+            this.buttonSalvar.TabIndex = 2;
             this.buttonSalvar.Text = "&Salvar";
             this.buttonSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonSalvar.UseVisualStyleBackColor = true;
@@ -464,7 +464,7 @@
             this.buttonFechar.Location = new System.Drawing.Point(451, 425);
             this.buttonFechar.Name = "buttonFechar";
             this.buttonFechar.Size = new System.Drawing.Size(85, 40);
-            this.buttonFechar.TabIndex = 7;
+            this.buttonFechar.TabIndex = 3;
             this.buttonFechar.Text = "&Fechar";
             this.buttonFechar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonFechar.UseVisualStyleBackColor = true;

@@ -103,6 +103,7 @@ namespace WinForms
             }
             else
             {
+                radioButtonSemi.Checked = true;
                 comboBoxPrazo.Enabled = true;
                 dateTimePickerGarantia.Value = DateTime.Now.AddDays(Convert.ToInt32(comboBoxPrazo.Text));
             }
@@ -176,10 +177,10 @@ namespace WinForms
             {
                 radioButtonApple.Checked = true;
             }
-            else
-            {
-                radioButtonLoja.Checked = true;
-            }
+            //else
+            //{
+            //    radioButtonLoja.Checked = true;
+            //}
         }
 
         private void ComboBoxPrazo_TextChanged(object sender, EventArgs e)
@@ -269,6 +270,11 @@ namespace WinForms
                 iphcompravalorvenda = Convert.ToDecimal(textBoxVenda.Text),
                 iphcomprafunc = Form1.User
             };
+        }
+
+        private void RadioButtonSemi_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

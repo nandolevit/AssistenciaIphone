@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Negocios;
 using ObjTransfer;
 using ObjTransfer.Aparelho.Celulares;
+using WinForms.Aparelho;
 
 namespace WinForms
 {
@@ -233,6 +234,7 @@ namespace WinForms
                 }
                 else
                 {
+                    FormAparelhoMenu.SelecionadoAparelho = cel;
                     this.Close();
                     Application.OpenForms["FormAparelhoMenu"].DialogResult = DialogResult.Yes;
 

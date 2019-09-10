@@ -61,8 +61,8 @@ namespace WinForms
                 else
                 {
                     FormMessage.ShowMessegeWarning("Selecione uma unidade!");
-                    ConsultarUnidade();
-                    goto Iniciar;
+                    if (ConsultarUnidade())
+                        goto Iniciar;
                 }
             }
             else
@@ -139,7 +139,7 @@ namespace WinForms
             ConsultarUnidade();
         }
 
-        private void ConsultarUnidade()
+        private bool ConsultarUnidade()
         {
             UnidadeColecao colecao = Form1.colecaoUnidade;
             Form_ConsultarColecao formColecao = new Form_ConsultarColecao();
@@ -167,7 +167,12 @@ namespace WinForms
                         textBoxLogin.Select();
                         break;
                     }
+
+                return true;
             }
+            else
+                return false;
+
             formConsultar_Cod_Descricao.Dispose();
         }
 

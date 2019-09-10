@@ -182,10 +182,10 @@
             // 
             this.groupBox2.Controls.Add(this.radioButtonLoja);
             this.groupBox2.Controls.Add(this.radioButtonApple);
-            this.groupBox2.Location = new System.Drawing.Point(163, 21);
+            this.groupBox2.Location = new System.Drawing.Point(6, 21);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(122, 50);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Garantia:";
             // 
@@ -216,10 +216,10 @@
             // 
             this.groupBoxTipo.Controls.Add(this.radioButtonSemi);
             this.groupBoxTipo.Controls.Add(this.radioButtonNovo);
-            this.groupBoxTipo.Location = new System.Drawing.Point(6, 21);
+            this.groupBoxTipo.Location = new System.Drawing.Point(134, 21);
             this.groupBoxTipo.Name = "groupBoxTipo";
             this.groupBoxTipo.Size = new System.Drawing.Size(151, 50);
-            this.groupBoxTipo.TabIndex = 0;
+            this.groupBoxTipo.TabIndex = 1;
             this.groupBoxTipo.TabStop = false;
             this.groupBoxTipo.Text = "Aparelho:";
             // 
@@ -232,6 +232,7 @@
             this.radioButtonSemi.TabIndex = 1;
             this.radioButtonSemi.Text = "Semi Novo";
             this.radioButtonSemi.UseVisualStyleBackColor = true;
+            this.radioButtonSemi.CheckedChanged += new System.EventHandler(this.RadioButtonSemi_CheckedChanged);
             // 
             // radioButtonNovo
             // 

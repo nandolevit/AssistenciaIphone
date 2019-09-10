@@ -355,5 +355,10 @@ namespace WinForms.Aparelho
             else
                 comboBoxProcessador.DataSource = colecaoModeloProc.Where(p => p.Id <= 4).ToList();
         }
+
+        private void ButtonSalvar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

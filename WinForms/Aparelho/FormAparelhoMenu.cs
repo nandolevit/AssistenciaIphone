@@ -30,6 +30,8 @@ namespace WinForms.Aparelho
         ProcessadorModeloColecao colecaoModeloProc;
         ProcessadorLinhaColecao colecaoLinhaProc;
 
+        public static IAparelho SelecionadoAparelho { get; set; }
+
         public FormAparelhoMenu(PessoaInfo pessoa)
         {
             InitializeComponent();

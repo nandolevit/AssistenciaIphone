@@ -265,10 +265,17 @@ namespace WinForms
         {
             DataGridView view = (DataGridView)sender;
 
-            if ((view.Rows[e.RowIndex].DataBoundItem != null) && (view.Columns[e.ColumnIndex].DataPropertyName.Contains('.')))
+            try
             {
-                e.Value = CarregarPropriedade(view.Rows[e.RowIndex].DataBoundItem, view.Columns[e.ColumnIndex].DataPropertyName);
+                if ((view.Rows[e.RowIndex].DataBoundItem != null) && (view.Columns[e.ColumnIndex].DataPropertyName.Contains('.')))
+                    e.Value = CarregarPropriedade(view.Rows[e.RowIndex].DataBoundItem, view.Columns[e.ColumnIndex].DataPropertyName);
             }
+            catch
+            {
+            }
+
+            
+
         }
 
         private static object CarregarPropriedade(object propObjeto, string propName)

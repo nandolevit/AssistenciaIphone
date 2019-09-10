@@ -12,6 +12,7 @@ using ObjTransfer;
 using ObjTransfer.Aparelho.Celulares;
 using ObjTransfer.Pessoas;
 using Negocios;
+using WinForms.Aparelho;
 
 namespace WinForms
 {
@@ -100,23 +101,30 @@ namespace WinForms
 
         private void AbrirDefeito()
         {
-            FormAprelhoDefeito formProdutoDefeito = new FormAprelhoDefeito(infoPessoa);
-            if (formProdutoDefeito.ShowDialog(this) == DialogResult.Yes)
+            FormAparelhoMenu formAparelhoMenu = new FormAparelhoMenu(infoPessoa);
+            if (formAparelhoMenu.ShowDialog(this) == DialogResult.Yes)
             {
-                infoCelular = formProdutoDefeito.SelecionadoCelular;
-                infoServIphone = formProdutoDefeito.SelecionandoDefeito;
-                colecaoServIphone.Add(infoServIphone);
+                FormAprelhoDefeito formProdutoDefeito = new FormAprelhoDefeito(infoPessoa);
+                if (formProdutoDefeito.ShowDialog(this) == DialogResult.Yes)
+                {
+                    infoCelular = formProdutoDefeito.SelecionadoCelular;
+                    infoServIphone = formProdutoDefeito.SelecionandoDefeito;
+                    colecaoServIphone.Add(infoServIphone);
 
-                textBoxObs.Text = infoServIphone.iphdefobs;
-                textBoxDescricao.Text = infoCelular.ToString();
-                textBoxDefeito.Text = infoServIphone.iphdefdefeito;
-                textBoxCaracteristica.Text = infoServIphone.ToString();
-                buttonAdd.Enabled = false;
-                buttonSalvar.Enabled = true;
-                buttonSalvar.Select();
-                buttonCliente.Enabled = false;
+                    textBoxObs.Text = infoServIphone.iphdefobs;
+                    textBoxDescricao.Text = infoCelular.ToString();
+                    textBoxDefeito.Text = infoServIphone.iphdefdefeito;
+                    textBoxCaracteristica.Text = infoServIphone.ToString();
+                    buttonAdd.Enabled = false;
+                    buttonSalvar.Enabled = true;
+                    buttonSalvar.Select();
+                    buttonCliente.Enabled = false;
+                }
+                formProdutoDefeito.Dispose();
             }
-            formProdutoDefeito.Dispose();
+            formAparelhoMenu.Dispose();
+
+            
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)

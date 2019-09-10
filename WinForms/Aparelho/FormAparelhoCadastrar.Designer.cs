@@ -101,6 +101,7 @@
             this.pictureBoxFoto = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
             this.textBoxSenha = new System.Windows.Forms.TextBox();
+            this.buttonSalvar = new System.Windows.Forms.Button();
             this.tabControlEspecificacoes.SuspendLayout();
             this.tabPageCelular.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -869,12 +870,28 @@
             this.textBoxSenha.Size = new System.Drawing.Size(151, 20);
             this.textBoxSenha.TabIndex = 29;
             // 
+            // buttonSalvar
+            // 
+            this.buttonSalvar.Enabled = false;
+            this.buttonSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSalvar.Image = global::WinForms.Properties.Resources.conf_green;
+            this.buttonSalvar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.buttonSalvar.Location = new System.Drawing.Point(658, 475);
+            this.buttonSalvar.Name = "buttonSalvar";
+            this.buttonSalvar.Size = new System.Drawing.Size(85, 40);
+            this.buttonSalvar.TabIndex = 32;
+            this.buttonSalvar.Text = "&Salvar";
+            this.buttonSalvar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSalvar.UseVisualStyleBackColor = true;
+            this.buttonSalvar.Click += new System.EventHandler(this.ButtonSalvar_Click);
+            // 
             // FormAparelhoCadastrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(755, 450);
+            this.ClientSize = new System.Drawing.Size(755, 527);
+            this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.textBoxSenha);
             this.Controls.Add(this.tabControlEspecificacoes);
@@ -1003,5 +1020,6 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox4;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox textBoxSenha;
+        private System.Windows.Forms.Button buttonSalvar;
     }
 }

@@ -14,6 +14,7 @@ using ObjTransfer;
 using ObjTransfer.Pessoas;
 using WinForms.Iphone;
 using WinForms.Venda;
+using ObjTransfer.Aparelho.Celulares;
 
 
 namespace WinForms
@@ -40,6 +41,7 @@ namespace WinForms
         ItemVendaColecao colecaoItemVenda = new ItemVendaColecao();
         VendaDetalhesColecao colecaoDetalhes;
         VendaCanceladaInfo vendaCanceladaInfo;
+        IphoneCompraColecao colecaoCompra;
 
 
         public ServicoOrcamentoInfo ServicoTaxa { get; set; }
@@ -263,8 +265,8 @@ namespace WinForms
                 {
                     ConsultarProduto();
                 }
-
-                CriarFuncoes(e);
+                else
+                    CriarFuncoes(e);
             }
             else
             {
@@ -318,25 +320,46 @@ namespace WinForms
                     funid = responsavel.Id,
                     funnome = responsavel.Nome
                 };
-                
-                if (colecaoItemVenda.Count > 0)
+
+
+                if (produtoInfo.proId > 0)
                 {
+                    if (colecaoItemVenda.Count > 0)
+                    {
+                        for (int i = 0; i < colecaoItemVenda.Count; i++)
+                        {
+                            if (colecaoItemVenda[i].Id == produtoInfo.proId)
+                            {
+                                itemVendaInfo.ValorDesc = colecaoItemVenda[i].ValorDesc;
+                                itemVendaInfo.Quant += colecaoItemVenda[i].Quant;
+                                itemVendaInfo.Total = colecaoItemVenda[i].ValorDesc * itemVendaInfo.Quant;
+                                itemVendaInfo.funid = colecaoItemVenda[i].funid;
+                                itemVendaInfo.funnome = colecaoItemVenda[i].funnome;
+                                colecaoItemVenda.RemoveAt(i);
+                                break;
+                            }
+                        }
+                    }
+
+                    colecaoItemVenda.Add(itemVendaInfo);
+                }
+                else
+                {
+                    bool b = true;
+
                     for (int i = 0; i < colecaoItemVenda.Count; i++)
                     {
-                        if (colecaoItemVenda[i].Id == produtoInfo.proId)
+                        if (colecaoItemVenda[i].Barras == produtoInfo.proCodBarras)
                         {
-                            itemVendaInfo.ValorDesc = colecaoItemVenda[i].ValorDesc;
-                            itemVendaInfo.Quant += colecaoItemVenda[i].Quant;
-                            itemVendaInfo.Total = colecaoItemVenda[i].ValorDesc * itemVendaInfo.Quant;
-                            itemVendaInfo.funid = colecaoItemVenda[i].funid;
-                            itemVendaInfo.funnome = colecaoItemVenda[i].funnome;
-                            colecaoItemVenda.RemoveAt(i);
+                            b = false;
                             break;
                         }
                     }
+
+                    if (b)
+                        colecaoItemVenda.Add(itemVendaInfo);
                 }
 
-                colecaoItemVenda.Add(itemVendaInfo);
 
                 if (produtoInfo.proControleEstoque == true)
                 {
@@ -484,6 +507,11 @@ namespace WinForms
         {
             buttonCliente.Select();
             dataGridViewItens.ClearSelection();
+
+            if (Form1.Unidade.uniassistencia == EnumAssistencia.Loja)
+            {
+                buttonResponsavel.Enabled = false;
+            }
         }
 
         private void buttonDesconto_Click(object sender, EventArgs e)
@@ -495,21 +523,35 @@ namespace WinForms
         {
             if (dataGridViewItens.SelectedRows.Count > 0)
             {
-                ProdutoInfo produto = produtoNegocios.ConsultarProdutosId(itemSelecionando.Id);
-                produto.proValorVarejo = itemSelecionando.ValorUnit;
-                FormProdDesconto formProdDesconto = new FormProdDesconto(produto.proValorVarejo, produto.proDescricao);
+                //ProdutoInfo produto = produtoNegocios.ConsultarProdutosId(itemSelecionando.Id);
+                //produto.proValorVarejo = itemSelecionando.ValorUnit;
+                FormProdDesconto formProdDesconto = new FormProdDesconto(itemSelecionando.ValorUnit, itemSelecionando.Descricao);
                 formProdDesconto.ShowDialog(this);
 
                 if (formProdDesconto.DialogResult == DialogResult.Yes)
                 {
-
-                    for (int i = 0; i < colecaoItemVenda.Count; i++)
+                    if (itemSelecionando.Id > 0)
                     {
-                        if (itemSelecionando.Id == colecaoItemVenda[i].Id)
+                        for (int i = 0; i < colecaoItemVenda.Count; i++)
                         {
-                            itemSelecionando.ValorDesc = Convert.ToDecimal(formProdDesconto.valorFinal[1]);
-                            itemSelecionando.Total = itemSelecionando.ValorDesc * itemSelecionando.Quant;
-                            colecaoItemVenda.RemoveAt(i);
+                            if (itemSelecionando.Id == colecaoItemVenda[i].Id)
+                            {
+                                itemSelecionando.ValorDesc = Convert.ToDecimal(formProdDesconto.valorFinal[1]);
+                                itemSelecionando.Total = itemSelecionando.ValorDesc * itemSelecionando.Quant;
+                                colecaoItemVenda.RemoveAt(i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < colecaoItemVenda.Count; i++)
+                        {
+                            if (itemSelecionando.Barras == colecaoItemVenda[i].Barras)
+                            {
+                                itemSelecionando.ValorDesc = Convert.ToDecimal(formProdDesconto.valorFinal[1]);
+                                itemSelecionando.Total = itemSelecionando.ValorDesc * itemSelecionando.Quant;
+                                colecaoItemVenda.RemoveAt(i);
+                            }
                         }
                     }
 
@@ -564,6 +606,21 @@ namespace WinForms
                     {
                         switch (e.KeyCode)
                         {
+                            case Keys.F1:
+                                TipoVenda();
+                                break;
+                            case Keys.F2:
+                                BuscarVendedor();
+                                break;
+                            case Keys.F3:
+                                AbrirProd();
+                                break;
+                            case Keys.F4:
+                                AddDesconto(); 
+                                break;
+                            case Keys.F5:
+                                Imprimir();
+                                break;
                             case Keys.F6:
                                 textBoxQuant.Select();
                                 break;
@@ -727,6 +784,12 @@ namespace WinForms
         
         private void buttonProd_Click(object sender, EventArgs e)
         {
+            AbrirProd();
+        }
+
+        private void AbrirProd()
+        {
+
             if (Form1.Unidade.uniassistencia == EnumAssistencia.Assistencia)
                 AbrirFormProduto();
             else
@@ -737,7 +800,33 @@ namespace WinForms
                     FormIphoneListar formIphoneListar = new FormIphoneListar();
                     if (formIphoneListar.ShowDialog(this) == DialogResult.Yes)
                     {
+                        colecaoCompra = formIphoneListar.SelecionadoIphone;
 
+                        foreach (IphoneCompraInfo comp in colecaoCompra)
+                        {
+                            produtoInfo = new ProdutoInfo
+                            {
+                                Desativado = "",
+                                proassist = EnumAssistencia.Loja,
+                                proCodBarras = comp.iphcompraaparelho.IMEI,
+                                proControleEstoque = false,
+                                proDataCad = DateTime.Now,
+                                proDescricao = comp.iphcompraaparelho.ToString(),
+                                prodetalhes = "",
+                                proId = 0,
+                                proidfornecedor = 0,
+                                proidmarca = 0,
+                                proidstatus = 0,
+                                proidsubcategoria = 0,
+                                proidUser = 0,
+                                proQuantMinima = 1,
+                                proValorAtacado = comp.iphcompravalorvenda,
+                                proValorCompra = comp.iphcompravalorcompra,
+                                proValorVarejo = comp.iphcompravalorvenda,
+                            };
+
+                            PreencherFormProduto();
+                        }
                     }
                 }
                 else if (formVendaProdutoTipo.DialogResult == DialogResult.OK)
@@ -774,15 +863,18 @@ namespace WinForms
                 PessoaColecao funcColecao = new PessoaColecao();
                 funcColecao = funcNegocios.ConsultarPessoaPorTipo(EnumPessoaTipo.Funcionario);
 
-                foreach (PessoaInfo func in funcColecao)
+                if (funcColecao != null)
                 {
-                    Form_Consultar form_Consultar = new Form_Consultar
+                    foreach (PessoaInfo func in funcColecao)
                     {
-                        Cod = string.Format("{0:000}", func.Id),
-                        Descricao = func.Nome
-                    };
+                        Form_Consultar form_Consultar = new Form_Consultar
+                        {
+                            Cod = string.Format("{0:000}", func.Id),
+                            Descricao = func.Nome
+                        };
 
-                    form_ConsultarColecao.Add(form_Consultar);
+                        form_ConsultarColecao.Add(form_Consultar);
+                    }
                 }
 
                 FormConsultar_Cod_Descricao formConsultar_Cod_Descricao = new FormConsultar_Cod_Descricao(form_ConsultarColecao, "Funcionário");
@@ -823,10 +915,23 @@ namespace WinForms
             {
                 for (int i = 0; i < colecaoItemVenda.Count; i++)
                 {
-                    if (itemSelecionando.Id == colecaoItemVenda[i].Id)
+                    if (itemSelecionando.Id > 0)
                     {
-                        colecaoItemVenda.RemoveAt(i);
-                        AdicionarItemGrid();
+                        if (itemSelecionando.Id == colecaoItemVenda[i].Id)
+                        {
+                            colecaoItemVenda.RemoveAt(i);
+                            AdicionarItemGrid();
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (itemSelecionando.Barras == colecaoItemVenda[i].Barras)
+                        {
+                            colecaoItemVenda.RemoveAt(i);
+                            AdicionarItemGrid();
+                            break;
+                        }
                     }
                 }
 
@@ -842,6 +947,11 @@ namespace WinForms
         }
 
         private void buttonImprimir_Click(object sender, EventArgs e)
+        {
+            Imprimir();
+        }
+
+        private void Imprimir()
         {
             FormCupom formCupom = new FormCupom(vendaInfo.venid, EnumCupom.Rodape, OsTexto);
             formCupom.ShowDialog(this);
