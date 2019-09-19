@@ -28,6 +28,7 @@ namespace WinForms
         VendaDetalhesColecao vendacolecao;
         FormaPagamentoColecao formaPagamentoColecao;
         GridFormaPagamentoColecao gridFormaPagamentoColecao;
+        ItemVendaColecao colecaoItem;
 
         Thread thread;
         
@@ -50,7 +51,13 @@ namespace WinForms
             vendacolecao = colecao;
         }
 
-        private void Inicializar()
+        public FormPagamento(VendaInfo venda, VendaDetalhesColecao colecao, ItemVendaColecao item) : this(venda, colecao)
+        {
+            colecaoItem = item;
+        }
+
+
+            private void Inicializar()
         {
             InitializeComponent();
             FormFormat formFormat = new FormFormat(this);
@@ -361,14 +368,63 @@ namespace WinForms
 
             if (vendaInfo.venid > 0)
             {
+                if (colecaoItem != null)
+                {
+
+                    ProdutoNegocios produtoNegocios = new ProdutoNegocios(Form1.Empresa.empconexao, EnumAssistencia.Loja);
+                    PessoaNegocio negocioPessoa = new PessoaNegocio(Form1.Empresa.empconexao, EnumAssistencia.Loja);
+                    foreach (var item in colecaoItem)
+                    {
+                        if (item.Id == 0)
+                        {
+                            ProdutoInfo infoProd = new ProdutoInfo
+                            {
+                                proId = 0,
+                                proCodBarras = item.Barras,
+                                proControleEstoque = false,
+                                proDescricao = item.Descricao,
+                                proQuantMinima = 1,
+                                proValorAtacado = item.ValorDesc,
+                                proValorCompra = item.ValorUnit,
+                                proValorVarejo = item.ValorDesc,
+                                proidfornecedor = negocioPessoa.ConsultarPessoaPadrao(EnumPessoaTipo.Fornecedor).Id,
+                                proidmarca = 1,
+                                proidstatus = 1,
+                                proidsubcategoria = 1,
+                                proidUser = Form1.User.useidfuncionario,
+                                propadrao = true
+                            };
+
+                            int id = produtoNegocios.InsertProduto(infoProd);
+
+                            if (id > 0)
+                            {
+                                VendaDetalhesInfo vendaDetalhesInfo = new VendaDetalhesInfo
+                                {
+                                    vendetalhesidprod = id,
+                                    vendetalhesidfunc = item.funid,
+                                    vendetalhesquant = 1,
+                                    vendetalhesvalordesc = item.ValorDesc,
+                                    vendetalhesvalorunit = item.ValorUnit
+                                };
+
+                                vendacolecao.Add(vendaDetalhesInfo);
+                            }
+                        }
+                    }
+                }
+
                 foreach (VendaDetalhesInfo vendaDetalhesInfo in vendacolecao)
                 {
-                    vendaDetalhesInfo.vendetalhesidvenda = vendaInfo.venid;
-
-                    if (vendaNegocios.InsertVendaDetalhes(vendaDetalhesInfo) == 0)
+                    if (vendaDetalhesInfo.vendetalhesidprod > 0)
                     {
-                        FormMessage.ShowMessegeWarning("Falha ao salvar os itens!");
-                        return 0;
+                        vendaDetalhesInfo.vendetalhesidvenda = vendaInfo.venid;
+
+                        if (vendaNegocios.InsertVendaDetalhes(vendaDetalhesInfo) == 0)
+                        {
+                            FormMessage.ShowMessegeWarning("Falha ao salvar os itens!");
+                            return 0;
+                        }
                     }
                 }
 

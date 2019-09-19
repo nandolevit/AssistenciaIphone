@@ -371,6 +371,7 @@ namespace Negocios
                 accessDbMySql.AddParametrosMySql("@iduser", prod.proidUser);
                 accessDbMySql.AddParametrosMySql("@idstatus", prod.proidstatus);
                 accessDbMySql.AddParametrosMySql("@assist", Assistencia);
+                accessDbMySql.AddParametrosMySql("@padrao", prod.propadrao);
 
                 return accessDbMySql.ExecutarScalarMySql("spInsertProduto");
             }

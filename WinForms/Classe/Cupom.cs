@@ -230,6 +230,7 @@ namespace WinForms
 
                 //produtos
                 int item = 1;
+
                 foreach (VendaDetalhesInfo detalhes in venDetalhesColecao)
                 {
                     ProdutoInfo produtoInfo = produtoNegocios.ConsultarProdutosId(detalhes.vendetalhesidprod);

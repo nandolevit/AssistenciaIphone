@@ -213,9 +213,14 @@ namespace WinForms
 
         private void AbrirFormPagamento()
         {
-            FormPagamento formPagamento = new FormPagamento(vendaFinal, colecaoDetalhes);
-            formPagamento.ShowDialog(this);
-            if (formPagamento.DialogResult == DialogResult.Yes)
+            FormPagamento formPagamento;
+
+            if (Form1.Unidade.uniassistencia == EnumAssistencia.Loja)
+                formPagamento = new FormPagamento(vendaFinal, colecaoDetalhes, colecaoItemVenda);
+            else
+                formPagamento = new FormPagamento(vendaFinal, colecaoDetalhes);
+
+            if (formPagamento.ShowDialog(this) == DialogResult.Yes)
             {
                 vendaFinal = formPagamento.VendaConcluida;
                 ConcluirVenda(vendaFinal);
@@ -224,13 +229,15 @@ namespace WinForms
                 formCupom.ShowDialog(this);
                 formCupom.Dispose();
 
-                this.DialogResult = DialogResult.Yes;
-
-                if (vendaInfo == null)
+                if (this.Modal)
+                    this.DialogResult = DialogResult.Yes;
+                else
                 {
-                    LimparVenda();
-                    FormMessage.ShowMessegeWarning("CAIXA LIVRE!");
-                    
+                    if (vendaInfo == null)
+                    {
+                        LimparVenda();
+                        FormMessage.ShowMessegeWarning("CAIXA LIVRE!");
+                    }
                 }
             }
         }
@@ -649,45 +656,48 @@ namespace WinForms
         {
             foreach (ItemVendaInfo item in colecaoItemVenda)
             {
-                //dar baixa no estoque
-                ProdutoInfo produtoInfo = produtoNegocios.ConsultarProdutosId(item.Id);
-
-                if (vendaEnum == EnumVenda.Taxa) //inserir taxa na tabela
+                if (Form1.Unidade.uniassistencia == EnumAssistencia.Assistencia)
                 {
-                    ServicoTaxa = new ServicoOrcamentoInfo();
-                    ServicoTaxa.servicoorcamentoidprod = item.Id;
-                    ServicoTaxa.servicoorcamentoquant = item.Quant;
-                    ServicoTaxa.servicoorcamentovalordesc = item.ValorDesc;
-                    ServicoTaxa.servicoorcamentovalorunit = item.ValorUnit;
-                    ServicoTaxa.servicoorcamentotaxaativo = true;
-                }
+                    //dar baixa no estoque
+                    ProdutoInfo produtoInfo = produtoNegocios.ConsultarProdutosId(item.Id);
 
-                if (produtoInfo.proControleEstoque == true)
-                {
-
-                    negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
-                    produtoInfo = new ProdutoInfo();
-                    produtoInfo = negocioEstoque.ConsultarEstoqueIdProdutoUnid(item.Id, Form1.Unidade.uniid);
-                    produtoInfo.prodestoquequant -=item.Quant;
-
-                    if (negocioEstoque.UpdateEstoqueId(produtoInfo) == 0)
+                    if (vendaEnum == EnumVenda.Taxa) //inserir taxa na tabela
                     {
-                        FormMessage.ShowMessegeWarning("Falha ao salvar os itens!");
-                        return;
+                        ServicoTaxa = new ServicoOrcamentoInfo();
+                        ServicoTaxa.servicoorcamentoidprod = item.Id;
+                        ServicoTaxa.servicoorcamentoquant = item.Quant;
+                        ServicoTaxa.servicoorcamentovalordesc = item.ValorDesc;
+                        ServicoTaxa.servicoorcamentovalorunit = item.ValorUnit;
+                        ServicoTaxa.servicoorcamentotaxaativo = true;
                     }
 
-                    MovEstoqueInfo movEstoqueInfo = new MovEstoqueInfo
+                    if (produtoInfo.proControleEstoque == true)
                     {
-                        movestoqueidproduto = item.Id,
-                        movestoqueidtipomovimento = final.venidtipoentrada,
-                        movestoquequant = item.Quant,
-                        movestoquevalor = item.ValorDesc
-                    };
 
-                    if (!negocioEstoque.InsertMovEstoque(movEstoqueInfo))
-                    {
-                        FormMessage.ShowMessegeWarning("Falha ao salvar os itens!");
-                        return;
+                        negocioEstoque = new EstoqueNegocios(Form1.Empresa.empconexao, Form1.Unidade.uniassistencia);
+                        produtoInfo = new ProdutoInfo();
+                        produtoInfo = negocioEstoque.ConsultarEstoqueIdProdutoUnid(item.Id, Form1.Unidade.uniid);
+                        produtoInfo.prodestoquequant -= item.Quant;
+
+                        if (negocioEstoque.UpdateEstoqueId(produtoInfo) == 0)
+                        {
+                            FormMessage.ShowMessegeWarning("Falha ao salvar os itens!");
+                            return;
+                        }
+
+                        MovEstoqueInfo movEstoqueInfo = new MovEstoqueInfo
+                        {
+                            movestoqueidproduto = item.Id,
+                            movestoqueidtipomovimento = final.venidtipoentrada,
+                            movestoquequant = item.Quant,
+                            movestoquevalor = item.ValorDesc
+                        };
+
+                        if (!negocioEstoque.InsertMovEstoque(movEstoqueInfo))
+                        {
+                            FormMessage.ShowMessegeWarning("Falha ao salvar os itens!");
+                            return;
+                        }
                     }
                 }
 
@@ -816,9 +826,9 @@ namespace WinForms
                                 proId = 0,
                                 proidfornecedor = 0,
                                 proidmarca = 0,
-                                proidstatus = 0,
+                                proidstatus = 1,
                                 proidsubcategoria = 0,
-                                proidUser = 0,
+                                proidUser = Form1.User.useidfuncionario,
                                 proQuantMinima = 1,
                                 proValorAtacado = comp.iphcompravalorvenda,
                                 proValorCompra = comp.iphcompravalorcompra,

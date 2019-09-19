@@ -25,5 +25,7 @@ namespace ObjTransfer
         public int proidstatus { get; set; }
         public string prodetalhes { get; set; }
         public EnumAssistencia proassist { get; set; }
+
+        public bool propadrao { get; set; }
     }
 }
